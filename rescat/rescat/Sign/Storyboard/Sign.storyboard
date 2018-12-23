@@ -1,7 +1,101 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yyH-q2-XJI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Main Sign View Controller-->
+        <scene sceneID="m61-tc-hVE">
+            <objects>
+                <viewController storyboardIdentifier="MainSignViewController" id="yyH-q2-XJI" customClass="MainSignViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UVh-9I-GtN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcD-AJ-qx7">
+                                <rect key="frame" x="161.5" y="344" width="52" height="30"/>
+                                <state key="normal" title="회원가입"/>
+                                <connections>
+                                    <segue destination="P1m-nF-qQI" kind="presentation" id="GDZ-zY-oKj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jcD-AJ-qx7" firstAttribute="centerX" secondItem="WpQ-lw-YkI" secondAttribute="centerX" id="Hw0-SM-K5X"/>
+                            <constraint firstItem="jcD-AJ-qx7" firstAttribute="centerY" secondItem="WpQ-lw-YkI" secondAttribute="centerY" constant="15.5" id="SRg-OW-afQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WpQ-lw-YkI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IAk-nF-utM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FGi-Gt-pjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="26"/>
+        </scene>
+        <!--회원가입-->
+        <scene sceneID="ta3-N4-PYc">
+            <objects>
+                <viewController storyboardIdentifier="JoinViewController" id="5QZ-c1-o9U" customClass="JoinViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DLN-dh-K9U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-Ys-SeH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PPY-pC-31s"/>
+                                </constraints>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bzY-Ys-SeH" firstAttribute="leading" secondItem="DLN-dh-K9U" secondAttribute="leading" id="0yv-i7-FzU"/>
+                            <constraint firstAttribute="trailing" secondItem="bzY-Ys-SeH" secondAttribute="trailing" id="NG2-xf-vXg"/>
+                            <constraint firstItem="bzY-Ys-SeH" firstAttribute="top" secondItem="VjL-rV-OZ5" secondAttribute="top" id="aQi-CM-WeA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VjL-rV-OZ5"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="회원가입" id="uLG-rD-Wea">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="NNb-od-6Q7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="progressBar" destination="bzY-Ys-SeH" id="4yr-A2-nBJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9yd-nx-0vF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="142" y="740"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fgC-pK-hlS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P1m-nF-qQI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lyf-HB-N6U">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.35234612230000001" green="0.41867107149999999" blue="0.74513304229999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5QZ-c1-o9U" kind="relationship" relationship="rootViewController" id="2Sl-aL-wej"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="exc-WQ-b45" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="740"/>
+        </scene>
+    </scenes>
 </document>
