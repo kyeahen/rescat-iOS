@@ -9,5 +9,6 @@ target 'rescat' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'Kingfisher'
+    pod 'SnapKit'
 
 end
