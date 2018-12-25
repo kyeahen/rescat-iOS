@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271880521CF541200E1BCAB /* AppDelegate.swift */; };
-		2271880821CF541200E1BCAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271880721CF541200E1BCAB /* ViewController.swift */; };
 		2271880B21CF541200E1BCAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880921CF541200E1BCAB /* Main.storyboard */; };
 		2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2271880C21CF541300E1BCAB /* Assets.xcassets */; };
 		2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880E21CF541300E1BCAB /* LaunchScreen.storyboard */; };
@@ -18,13 +17,16 @@
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
 		22FCCD5321CF5837007A731C /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5221CF5837007A731C /* Map.storyboard */; };
 		22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5521CF58C3007A731C /* MainViewController.swift */; };
+		22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5921CF5F8E007A731C /* JoinViewController.swift */; };
+		22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5B21CF663F007A731C /* MainSignViewController.swift */; };
+		22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5F21CF677C007A731C /* MyPageViewController.swift */; };
+		22FCCD6221CF6820007A731C /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD6121CF6820007A731C /* CommunityViewController.swift */; };
 		6E086BAA4A3E677EB0D5778D /* Pods_rescat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3AE89B86086A0E04626D35 /* Pods_rescat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2271880221CF541200E1BCAB /* rescat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rescat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271880521CF541200E1BCAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2271880721CF541200E1BCAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2271880A21CF541200E1BCAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2271880C21CF541300E1BCAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2271880F21CF541300E1BCAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +37,10 @@
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		22FCCD5221CF5837007A731C /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		22FCCD5521CF58C3007A731C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		22FCCD5921CF5F8E007A731C /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		22FCCD5B21CF663F007A731C /* MainSignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignViewController.swift; sourceTree = "<group>"; };
+		22FCCD5F21CF677C007A731C /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		22FCCD6121CF6820007A731C /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		4E3AE89B86086A0E04626D35 /* Pods_rescat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rescat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E888DC89DBFA7B1CAA91301 /* Pods-rescat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rescat.debug.xcconfig"; path = "Target Support Files/Pods-rescat/Pods-rescat.debug.xcconfig"; sourceTree = "<group>"; };
 		9D3B299A3AF7A2535AE874D3 /* Pods-rescat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rescat.release.xcconfig"; path = "Target Support Files/Pods-rescat/Pods-rescat.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,7 +130,8 @@
 		2271881D21CF54D900E1BCAB /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				2271880721CF541200E1BCAB /* ViewController.swift */,
+				22FCCD5B21CF663F007A731C /* MainSignViewController.swift */,
+				22FCCD5921CF5F8E007A731C /* JoinViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				22FCCD4921CF57D7007A731C /* Storyboard */,
+				22FCCD5D21CF674D007A731C /* VC */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				22FCCD4821CF57CF007A731C /* Storyboard */,
+				22FCCD5E21CF6752007A731C /* VC */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -189,6 +198,22 @@
 			isa = PBXGroup;
 			children = (
 				22FCCD5521CF58C3007A731C /* MainViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		22FCCD5D21CF674D007A731C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				22FCCD5F21CF677C007A731C /* MyPageViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		22FCCD5E21CF6752007A731C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				22FCCD6121CF6820007A731C /* CommunityViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -357,10 +382,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2271880821CF541200E1BCAB /* ViewController.swift in Sources */,
+				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
+				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
+				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
+				22FCCD6221CF6820007A731C /* CommunityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = rescat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -529,6 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = rescat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
