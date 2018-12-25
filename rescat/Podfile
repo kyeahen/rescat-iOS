@@ -10,5 +10,7 @@ target 'rescat' do
     pod 'SwiftyJSON'
     pod 'Kingfisher'
     pod 'SnapKit'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end
