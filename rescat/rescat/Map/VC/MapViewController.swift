@@ -34,7 +34,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
         
         super.viewDidLoad()
 
-        buttons.append(button1);buttons.append(button2);buttons.append(button3);buttons.append(button4)
+        buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
         for (index, element) in buttons.enumerated() {
             element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
             element.tag = index
