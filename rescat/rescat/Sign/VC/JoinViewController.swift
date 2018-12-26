@@ -9,17 +9,42 @@
 import UIKit
 
 class JoinViewController: UIViewController {
-
-    @IBOutlet weak var progressBar: UIProgressView!
+    
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 8)
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+//ContainerView
+extension JoinViewController {
+    
+    private func add(asChildViewController viewController: UIViewController) {
+        // Add Child View Controller
+        addChild(viewController)
+        
+        // Add Child View as Subview
+        view.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.frame = view.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Notify Child View Controller
+        viewController.didMove(toParent: self)
     }
     
-
-
+    private func remove(asChildViewController viewController: UIViewController) {
+        // Notify Child View Controller
+        viewController.willMove(toParent: nil)
+        
+        // Remove Child View From Superview
+        viewController.view.removeFromSuperview()
+        
+        // Notify Child View Controller
+        viewController.removeFromParent()
+    }
 }

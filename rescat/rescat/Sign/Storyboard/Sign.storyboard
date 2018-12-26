@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yyH-q2-XJI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Qd-Gq-c3b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcD-AJ-qx7">
-                                <rect key="frame" x="161.5" y="344" width="52" height="30"/>
+                                <rect key="frame" x="161.5" y="366" width="52" height="30"/>
                                 <state key="normal" title="회원가입"/>
                                 <connections>
-                                    <segue destination="P1m-nF-qQI" kind="presentation" id="GDZ-zY-oKj"/>
+                                    <segue destination="5QZ-c1-o9U" kind="show" id="NMD-WD-Db2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -33,11 +33,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WpQ-lw-YkI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IAk-nF-utM"/>
+                    <navigationItem key="navigationItem" id="IAk-nF-utM">
+                        <barButtonItem key="backBarButtonItem" title=" " id="tlS-9q-8CX"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGi-Gt-pjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-636" y="26"/>
+            <point key="canvasLocation" x="188" y="26"/>
         </scene>
         <!--회원가입-->
         <scene sceneID="ta3-N4-PYc">
@@ -47,55 +49,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-Ys-SeH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="PPY-pC-31s"/>
-                                </constraints>
-                            </progressView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buJ-kr-ksd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bzY-Ys-SeH" firstAttribute="leading" secondItem="DLN-dh-K9U" secondAttribute="leading" id="0yv-i7-FzU"/>
-                            <constraint firstAttribute="trailing" secondItem="bzY-Ys-SeH" secondAttribute="trailing" id="NG2-xf-vXg"/>
-                            <constraint firstItem="bzY-Ys-SeH" firstAttribute="top" secondItem="VjL-rV-OZ5" secondAttribute="top" id="aQi-CM-WeA"/>
+                            <constraint firstItem="buJ-kr-ksd" firstAttribute="top" secondItem="VjL-rV-OZ5" secondAttribute="top" id="3YY-c2-5mS"/>
+                            <constraint firstItem="VjL-rV-OZ5" firstAttribute="bottom" secondItem="buJ-kr-ksd" secondAttribute="bottom" id="8fi-8h-v6O"/>
+                            <constraint firstAttribute="trailing" secondItem="buJ-kr-ksd" secondAttribute="trailing" id="atR-Tb-t5d"/>
+                            <constraint firstItem="buJ-kr-ksd" firstAttribute="leading" secondItem="DLN-dh-K9U" secondAttribute="leading" id="bgW-a3-30S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VjL-rV-OZ5"/>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입" id="uLG-rD-Wea">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="NNb-od-6Q7">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="y9Q-df-3tw"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="progressBar" destination="bzY-Ys-SeH" id="4yr-A2-nBJ"/>
+                        <outlet property="containerView" destination="buJ-kr-ksd" id="cJB-2d-OgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yd-nx-0vF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="740"/>
+            <point key="canvasLocation" x="1113" y="26"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="fgC-pK-hlS">
+        <scene sceneID="70y-KR-PJZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P1m-nF-qQI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Qd-Gq-c3b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lyf-HB-N6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YCi-6F-VpJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.35234612230000001" green="0.41867107149999999" blue="0.74513304229999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="5QZ-c1-o9U" kind="relationship" relationship="rootViewController" id="2Sl-aL-wej"/>
+                        <segue destination="yyH-q2-XJI" kind="relationship" relationship="rootViewController" id="wHK-0i-0wB"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="exc-WQ-b45" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sGj-ZP-s4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-636" y="740"/>
+            <point key="canvasLocation" x="-636" y="25.637181409295355"/>
         </scene>
     </scenes>
 </document>
