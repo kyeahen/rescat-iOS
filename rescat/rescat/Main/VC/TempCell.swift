@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+class TempCell : UICollectionViewCell{
+    @IBOutlet var image : UIImageView!
+    
+    
+}
