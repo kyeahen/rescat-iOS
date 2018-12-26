@@ -1,4 +1,5 @@
 PODS:
+  - AACarousel (1.1.1)
   - Alamofire (4.7.3)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -12,6 +13,7 @@ PODS:
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - AACarousel
   - Alamofire
   - GoogleMaps
   - GooglePlaces
@@ -21,6 +23,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AACarousel
     - Alamofire
     - GoogleMaps
     - GooglePlaces
@@ -29,6 +32,7 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  AACarousel: e0dbd2d3153c56c36df8aa282553f20fc88e132b
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
@@ -36,6 +40,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 44f5b74c3f2c498f6e496bca868821db2050b38e
+PODFILE CHECKSUM: dff173d7329eb6219d2128c66dd4af65f99aaea1
 
 COCOAPODS: 1.6.0.beta.2

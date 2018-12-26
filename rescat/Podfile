@@ -12,6 +12,8 @@ target 'rescat' do
     pod 'SnapKit'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+pod 'AACarousel'
+
 
 
 end
