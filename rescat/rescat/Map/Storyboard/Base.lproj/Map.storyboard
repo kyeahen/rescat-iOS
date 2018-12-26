@@ -93,7 +93,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLx-3k-WyM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55.200000000000003" y="98.50074962518741"/>
+            <point key="canvasLocation" x="-127" y="727"/>
+        </scene>
+        <!--RegisterVC-->
+        <scene sceneID="wlx-lA-Qpm">
+            <objects>
+                <viewController storyboardIdentifier="RegisterVC" id="r2a-LR-UDI" customClass="RegisterVC" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uqx-E1-epY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-Dd-IWu">
+                                <rect key="frame" x="150" y="537" width="75" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="register:" destination="r2a-LR-UDI" eventType="touchUpInside" id="wmJ-bp-uIJ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azO-Nq-ngD" customClass="DetailView" customModule="rescat" customModuleProvider="target">
+                                <rect key="frame" x="30" y="50" width="315" height="387"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nYl-dM-YK7" firstAttribute="trailing" secondItem="azO-Nq-ngD" secondAttribute="trailing" constant="30" id="OiD-sg-JJl"/>
+                            <constraint firstItem="nYl-dM-YK7" firstAttribute="trailing" secondItem="3Dq-Dd-IWu" secondAttribute="trailing" constant="150" id="ShD-bv-S5W"/>
+                            <constraint firstItem="azO-Nq-ngD" firstAttribute="leading" secondItem="nYl-dM-YK7" secondAttribute="leading" constant="30" id="eVG-tl-YBD"/>
+                            <constraint firstItem="azO-Nq-ngD" firstAttribute="top" secondItem="nYl-dM-YK7" secondAttribute="top" constant="30" id="hIu-IC-Fsv"/>
+                            <constraint firstItem="3Dq-Dd-IWu" firstAttribute="top" secondItem="azO-Nq-ngD" secondAttribute="bottom" constant="100" id="sPX-UX-qBN"/>
+                            <constraint firstItem="nYl-dM-YK7" firstAttribute="bottom" secondItem="3Dq-Dd-IWu" secondAttribute="bottom" constant="100" id="y3r-ya-2MP"/>
+                            <constraint firstItem="3Dq-Dd-IWu" firstAttribute="leading" secondItem="nYl-dM-YK7" secondAttribute="leading" constant="150" id="yvf-Y5-hoP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nYl-dM-YK7"/>
+                    </view>
+                    <connections>
+                        <outlet property="v" destination="azO-Nq-ngD" id="gGe-Uz-eKb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKp-fD-hg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

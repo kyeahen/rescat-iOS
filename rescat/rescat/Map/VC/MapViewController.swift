@@ -23,9 +23,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
     var floatingButton : UIButton!
     
     
-    var detailViewHeight = 100   // temp value
+    var detailViewHeight = 200   // temp value
     var detailViewCreated = false
-    var detailView : UIView!
+    var detailView : UIView!; var detailImageView : UIImageView!; var detailNameView : UILabel!
+    var detailBirthView : UILabel!; var detailPropertyView : UILabel!; var detailTextView : UILabel!
     
     var initData : [TestModel] = []
     var filterdData : [TestModel] = []
@@ -43,6 +44,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
         floatingButton = UIButton()
         floatingButton.backgroundColor = UIColor.blue
         floatingButton.setTitle("+", for: .normal)
+        floatingButton.addTarget(self, action: #selector(registerButton), for: .touchUpInside)
         self.view.addSubview(floatingButton)
         floatingButton.snp.makeConstraints { (make) in
             make.height.equalTo(50); make.width.equalTo(50);
@@ -51,7 +53,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
         }
         
         //  내 도시로 focus
-        let camera = GMSCameraPosition.camera(withLatitude: 37.498197, longitude: 127.027610, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 37.498197, longitude: 127.027610, zoom: 13.0)
         self.mapView.camera = camera
       
         self.mapView.delegate = self
@@ -82,6 +84,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
                 self.detailView.alpha = 1.0
             })}
         }
+    }
+    @objc func registerButton(_ sender : UIButton!) {
+        print("register")
+//        let view = DetailView(frame: self.view.frame)
+//        self.view.addSubview(view)
+        let mapstoryboard = UIStoryboard(name: "Map", bundle: nil)
+        let vc = mapstoryboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        self.present(vc, animated: true, completion: nil)
+
     }
 
     @objc func filterButton(_ sender : UIButton!){
@@ -130,8 +141,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
                 make.left.equalTo(self.view.snp.left).offset(15)
                 make.right.equalTo(self.view.snp.right).offset(-15)
                 make.height.equalTo(detailViewHeight)
-                make.bottom.equalTo(self.view.snp.bottom).offset(-20)
+                make.bottom.equalTo(self.view.snp.bottom).offset(-80)
             }
+            
+            let detailContents = DetailView(frame: detailView.frame)
+            self.detailView.addSubview(detailContents)
+            detailContents.snp.makeConstraints { (make) in
+                make.left.equalTo(self.detailView.snp.left)
+                make.right.equalTo(self.detailView.snp.right)
+                make.bottom.equalTo(self.detailView.snp.bottom)
+                make.top.equalTo(self.detailView.snp.top)
+
+            }
+//            detailView.addSubview(detailContents)
+//            detailImageView = UIImageView()
+//            detailImageView.backgroundColor = UIColor.green
+//            detailTextView =
+            
             detailView.tag = 0
             
         } else {

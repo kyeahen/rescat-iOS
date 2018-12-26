@@ -11,26 +11,19 @@ import UIKit
 import Kingfisher
 class DetailView : UIView {
     
-    @IBOutlet var imageView : UIImageView!
-    @IBOutlet var nameLabel : UILabel!
-    @IBOutlet var birthLabel : UILabel!
-    @IBOutlet var title1 : UILabel!
-    @IBOutlet var title2 : UILabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.commomInit()
+        self.commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.commomInit()
+        self.commonInit()
     }
-    private func commomInit(){
+    private func commonInit(){
         let view = Bundle.main.loadNibNamed("DetailView", owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         self.addSubview(view)
-
     }
-    
 }
