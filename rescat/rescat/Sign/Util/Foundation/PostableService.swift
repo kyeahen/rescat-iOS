@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol PostableService {
+    
     associatedtype NetworkData : Codable
     typealias networkResult = (resCode: Int, resResult: NetworkData)
     func post(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
@@ -31,10 +32,14 @@ extension PostableService {
         
         print("URL은 \(encodedUrl)")
         
-        let userdefault = UserDefaults.standard
-        guard let token = userdefault.string(forKey: "token") else { return }
+        let token = UserDefaults.standard.string(forKey: "token") ?? "-1"
         
-        let token_header = [ "authorization" : token ]
+        var token_header: HTTPHeaders?
+        if token != "-1" {
+            token_header = [ "authorization" : token ]
+        } else {
+            token_header = nil
+        }
         
         Alamofire.request(encodedUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: token_header).responseData(){
             (res) in
@@ -68,6 +73,7 @@ extension PostableService {
                     }
                 }
                 break
+                
             case .failure(let err):
                 print(err.localizedDescription)
                 completion(.failure(err))

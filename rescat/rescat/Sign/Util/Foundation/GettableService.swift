@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol GettableService {
+    
     associatedtype NetworkData : Codable
     typealias networkResult = (resCode: Int, resResult: NetworkData)
     func get(_ URL: String, method: HTTPMethod, completion: @escaping (Result<networkResult>) -> Void)
@@ -19,11 +20,9 @@ protocol GettableService {
 
 extension GettableService {
     
-    
     func gino(_ value : Int?) -> Int {
         return value ?? 0
     }
-    
     
     func get(_ URL: String, method: HTTPMethod = .get, completion: @escaping (Result<networkResult>) -> Void){
         
@@ -34,14 +33,17 @@ extension GettableService {
         
         print("URL은 \(encodedUrl)")
         
-        let userdefault = UserDefaults.standard
-        guard let token = userdefault.string(forKey: "token") else { return }
-        
-        let token_header = [ "authorization" : token ]
-        
+        let token = UserDefaults.standard.string(forKey: "token") ?? "-1"
+
+        var token_header: HTTPHeaders?
+        if token != "-1" {
+            token_header = [ "authorization" : token ]
+        } else {
+            token_header = nil
+        }
+
         Alamofire.request(encodedUrl, method: method, parameters: nil, headers: token_header).responseData {(res) in
-            print("encodedURK")
-            print(encodedUrl)
+
             switch res.result {
                 
             case .success :
