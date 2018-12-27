@@ -28,6 +28,7 @@
 		22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7D21D35B48007A731C /* LoginService.swift */; };
 		22FCCDA021D49694007A731C /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD9F21D49694007A731C /* LoginData.swift */; };
 		22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA121D497E8007A731C /* UserDefaultService.swift */; };
+		22FCCDA521D4DF54007A731C /* PostablePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */; };
 		596662B321D1F57500055918 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B221D1F57500055918 /* APIService.swift */; };
 		596662B621D1F7A600055918 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B521D1F7A600055918 /* Test.swift */; };
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
@@ -60,6 +61,7 @@
 		22FCCD7D21D35B48007A731C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		22FCCD9F21D49694007A731C /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		22FCCDA121D497E8007A731C /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
+		22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostablePhotoService.swift; sourceTree = "<group>"; };
 		4E3AE89B86086A0E04626D35 /* Pods_rescat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rescat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		596662B221D1F57500055918 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		596662B521D1F7A600055918 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				22FCCD7421D35142007A731C /* HttpResCode.swift */,
 				22FCCD7221D34EBF007A731C /* GettableService.swift */,
 				22FCCD7621D3558A007A731C /* PostableService.swift */,
+				22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */,
 				22FCCDA121D497E8007A731C /* UserDefaultService.swift */,
 			);
 			path = Foundation;
@@ -504,6 +507,7 @@
 				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
 				596662B621D1F7A600055918 /* Test.swift in Sources */,
 				22FCCD6F21D333B9007A731C /* ExtensionControl.swift in Sources */,
+				22FCCDA521D4DF54007A731C /* PostablePhotoService.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
