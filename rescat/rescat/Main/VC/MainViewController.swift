@@ -40,6 +40,11 @@ class MainViewController: UIViewController , AACarouselDelegate{
         reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 0, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
     }
 
+    @IBAction func viewFundingList(_ sender: UIButton! ) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingListViewController") as! FundingListViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
         // Do any additional setup after loading the view.
     func downloadImages(_ url: String, _ index: Int) {
         
@@ -106,7 +111,7 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "temp", for: indexPath) as! TempCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TempCell", for: indexPath) as! TempCell
         cell.image.image = UIImage(named: "linux")
         return cell
     }

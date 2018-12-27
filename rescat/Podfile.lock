@@ -9,6 +9,7 @@ PODS:
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
   - Kingfisher (4.10.1)
+  - Parchment (1.4.1)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
 
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - Kingfisher
+  - Parchment
   - SnapKit
   - SwiftyJSON
 
@@ -28,6 +30,7 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - Kingfisher
+    - Parchment
     - SnapKit
     - SwiftyJSON
 
@@ -37,9 +40,10 @@ SPEC CHECKSUMS:
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Parchment: e6c2a3a0063739382dd207e21d48fe5e81f3324a
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: dff173d7329eb6219d2128c66dd4af65f99aaea1
+PODFILE CHECKSUM: e7d8a37ba794d92ae4f31292e03e20f7c193ae3d
 
 COCOAPODS: 1.6.0.beta.2

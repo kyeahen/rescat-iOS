@@ -14,6 +14,6 @@ target 'rescat' do
   pod 'GooglePlaces'
 pod 'AACarousel'
 
-
+pod 'Parchment'
 
 end

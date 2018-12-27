@@ -30,6 +30,7 @@
 		5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809921D3DD2700491F5C /* BannerTableCell.swift */; };
 		5916809C21D3DD3900491F5C /* TempTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809B21D3DD3900491F5C /* TempTableCell.swift */; };
 		5916809E21D3DD4100491F5C /* TempTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809D21D3DD4100491F5C /* TempTableCell.xib */; };
+		591680B521D514C400491F5C /* FundingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680B421D514C400491F5C /* FundingListViewController.swift */; };
 		596662B321D1F57500055918 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B221D1F57500055918 /* APIService.swift */; };
 		596662B621D1F7A600055918 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B521D1F7A600055918 /* Test.swift */; };
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
@@ -65,6 +66,7 @@
 		5916809921D3DD2700491F5C /* BannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableCell.swift; sourceTree = "<group>"; };
 		5916809B21D3DD3900491F5C /* TempTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTableCell.swift; sourceTree = "<group>"; };
 		5916809D21D3DD4100491F5C /* TempTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempTableCell.xib; sourceTree = "<group>"; };
+		591680B421D514C400491F5C /* FundingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListViewController.swift; sourceTree = "<group>"; };
 		596662B221D1F57500055918 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		596662B521D1F7A600055918 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		596662B921D1FCF000055918 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				5916809521D3D90A00491F5C /* TempCell.swift */,
 				5916809921D3DD2700491F5C /* BannerTableCell.swift */,
 				5916809B21D3DD3900491F5C /* TempTableCell.swift */,
+				591680B321D514B300491F5C /* Funding */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -256,6 +259,14 @@
 				22FCCD6121CF6820007A731C /* CommunityViewController.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		591680B321D514B300491F5C /* Funding */ = {
+			isa = PBXGroup;
+			children = (
+				591680B421D514C400491F5C /* FundingListViewController.swift */,
+			);
+			path = Funding;
 			sourceTree = "<group>";
 		};
 		596662B121D1F56100055918 /* Util */ = {
@@ -447,6 +458,7 @@
 				"${BUILT_PRODUCTS_DIR}/AACarousel/AACarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -455,6 +467,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AACarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parchment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -472,6 +485,7 @@
 			files = (
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
 				5916809C21D3DD3900491F5C /* TempTableCell.swift in Sources */,
+				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
 				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
 				596662B621D1F7A600055918 /* Test.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
