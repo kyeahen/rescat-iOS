@@ -119,17 +119,20 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TempTableCell", for: indexPath) as! TempTableCell
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
-            return cell
-        }
+//        if indexPath.row == 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "TempTableCell", for: indexPath) as! TempTableCell
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
+//            return cell
+//        }
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "TempTableCell", for: indexPath) as! TempTableCell
+                    return cell
+
     }
     
     

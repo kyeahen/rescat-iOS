@@ -143,26 +143,27 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kpO-7Q-Dti">
-                                                <rect key="frame" x="0.0" y="450" width="375" height="770"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="165" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpO-7Q-Dti">
+                                                <rect key="frame" x="17" y="450" width="341" height="770"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="770" id="ab4-A3-gOV"/>
                                                 </constraints>
+                                                <inset key="scrollIndicatorInsets" minX="0.0" minY="3" maxX="0.0" maxY="3"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TempTableCell" rowHeight="140" id="ku2-Nl-0Im" customClass="TempTableCell" customModule="rescat" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TempTableCell" rowHeight="165" id="ku2-Nl-0Im" customClass="TempTableCell" customModule="rescat" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="1" width="341" height="165"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ku2-Nl-0Im" id="mJp-fz-9n4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="164.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BannerTableCell" rowHeight="140" id="Xvn-0Y-zfG" customClass="BannerTableCell" customModule="rescat" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="168" width="375" height="140"/>
+                                                        <rect key="frame" x="0.0" y="166" width="341" height="140"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xvn-0Y-zfG" id="7jr-hF-Dd9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="139.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -186,6 +187,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="G9K-wb-pe4" secondAttribute="trailing" constant="16" id="0Og-5G-utD"/>
                                             <constraint firstItem="oua-oT-rp5" firstAttribute="top" secondItem="bFJ-QE-S5u" secondAttribute="bottom" constant="24" id="0Zv-iu-4xg"/>
+                                            <constraint firstAttribute="trailing" secondItem="kpO-7Q-Dti" secondAttribute="trailing" constant="17" id="7YW-WI-bzK"/>
                                             <constraint firstAttribute="trailing" secondItem="oua-oT-rp5" secondAttribute="trailing" constant="16" id="B5z-O5-xj4"/>
                                             <constraint firstItem="dO8-3A-bmk" firstAttribute="centerY" secondItem="oua-oT-rp5" secondAttribute="centerY" id="Ddp-RY-Zup"/>
                                             <constraint firstAttribute="height" constant="1387" id="Dij-d5-eIq"/>
@@ -194,9 +196,7 @@
                                             <constraint firstItem="oua-oT-rp5" firstAttribute="width" secondItem="G9K-wb-pe4" secondAttribute="width" id="IJS-sY-Pzh"/>
                                             <constraint firstItem="OQk-ee-DrW" firstAttribute="top" secondItem="Emr-VM-5or" secondAttribute="top" id="KKM-ew-qzi"/>
                                             <constraint firstAttribute="trailing" secondItem="bFJ-QE-S5u" secondAttribute="trailing" id="Kyd-W2-9Qw"/>
-                                            <constraint firstItem="kpO-7Q-Dti" firstAttribute="leading" secondItem="Emr-VM-5or" secondAttribute="leading" id="R09-Id-NDu"/>
                                             <constraint firstItem="bFJ-QE-S5u" firstAttribute="leading" secondItem="Emr-VM-5or" secondAttribute="leading" id="acU-CR-8wJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="kpO-7Q-Dti" secondAttribute="trailing" id="bV8-CA-rEw"/>
                                             <constraint firstAttribute="bottom" secondItem="dvo-q9-Pj7" secondAttribute="bottom" id="c59-Zh-dKH"/>
                                             <constraint firstItem="kpO-7Q-Dti" firstAttribute="top" secondItem="oua-oT-rp5" secondAttribute="bottom" constant="10" id="cJS-5B-rDy"/>
                                             <constraint firstItem="dvo-q9-Pj7" firstAttribute="leading" secondItem="Emr-VM-5or" secondAttribute="leading" id="emx-XL-8vO"/>
@@ -204,6 +204,7 @@
                                             <constraint firstItem="dO8-3A-bmk" firstAttribute="leading" secondItem="Emr-VM-5or" secondAttribute="leading" constant="22" id="sRb-kR-3Rm"/>
                                             <constraint firstItem="G9K-wb-pe4" firstAttribute="top" secondItem="OQk-ee-DrW" secondAttribute="bottom" constant="10" id="t15-yy-GsN"/>
                                             <constraint firstItem="oua-oT-rp5" firstAttribute="height" secondItem="G9K-wb-pe4" secondAttribute="height" id="vbf-la-0D3"/>
+                                            <constraint firstItem="kpO-7Q-Dti" firstAttribute="leading" secondItem="Emr-VM-5or" secondAttribute="leading" constant="17" id="wQS-YF-5Rc"/>
                                             <constraint firstAttribute="trailing" secondItem="dvo-q9-Pj7" secondAttribute="trailing" id="zfv-Gl-zyJ"/>
                                         </constraints>
                                     </view>
