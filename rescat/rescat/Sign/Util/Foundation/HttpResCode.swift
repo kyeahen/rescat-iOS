@@ -18,7 +18,6 @@ enum HttpResponseCode: Int{
     case serverErr = 500
 }
 
-
 enum Result<T> {
     case success(T)
     case error(String)

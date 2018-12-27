@@ -10,20 +10,29 @@ import Foundation
 
 struct LoginService: PostableService, APIServie {
     
-    typealias NetworkData = DefaultData
+    typealias NetworkData = LoginData
     static let shareInstance = LoginService()
     
-    func postLogin(url: String, params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    func postLogin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        post(url, params: params) { (result) in
+        let loginURL = self.url("auth/login")
+        
+        post(loginURL, params: params) { (result) in
             switch result {
                 
             case .success(let networkResult):
                 switch networkResult.resCode {
+                    
                 case HttpResponseCode.getSuccess.rawValue :
+                    let token = networkResult.resResult.token
+                    UserDefaultService.setUserDefault(value: token, key: "token")
+                    print("서비스에서\(token)")
+
                     completion(.networkSuccess(networkResult.resResult))
+                    
                 case HttpResponseCode.serverErr.rawValue :
                     completion(.serverErr)
+                    
                 default :
                     print("no 201/500 rescode is \(networkResult.resCode)")
                     break
@@ -33,8 +42,10 @@ struct LoginService: PostableService, APIServie {
                 
             case .error(let resCode):
                 switch resCode {
+                    
                 case HttpResponseCode.badRequest.rawValue.description :
                     completion(.badRequest)
+                    
                 default :
                     print("no 400 rescode")
                     break

@@ -13,18 +13,38 @@ class MainSignViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func loginAction(_ sender: UIButton) {
+        
+        let id = "test101"
+        let pwd = "test"
+        
+        let params : [String : Any] = ["email_id" : id,
+                                       "password" : pwd]
+        
+        LoginService.shareInstance.postLogin(params: params) {(result) in
+
+            switch result {
+                case .networkSuccess(let loginData):
+                    let userData = loginData as? LoginData
+                    
+                    print("메인에서\(UserDefaultService.getUserDefault(key: "token"))")
+                    self.simpleAlert(title: "성공", message: "환영합니다.")
+                break
+                
+                case .networkFail :
+                    self.networkErrorAlert()
+                break
+                
+                default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        }
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

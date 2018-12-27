@@ -26,6 +26,8 @@
 		22FCCD7721D3558A007A731C /* PostableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7621D3558A007A731C /* PostableService.swift */; };
 		22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7921D35620007A731C /* DefaultData.swift */; };
 		22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7D21D35B48007A731C /* LoginService.swift */; };
+		22FCCDA021D49694007A731C /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD9F21D49694007A731C /* LoginData.swift */; };
+		22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA121D497E8007A731C /* UserDefaultService.swift */; };
 		596662B321D1F57500055918 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B221D1F57500055918 /* APIService.swift */; };
 		596662B621D1F7A600055918 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B521D1F7A600055918 /* Test.swift */; };
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
@@ -56,6 +58,8 @@
 		22FCCD7621D3558A007A731C /* PostableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostableService.swift; sourceTree = "<group>"; };
 		22FCCD7921D35620007A731C /* DefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
 		22FCCD7D21D35B48007A731C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		22FCCD9F21D49694007A731C /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		22FCCDA121D497E8007A731C /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		4E3AE89B86086A0E04626D35 /* Pods_rescat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rescat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		596662B221D1F57500055918 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		596662B521D1F7A600055918 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 		22FCCD6D21D333A1007A731C /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				22FCCDA321D4B0E8007A731C /* Foundation */,
 				22FCCD7821D35615007A731C /* Model */,
 				22FCCD7121D34E9C007A731C /* Service */,
 				22FCCD7021D34E00007A731C /* Function */,
@@ -262,9 +267,6 @@
 		22FCCD7121D34E9C007A731C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				22FCCD7421D35142007A731C /* HttpResCode.swift */,
-				22FCCD7221D34EBF007A731C /* GettableService.swift */,
-				22FCCD7621D3558A007A731C /* PostableService.swift */,
 				22FCCD7D21D35B48007A731C /* LoginService.swift */,
 			);
 			path = Service;
@@ -274,8 +276,20 @@
 			isa = PBXGroup;
 			children = (
 				22FCCD7921D35620007A731C /* DefaultData.swift */,
+				22FCCD9F21D49694007A731C /* LoginData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		22FCCDA321D4B0E8007A731C /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				22FCCD7421D35142007A731C /* HttpResCode.swift */,
+				22FCCD7221D34EBF007A731C /* GettableService.swift */,
+				22FCCD7621D3558A007A731C /* PostableService.swift */,
+				22FCCDA121D497E8007A731C /* UserDefaultService.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		596662B121D1F56100055918 /* Util */ = {
@@ -493,8 +507,10 @@
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
+				22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
+				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
