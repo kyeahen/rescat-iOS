@@ -46,6 +46,9 @@ struct LoginService: PostableService, APIServie {
                 case HttpResponseCode.badRequest.rawValue.description :
                     completion(.badRequest)
                     
+                case HttpResponseCode.forbidden.rawValue.description :
+                    completion(.wrongInput)
+                    
                 default :
                     print("no 400 rescode")
                     break

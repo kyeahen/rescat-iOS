@@ -9,42 +9,33 @@
 import UIKit
 
 class MainSignViewController: UIViewController {
-
+    
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setCustomView()
+
     }
     
-    @IBAction func loginAction(_ sender: UIButton) {
+    override func viewWillAppear(_ animated: Bool) {
         
-        let id = "test101"
-        let pwd = "test"
-        
-        let params : [String : Any] = ["email_id" : id,
-                                       "password" : pwd]
-        
-        LoginService.shareInstance.postLogin(params: params) {(result) in
-
-            switch result {
-                case .networkSuccess(let loginData):
-                    let userData = loginData as? LoginData
-                    
-                    print("메인에서\(UserDefaultService.getUserDefault(key: "token"))")
-                    self.simpleAlert(title: "성공", message: "환영합니다.")
-                break
-                
-                case .networkFail :
-                    self.networkErrorAlert()
-                break
-                
-                default :
-                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
-                break
-            }
-        }
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
     }
     
-
-
+    //MARK: 뷰 요소 커스텀 세팅
+    func setCustomView() {
+        
+        skipButton.makeRounded(cornerRadius: 8)
+        joinButton.makeRounded(cornerRadius: 8)
+        joinButton.layer.addBorder(edge: .top, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
+        joinButton.layer.addBorder(edge: .bottom, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
+        joinButton.layer.addBorder(edge: .left, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
+        joinButton.layer.addBorder(edge: .right, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
+        
+    }
 }
