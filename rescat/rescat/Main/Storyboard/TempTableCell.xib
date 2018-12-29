@@ -19,8 +19,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeD-6x-6WY">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linux" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-Yr-tqc">
-                            <rect key="frame" x="5" y="4" width="365" height="157"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageExCat" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-Yr-tqc">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로젝트 모금" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17D-or-OmN">
                             <rect key="frame" x="17" y="18" width="83" height="21"/>
@@ -66,13 +66,13 @@
                         <constraint firstItem="17D-or-OmN" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="17" id="Jo3-KS-ZPb"/>
                         <constraint firstItem="RZO-8N-xhs" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="22" id="LH2-In-wV2"/>
                         <constraint firstItem="kfi-e2-FhS" firstAttribute="leading" secondItem="17D-or-OmN" secondAttribute="leading" id="LuX-cV-k9p"/>
-                        <constraint firstAttribute="bottom" secondItem="EDI-Yr-tqc" secondAttribute="bottom" constant="4" id="R8k-Tr-HlW"/>
-                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="4" id="Sb8-XE-Bqz"/>
+                        <constraint firstAttribute="bottom" secondItem="EDI-Yr-tqc" secondAttribute="bottom" id="R8k-Tr-HlW"/>
+                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" id="Sb8-XE-Bqz"/>
                         <constraint firstAttribute="height" constant="165" id="aJW-pN-MCS"/>
                         <constraint firstItem="5IA-os-ox0" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="23" id="dSu-Ps-Qu2"/>
                         <constraint firstItem="kfi-e2-FhS" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="56" id="euP-sd-9Zt"/>
-                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="5" id="lIO-AE-PWR"/>
-                        <constraint firstAttribute="trailing" secondItem="EDI-Yr-tqc" secondAttribute="trailing" constant="5" id="lKh-Uh-v8g"/>
+                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" id="lIO-AE-PWR"/>
+                        <constraint firstAttribute="trailing" secondItem="EDI-Yr-tqc" secondAttribute="trailing" id="lKh-Uh-v8g"/>
                         <constraint firstAttribute="bottom" secondItem="5IA-os-ox0" secondAttribute="bottom" constant="28" id="m3W-Eh-Pmz"/>
                         <constraint firstItem="RZO-8N-xhs" firstAttribute="top" secondItem="Pzv-0W-2F3" secondAttribute="bottom" constant="15" id="pS6-fX-5q0"/>
                         <constraint firstItem="17D-or-OmN" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="18" id="u3L-Yy-CuU"/>
@@ -88,10 +88,16 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="EDI-Yr-tqc" id="fgY-5h-hyC"/>
+                <outlet property="contentsLabel" destination="Pzv-0W-2F3" id="cY9-YK-mkW"/>
+                <outlet property="goalLabel" destination="5IA-os-ox0" id="bMp-oN-jwx"/>
+                <outlet property="titleLabel" destination="kfi-e2-FhS" id="yNw-Zh-HwM"/>
+            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="83.208395802098963"/>
         </view>
     </objects>
     <resources>
-        <image name="linux" width="400" height="479"/>
+        <image name="imageExCat" width="342" height="165"/>
     </resources>
 </document>

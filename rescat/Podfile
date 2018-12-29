@@ -13,7 +13,6 @@ target 'rescat' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
 pod 'AACarousel'
-
 pod 'Parchment'
 
 end

@@ -17,7 +17,7 @@ class RegisterVC : UIViewController{
     @IBAction func register(_ sender : UIButton!){
 //        v = DetailView(frame: self.view.frame)
 //        self.view.addSubview(v)
-//  self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {

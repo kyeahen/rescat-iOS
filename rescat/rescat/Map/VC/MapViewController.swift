@@ -9,18 +9,19 @@
 import UIKit
 import GoogleMaps
 import SnapKit
-class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelegate, APIServiceCallback {
+class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallback {
     
-
+    @IBOutlet var registerButton : UIButton!
+    @IBOutlet var searchButton : UIButton!
     @IBOutlet var mapView : GMSMapView!
-    @IBOutlet var searchbar : UISearchBar!
+//    @IBOutlet var searchbar : UISearchBar!
     
     @IBOutlet var button1 : UIButton!
     @IBOutlet var button2 : UIButton!
     @IBOutlet var button3 : UIButton!
     @IBOutlet var button4 : UIButton!
     var buttons = [UIButton]()
-    var floatingButton : UIButton!
+    var locationButton : UIButton!
     
     
     var detailViewHeight = 200   // temp value
@@ -32,7 +33,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
     var filterdData : [TestModel] = []
     
     override func viewDidLoad() {
-        
+        print("Map viewDidLoad")
         super.viewDidLoad()
 
         buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
@@ -41,29 +42,34 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
             element.tag = index
         }
         
-        floatingButton = UIButton()
-        floatingButton.backgroundColor = UIColor.blue
-        floatingButton.setTitle("+", for: .normal)
-        floatingButton.addTarget(self, action: #selector(registerButton), for: .touchUpInside)
-        self.view.addSubview(floatingButton)
-        floatingButton.snp.makeConstraints { (make) in
-            make.height.equalTo(50); make.width.equalTo(50);
-            make.right.equalTo(self.view.snp.right).offset(-15)
-            make.bottom.equalTo(self.view.snp.bottom).offset(-15)
+        locationButton = UIButton()
+        locationButton.backgroundColor = UIColor.blue
+        locationButton.setTitle("서울시 서초구", for: .normal)
+//        locationButton.addTarget(self, action: #selector(registerButton), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
+        
+        
+        self.view.addSubview(locationButton)
+        locationButton.snp.makeConstraints { (make) in
+            make.height.equalTo(40); make.width.equalTo(200);
+            make.bottom.equalTo(-100); make.centerX.equalTo(self.view.snp.centerX)
+//            make.right.equalTo(self.view.snp.right).offset(-15)
+//            make.bottom.equalTo(self.view.snp.bottom).offset(-15)
         }
         
         //  내 도시로 focus
-        let camera = GMSCameraPosition.camera(withLatitude: 37.498197, longitude: 127.027610, zoom: 13.0)
-        self.mapView.camera = camera
-      
         self.mapView.delegate = self
-        self.searchbar.delegate = self
-
+        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 13.0)
+//        self.searchbar.delegate = self
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // get datas from server
+        self.self.navigationController?.navigationBar.isHidden = true
+
         let request = Test(self)
         request.testRequest()
     }
@@ -74,18 +80,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
             UIView.animate(withDuration: 0.15, animations: {
                 if (self.detailViewCreated) { self.detailView.alpha = 0.0 }
             }) { (_) in UIView.animate(withDuration: 0.15, animations: {
-                self.floatingButton.alpha = 1.0
+                self.locationButton.alpha = 1.0
             })}
             
         } else {
             UIView.animate(withDuration: 0.15, animations: {
-                self.floatingButton.alpha = 0.0
+                self.locationButton.alpha = 0.0
             }) { (_) in UIView.animate(withDuration: 0.15, animations: {
                 self.detailView.alpha = 1.0
             })}
         }
     }
-    @objc func registerButton(_ sender : UIButton!) {
+    @objc func registerButtonAction(_ sender : UIButton!) {
         print("register")
 //        let view = DetailView(frame: self.view.frame)
 //        self.view.addSubview(view)
@@ -93,6 +99,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
         let vc = mapstoryboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
         self.present(vc, animated: true, completion: nil)
 
+    }
+    @objc func searchButtonAction(_ sender : UIButton!){
+        print("search")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+//        self.searchButton.isHidden = false
+//        self.searchbar.resignFirstResponder()
     }
 
     @objc func filterButton(_ sender : UIButton!){
@@ -110,7 +123,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
             makeMarkerView(filterdData)
         }
     }
-
+    func loadMapView(latitude : Double, longitude : Double, zoom : Float){
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: zoom)
+        self.mapView.camera = camera
+    
+    }
+    func focusMarkerView(){
+        
+    }
+    
     func makeMarkerView(_ data : [TestModel]) {
         
         mapView.clear()
@@ -123,13 +144,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
         }
        
     }
-    // -----------------------------  UISearchBarDelegate function ----------------------------
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
+        print("end")
         detailViewHidden(true)
     }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchbar.resignFirstResponder()
-    }
+  
     //  -----------------------------  GMSMapViewDelegate function ----------------------------
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if ( !detailViewCreated ) {
@@ -141,7 +160,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UISearchBarDelega
                 make.left.equalTo(self.view.snp.left).offset(15)
                 make.right.equalTo(self.view.snp.right).offset(-15)
                 make.height.equalTo(detailViewHeight)
-                make.bottom.equalTo(self.view.snp.bottom).offset(-80)
+                make.bottom.equalTo(self.view.snp.bottom).offset(-100)
             }
             
             let detailContents = DetailView(frame: detailView.frame)

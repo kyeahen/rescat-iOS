@@ -31,6 +31,7 @@
 		5916809C21D3DD3900491F5C /* TempTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809B21D3DD3900491F5C /* TempTableCell.swift */; };
 		5916809E21D3DD4100491F5C /* TempTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809D21D3DD4100491F5C /* TempTableCell.xib */; };
 		591680B521D514C400491F5C /* FundingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680B421D514C400491F5C /* FundingListViewController.swift */; };
+		591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680BC21D746BE00491F5C /* SearchViewController.swift */; };
 		596662B321D1F57500055918 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B221D1F57500055918 /* APIService.swift */; };
 		596662B621D1F7A600055918 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B521D1F7A600055918 /* Test.swift */; };
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
@@ -67,6 +68,7 @@
 		5916809B21D3DD3900491F5C /* TempTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTableCell.swift; sourceTree = "<group>"; };
 		5916809D21D3DD4100491F5C /* TempTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempTableCell.xib; sourceTree = "<group>"; };
 		591680B421D514C400491F5C /* FundingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListViewController.swift; sourceTree = "<group>"; };
+		591680BC21D746BE00491F5C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		596662B221D1F57500055918 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		596662B521D1F7A600055918 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		596662B921D1FCF000055918 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				5916808F21D393FF00491F5C /* DetailView.swift */,
 				2271881921CF546900E1BCAB /* MapViewController.swift */,
 				5916808B21D38F2C00491F5C /* RegisterVC.swift */,
+				591680BC21D746BE00491F5C /* SearchViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				5916809C21D3DD3900491F5C /* TempTableCell.swift in Sources */,
 				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
 				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
+				591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */,
 				596662B621D1F7A600055918 /* Test.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,

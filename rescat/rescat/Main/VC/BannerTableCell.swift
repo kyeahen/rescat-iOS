@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 class BannerTableCell : UITableViewCell {
     
+    @IBOutlet var bannerImageView : UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 class FundingListViewController : UIViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }

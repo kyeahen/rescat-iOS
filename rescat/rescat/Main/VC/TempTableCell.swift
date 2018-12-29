@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 class TempTableCell : UITableViewCell {
+
+    @IBOutlet var backgroundImageView : UIImageView!
+    @IBOutlet var titleLabel : UILabel!
+    @IBOutlet var contentsLabel : UILabel!
+    @IBOutlet var goalLabel : UILabel!
+    @IBOutlet var stageView : UIView!
+    @IBOutlet var remainLabel : UILabel!
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
