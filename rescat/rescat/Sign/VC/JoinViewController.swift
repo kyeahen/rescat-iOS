@@ -37,6 +37,20 @@ class JoinViewController: UIViewController {
         
         setCustomView()
         setEmptyCheck()
+        
+
+        let label = UILabel()
+        label.text = "Title Label"
+//        label.textAlignment = .left
+        label.font = UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)
+        self.navigationItem.titleView = label
+        
+        label.snp.makeConstraints {
+            (make) in
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(100)
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
