@@ -13,6 +13,8 @@
 		2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880E21CF541300E1BCAB /* LaunchScreen.storyboard */; };
 		2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271881921CF546900E1BCAB /* MapViewController.swift */; };
 		22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4DEBF21D6014900565FB6 /* WelcomeJoinViewController.swift */; };
+		22A4DEC221D7362B00565FB6 /* Care.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A4DEC121D7362B00565FB6 /* Care.storyboard */; };
+		22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F64221D764E40034346F /* MainCareViewController.swift */; };
 		22FCCD4D21CF5810007A731C /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4C21CF5810007A731C /* Community.storyboard */; };
 		22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4E21CF581E007A731C /* MyPage.storyboard */; };
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
@@ -48,6 +50,8 @@
 		2271881121CF541300E1BCAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2271881921CF546900E1BCAB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		22A4DEBF21D6014900565FB6 /* WelcomeJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeJoinViewController.swift; sourceTree = "<group>"; };
+		22A4DEC121D7362B00565FB6 /* Care.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Care.storyboard; sourceTree = "<group>"; };
+		22B4F64221D764E40034346F /* MainCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCareViewController.swift; sourceTree = "<group>"; };
 		22FCCD4C21CF5810007A731C /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		22FCCD4E21CF581E007A731C /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		2271881D21CF54D900E1BCAB /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				22B4F64121D764C70034346F /* Care */,
 				22FCCD5B21CF663F007A731C /* MainSignViewController.swift */,
 				22FCCDCE21D5F6C1007A731C /* LoginViewController.swift */,
 				22FCCD5921CF5F8E007A731C /* JoinViewController.swift */,
@@ -177,6 +182,14 @@
 				2271881921CF546900E1BCAB /* MapViewController.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		22B4F64121D764C70034346F /* Care */ = {
+			isa = PBXGroup;
+			children = (
+				22B4F64221D764E40034346F /* MainCareViewController.swift */,
+			);
+			path = Care;
 			sourceTree = "<group>";
 		};
 		22FCCD4621CF5793007A731C /* MyPage */ = {
@@ -225,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				22FCCD5021CF582D007A731C /* Sign.storyboard */,
+				22A4DEC121D7362B00565FB6 /* Care.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -422,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22FCCD4D21CF5810007A731C /* Community.storyboard in Resources */,
+				22A4DEC221D7362B00565FB6 /* Care.storyboard in Resources */,
 				596662C021D211B800055918 /* Map.storyboard in Resources */,
 				22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */,
 				22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */,
@@ -524,6 +539,7 @@
 				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
+				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,

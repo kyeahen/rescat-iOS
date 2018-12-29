@@ -39,11 +39,21 @@ class JoinViewController: UIViewController {
         setEmptyCheck()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+
+        navigationController?.navigationBar.shadowImage = nil
+    }
+    
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
         
         idLabel.isHidden = true
         nickNameLabel.isHidden = true
+        
+        idTextField.tintColor = #colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1)
+        pwdTextField.tintColor = #colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1)
+        pwdCheckTextField.tintColor = #colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1)
+        nickNameTextField.tintColor = #colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1)
         
         joinButton.makeRounded(cornerRadius: 8)
     }
@@ -56,10 +66,6 @@ class JoinViewController: UIViewController {
         pwdCheckTextField.addTarget(self, action: #selector(emptyPwdreCheck), for: .editingChanged)
         nickNameTextField.addTarget(self, action: #selector(emptyNickNameCheck), for: .editingChanged)
         
-        idTextField.addTarget(self, action: #selector(emptyAllCheck), for: .editingChanged)
-        pwdTextField.addTarget(self, action: #selector(emptyAllCheck), for: .editingChanged)
-        pwdCheckTextField.addTarget(self, action: #selector(emptyAllCheck), for: .editingChanged)
-        nickNameTextField.addTarget(self, action: #selector(emptyAllCheck), for: .editingChanged)
     }
     
     //MARK: 아이디 공백 체크 함수
@@ -131,16 +137,6 @@ class JoinViewController: UIViewController {
                 (make) in
                 make.height.equalTo(3)
             }
-        }
-    }
-    
-    //MARK: 모든 항목 공백 체크 함수
-    @objc func emptyAllCheck() {
-        
-        if nickNameTextField.text == "" || idTextField.text == "" || pwdTextField.text == "" || pwdCheckTextField.text == ""{
-            joinButton.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
-        } else {
-             joinButton.backgroundColor = #colorLiteral(red: 0.4660801291, green: 0.3617350459, blue: 0.2922770977, alpha: 1)
         }
     }
     

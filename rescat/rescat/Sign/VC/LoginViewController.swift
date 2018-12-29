@@ -30,6 +30,10 @@ class LoginViewController: UIViewController {
     
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
+        
+        idTextField.tintColor = #colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1)
+        pwdTextField.tintColor = #colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1)
+        
         loginButton.makeRounded(cornerRadius: 8)
     }
     
@@ -39,8 +43,6 @@ class LoginViewController: UIViewController {
         idTextField.addTarget(self, action: #selector(emptyIdCheck), for: .editingChanged)
         pwdTextField.addTarget(self, action: #selector(emptyPwdCheck), for: .editingChanged)
         
-        idTextField.addTarget(self, action: #selector(emptyAllCheck), for: .editingChanged)
-        pwdTextField.addTarget(self, action: #selector(emptyAllCheck), for: .editingChanged)
     }
     
     //MARK: 아이디 공백 체크 함수
@@ -76,16 +78,6 @@ class LoginViewController: UIViewController {
                 (make) in
                 make.height.equalTo(3)
             }
-        }
-    }
-    
-    //MARK: 모든 항목 공백 체크 함수
-    @objc func emptyAllCheck() {
-        
-        if idTextField.text == "" || pwdTextField.text == "" {
-            loginButton.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
-        } else {
-            loginButton.backgroundColor = #colorLiteral(red: 0.4660801291, green: 0.3617350459, blue: 0.2922770977, alpha: 1)
         }
     }
     

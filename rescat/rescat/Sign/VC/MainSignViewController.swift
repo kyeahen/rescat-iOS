@@ -24,6 +24,7 @@ class MainSignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        loginButton.titleLabel?.textColor = UIColor.white
         
     }
     
@@ -36,6 +37,17 @@ class MainSignViewController: UIViewController {
         joinButton.layer.addBorder(edge: .bottom, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
         joinButton.layer.addBorder(edge: .left, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
         joinButton.layer.addBorder(edge: .right, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
+        
+    }
+    
+    //MARK: 로그인 액션
+    @IBAction func loginAction(_ sender: UIButton) {
+        
+        sender.setTitleColor(#colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1), for: .normal)
+        
+        let loginVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: LoginViewController.reuseIdentifier)
+        
+        self.navigationController?.pushViewController(loginVC, animated: true)
         
     }
 }
