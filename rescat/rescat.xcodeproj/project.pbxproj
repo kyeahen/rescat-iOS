@@ -238,12 +238,12 @@
 		22FCCD5421CF58AB007A731C /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				591680B421D514C400491F5C /* FundingListViewController.swift */,
 				22FCCD5521CF58C3007A731C /* MainViewController.swift */,
 				5916809321D3A1EA00491F5C /* HomeViewController.swift */,
 				5916809521D3D90A00491F5C /* TempCell.swift */,
 				5916809921D3DD2700491F5C /* BannerTableCell.swift */,
 				5916809B21D3DD3900491F5C /* TempTableCell.swift */,
-				591680B321D514B300491F5C /* Funding */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -262,14 +262,6 @@
 				22FCCD6121CF6820007A731C /* CommunityViewController.swift */,
 			);
 			path = VC;
-			sourceTree = "<group>";
-		};
-		591680B321D514B300491F5C /* Funding */ = {
-			isa = PBXGroup;
-			children = (
-				591680B421D514C400491F5C /* FundingListViewController.swift */,
-			);
-			path = Funding;
 			sourceTree = "<group>";
 		};
 		596662B121D1F56100055918 /* Util */ = {
