@@ -75,8 +75,6 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CityTableViewCell.reuseIdentifier, for: indexPath) as! CityTableViewCell
             
             cell.cityLabel.text = "서울"
-            cell.cityLabel.makeRounded(cornerRadius: 8)
-            cell.cityLabel.backgroundColor = #colorLiteral(red: 0.7965717912, green: 0.009384152479, blue: 0.1060729697, alpha: 1)
             
             return cell
         } else if tableView == guTableView {
@@ -93,6 +91,55 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView == cityTableView {
+            let cell = tableView.cellForRow(at: indexPath) as! CityTableViewCell
+            
+            cell.cityLabel.makeRounded(cornerRadius: 8)
+            cell.cityLabel.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
+            cell.cityLabel.textColor = UIColor.white
+    
+        } else if tableView == guTableView {
+            let cell = tableView.cellForRow(at: indexPath) as! GuTableViewCell
+            
+            cell.guLabel.makeRounded(cornerRadius: 8)
+            cell.guLabel.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
+            cell.guLabel.textColor = UIColor.white
+  
+        } else {
+            let cell = tableView.cellForRow(at: indexPath) as! DongTableViewCell
+            
+            cell.dongLabel.makeRounded(cornerRadius: 8)
+            cell.dongLabel.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
+            cell.dongLabel.textColor = UIColor.white
+        
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView == cityTableView {
+            let cell = tableView.cellForRow(at: indexPath) as! CityTableViewCell
+            
+            cell.cityLabel.backgroundColor = UIColor.clear
+            cell.cityLabel.textColor = #colorLiteral(red: 0.1333177686, green: 0.1333433092, blue: 0.1333121657, alpha: 1)
+            
+        } else if tableView == guTableView {
+            let cell = tableView.cellForRow(at: indexPath) as! GuTableViewCell
+
+            cell.guLabel.backgroundColor = UIColor.clear
+            cell.guLabel.textColor = #colorLiteral(red: 0.1333177686, green: 0.1333433092, blue: 0.1333121657, alpha: 1)
+            
+            
+        } else {
+            let cell = tableView.cellForRow(at: indexPath) as! DongTableViewCell
+            
+            cell.dongLabel.backgroundColor = UIColor.clear
+            cell.dongLabel.textColor = #colorLiteral(red: 0.1333177686, green: 0.1333433092, blue: 0.1333121657, alpha: 1)
+            
+        }
     }
     
     

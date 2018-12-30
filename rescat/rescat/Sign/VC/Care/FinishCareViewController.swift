@@ -13,6 +13,8 @@ class FinishCareViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var finishButton: UIButton!
     
+//    var parentVC : MainCareViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +29,11 @@ class FinishCareViewController: UIViewController {
     }
 
     //MARK: 완료 액션
+    //TODO: 메인 페이지로 이동
     @IBAction func finishAction(_ sender: UIButton) {
+//        let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier) as! TabBarController
+//
+//        self.present(tabVC, animated: true, completion: nil)
     }
     
 }

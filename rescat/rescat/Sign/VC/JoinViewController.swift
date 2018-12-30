@@ -223,7 +223,7 @@ extension JoinViewController {
             switch result {
             case .networkSuccess( _): //201
                 
-                let welcomeVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: WelcomeJoinViewController.reuseIdentifier)
+                let welcomeVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "WelcomVCNavi")
                 
                 self.present(welcomeVC, animated: true, completion: nil)
                 break

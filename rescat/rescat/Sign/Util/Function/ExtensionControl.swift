@@ -58,18 +58,30 @@ extension UIViewController {
     
     //커스텀 백버튼 설정
     func setBackBtn(color : UIColor){
-        
-        let backBTN = UIBarButtonItem(image: UIImage(named: "icBackBtn"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+
+//        let backBTN = UIBarButtonItem(image: UIImage(named: "icBackBtn"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+//            style: .plain,
+//            target: self,
+//            action: #selector(self.pop))
+        let backBTN = UIBarButtonItem(title: "back", //백버튼 이미지 파일 이름에 맞게 변경해주세요.
             style: .plain,
             target: self,
             action: #selector(self.pop))
+
         navigationItem.leftBarButtonItem = backBTN
         navigationItem.leftBarButtonItem?.tintColor = color
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
-    
+
     @objc func pop(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    //백버튼 숨기기
+    func setHiddenBackBtn() {
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
+
     }
     
     //커스텀 팝업 띄우기 애니메이션
@@ -96,6 +108,34 @@ extension UIViewController {
             }
         });
     }
+        
+    //ContainerView 메소드
+    func add(asChildViewController viewController: UIViewController, containerView: UIView) {
+        
+        // Add Child View as Subview
+        containerView.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.frame = containerView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Notify Child View Controller
+        viewController.didMove(toParent: self)
+    }
+    
+    func remove(asChildViewController viewController: UIViewController, containerView: UIView) {
+        // Notify Child View Controller
+        viewController.willMove(toParent: nil)
+        
+        // Remove Child View From Superview
+        viewController.view.removeFromSuperview()
+        
+        // Notify Child View Controller
+        viewController.removeFromParent()
+        
+    }
+
+
 }
 
 extension UIView {

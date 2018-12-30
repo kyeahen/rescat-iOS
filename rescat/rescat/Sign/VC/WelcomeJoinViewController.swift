@@ -19,6 +19,11 @@ class WelcomeJoinViewController: UIViewController {
         setCustomView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
         skipButton.makeRounded(cornerRadius: 8)

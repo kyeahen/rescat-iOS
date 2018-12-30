@@ -15,10 +15,13 @@ class IntroCareViewController: UIViewController {
     @IBOutlet weak var imageView2: UIImageView!
     @IBOutlet weak var imageView3: UIImageView!
     
+    var parentVC : MainCareViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setCustomView()
 
-        // Do any additional setup after loading the view.
     }
     
     //MARK: 뷰 요소 커스텀 세팅
@@ -31,10 +34,9 @@ class IntroCareViewController: UIViewController {
     
     //MARK: 다음 액션
     @IBAction func nextAction(_ sender: UIButton) {
+
+        parentVC?.changeVC(num: 2)
     }
     
     
-
-
-
 }
