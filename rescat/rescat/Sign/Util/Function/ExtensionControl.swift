@@ -134,6 +134,19 @@ extension UIImageView {
     }
 }
 
+extension UIButton {
+    
+    //MARK: 버튼 라벨 밑줄
+    func underline() {
+        guard let text = self.titleLabel?.text else { return }
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
+        
+        self.setAttributedTitle(attributedString, for: .normal)
+    }
+}
+
 extension UITextView {
     
     //텍스트뷰 스크롤 상단으로 초기화

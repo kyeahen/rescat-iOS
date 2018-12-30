@@ -16,6 +16,7 @@ enum HttpResponseCode: Int{
     case forbidden = 403
     case conflict = 409
     case serverErr = 500
+    case smsFail = 501
 }
 
 enum Result<T> {

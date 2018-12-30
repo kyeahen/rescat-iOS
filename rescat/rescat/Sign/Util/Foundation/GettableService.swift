@@ -63,6 +63,7 @@ extension GettableService {
                         completion(.success(result))
                         
                     }catch{
+                        
                         completion(.error("Error Get"))
                     }
                 }

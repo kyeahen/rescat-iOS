@@ -100,24 +100,19 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     func postLogin(id: String, pwd: String) {
-//        let id = "test101"
-//        let pwd = "test"
         
-        let params : [String : Any] = ["email_id" : id,
+        let params : [String : Any] = ["id" : id,
                                        "password" : pwd]
         
         LoginService.shareInstance.postLogin(params: params) {(result) in
             
             switch result {
-            case .networkSuccess(let loginData):
-                let userData = loginData as? LoginData
-                
-                print("메인에서\(UserDefaultService.getUserDefault(key: "token"))")
-                self.simpleAlert(title: "성공", message: "환영합니다.")
+            case .networkSuccess( _): //200
+                self.simpleAlert(title: "로그인 성공", message: "환영합니다.")
                 break
             
-            case .wrongInput :
-                self.simpleAlert(title: "실패", message: "아이디나 비밀번호가 일치하지 않습니다.")
+            case .accessDenied: //401
+                self.simpleAlert(title: "로그인 실패", message: "아이디나 비밀번호가 일치하지 않습니다.")
                 break
                 
             case .networkFail :
@@ -125,7 +120,7 @@ extension LoginViewController {
                 break
                 
             default :
-                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
                 break
             }
         }

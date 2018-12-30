@@ -15,13 +15,8 @@ class WelcomeJoinViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //FIXME: 투명 네비게이션바 복구
-        setNavigationBar()
+
         setCustomView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        setNavigationBar()
     }
     
     //MARK: 뷰 요소 커스텀 세팅
@@ -32,7 +27,7 @@ class WelcomeJoinViewController: UIViewController {
     
     //MARK: 나중에 할래요 액션
     @IBAction func skipAction(_ sender: UIButton) {
-        //메인 뷰로 이동
+        performSegue(withIdentifier: "unwindToMainSign", sender: self)
     }
     
     //MARK: 인증할래요 액션

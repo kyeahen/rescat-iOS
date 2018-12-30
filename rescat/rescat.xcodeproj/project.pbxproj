@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221A843221D7FDB3002BECED /* JoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843121D7FDB2002BECED /* JoinService.swift */; };
+		221A843421D7FEA5002BECED /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843321D7FEA5002BECED /* TokenData.swift */; };
+		221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843521D806E6002BECED /* DuplicatedIDService.swift */; };
+		221A843A21D80BB6002BECED /* DuplicatedNickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843921D80BB6002BECED /* DuplicatedNickService.swift */; };
+		221A844021D88C12002BECED /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843F21D88C12002BECED /* ErrorData.swift */; };
 		2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271880521CF541200E1BCAB /* AppDelegate.swift */; };
 		2271880B21CF541200E1BCAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880921CF541200E1BCAB /* Main.storyboard */; };
 		2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2271880C21CF541300E1BCAB /* Assets.xcassets */; };
@@ -64,6 +69,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		221A843121D7FDB2002BECED /* JoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinService.swift; sourceTree = "<group>"; };
+		221A843321D7FEA5002BECED /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
+		221A843521D806E6002BECED /* DuplicatedIDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedIDService.swift; sourceTree = "<group>"; };
+		221A843921D80BB6002BECED /* DuplicatedNickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedNickService.swift; sourceTree = "<group>"; };
+		221A843F21D88C12002BECED /* ErrorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorData.swift; sourceTree = "<group>"; };
 		2271880221CF541200E1BCAB /* rescat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rescat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271880521CF541200E1BCAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2271880A21CF541200E1BCAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -355,6 +365,9 @@
 			isa = PBXGroup;
 			children = (
 				22FCCD7D21D35B48007A731C /* LoginService.swift */,
+				221A843121D7FDB2002BECED /* JoinService.swift */,
+				221A843521D806E6002BECED /* DuplicatedIDService.swift */,
+				221A843921D80BB6002BECED /* DuplicatedNickService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -364,6 +377,8 @@
 			children = (
 				22FCCD7921D35620007A731C /* DefaultData.swift */,
 				22FCCD9F21D49694007A731C /* LoginData.swift */,
+				221A843321D7FEA5002BECED /* TokenData.swift */,
+				221A843F21D88C12002BECED /* ErrorData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -610,7 +625,9 @@
 				22B4F64721D793960034346F /* Care1ViewController.swift in Sources */,
 				22B4F65321D7E84A0034346F /* Font.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
+				221A843221D7FDB3002BECED /* JoinService.swift in Sources */,
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
+				221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
 				5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
@@ -624,6 +641,7 @@
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
+				221A844021D88C12002BECED /* ErrorData.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
 				5916809621D3D90A00491F5C /* TempCell.swift in Sources */,
 				5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */,
@@ -632,8 +650,10 @@
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
+				221A843421D7FEA5002BECED /* TokenData.swift in Sources */,
 				22B4F64521D78BC80034346F /* IntroCareViewController.swift in Sources */,
 				22B4F65121D7CCB00034346F /* DongTableViewCell.swift in Sources */,
+				221A843A21D80BB6002BECED /* DuplicatedNickService.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
