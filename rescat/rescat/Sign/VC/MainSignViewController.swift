@@ -51,6 +51,6 @@ class MainSignViewController: UIViewController {
         
     }
     
-    //MARK: UnwindSegue
+    //MARK: UnwindSegue (welcomeVC -> mainSignVC)
     @IBAction func unwindToMainSign (segue : UIStoryboardSegue) {}
 }

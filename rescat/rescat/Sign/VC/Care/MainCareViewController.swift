@@ -74,6 +74,10 @@ class MainCareViewController: UIViewController {
         case 2: //1단계
             setHiddenBackBtn()
             setLeftBarButtonItem1()
+            
+            UIView.animate(withDuration: 1.0) {
+                self.progressView.setProgress(0.25, animated: true)
+            }
 
             remove(asChildViewController: IntroVC, containerView: containerView)
             add(asChildViewController: care1VC, containerView: containerView)

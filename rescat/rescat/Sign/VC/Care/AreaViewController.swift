@@ -16,7 +16,10 @@ class AreaViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var finishButton: UIButton!
     
-
+    var city: String = ""
+    var gu: String = ""
+    var dong: String = ""
+    var address: String? 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +55,14 @@ class AreaViewController: UIViewController {
     @IBAction func dismissAction(_ sender: UIBarButtonItem) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: 지역 추가 액션
+    @IBAction func AddAreaAction(_ sender: UIButton) {
+        print("\(city)시 \(gu) \(dong)")
+        address = "\(city)시 \(gu) \(dong)"
+        
+        performSegue(withIdentifier: "unwindToCare2", sender: self)
     }
     
 }
@@ -101,6 +112,8 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             cell.cityLabel.makeRounded(cornerRadius: 8)
             cell.cityLabel.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
             cell.cityLabel.textColor = UIColor.white
+            
+            city = gsno(cell.cityLabel.text)
     
         } else if tableView == guTableView {
             let cell = tableView.cellForRow(at: indexPath) as! GuTableViewCell
@@ -108,6 +121,8 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             cell.guLabel.makeRounded(cornerRadius: 8)
             cell.guLabel.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
             cell.guLabel.textColor = UIColor.white
+            
+            gu = gsno(cell.guLabel.text)
   
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! DongTableViewCell
@@ -115,6 +130,8 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             cell.dongLabel.makeRounded(cornerRadius: 8)
             cell.dongLabel.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
             cell.dongLabel.textColor = UIColor.white
+            
+            dong = gsno(cell.dongLabel.text)
         
         }
     }
