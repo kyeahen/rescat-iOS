@@ -1,9 +1,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-protocol  APIServiceCallback {
-    func requestCallback(_ datas : Any )
-}
+
 class Test : APIServie{
     
     
@@ -25,7 +23,7 @@ class Test : APIServie{
                 do {
 
                     let data = try decoder.decode([TestModel].self, from: datas)
-                    self.v.requestCallback(data)
+                    self.v.requestCallback(data, 0)
                 }catch {
                     print("decode failure")
                 }

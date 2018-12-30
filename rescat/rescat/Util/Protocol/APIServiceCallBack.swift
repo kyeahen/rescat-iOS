@@ -1,9 +1,4 @@
-//
-//  APIServiceCallBack.swift
-//  rescat
-//
-//  Created by jigeonho on 30/12/2018.
-//  Copyright © 2018 kyeahen. All rights reserved.
-//
-
-import Foundation
+protocol  APIServiceCallback {
+    func requestCallback(_ datas : Any , _ code : Int)
+    // func requestFailure(_ code : Int )
+}
