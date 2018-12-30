@@ -10,7 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailView" customModule="rescat" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailView" customModule="rescat" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="fdY-Ss-YwP" id="IZB-fu-CCa"/>
+                <outlet property="label1" destination="RRp-Di-ioe" id="xds-di-j3E"/>
+                <outlet property="label2" destination="dgD-T4-qEd" id="Cau-D4-zqV"/>
+                <outlet property="label3" destination="Svx-u4-7AZ" id="tXv-id-8Lf"/>
+                <outlet property="label4" destination="9aO-rw-eLN" id="az0-Ca-E9n"/>
+                <outlet property="modifyButton" destination="Ix6-rg-Bcw" id="47I-qw-PxP"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="DetailView" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
@@ -98,6 +107,11 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix6-rg-Bcw">
+                    <rect key="frame" x="308" y="12" width="56" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="수정 요청"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.96878885770000001" blue="0.20482943849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

@@ -9,10 +9,14 @@
 import UIKit
 import GoogleMaps
 import SnapKit
-class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallback {
+class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, GMSMapViewDelegate, APIServiceCallback {
     
-    @IBOutlet var registerButton : UIButton!
-    @IBOutlet var searchButton : UIButton!
+    var pickerView : UIPickerView!
+    var locationButton : UITextField!
+//    var pick
+    var myLocation = ["서울시 서초구 서초동", "시흥시 은행동", "부산시 ㄴㄴ"]
+    @IBOutlet var registerButton : UIBarButtonItem!
+    @IBOutlet var searchButton : UIBarButtonItem!
     @IBOutlet var mapView : GMSMapView!
 //    @IBOutlet var searchbar : UISearchBar!
     
@@ -21,7 +25,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
     @IBOutlet var button3 : UIButton!
     @IBOutlet var button4 : UIButton!
     var buttons = [UIButton]()
-    var locationButton : UIButton!
+    var locationButtonView : UIView!
     
     
     var detailViewHeight = 200   // temp value
@@ -42,33 +46,68 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
             element.tag = index
         }
         
-        locationButton = UIButton()
-        locationButton.backgroundColor = UIColor.blue
-        locationButton.setTitle("서울시 서초구", for: .normal)
+        locationButtonView = UIView()
+        locationButtonView.roundCorner(10)
+//        locationButtonView.dropShadow(offsetX: 10, offsetY: 10, color: UIColor.gray, opacity: 1.0, radius: 10, scale: true)
+        locationButtonView.backgroundColor = UIColor.blue
+        
+
+        
+//        locationButton.setTitle("서울시 서초구", for: .normal)
 //        locationButton.addTarget(self, action: #selector(registerButton), for: .touchUpInside)
-        registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
-        searchButton.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
+//        registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
+//        searchButton.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
         
         
-        self.view.addSubview(locationButton)
-        locationButton.snp.makeConstraints { (make) in
-            make.height.equalTo(40); make.width.equalTo(200);
-            make.bottom.equalTo(-100); make.centerX.equalTo(self.view.snp.centerX)
+        self.view.addSubview(locationButtonView)
+        locationButtonView.snp.makeConstraints { (make) in
+            make.height.equalTo(35); make.width.equalTo(200);
+            make.bottom.equalTo(-80); make.centerX.equalTo(self.view.snp.centerX)
 //            make.right.equalTo(self.view.snp.right).offset(-15)
 //            make.bottom.equalTo(self.view.snp.bottom).offset(-15)
         }
         
+        locationButton = UITextField()
+        locationButton.text = "서울시 서초구"
+//        locationButton.setTitle("서울시 서초구", for: .normal)
+//        locationButton.addTarget(self, action: #selector(selectLocation), for: .touchUpInside)
+        locationButtonView.addSubview(locationButton)
+        locationButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(locationButtonView)
+            make.centerY.equalTo(locationButtonView)
+        }
+        pickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        pickerView.delegate = self
+        pickerView.dataSource = self
+
+        locationButton.inputView = pickerView
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(selectLocation))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        locationButton.inputAccessoryView = toolBar
+
+        registerButton.target = self; searchButton.target = self
+        registerButton.action = #selector(registerButtonAction(_:))
+        searchButton.action = #selector(searchButtonAction)
+        
         //  내 도시로 focus
         self.mapView.delegate = self
         loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 13.0)
-//        self.searchbar.delegate = self
-        
-        
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // get datas from server
-        self.self.navigationController?.navigationBar.isHidden = true
+//        self.self.navigationController?.navigationBar.isHidden = true
 
         let request = Test(self)
         request.testRequest()
@@ -80,18 +119,33 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
             UIView.animate(withDuration: 0.15, animations: {
                 if (self.detailViewCreated) { self.detailView.alpha = 0.0 }
             }) { (_) in UIView.animate(withDuration: 0.15, animations: {
-                self.locationButton.alpha = 1.0
+                self.locationButtonView.alpha = 1.0
             })}
             
         } else {
             UIView.animate(withDuration: 0.15, animations: {
-                self.locationButton.alpha = 0.0
+                self.locationButtonView.alpha = 0.0
             }) { (_) in UIView.animate(withDuration: 0.15, animations: {
                 self.detailView.alpha = 1.0
             })}
         }
     }
-    @objc func registerButtonAction(_ sender : UIButton!) {
+    @objc func selectLocation(_ sender : UIButton!){
+
+        
+        // request new locations
+//        locationButton.text = myLocation[]
+        locationButton.resignFirstResponder()
+
+    }
+    @objc func cancelClick(_ sender : UIButton!){
+        locationButton.resignFirstResponder()
+    }
+    @objc func modifyRequestAction(_ sender : UIButton!) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ModifyViewController") as! ModifyViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    @objc func registerButtonAction(_ sender : UIBarButtonItem!) {
         print("register")
 //        let view = DetailView(frame: self.view.frame)
 //        self.view.addSubview(view)
@@ -100,7 +154,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
         self.present(vc, animated: true, completion: nil)
 
     }
-    @objc func searchButtonAction(_ sender : UIButton!){
+    @objc func searchButtonAction(_ sender : UIBarButtonItem!){
         print("search")
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -148,12 +202,26 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
         print("end")
         detailViewHidden(true)
     }
-  
+    //  -----------------------------  UIPickerViewDelage, DataSource function ----------------------------
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return myLocation.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return myLocation[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        locationButton.text = myLocation[row]
+    }
     //  -----------------------------  GMSMapViewDelegate function ----------------------------
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if ( !detailViewCreated ) {
             detailViewCreated = true
             detailView = UIView()
+            
             detailView.backgroundColor = UIColor.black
             self.view.addSubview(detailView)
             detailView.snp.makeConstraints { (make) in
@@ -172,12 +240,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
                 make.top.equalTo(self.detailView.snp.top)
 
             }
+            detailContents.modifyButton.addTarget(self, action: #selector(modifyRequestAction(_:)), for: .touchUpInside)
 //            detailView.addSubview(detailContents)
 //            detailImageView = UIImageView()
 //            detailImageView.backgroundColor = UIColor.green
 //            detailTextView =
             
             detailView.tag = 0
+//            detailView.
+            
             
         } else {
             detailView.tag += 1
@@ -199,10 +270,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, APIServiceCallbac
     }
 
 }
+
 extension MapViewController{
     // network call back
-    func requestCallback(_ data : Any) {
-        initData = data as! [TestModel]
+    func requestCallback(_ datas: Any, _ code: Int) {
+        initData = datas as! [TestModel]
         makeMarkerView(initData)
     }
 }

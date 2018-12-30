@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import UIKit
+class SearchTableViewCell : UITableViewCell {
+    @IBOutlet var title : UILabel!
+    @IBOutlet var type : UILabel!
+}

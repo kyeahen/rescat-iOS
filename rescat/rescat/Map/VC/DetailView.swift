@@ -12,6 +12,13 @@ import Kingfisher
 class DetailView : UIView {
     
 
+    @IBOutlet var modifyButton : UIButton!
+    @IBOutlet var imageView : UIImageView!
+    @IBOutlet var label1 : UILabel!
+    @IBOutlet var label2 : UILabel!
+    @IBOutlet var label3 : UILabel!
+    @IBOutlet var label4 : UILabel!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
