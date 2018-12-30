@@ -23,18 +23,6 @@
 		22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5B21CF663F007A731C /* MainSignViewController.swift */; };
 		22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5F21CF677C007A731C /* MyPageViewController.swift */; };
 		22FCCD6221CF6820007A731C /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD6121CF6820007A731C /* CommunityViewController.swift */; };
-		5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916808B21D38F2C00491F5C /* RegisterVC.swift */; };
-		5916808E21D3914700491F5C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916808D21D3914700491F5C /* DetailView.xib */; };
-		5916809021D393FF00491F5C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916808F21D393FF00491F5C /* DetailView.swift */; };
-		5916809221D39D6500491F5C /* DetailView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809121D39D6500491F5C /* DetailView2.xib */; };
-		5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809321D3A1EA00491F5C /* HomeViewController.swift */; };
-		5916809621D3D90A00491F5C /* TempCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809521D3D90A00491F5C /* TempCell.swift */; };
-		5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809721D3DD1500491F5C /* BannerTableCell.xib */; };
-		5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809921D3DD2700491F5C /* BannerTableCell.swift */; };
-		5916809C21D3DD3900491F5C /* TempTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809B21D3DD3900491F5C /* TempTableCell.swift */; };
-		5916809E21D3DD4100491F5C /* TempTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809D21D3DD4100491F5C /* TempTableCell.xib */; };
-		591680B521D514C400491F5C /* FundingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680B421D514C400491F5C /* FundingListViewController.swift */; };
-		591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680BC21D746BE00491F5C /* SearchViewController.swift */; };
 		22FCCD6F21D333B9007A731C /* ExtensionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD6E21D333B9007A731C /* ExtensionControl.swift */; };
 		22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7221D34EBF007A731C /* GettableService.swift */; };
 		22FCCD7521D35142007A731C /* HttpResCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7421D35142007A731C /* HttpResCode.swift */; };
@@ -45,6 +33,27 @@
 		22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA121D497E8007A731C /* UserDefaultService.swift */; };
 		22FCCDA521D4DF54007A731C /* PostablePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */; };
 		22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDCE21D5F6C1007A731C /* LoginViewController.swift */; };
+		5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916808B21D38F2C00491F5C /* RegisterVC.swift */; };
+		5916808E21D3914700491F5C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916808D21D3914700491F5C /* DetailView.xib */; };
+		5916809021D393FF00491F5C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916808F21D393FF00491F5C /* DetailView.swift */; };
+		5916809221D39D6500491F5C /* DetailView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809121D39D6500491F5C /* DetailView2.xib */; };
+		5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809321D3A1EA00491F5C /* HomeViewController.swift */; };
+		5916809621D3D90A00491F5C /* TempCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809521D3D90A00491F5C /* TempCell.swift */; };
+		5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809721D3DD1500491F5C /* BannerTableCell.xib */; };
+		5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809921D3DD2700491F5C /* BannerTableCell.swift */; };
+		5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809B21D3DD3900491F5C /* FundingTableCell.swift */; };
+		5916809E21D3DD4100491F5C /* FundingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809D21D3DD4100491F5C /* FundingTableCell.xib */; };
+		591680B521D514C400491F5C /* FundingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680B421D514C400491F5C /* FundingListViewController.swift */; };
+		591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680BC21D746BE00491F5C /* SearchViewController.swift */; };
+		593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */; };
+		5962B69121D79ACD00BB032D /* DetailFundingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69021D79ACD00BB032D /* DetailFundingViewController.swift */; };
+		5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */; };
+		5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69421D7C71800BB032D /* FirstViewController.swift */; };
+		5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69821D7D92C00BB032D /* ModifyViewController.swift */; };
+		5962B69F21D881A700BB032D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69E21D881A700BB032D /* UIView.swift */; };
+		5962B6A221D898D500BB032D /* FundingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A121D898D500BB032D /* FundingModel.swift */; };
+		5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A321D89C6400BB032D /* FundingRequest.swift */; };
+		5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A521D8A13D00BB032D /* APIServiceCallBack.swift */; };
 		596662B321D1F57500055918 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B221D1F57500055918 /* APIService.swift */; };
 		596662B621D1F7A600055918 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B521D1F7A600055918 /* Test.swift */; };
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
@@ -91,10 +100,19 @@
 		5916809521D3D90A00491F5C /* TempCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCell.swift; sourceTree = "<group>"; };
 		5916809721D3DD1500491F5C /* BannerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerTableCell.xib; sourceTree = "<group>"; };
 		5916809921D3DD2700491F5C /* BannerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableCell.swift; sourceTree = "<group>"; };
-		5916809B21D3DD3900491F5C /* TempTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTableCell.swift; sourceTree = "<group>"; };
-		5916809D21D3DD4100491F5C /* TempTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempTableCell.xib; sourceTree = "<group>"; };
+		5916809B21D3DD3900491F5C /* FundingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingTableCell.swift; sourceTree = "<group>"; };
+		5916809D21D3DD4100491F5C /* FundingTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FundingTableCell.xib; sourceTree = "<group>"; };
 		591680B421D514C400491F5C /* FundingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListViewController.swift; sourceTree = "<group>"; };
 		591680BC21D746BE00491F5C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		5962B69021D79ACD00BB032D /* DetailFundingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFundingViewController.swift; sourceTree = "<group>"; };
+		5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListTableViewCell.swift; sourceTree = "<group>"; };
+		5962B69421D7C71800BB032D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		5962B69821D7D92C00BB032D /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
+		5962B69E21D881A700BB032D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		5962B6A121D898D500BB032D /* FundingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingModel.swift; sourceTree = "<group>"; };
+		5962B6A321D89C6400BB032D /* FundingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRequest.swift; sourceTree = "<group>"; };
+		5962B6A521D8A13D00BB032D /* APIServiceCallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceCallBack.swift; sourceTree = "<group>"; };
 		596662B221D1F57500055918 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		596662B521D1F7A600055918 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		596662B921D1FCF000055918 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
@@ -175,6 +193,7 @@
 		2271881B21CF547100E1BCAB /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5962B6A021D898CC00BB032D /* Model */,
 				2271881C21CF548700E1BCAB /* Storyboard */,
 				22FCCD5421CF58AB007A731C /* VC */,
 			);
@@ -186,7 +205,7 @@
 			children = (
 				2271880921CF541200E1BCAB /* Main.storyboard */,
 				5916809721D3DD1500491F5C /* BannerTableCell.xib */,
-				5916809D21D3DD4100491F5C /* TempTableCell.xib */,
+				5916809D21D3DD4100491F5C /* FundingTableCell.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -210,6 +229,8 @@
 				2271881921CF546900E1BCAB /* MapViewController.swift */,
 				5916808B21D38F2C00491F5C /* RegisterVC.swift */,
 				591680BC21D746BE00491F5C /* SearchViewController.swift */,
+				593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */,
+				5962B69821D7D92C00BB032D /* ModifyViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -282,7 +303,10 @@
 				5916809321D3A1EA00491F5C /* HomeViewController.swift */,
 				5916809521D3D90A00491F5C /* TempCell.swift */,
 				5916809921D3DD2700491F5C /* BannerTableCell.swift */,
-				5916809B21D3DD3900491F5C /* TempTableCell.swift */,
+				5916809B21D3DD3900491F5C /* FundingTableCell.swift */,
+				5962B69021D79ACD00BB032D /* DetailFundingViewController.swift */,
+				5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */,
+				5962B69421D7C71800BB032D /* FirstViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -351,6 +375,14 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		5962B6A021D898CC00BB032D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5962B6A121D898D500BB032D /* FundingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		596662B121D1F56100055918 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +398,7 @@
 			children = (
 				596662B221D1F57500055918 /* APIService.swift */,
 				596662B521D1F7A600055918 /* Test.swift */,
+				5962B6A321D89C6400BB032D /* FundingRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -373,6 +406,7 @@
 		596662B721D1F92800055918 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				5962B6A521D8A13D00BB032D /* APIServiceCallBack.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -389,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				596662BE21D20DC100055918 /* ViewController.swift */,
+				5962B69E21D881A700BB032D /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -481,7 +516,7 @@
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
 				5916809221D39D6500491F5C /* DetailView2.xib in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
-				5916809E21D3DD4100491F5C /* TempTableCell.xib in Resources */,
+				5916809E21D3DD4100491F5C /* FundingTableCell.xib in Resources */,
 				2271880B21CF541200E1BCAB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,8 +575,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-rescat/Pods-rescat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AACarousel/AACarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework",
+				"${BUILT_PRODUCTS_DIR}/MXPagerView/MXPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework",
+				"${BUILT_PRODUCTS_DIR}/MXSegmentedPager/MXSegmentedPager.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -549,8 +587,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AACarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parchment.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXParallaxHeader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXSegmentedPager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -569,12 +610,15 @@
 				22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */,
 				22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */,
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
-				5916809C21D3DD3900491F5C /* TempTableCell.swift in Sources */,
+				5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */,
+				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
 				22FCCD7521D35142007A731C /* HttpResCode.swift in Sources */,
 				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
 				591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */,
+				5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */,
 				596662B621D1F7A600055918 /* Test.swift in Sources */,
+				5962B69F21D881A700BB032D /* UIView.swift in Sources */,
 				22FCCD6F21D333B9007A731C /* ExtensionControl.swift in Sources */,
 				22FCCDA521D4DF54007A731C /* PostablePhotoService.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
@@ -587,20 +631,26 @@
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
+				5962B69121D79ACD00BB032D /* DetailFundingViewController.swift in Sources */,
+				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
 				5916809621D3D90A00491F5C /* TempCell.swift in Sources */,
 				5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */,
 				22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
+				5962B6A221D898D500BB032D /* FundingModel.swift in Sources */,
 				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
+				5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */,
+				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
 				22FCCD6221CF6820007A731C /* CommunityViewController.swift in Sources */,
+				593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */,
 				22FCCD7721D3558A007A731C /* PostableService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
