@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class TempTableCell : UITableViewCell {
+class FundingTableCell : UITableViewCell {
 
     @IBOutlet var backgroundImageView : UIImageView!
     @IBOutlet var titleLabel : UILabel!

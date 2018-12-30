@@ -8,7 +8,7 @@
 
 import UIKit
 import AACarousel
-class MainViewController: UIViewController , AACarouselDelegate{
+class MainViewController: UIViewController , AACarouselDelegate , APIServiceCallback{
     
     @IBOutlet var tempList : UICollectionView!
     @IBOutlet var tempTableList : UITableView!
@@ -19,9 +19,14 @@ class MainViewController: UIViewController , AACarouselDelegate{
     // ------라이브러리 test 중이라 나중에 코드 정리할 예정------
     @IBOutlet var reviewImage : AACarousel!
     var titleArray = [String]()
+    var fundingList = [FundingModel]()
+//    var careList = [
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        
+        let request = FundingRequest(self)
+        request.requestMain()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +39,8 @@ class MainViewController: UIViewController , AACarouselDelegate{
         adoptionListButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
         fundingListButton.addTarget(self, action: #selector(viewFundingList), for: .touchUpInside)
         
-        let nib1 = UINib(nibName: "TempTableCell", bundle: nil)
-        tempTableList.register(nib1, forCellReuseIdentifier: "TempTableCell")
+        let nib1 = UINib(nibName: "FundingTableCell", bundle: nil)
+        tempTableList.register(nib1, forCellReuseIdentifier: "FundingTableCell")
         let nib2 = UINib(nibName: "BannerTableCell", bundle: nil)
         tempTableList.register(nib2, forCellReuseIdentifier: "BannerTableCell")
         
@@ -88,7 +93,6 @@ class MainViewController: UIViewController , AACarouselDelegate{
 //
     //optional method (show first image faster during downloading of all images)
     func callBackFirstDisplayView(_ imageView: UIImageView, _ url: [String], _ index: Int) {
-        print("callBack")
         imageView.kf.setImage(with: URL(string: url[index]))
 //        imageView.kf.setImage(with: , placeholder: UIImage.?init(named: "lunux"), options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
         
@@ -140,22 +144,34 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return fundingList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row != 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TempTableCell", for: indexPath) as! TempTableCell
+//        if indexPath.row != 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FundingTableCell", for: indexPath) as! FundingTableCell
+            cell.titleLabel.text = gsno(fundingList[indexPath.row].title)
+            guard let photo = fundingList[indexPath.row].mainPhoto else { return cell }
+            cell.backgroundImageView.kf.setImage(with: URL(string: gsno(photo.url)))
+            print(photo.url)
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
-            return cell
-        }
-//                    let cell = tableView.dequeueReusableCell(withIdentifier: "TempTableCell", for: indexPath) as! TempTableCell
-//
-//                    return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
+//            return cell
+//        }
 
     }
     
     
+}
+extension MainViewController {
+    func requestCallback(_ datas: Any, _ code: Int) {
+        if ( code == APIServiceCode.FUNDING_MAIN ) {
+            fundingList = datas as! [FundingModel]
+            print("fundingList model size \(fundingList.count)}")
+            tempTableList.reloadData()
+        } else if ( code == APIServiceCode.FUNDING_MAIN ) {
+            
+        }
+    }
 }
