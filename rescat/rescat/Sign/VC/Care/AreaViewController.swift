@@ -60,9 +60,14 @@ class AreaViewController: UIViewController {
     //MARK: 지역 추가 액션
     @IBAction func AddAreaAction(_ sender: UIButton) {
         print("\(city)시 \(gu) \(dong)")
-        address = "\(city)시 \(gu) \(dong)"
-        
-        performSegue(withIdentifier: "unwindToCare2", sender: self)
+
+        if city != "" && gu != "" && dong != "" {
+            
+            address = "\(city)시 \(gu) \(dong)"
+            performSegue(withIdentifier: "unwindToCare2", sender: self)
+        } else {
+            self.simpleAlert(title: "", message: "모든 항목을 선택해주세요.")
+        }
     }
     
 }

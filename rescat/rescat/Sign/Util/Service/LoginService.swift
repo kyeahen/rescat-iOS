@@ -24,7 +24,6 @@ struct LoginService: PostableService, APIServie {
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
-
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400
@@ -37,10 +36,9 @@ struct LoginService: PostableService, APIServie {
                     completion(.serverErr)
                     
                 default :
-                    print("no 201/500 rescode is \(networkResult.resCode)")
+                    print("Success: \(networkResult.resCode)")
                     break
                 }
-                
                 break
                 
             case .error(let resCode):
@@ -53,13 +51,14 @@ struct LoginService: PostableService, APIServie {
                     completion(.accessDenied)
                 
                 default :
-                    print("no 400 rescode")
+                    print("Error: \(resCode)")
                     break
                 }
                 break
                 
             case .failure(_):
                 completion(.networkFail)
+                print("Fail: Network Fail")
             }
         }
         

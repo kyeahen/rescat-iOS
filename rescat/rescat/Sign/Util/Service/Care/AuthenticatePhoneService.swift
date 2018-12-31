@@ -15,16 +15,15 @@ struct AuthenticatePhoneService: PostableService, APIServie {
     
     func postAuthenticatePhone(phone: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let loginURL = self.url("users/authentications/phone?phone=\(phone)")
+        let phoneURL = self.url("users/authentications/phone?phone=\(phone)")
         
-        post(loginURL, params: [:]) { (result) in
+        post(phoneURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
-                    
                     completion(.networkSuccess(networkResult.resResult.code))
                     
                 case HttpResponseCode.badRequest.rawValue : //400
@@ -37,10 +36,9 @@ struct AuthenticatePhoneService: PostableService, APIServie {
                     completion(.requestFail)
                     
                 default :
-                    print("no 201/500 rescode is \(networkResult.resCode)")
+                    print("Success: \(networkResult.resCode)")
                     break
                 }
-                
                 break
                 
             case .error(let resCode):
@@ -50,13 +48,14 @@ struct AuthenticatePhoneService: PostableService, APIServie {
                     completion(.badRequest)
                     
                 default :
-                    print("no 400 rescode")
+                    print("Error: \(resCode)")
                     break
                 }
                 break
                 
             case .failure(_):
                 completion(.networkFail)
+                print("Fail: Network Fail")
             }
         }
         

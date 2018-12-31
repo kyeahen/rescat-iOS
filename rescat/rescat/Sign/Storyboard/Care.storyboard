@@ -506,7 +506,6 @@
                                 </state>
                                 <connections>
                                     <action selector="AddAreaAction:" destination="9xl-mf-Zxi" eventType="touchUpInside" id="SeZ-dK-5NX"/>
-                                    <segue destination="Oaj-CN-RPN" kind="unwind" identifier="unwindToCare2" unwindAction="unwindToCare2WithSender:" id="mtN-lS-vY4"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-kW-TGV">
@@ -680,6 +679,7 @@
                         <outlet property="finishButton" destination="t8O-ON-YsY" id="GuN-8j-rHM"/>
                         <outlet property="guTableView" destination="tas-WB-ldU" id="fC0-eN-Xsn"/>
                         <outlet property="stackView" destination="ajD-kW-TGV" id="Zh0-rO-IzQ"/>
+                        <segue destination="Oaj-CN-RPN" kind="unwind" identifier="unwindToCare2" unwindAction="unwindToCare2WithSender:" id="mp3-C4-A2Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sa-MB-E3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>

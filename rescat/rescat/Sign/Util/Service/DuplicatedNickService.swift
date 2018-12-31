@@ -15,16 +15,15 @@ struct DuplicatedNickService: PostableService, APIServie {
     
     func postDuplicatedNick(nickName: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let loginURL = self.url("users/duplicate/nickname?nickname=\(nickName)")
+        let nickURL = self.url("users/duplicate/nickname?nickname=\(nickName)")
         
-        post(loginURL, params: [:]) { (result) in
+        post(nickURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
-                    
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.conflict.rawValue : //409
@@ -34,26 +33,29 @@ struct DuplicatedNickService: PostableService, APIServie {
                     completion(.serverErr)
                     
                 default :
-                    print("no 201/500 rescode is \(networkResult.resCode)")
+                    print("Success: \(networkResult.resCode)")
                     break
                 }
-                
                 break
                 
             case .error(let resCode):
                 switch resCode {
                     
-                case HttpResponseCode.badRequest.rawValue.description :
+                case HttpResponseCode.badRequest.rawValue.description : //400
                     completion(.badRequest)
                     
+                case HttpResponseCode.conflict.rawValue.description : //409
+                    completion(.duplicated)
+                    
                 default :
-                    print("no 400 rescode")
+                    print("Error: \(resCode)")
                     break
                 }
                 break
                 
             case .failure(_):
                 completion(.networkFail)
+                print("Fail: Network Fail")
             }
         }
         

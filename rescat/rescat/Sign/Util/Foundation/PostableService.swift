@@ -33,8 +33,8 @@ extension PostableService {
         print("URL은 \(encodedUrl)")
         
         let token = UserDefaults.standard.string(forKey: "token") ?? "-1"
-        
         var token_header: HTTPHeaders?
+        
         if token != "-1" {
             token_header = [ "authorization" : token ]
         } else {
