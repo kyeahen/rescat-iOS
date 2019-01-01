@@ -30,4 +30,11 @@ extension UIViewController {
             return -1.0
         }
     }
+    func gbno(_ value : Bool?) -> Bool {
+        if let _value = value {
+            return _value
+        }else {
+            return false
+        }
+    }
 }

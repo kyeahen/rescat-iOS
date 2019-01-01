@@ -13,26 +13,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BannerTableCell" customModule="rescat" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BannerTableCell" customModule="rescat" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dsc0204" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-LH-8EV">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
-                    <color key="backgroundColor" red="0.55119977679999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXy-Mj-qTV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dsc0204" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-LH-8EV">
+                            <rect key="frame" x="16.5" y="7.5" width="342" height="155"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="342" id="GrH-mz-NY1"/>
+                                <constraint firstAttribute="height" constant="155" id="UmW-rz-ZAb"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="1hg-LH-8EV" firstAttribute="centerY" secondItem="TXy-Mj-qTV" secondAttribute="centerY" id="gRt-VE-Sob"/>
+                        <constraint firstItem="1hg-LH-8EV" firstAttribute="centerX" secondItem="TXy-Mj-qTV" secondAttribute="centerX" id="yE9-E1-g1R"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="1hg-LH-8EV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="204-2c-Vpv"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1hg-LH-8EV" secondAttribute="bottom" id="97B-rk-apI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1hg-LH-8EV" secondAttribute="trailing" id="aKd-pT-LPM"/>
-                <constraint firstItem="1hg-LH-8EV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="dao-3J-xN4"/>
+                <constraint firstItem="TXy-Mj-qTV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CMZ-1v-jKd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="TXy-Mj-qTV" secondAttribute="bottom" id="Frb-Lg-EiA"/>
+                <constraint firstItem="TXy-Mj-qTV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Lpc-3A-JKy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TXy-Mj-qTV" secondAttribute="trailing" id="tLF-eJ-nTl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="bannerImageView" destination="1hg-LH-8EV" id="vYC-iN-KH9"/>
             </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="83.658170914542737"/>
         </view>
     </objects>
     <resources>
