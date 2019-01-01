@@ -8,34 +8,38 @@
 
 import Foundation
 import UIKit
+import SnapKit
 extension UIView {
-    func drawPercentage( _ value : Double ) {
+    func drawPercentage( _ value : Double , _ overallColor : UIColor, _ dataColor : UIColor ) {
         
-//        
-//        let v = UIView(frame: CGRect(x: self.frame.width * value, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height))
-//        
-        
+        backgroundColor = overallColor
+        let x = CGFloat(Float(frame.width) * Float(value))
+        let v = UIView(frame: CGRect(x: x, y: 0, width: frame.width - x, height: frame.height))
+        v.backgroundColor = dataColor
+        addSubview(v)
+
     }
     func roundCorner( _ value : Double ){
-        layer.backgroundColor = UIColor.clear.cgColor
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 4.0
-
+      
         layer.cornerRadius = CGFloat(value)
         layer.masksToBounds = true
         
     }
-    func dropShadow(offsetX: CGFloat, offsetY: CGFloat, color: UIColor, opacity: Float, radius: CGFloat, scale: Bool = true) {
-        layer.masksToBounds = false
-        layer.shadowOffset = CGSize(width: offsetX, height: offsetY)
-        layer.shadowColor = color.cgColor
-        layer.shadowOpacity = opacity
-        layer.shadowRadius = radius
-        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    func drawShadow( _ value : Double) {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: -1, height: 1)
+        layer.shadowRadius = CGFloat(value)
     }
     
+    
+}
+extension UIImageView {
+    
+//    func drawShadow( _ value : Double) {
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOpacity = 0.3
+//        layer.shadowOffset = CGSize(width: -1, height: 1)
+//        layer.shadowRadius = CGFloat(value)
+//    }
 }

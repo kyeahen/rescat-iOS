@@ -9,12 +9,12 @@
 import UIKit
 import GoogleMaps
 import SnapKit
-class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, GMSMapViewDelegate, APIServiceCallback {
+class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource ,UITextFieldDelegate, GMSMapViewDelegate, APIServiceCallback {
     
     var pickerView : UIPickerView!
     var locationButton : UITextField!
 //    var pick
-    var myLocation = ["서울시 서초구 서초동", "시흥시 은행동", "부산시 ㄴㄴ"]
+    var myLocation = ["서울시 서초구 서초동", "서울특별시 성북구 월곡1동", "서울특별시 성북구 월곡2동"]
     @IBOutlet var registerButton : UIBarButtonItem!
     @IBOutlet var searchButton : UIBarButtonItem!
     @IBOutlet var mapView : GMSMapView!
@@ -25,13 +25,14 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet var button3 : UIButton!
     @IBOutlet var button4 : UIButton!
     var buttons = [UIButton]()
-    var locationButtonView : UIView!
+    @IBOutlet var locationButtonView : UIView!
     
     
-    var detailViewHeight = 200   // temp value
+    var detailViewHeight = 140   // temp value
     var detailViewCreated = false
     var detailView : UIView!; var detailImageView : UIImageView!; var detailNameView : UILabel!
     var detailBirthView : UILabel!; var detailPropertyView : UILabel!; var detailTextView : UILabel!
+    @IBOutlet var coverView : UIView!
     
     var initData : [TestModel] = []
     var filterdData : [TestModel] = []
@@ -44,39 +45,33 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         for (index, element) in buttons.enumerated() {
             element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
             element.tag = index
-        }
-        
-        locationButtonView = UIView()
-        locationButtonView.roundCorner(10)
-//        locationButtonView.dropShadow(offsetX: 10, offsetY: 10, color: UIColor.gray, opacity: 1.0, radius: 10, scale: true)
-        locationButtonView.backgroundColor = UIColor.blue
-        
+            element.layer.shadowColor = UIColor.black.cgColor; element.layer.shadowOpacity = 0.5
+            element.layer.shadowOffset = CGSize.zero; element.layer.shadowRadius = 3
+            if ( element.tag == 0 ) {
+                element.backgroundColor = UIColor.rescatPink()
+                element.setTitleColor(UIColor.white, for: .normal)
+            } else {
+                element.backgroundColor = UIColor.white
+                element.setTitleColor(UIColor.rescatBlack(), for: .normal)
 
-        
-//        locationButton.setTitle("서울시 서초구", for: .normal)
-//        locationButton.addTarget(self, action: #selector(registerButton), for: .touchUpInside)
-//        registerButton.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
-//        searchButton.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
-        
-        
-        self.view.addSubview(locationButtonView)
-        locationButtonView.snp.makeConstraints { (make) in
-            make.height.equalTo(35); make.width.equalTo(200);
-            make.bottom.equalTo(-80); make.centerX.equalTo(self.view.snp.centerX)
-//            make.right.equalTo(self.view.snp.right).offset(-15)
-//            make.bottom.equalTo(self.view.snp.bottom).offset(-15)
+            }
         }
         
+        locationButtonView.roundCorner(15)
+        locationButtonView.drawShadow(15)
+        locationButtonView.backgroundColor = UIColor.white
         locationButton = UITextField()
+        locationButton.delegate = self
+
         locationButton.text = "서울시 서초구"
-//        locationButton.setTitle("서울시 서초구", for: .normal)
-//        locationButton.addTarget(self, action: #selector(selectLocation), for: .touchUpInside)
+        locationButton.textColor = UIColor.rescatBlack();
+        locationButton.font = .systemFont(ofSize: 14)
         locationButtonView.addSubview(locationButton)
         locationButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(locationButtonView)
             make.centerY.equalTo(locationButtonView)
         }
-        pickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        pickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 162))
         pickerView.delegate = self
         pickerView.dataSource = self
 
@@ -85,7 +80,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.tintColor = UIColor.rescatPink()
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(selectLocation))
@@ -101,7 +96,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         //  내 도시로 focus
         self.mapView.delegate = self
-        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 13.0)
+        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -130,11 +125,24 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             })}
         }
     }
+    @objc func viewActionSheet( _ sender : UIButton!){
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "수정", style: .default, handler: { result in
+            //doSomething
+        }))
+        actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
+            //doSomething
+        }))
+        actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
     @objc func selectLocation(_ sender : UIButton!){
 
-        
-        // request new locations
-//        locationButton.text = myLocation[]
+        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(36.899999), longitude: CLLocationDegrees(127.03111111))
+        self.mapView.animate(toLocation: move)
         locationButton.resignFirstResponder()
 
     }
@@ -164,9 +172,14 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     @objc func filterButton(_ sender : UIButton!){
         
-        buttons.forEach { (button) in  button.backgroundColor = UIColor.gray }
-        sender.backgroundColor = UIColor.blue
-        
+        locationButton.resignFirstResponder()
+        buttons.forEach { (button) in
+            button.backgroundColor = UIColor.white
+            button.setTitleColor(UIColor.rescatBlack(), for: .normal)
+        }
+        sender.backgroundColor = UIColor.rescatPink()
+        sender.setTitleColor(UIColor.white, for: .normal)
+
         detailViewHidden(true)
         
         if ( sender.tag == 0 ){ makeMarkerView(initData) }
@@ -192,16 +205,43 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         // make marker objects
         for i in 0..<data.count{
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gfno(data[i].latitude)), longitude: CLLocationDegrees(gfno(data[i].longitude)))
-            marker.title = "\(gino(data[i].location_type))"; marker.snippet = "name";
+            let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gfno(data[i].latitude)), longitude: CLLocationDegrees(gfno(data[i].longitude)))
+
+            switch gino(data[i].location_type) {
+            case 1:
+                marker.icon = UIImage(named: "icMapCat");
+                let circleCenter = position
+                let circ = GMSCircle(position: circleCenter, radius: 100)
+                circ.fillColor = UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 0.2)
+                circ.strokeColor = .none
+                circ.map = mapView
+                break
+            case 2:
+                marker.icon = UIImage(named: "icMapFood"); break
+            case 3:
+                marker.icon = UIImage(named: "icMapHospital"); break
+            default:
+                marker.icon = UIImage(named: "icMapHospital"); break
+
+            }
+            marker.position = position
+            marker.title = "\(gino(data[i].location_type))"; marker.snippet = "name"
             marker.map = mapView
+            
+
         }
        
     }
-    func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
-        print("end")
-        detailViewHidden(true)
+    //  -----------------------------  UITextFieldDelegate function ----------------------------
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("text field start")
+        coverView.isHidden = false
     }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("text field end")
+        coverView.isHidden = true
+    }
+   
     //  -----------------------------  UIPickerViewDelage, DataSource function ----------------------------
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -217,21 +257,28 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         locationButton.text = myLocation[row]
     }
     //  -----------------------------  GMSMapViewDelegate function ----------------------------
+    func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
+        print("end")
+        detailViewHidden(true)
+    }
+    
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if ( !detailViewCreated ) {
             detailViewCreated = true
             detailView = UIView()
-            
             detailView.backgroundColor = UIColor.black
             self.view.addSubview(detailView)
             detailView.snp.makeConstraints { (make) in
                 make.left.equalTo(self.view.snp.left).offset(15)
                 make.right.equalTo(self.view.snp.right).offset(-15)
-                make.height.equalTo(detailViewHeight)
-                make.bottom.equalTo(self.view.snp.bottom).offset(-100)
+                make.height.equalTo(140)
+                make.bottom.equalTo(self.view.snp.bottom).offset(-57)
             }
             
             let detailContents = DetailView(frame: detailView.frame)
+            //
+            detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+            //
             self.detailView.addSubview(detailContents)
             detailContents.snp.makeConstraints { (make) in
                 make.left.equalTo(self.detailView.snp.left)
@@ -264,6 +311,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         detailViewHidden(false)
 
         return false
+    }
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        locationButton.resignFirstResponder()
+        print("coordinate \(coordinate.latitude) \(coordinate.longitude)")
     }
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         // zoom in & out

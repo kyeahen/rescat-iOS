@@ -19,14 +19,18 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     // ------라이브러리 test 중이라 나중에 코드 정리할 예정------
     @IBOutlet var reviewImage : AACarousel!
     var titleArray = [String]()
+    var photoArray = [String]()
     var fundingList = [FundingModel]()
+    var fundingBannerList = [FundingBannerModel]()
 //    var careList = [
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
         
         let request = FundingRequest(self)
         request.requestMain()
+        fundingBannerList.removeAll(); photoArray.removeAll()
+        request.requestFundingBannerList()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         tempList.dataSource = self
         tempTableList.delegate = self
         tempTableList.dataSource = self
+        tempTableList.separatorStyle = .none
         
         adoptionListButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
         fundingListButton.addTarget(self, action: #selector(viewFundingList), for: .touchUpInside)
@@ -44,16 +49,8 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         let nib2 = UINib(nibName: "BannerTableCell", bundle: nil)
         tempTableList.register(nib2, forCellReuseIdentifier: "BannerTableCell")
         
-        let pathArray = ["https://imgct2.aeplcdn.com/img/800x600/car-data/big/honda-amaze-image-12749.png",
-                         "https://ak.picdn.net/assets/cms/97e1dd3f8a3ecb81356fe754a1a113f31b6dbfd4-stock-photo-photo-of-a-common-kingfisher-alcedo-atthis-adult-male-perched-on-a-lichen-covered-branch-107647640.jpg",
-                         "https://imgct2.aeplcdn.com/img/800x600/car-data/big/honda-amaze-image-12749.png",
-                          "https://ak.picdn.net/assets/cms/97e1dd3f8a3ecb81356fe754a1a113f31b6dbfd4-stock-photo-photo-of-a-common-kingfisher-alcedo-atthis-adult-male-perched-on-a-lichen-covered-branch-107647640.jpg"]
         titleArray = ["picture 1","picture 2","picture 3","picture 4"]
         reviewImage.delegate = self
-        reviewImage.setCarouselData(paths: pathArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: nil)
-        //optional methods
-        reviewImage.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
-        reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
     }
 
     @objc func viewAdoptList(_ sender: UIButton!){
@@ -132,7 +129,8 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TempCell", for: indexPath) as! TempCell
-    
+        cell.outerView.drawShadow(4)
+
         if ( indexPath.row == 4 ) {
             cell.imageView.isHidden = true; cell.characterLabel.isHidden = true; cell.markImageView.isHidden = true; cell.nameLabel.isHidden = true;
             cell.listButton.isHidden = false
@@ -148,18 +146,38 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row != 1 {
+        if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
+            cell.bannerImageView.drawShadow(3)
+            return cell
+        } else {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "FundingTableCell", for: indexPath) as! FundingTableCell
             cell.titleLabel.text = gsno(fundingList[indexPath.row].title)
             guard let photo = fundingList[indexPath.row].mainPhoto else { return cell }
             cell.backgroundImageView.kf.setImage(with: URL(string: gsno(photo.url)))
-            print(photo.url)
+            cell.backgroundImageView.drawShadow(3)
             return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
-//            return cell
-//        }
+        }
 
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 2 {
+            return CGFloat(170)
+        } else {
+            return CGFloat(180)
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            return
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailViewController") as! FundingDetailViewController
+            FundingDetailViewController.fundingIdx = gino(fundingList[indexPath.row].idx)
+
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     
@@ -168,10 +186,19 @@ extension MainViewController {
     func requestCallback(_ datas: Any, _ code: Int) {
         if ( code == APIServiceCode.FUNDING_MAIN ) {
             fundingList = datas as! [FundingModel]
-            print("fundingList model size \(fundingList.count)}")
+            print("fundingList model len \(fundingList.count)}")
             tempTableList.reloadData()
-        } else if ( code == APIServiceCode.FUNDING_MAIN ) {
-            
+        } else if ( code == APIServiceCode.FUNDING_BANNER_LIST ) {
+            fundingBannerList = datas as! [FundingBannerModel]
+            print("fundingBannerList model len \(fundingBannerList.count)")
+            for i in 0..<fundingBannerList.count {
+                photoArray.append(gsno(fundingBannerList[i].photoUrl))
+            }
+            reviewImage.setCarouselData(paths: photoArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: nil)
+            //optional methods
+            reviewImage.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
+            reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
+
         }
     }
 }

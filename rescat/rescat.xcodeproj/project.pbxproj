@@ -36,7 +36,6 @@
 		5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916808B21D38F2C00491F5C /* RegisterVC.swift */; };
 		5916808E21D3914700491F5C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916808D21D3914700491F5C /* DetailView.xib */; };
 		5916809021D393FF00491F5C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916808F21D393FF00491F5C /* DetailView.swift */; };
-		5916809221D39D6500491F5C /* DetailView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809121D39D6500491F5C /* DetailView2.xib */; };
 		5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809321D3A1EA00491F5C /* HomeViewController.swift */; };
 		5916809621D3D90A00491F5C /* TempCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5916809521D3D90A00491F5C /* TempCell.swift */; };
 		5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809721D3DD1500491F5C /* BannerTableCell.xib */; };
@@ -46,7 +45,7 @@
 		591680B521D514C400491F5C /* FundingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680B421D514C400491F5C /* FundingListViewController.swift */; };
 		591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680BC21D746BE00491F5C /* SearchViewController.swift */; };
 		593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */; };
-		5962B69121D79ACD00BB032D /* DetailFundingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69021D79ACD00BB032D /* DetailFundingViewController.swift */; };
+		5962B69121D79ACD00BB032D /* FundingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69021D79ACD00BB032D /* FundingDetailViewController.swift */; };
 		5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */; };
 		5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69421D7C71800BB032D /* FirstViewController.swift */; };
 		5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69821D7D92C00BB032D /* ModifyViewController.swift */; };
@@ -54,6 +53,15 @@
 		5962B6A221D898D500BB032D /* FundingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A121D898D500BB032D /* FundingModel.swift */; };
 		5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A321D89C6400BB032D /* FundingRequest.swift */; };
 		5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A521D8A13D00BB032D /* APIServiceCallBack.swift */; };
+		5962B6A821D8F95800BB032D /* NaverMapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A721D8F95800BB032D /* NaverMapRequest.swift */; };
+		5962B6AA21D9F62800BB032D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6A921D9F62800BB032D /* UIColor.swift */; };
+		5962B6AE21DA0BBC00BB032D /* FundingBannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6AD21DA0BBC00BB032D /* FundingBannerModel.swift */; };
+		5962B6B121DA199600BB032D /* LocationUserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6B021DA199600BB032D /* LocationUserDefaultService.swift */; };
+		5962B6B321DA64C200BB032D /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6B221DA64C200BB032D /* Int.swift */; };
+		5962B6B521DB141E00BB032D /* FundingDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6B421DB141E00BB032D /* FundingDetailModel.swift */; };
+		5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6B821DB188400BB032D /* FundingCommentModel.swift */; };
+		5962B6BD21DB210300BB032D /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6BC21DB210300BB032D /* TestVC.swift */; };
+		5962B6BF21DB221100BB032D /* TestVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B6BE21DB221100BB032D /* TestVCCell.swift */; };
 		596662B321D1F57500055918 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B221D1F57500055918 /* APIService.swift */; };
 		596662B621D1F7A600055918 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B521D1F7A600055918 /* Test.swift */; };
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
@@ -95,7 +103,6 @@
 		5916808B21D38F2C00491F5C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		5916808D21D3914700491F5C /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		5916808F21D393FF00491F5C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		5916809121D39D6500491F5C /* DetailView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView2.xib; sourceTree = "<group>"; };
 		5916809321D3A1EA00491F5C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5916809521D3D90A00491F5C /* TempCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCell.swift; sourceTree = "<group>"; };
 		5916809721D3DD1500491F5C /* BannerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerTableCell.xib; sourceTree = "<group>"; };
@@ -105,7 +112,7 @@
 		591680B421D514C400491F5C /* FundingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListViewController.swift; sourceTree = "<group>"; };
 		591680BC21D746BE00491F5C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		5962B69021D79ACD00BB032D /* DetailFundingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFundingViewController.swift; sourceTree = "<group>"; };
+		5962B69021D79ACD00BB032D /* FundingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingDetailViewController.swift; sourceTree = "<group>"; };
 		5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListTableViewCell.swift; sourceTree = "<group>"; };
 		5962B69421D7C71800BB032D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		5962B69821D7D92C00BB032D /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +120,15 @@
 		5962B6A121D898D500BB032D /* FundingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingModel.swift; sourceTree = "<group>"; };
 		5962B6A321D89C6400BB032D /* FundingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRequest.swift; sourceTree = "<group>"; };
 		5962B6A521D8A13D00BB032D /* APIServiceCallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceCallBack.swift; sourceTree = "<group>"; };
+		5962B6A721D8F95800BB032D /* NaverMapRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapRequest.swift; sourceTree = "<group>"; };
+		5962B6A921D9F62800BB032D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5962B6AD21DA0BBC00BB032D /* FundingBannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingBannerModel.swift; sourceTree = "<group>"; };
+		5962B6B021DA199600BB032D /* LocationUserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUserDefaultService.swift; sourceTree = "<group>"; };
+		5962B6B221DA64C200BB032D /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		5962B6B421DB141E00BB032D /* FundingDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingDetailModel.swift; sourceTree = "<group>"; };
+		5962B6B821DB188400BB032D /* FundingCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingCommentModel.swift; sourceTree = "<group>"; };
+		5962B6BC21DB210300BB032D /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		5962B6BE21DB221100BB032D /* TestVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVCCell.swift; sourceTree = "<group>"; };
 		596662B221D1F57500055918 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		596662B521D1F7A600055918 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		596662B921D1FCF000055918 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
@@ -165,7 +181,6 @@
 				2271880E21CF541300E1BCAB /* LaunchScreen.storyboard */,
 				2271880C21CF541300E1BCAB /* Assets.xcassets */,
 				2271881121CF541300E1BCAB /* Info.plist */,
-				5916809121D39D6500491F5C /* DetailView2.xib */,
 			);
 			path = rescat;
 			sourceTree = "<group>";
@@ -304,9 +319,11 @@
 				5916809521D3D90A00491F5C /* TempCell.swift */,
 				5916809921D3DD2700491F5C /* BannerTableCell.swift */,
 				5916809B21D3DD3900491F5C /* FundingTableCell.swift */,
-				5962B69021D79ACD00BB032D /* DetailFundingViewController.swift */,
+				5962B69021D79ACD00BB032D /* FundingDetailViewController.swift */,
 				5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */,
 				5962B69421D7C71800BB032D /* FirstViewController.swift */,
+				5962B6BC21DB210300BB032D /* TestVC.swift */,
+				5962B6BE21DB221100BB032D /* TestVCCell.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -379,13 +396,25 @@
 			isa = PBXGroup;
 			children = (
 				5962B6A121D898D500BB032D /* FundingModel.swift */,
+				5962B6AD21DA0BBC00BB032D /* FundingBannerModel.swift */,
+				5962B6B421DB141E00BB032D /* FundingDetailModel.swift */,
+				5962B6B821DB188400BB032D /* FundingCommentModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5962B6AF21DA193D00BB032D /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				5962B6B021DA199600BB032D /* LocationUserDefaultService.swift */,
+			);
+			path = UserDefault;
 			sourceTree = "<group>";
 		};
 		596662B121D1F56100055918 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				5962B6AF21DA193D00BB032D /* UserDefault */,
 				596662BD21D20DB200055918 /* Extension */,
 				596662B721D1F92800055918 /* Protocol */,
 				596662B421D1F6B900055918 /* Network */,
@@ -399,6 +428,7 @@
 				596662B221D1F57500055918 /* APIService.swift */,
 				596662B521D1F7A600055918 /* Test.swift */,
 				5962B6A321D89C6400BB032D /* FundingRequest.swift */,
+				5962B6A721D8F95800BB032D /* NaverMapRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -424,6 +454,8 @@
 			children = (
 				596662BE21D20DC100055918 /* ViewController.swift */,
 				5962B69E21D881A700BB032D /* UIView.swift */,
+				5962B6A921D9F62800BB032D /* UIColor.swift */,
+				5962B6B221DA64C200BB032D /* Int.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -514,7 +546,6 @@
 				2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */,
 				5916808E21D3914700491F5C /* DetailView.xib in Resources */,
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
-				5916809221D39D6500491F5C /* DetailView2.xib in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
 				5916809E21D3DD4100491F5C /* FundingTableCell.xib in Resources */,
 				2271880B21CF541200E1BCAB /* Main.storyboard in Resources */,
@@ -627,17 +658,22 @@
 				5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
+				5962B6BD21DB210300BB032D /* TestVC.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
+				5962B6B521DB141E00BB032D /* FundingDetailModel.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
-				5962B69121D79ACD00BB032D /* DetailFundingViewController.swift in Sources */,
+				5962B69121D79ACD00BB032D /* FundingDetailViewController.swift in Sources */,
+				5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */,
 				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
 				5916809621D3D90A00491F5C /* TempCell.swift in Sources */,
 				5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */,
 				22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
+				5962B6AE21DA0BBC00BB032D /* FundingBannerModel.swift in Sources */,
+				5962B6AA21D9F62800BB032D /* UIColor.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				5962B6A221D898D500BB032D /* FundingModel.swift in Sources */,
 				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
@@ -645,12 +681,16 @@
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
+				5962B6BF21DB221100BB032D /* TestVCCell.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
 				5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */,
 				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
+				5962B6A821D8F95800BB032D /* NaverMapRequest.swift in Sources */,
 				22FCCD6221CF6820007A731C /* CommunityViewController.swift in Sources */,
 				593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */,
+				5962B6B321DA64C200BB032D /* Int.swift in Sources */,
+				5962B6B121DA199600BB032D /* LocationUserDefaultService.swift in Sources */,
 				22FCCD7721D3558A007A731C /* PostableService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,6 +4,7 @@ class SearchViewController : UIViewController , UISearchBarDelegate {
     
     @IBOutlet var searchBar : UISearchBar!
     @IBOutlet var searchListTableView : UITableView!
+    var marker = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -13,12 +14,10 @@ class SearchViewController : UIViewController , UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.navigationController?.navigationBar.isHidden = true
-        searchBar.resignFirstResponder()
+//        searchBar.resignFirstResponder()
         
     }
-    @IBAction func backAction(_ sender : UIButton!){
-        self.navigationController?.popViewController(animated: true)
-    }
+    
     // -----------------------------  UISearchBarDelegate function ----------------------------
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 //        detailViewHidden(true)
@@ -26,6 +25,9 @@ class SearchViewController : UIViewController , UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
 //        self.searchButton.isHidden = true
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("input \(searchText)")
     }
 }
 extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
@@ -36,7 +38,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         cell.title.text = "title"
-        cell.type.text = "type"
+        cell.type.text = "고양이"
         return cell
     }
     

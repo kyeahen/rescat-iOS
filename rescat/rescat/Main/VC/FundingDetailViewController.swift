@@ -9,18 +9,15 @@
 import Foundation
 import UIKit
 import MXSegmentedPager
-class DetailFundingViewController :  MXSegmentedPagerController{
+class FundingDetailViewController : MXSegmentedPagerController, APIServiceCallback{
+    
+    var idx : Int! // funding detail idx
+    static var fundingIdx = -1 
+    var fundingDetailInfo : FundingDetailModel!
     override func viewDidLoad() {
+        print("--- 1 ---")
         super.viewDidLoad()
         segmentedPager.backgroundColor = .white
-        
-        // Parallax Header
-//        segmentedPager.parallaxHeader.view = headerView
-//        segmentedPager.parallaxHeader.mode = .fill
-//        segmentedPager.parallaxHeader.height = 382
-//        segmentedPager.parallaxHeader.minimumHeight = 10
-        
-        // Segmented Control customization
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
         segmentedPager.segmentedControl.backgroundColor = .white
         segmentedPager.segmentedControl.titleTextAttributes = [kCTForegroundColorAttributeName : UIColor.gray]
@@ -35,5 +32,11 @@ class DetailFundingViewController :  MXSegmentedPagerController{
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, didScrollWith parallaxHeader: MXParallaxHeader) {
 //        print("progress \(parallaxHeader.progress)")
+    }
+    func requestCallback(_ datas: Any, _ code: Int) {
+//
+        if ( code == APIServiceCode.FUNDING_DETAIL) {
+            fundingDetailInfo = datas as! FundingDetailModel
+        }
     }
 }
