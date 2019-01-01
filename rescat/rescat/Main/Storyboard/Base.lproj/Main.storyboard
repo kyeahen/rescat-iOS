@@ -64,16 +64,6 @@
             </objects>
             <point key="canvasLocation" x="1759" y="133"/>
         </scene>
-        <!--Community-->
-        <scene sceneID="txI-GR-GlS">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Community" id="KEE-rq-SW7" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QLC-wP-4yf"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsy-ln-RfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1844" y="907"/>
-        </scene>
         <!--Rescat-->
         <scene sceneID="XZc-59-UBJ">
             <objects>
@@ -102,6 +92,9 @@
                                                     <constraint firstAttribute="width" constant="74" id="U53-fT-Std"/>
                                                 </constraints>
                                                 <state key="normal" title="더보기 &gt;"/>
+                                                <connections>
+                                                    <segue destination="c05-F4-UEZ" kind="show" id="4eS-Dk-7Ef"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oua-oT-rp5">
                                                 <rect key="frame" x="285" y="409" width="74" height="35"/>
@@ -326,6 +319,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NX6-3K-H4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1941.5999999999999" y="1692.953523238381"/>
+        </scene>
+        <!--Adoption-->
+        <scene sceneID="hrs-fd-Yf7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Adoption" id="c05-F4-UEZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mf7-mF-ixk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2623" y="1215"/>
         </scene>
         <!--Funding List View Controller-->
         <scene sceneID="a7D-hV-fJE">
