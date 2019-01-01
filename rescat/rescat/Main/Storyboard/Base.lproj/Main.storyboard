@@ -13,7 +13,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="nbi-BY-4ah">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="mVF-x8-DHt" customClass="TabBarController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="mVF-x8-DHt" customClass="TabBarController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3cA-dB-His">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
