@@ -15,11 +15,13 @@ class MainCareViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         changeVC(num: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
+        hideKeyboardWhenTappedAround()
     }
     
     //MARK: ChildViewController
@@ -66,7 +68,7 @@ class MainCareViewController: UIViewController {
             UIView.animate(withDuration: 1.0) {
                 self.progressView.setProgress(0.25, animated: true)
             }
-            
+            self.view.endEditing(true)
             add(asChildViewController: IntroVC, containerView: containerView)
             
             break
@@ -127,6 +129,18 @@ class MainCareViewController: UIViewController {
         
     }
 
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 //MARK: ChildViewController BackButton Setting
