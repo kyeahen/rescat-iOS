@@ -1,23 +1,23 @@
 //
-//  LoginService.swift
+//  DuplicatedIDService.swift
 //  rescat
 //
-//  Created by 김예은 on 26/12/2018.
+//  Created by 김예은 on 30/12/2018.
 //  Copyright © 2018 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct LoginService: PostableService, APIServie {
-    
+struct DuplicatedIDService: PostableService, APIServie {
+
     typealias NetworkData = DefaultData
-    static let shareInstance = LoginService()
+    static let shareInstance = DuplicatedIDService()
     
-    func postLogin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    func postDuplicatedID(id: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let loginURL = self.url("users/login")
+        let idURL = self.url("users/duplicate/id?id=\(id)")
         
-        post(loginURL, params: params) { (result) in
+        post(idURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):
@@ -26,11 +26,8 @@ struct LoginService: PostableService, APIServie {
                 case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
                     
-                case HttpResponseCode.badRequest.rawValue : //400
-                    completion(.badRequest)
-                    
-                case HttpResponseCode.accessDenied.rawValue : //401
-                    completion(.accessDenied)
+                case HttpResponseCode.conflict.rawValue : //409
+                    completion(.duplicated)
                     
                 case HttpResponseCode.serverErr.rawValue : //500
                     completion(.serverErr)
@@ -47,9 +44,9 @@ struct LoginService: PostableService, APIServie {
                 case HttpResponseCode.badRequest.rawValue.description : //400
                     completion(.badRequest)
                     
-                case HttpResponseCode.accessDenied.rawValue.description : //401
-                    completion(.accessDenied)
-                
+                case HttpResponseCode.conflict.rawValue.description : //409
+                    completion(.duplicated)
+                    
                 default :
                     print("Error: \(resCode)")
                     break
@@ -64,3 +61,4 @@ struct LoginService: PostableService, APIServie {
         
     }
 }
+

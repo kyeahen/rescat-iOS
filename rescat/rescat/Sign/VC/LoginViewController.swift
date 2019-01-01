@@ -50,16 +50,16 @@ class LoginViewController: UIViewController {
         
         if idTextField.text == ""{
             idLineView.backgroundColor = #colorLiteral(red: 0.7567955852, green: 0.7569058537, blue: 0.7567716241, alpha: 1)
-            idLineView.snp.makeConstraints {
+            idLineView.snp.makeConstraints ({
                 (make) in
                 make.height.equalTo(1)
-            }
+            })
         } else {
             idLineView.backgroundColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
-            idLineView.snp.makeConstraints {
+            idLineView.snp.makeConstraints ({
                 (make) in
-                make.height.equalTo(3)
-            }
+                make.height.equalTo(10)
+            })
         }
     }
     
@@ -68,16 +68,16 @@ class LoginViewController: UIViewController {
         
         if pwdTextField.text == ""{
             pwdLineView.backgroundColor = #colorLiteral(red: 0.7567955852, green: 0.7569058537, blue: 0.7567716241, alpha: 1)
-            pwdLineView.snp.makeConstraints {
+            pwdLineView.snp.makeConstraints ({
                 (make) in
                 make.height.equalTo(1)
-            }
+            })
         } else {
             pwdLineView.backgroundColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
-            pwdLineView.snp.makeConstraints {
+            pwdLineView.snp.makeConstraints ({
                 (make) in
                 make.height.equalTo(3)
-            }
+            })
         }
     }
     
@@ -95,29 +95,23 @@ class LoginViewController: UIViewController {
 }
 
 
-//MAKR: 서버 통신 Extension
-//TODO: 서버 에러 처리 다시
+//MARK: Networking Extension
 extension LoginViewController {
     
     func postLogin(id: String, pwd: String) {
-//        let id = "test101"
-//        let pwd = "test"
         
-        let params : [String : Any] = ["email_id" : id,
+        let params : [String : Any] = ["id" : id,
                                        "password" : pwd]
         
         LoginService.shareInstance.postLogin(params: params) {(result) in
             
             switch result {
-            case .networkSuccess(let loginData):
-                let userData = loginData as? LoginData
-                
-                print("메인에서\(UserDefaultService.getUserDefault(key: "token"))")
-                self.simpleAlert(title: "성공", message: "환영합니다.")
+            case .networkSuccess( _): //200
+                self.simpleAlert(title: "로그인 성공", message: "환영합니다.")
                 break
             
-            case .wrongInput :
-                self.simpleAlert(title: "실패", message: "아이디나 비밀번호가 일치하지 않습니다.")
+            case .accessDenied, .badRequest: //401(없는 사용자), 400(비번 불일치)
+                self.simpleAlert(title: "로그인 실패", message: "아이디나 비밀번호가 일치하지 않습니다.")
                 break
                 
             case .networkFail :
@@ -125,7 +119,7 @@ extension LoginViewController {
                 break
                 
             default :
-                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
                 break
             }
         }

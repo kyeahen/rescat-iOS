@@ -24,7 +24,7 @@ class MainSignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-        loginButton.titleLabel?.textColor = UIColor.white
+        loginButton.setTitleColor(UIColor.white, for: .normal)
         
     }
     
@@ -43,11 +43,12 @@ class MainSignViewController: UIViewController {
     //MARK: 로그인 액션
     @IBAction func loginAction(_ sender: UIButton) {
         
-        sender.setTitleColor(#colorLiteral(red: 0.9272156358, green: 0.5553016067, blue: 0.5554865003, alpha: 1), for: .normal)
-        
         let loginVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: LoginViewController.reuseIdentifier)
         
         self.navigationController?.pushViewController(loginVC, animated: true)
         
     }
+    
+    //MARK: UnwindSegue (welcomeVC -> mainSignVC)
+    @IBAction func unwindToMainSign (segue : UIStoryboardSegue) {}
 }

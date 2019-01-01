@@ -1,39 +1,39 @@
 //
-//  LoginService.swift
+//  AuthenticatePhoneService.swift
 //  rescat
 //
-//  Created by 김예은 on 26/12/2018.
+//  Created by 김예은 on 30/12/2018.
 //  Copyright © 2018 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct LoginService: PostableService, APIServie {
+struct AuthenticatePhoneService: PostableService, APIServie {
     
-    typealias NetworkData = DefaultData
-    static let shareInstance = LoginService()
+    typealias NetworkData = MessageData
+    static let shareInstance = AuthenticatePhoneService()
     
-    func postLogin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    func postAuthenticatePhone(phone: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let loginURL = self.url("users/login")
+        let phoneURL = self.url("users/authentications/phone?phone=\(phone)")
         
-        post(loginURL, params: params) { (result) in
+        post(phoneURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
-                    completion(.networkSuccess(networkResult.resResult))
+                    completion(.networkSuccess(networkResult.resResult.code))
                     
                 case HttpResponseCode.badRequest.rawValue : //400
                     completion(.badRequest)
                     
-                case HttpResponseCode.accessDenied.rawValue : //401
-                    completion(.accessDenied)
-                    
                 case HttpResponseCode.serverErr.rawValue : //500
                     completion(.serverErr)
+                    
+                case HttpResponseCode.notImplemented.rawValue : //501
+                    completion(.requestFail)
                     
                 default :
                     print("Success: \(networkResult.resCode)")
@@ -47,9 +47,6 @@ struct LoginService: PostableService, APIServie {
                 case HttpResponseCode.badRequest.rawValue.description : //400
                     completion(.badRequest)
                     
-                case HttpResponseCode.accessDenied.rawValue.description : //401
-                    completion(.accessDenied)
-                
                 default :
                     print("Error: \(resCode)")
                     break

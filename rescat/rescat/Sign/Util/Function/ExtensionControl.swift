@@ -23,6 +23,7 @@ extension UIViewController {
     func simpleAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
@@ -32,6 +33,7 @@ extension UIViewController {
     func networkErrorAlert() {
         
         let alert = UIAlertController(title: "네트워크 오류", message: "네트워크 상태를 확인해주세요", preferredStyle: .alert)
+        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
@@ -40,6 +42,7 @@ extension UIViewController {
     //확인, 취소 팝업
     func simpleAlertwithHandler(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
         let cancelAction = UIAlertAction(title: "취소",style: .cancel, handler: nil)
         alert.addAction(okAction)
@@ -58,18 +61,30 @@ extension UIViewController {
     
     //커스텀 백버튼 설정
     func setBackBtn(color : UIColor){
-        
-        let backBTN = UIBarButtonItem(image: UIImage(named: "icBackBtn"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+
+//        let backBTN = UIBarButtonItem(image: UIImage(named: "icBackBtn"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+//            style: .plain,
+//            target: self,
+//            action: #selector(self.pop))
+        let backBTN = UIBarButtonItem(title: "back", //백버튼 이미지 파일 이름에 맞게 변경해주세요.
             style: .plain,
             target: self,
             action: #selector(self.pop))
+
         navigationItem.leftBarButtonItem = backBTN
         navigationItem.leftBarButtonItem?.tintColor = color
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
-    
+
     @objc func pop(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    //백버튼 숨기기
+    func setHiddenBackBtn() {
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
+
     }
     
     //커스텀 팝업 띄우기 애니메이션
@@ -96,6 +111,34 @@ extension UIViewController {
             }
         });
     }
+        
+    //ContainerView 메소드
+    func add(asChildViewController viewController: UIViewController, containerView: UIView) {
+        
+        // Add Child View as Subview
+        containerView.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.frame = containerView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Notify Child View Controller
+        viewController.didMove(toParent: self)
+    }
+    
+    func remove(asChildViewController viewController: UIViewController, containerView: UIView) {
+        // Notify Child View Controller
+        viewController.willMove(toParent: nil)
+        
+        // Remove Child View From Superview
+        viewController.view.removeFromSuperview()
+        
+        // Notify Child View Controller
+        viewController.removeFromParent()
+        
+    }
+
+
 }
 
 extension UIView {
@@ -131,6 +174,19 @@ extension UIImageView {
     func circleImageView() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = self.frame.width / 2
+    }
+}
+
+extension UIButton {
+    
+    //MARK: 버튼 라벨 밑줄
+    func underline() {
+        guard let text = self.titleLabel?.text else { return }
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
+        
+        self.setAttributedTitle(attributedString, for: .normal)
     }
 }
 
