@@ -32,12 +32,10 @@ class WelcomeJoinViewController: UIViewController {
     
     //MARK: 나중에 할래요 액션
     @IBAction func skipAction(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindToMainSign", sender: self)
+        let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+        
+        self.present(mainVC, animated: true, completion: nil)
     }
-    
-    //MARK: 인증할래요 액션
-    @IBAction func careAction(_ sender: UIButton) {
-        //케어테이커 뷰로 이동
-    }
+
 }
 

@@ -107,7 +107,7 @@ class Care1ViewController: UIViewController {
     @IBAction func messageAction(_ sender: UIButton) {
         
         check = !check
-//        postAuthenticatePhone(_phone: gsno(phoneTextField.text))
+        postAuthenticatePhone(_phone: gsno(phoneTextField.text))
         print(check)
         
     }

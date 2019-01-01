@@ -7,34 +7,28 @@
 //
 
 import UIKit
-import CoreLocation
 
 class Care3ViewController: UIViewController {
 
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
     
     var parentVC : MainCareViewController?
     let imagePicker : UIImagePickerController = UIImagePickerController()
     
-    var locationManager:CLLocationManager!
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setLocation()
+        
         setCustomView()
     }
     
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
         nextButton.makeRounded(cornerRadius: 8)
+        imageView.makeRounded(cornerRadius: 5)
     }
     
     //MARK: 카메라 액션
-    //TODO: 휴대폰으로 테스트 해보기
     @IBAction func openCamera(_ sender: UITapGestureRecognizer) {
         openCamera()
     }
@@ -47,47 +41,6 @@ class Care3ViewController: UIViewController {
     
     
 }
-
-//MARK: 지오 코딩
-extension Care3ViewController {
-    
-//    func getAddressForLatLng(latitude: String, longitude: String) {
-//        let url = URL(string: "\(baseUrl)latlng=\(latitude),\(longitude)&key=\(apikey)")
-//        let data = NSData(contentsOfURL: url!)
-//        let json = try! JSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-//        if let result = json["results"] as? NSArray {
-//            if let address = result[0]["address_components"] as? NSArray {
-//                let number = address[0]["short_name"] as! String
-//                let street = address[1]["short_name"] as! String
-//                let city = address[2]["short_name"] as! String
-//                let state = address[4]["short_name"] as! String
-//                let zip = address[6]["short_name"] as! String
-//                print("\n\(number) \(street), \(city), \(state) \(zip)")
-//            }
-//        }
-//    }
-}
-
-//MARK: 현재 위치
-extension Care3ViewController: CLLocationManagerDelegate {
-
-    func setLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization() //권한 요청
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //위치가 업데이트될때마다
-        if let coor = manager.location?.coordinate{
-            print("latitude: " + String(coor.latitude) + " / longitude: " + String(coor.longitude))
-        }
-    }
-    
-}
-    
 
 //MARK: 이미지 첨부
 extension Care3ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

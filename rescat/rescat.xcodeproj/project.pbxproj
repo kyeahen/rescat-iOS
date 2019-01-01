@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		221291B021DB653A006DA108 /* MapAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291AF21DB653A006DA108 /* MapAPIKey.swift */; };
 		221291BB21DB68ED006DA108 /* Adoption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221291BA21DB68ED006DA108 /* Adoption.storyboard */; };
+		221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */; };
 		221A843221D7FDB3002BECED /* JoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843121D7FDB2002BECED /* JoinService.swift */; };
 		221A843421D7FEA5002BECED /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843321D7FEA5002BECED /* TokenData.swift */; };
 		221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843521D806E6002BECED /* DuplicatedIDService.swift */; };
@@ -93,6 +94,7 @@
 /* Begin PBXFileReference section */
 		221291AF21DB653A006DA108 /* MapAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAPIKey.swift; sourceTree = "<group>"; };
 		221291BA21DB68ED006DA108 /* Adoption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adoption.storyboard; sourceTree = "<group>"; };
+		221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionDetailViewController.swift; sourceTree = "<group>"; };
 		221A843121D7FDB2002BECED /* JoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinService.swift; sourceTree = "<group>"; };
 		221A843321D7FEA5002BECED /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		221A843521D806E6002BECED /* DuplicatedIDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedIDService.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				221291B921DB68DB006DA108 /* Storyboard */,
+				221291BC21DBD9AB006DA108 /* VC */,
 			);
 			path = Adoption;
 			sourceTree = "<group>";
@@ -218,6 +221,14 @@
 				221291BA21DB68ED006DA108 /* Adoption.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		221291BC21DBD9AB006DA108 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		221A844921D8DBFB002BECED /* Care */ = {
@@ -755,6 +766,7 @@
 				22B4F64F21D7CCA50034346F /* GuTableViewCell.swift in Sources */,
 				22B4F64D21D7CC610034346F /* CityTableViewCell.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
+				221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */,
 				22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
@@ -956,7 +968,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S3H456VQ6Y;
 				INFOPLIST_FILE = rescat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -976,7 +988,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S3H456VQ6Y;
 				INFOPLIST_FILE = rescat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

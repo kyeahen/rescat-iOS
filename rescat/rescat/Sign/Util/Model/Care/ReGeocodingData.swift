@@ -23,6 +23,7 @@ struct ResultData: Codable {
     let name: String
     let code: CodeData
     let region: RegionData
+//    let Land: LandData
 }
 
 struct CodeData: Codable {
@@ -38,6 +39,23 @@ struct RegionData: Codable {
     let area3: AreaData //휘경동
     let area4: AreaData
 }
+
+//struct LandData: Codable {
+//    let type : String
+//    let addition4 : AdditionData
+//    let coords : CoordData
+//    let addition3 : AdditionData
+//    let addition2 : AdditionData
+//    let addition1 : AdditionData
+//    let number2 : String
+//    let number1 : String
+//    let addition0 : AdditionData
+//}
+//
+//struct AdditionData: Codable {
+//    let type : String
+//    let value : String
+//}
 
 struct AreaData: Codable {
     let name: String
