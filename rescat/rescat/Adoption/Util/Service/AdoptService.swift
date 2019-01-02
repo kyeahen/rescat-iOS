@@ -1,39 +1,33 @@
 //
-//  JoinService.swift
+//  AdoptService.swift
 //  rescat
 //
-//  Created by 김예은 on 30/12/2018.
-//  Copyright © 2018 kyeahen. All rights reserved.
+//  Created by 김예은 on 02/01/2019.
+//  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct JoinService: PostableService, APIServie {
+struct AdoptService: GettableService, APIServie {
     
-    typealias NetworkData = DefaultData
-    static let shareInstance = JoinService()
+    typealias NetworkData = [AdoptData]
+    static let shareInstance = AdoptService()
     
-    //MARK: POST - /api/users (일반 유저 생성)
-    func postJoin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: GET - /api/care-posts (입양 글 리스트 또는 임시보호 글 리스트 조회)
+    func getAdoptList(type: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let joinURL = self.url("users")
+        let adoptURL = self.url("care-posts?type=\(type)")
         
-        post(joinURL, params: params) { (result) in
+        get(adoptURL) { (result) in
             switch result {
                 
             case .success(let networkResult):
-                switch networkResult.resCode {
+                switch networkResult.resCode{
                     
-                case HttpResponseCode.postSuccess.rawValue : //201
+                case HttpResponseCode.getSuccess.rawValue: //200
                     completion(.networkSuccess(networkResult.resResult))
                     
-                case HttpResponseCode.badRequest.rawValue : //400
-                    completion(.badRequest)
-                    
-                case HttpResponseCode.conflict.rawValue : //409
-                    completion(.duplicated)
-                    
-                case HttpResponseCode.serverErr.rawValue : //500
+                case HttpResponseCode.serverErr.rawValue: //500
                     completion(.serverErr)
                     
                 default :
@@ -57,12 +51,11 @@ struct JoinService: PostableService, APIServie {
                 }
                 break
                 
-            case .failure(_):
+            case .failure(_) :
                 completion(.networkFail)
                 print("Fail: Network Fail")
             }
         }
-        
     }
 }
 

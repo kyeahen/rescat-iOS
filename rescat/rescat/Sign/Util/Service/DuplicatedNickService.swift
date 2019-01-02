@@ -13,6 +13,7 @@ struct DuplicatedNickService: PostableService, APIServie {
     typealias NetworkData = DefaultData
     static let shareInstance = DuplicatedNickService()
     
+    //MARK: POST - /api/users/duplicate/nickname (닉네임 중복 검사)
     func postDuplicatedNick(nickName: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let nickURL = self.url("users/duplicate/nickname?nickname=\(nickName)")

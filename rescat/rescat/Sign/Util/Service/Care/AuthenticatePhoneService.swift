@@ -13,6 +13,7 @@ struct AuthenticatePhoneService: PostableService, APIServie {
     typealias NetworkData = MessageData
     static let shareInstance = AuthenticatePhoneService()
     
+    //MARK: POST - /api/users/authentications/phone(휴대폰 인증)
     func postAuthenticatePhone(phone: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let phoneURL = self.url("users/authentications/phone?phone=\(phone)")

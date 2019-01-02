@@ -1,39 +1,33 @@
 //
-//  JoinService.swift
+//  AdoptDetailService.swift
 //  rescat
 //
-//  Created by 김예은 on 30/12/2018.
-//  Copyright © 2018 kyeahen. All rights reserved.
+//  Created by 김예은 on 02/01/2019.
+//  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct JoinService: PostableService, APIServie {
+struct AdoptDetailService: GettableService, APIServie {
     
-    typealias NetworkData = DefaultData
-    static let shareInstance = JoinService()
+    typealias NetworkData = AdoptDetailData
+    static let shareInstance = AdoptDetailService()
     
-    //MARK: POST - /api/users (일반 유저 생성)
-    func postJoin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: GET - /api/care-posts/{idx} (입양/임시보호 글 조회)
+    func getAdoptDetail(idx: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let joinURL = self.url("users")
+        let detailURL = self.url("care-posts/\(idx)")
         
-        post(joinURL, params: params) { (result) in
+        get(detailURL) { (result) in
             switch result {
                 
             case .success(let networkResult):
-                switch networkResult.resCode {
+                switch networkResult.resCode{
                     
-                case HttpResponseCode.postSuccess.rawValue : //201
+                case HttpResponseCode.getSuccess.rawValue: //200
                     completion(.networkSuccess(networkResult.resResult))
                     
-                case HttpResponseCode.badRequest.rawValue : //400
-                    completion(.badRequest)
-                    
-                case HttpResponseCode.conflict.rawValue : //409
-                    completion(.duplicated)
-                    
-                case HttpResponseCode.serverErr.rawValue : //500
+                case HttpResponseCode.serverErr.rawValue: //500
                     completion(.serverErr)
                     
                 default :
@@ -57,12 +51,11 @@ struct JoinService: PostableService, APIServie {
                 }
                 break
                 
-            case .failure(_):
+            case .failure(_) :
                 completion(.networkFail)
                 print("Fail: Network Fail")
             }
         }
-        
     }
 }
 

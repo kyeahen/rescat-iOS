@@ -11,7 +11,6 @@ import UIKit
 class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nickNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!

@@ -80,8 +80,6 @@ extension UIViewController {
 //        }
     }
     
-    
-    
     //커스텀 백버튼 설정
     func setBackBtn(){
 
@@ -155,6 +153,22 @@ extension UIViewController {
         // Notify Child View Controller
         viewController.removeFromParent()
         
+    }
+    
+    //데이트 변환
+    func setDate(createdAt: String , format: String) -> String{
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.timeZone = TimeZone(abbreviation: "KST") //Set timezone that you want
+        dateFormatterGet.locale = NSLocale.current
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = format
+        
+        guard let date = dateFormatterGet.date(from: createdAt) else {return ""}
+
+        return dateFormatterPrint.string(from: date)
     }
 
 
@@ -249,5 +263,4 @@ extension CALayer {
         self.addSublayer(border)
     }
 }
-
 

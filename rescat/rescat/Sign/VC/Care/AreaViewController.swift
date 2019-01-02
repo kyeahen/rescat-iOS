@@ -19,7 +19,8 @@ class AreaViewController: UIViewController {
     var city: String = ""
     var gu: String = ""
     var dong: String = ""
-    var address: String? 
+    var address: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

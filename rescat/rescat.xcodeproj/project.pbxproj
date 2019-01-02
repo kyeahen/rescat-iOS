@@ -14,6 +14,14 @@
 		221291C621DBF50D006DA108 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C521DBF50D006DA108 /* CommentTableViewCell.swift */; };
 		221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */; };
 		221291CA21DC9E15006DA108 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C921DC9E15006DA108 /* HelpViewController.swift */; };
+		2219DB2021DCAD9900FF72D7 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */; };
+		2219DB2321DCDAC600FF72D7 /* AdoptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2221DCDAC600FF72D7 /* AdoptData.swift */; };
+		2219DB2721DCDC2700FF72D7 /* AdoptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2621DCDC2700FF72D7 /* AdoptService.swift */; };
+		2219DB2921DCE4C500FF72D7 /* AdoptDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2821DCE4C500FF72D7 /* AdoptDetailData.swift */; };
+		2219DB2B21DCE5E000FF72D7 /* AdoptDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2A21DCE5E000FF72D7 /* AdoptDetailService.swift */; };
+		2219DB2D21DCEA2200FF72D7 /* AdoptDetailMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2C21DCEA2200FF72D7 /* AdoptDetailMapping.swift */; };
+		2219DB2F21DCFEC300FF72D7 /* AdoptCommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2E21DCFEC300FF72D7 /* AdoptCommentData.swift */; };
+		2219DB3121DCFF2700FF72D7 /* AdoptCommnetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB3021DCFF2700FF72D7 /* AdoptCommnetService.swift */; };
 		221A843221D7FDB3002BECED /* JoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843121D7FDB2002BECED /* JoinService.swift */; };
 		221A843421D7FEA5002BECED /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843321D7FEA5002BECED /* TokenData.swift */; };
 		221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843521D806E6002BECED /* DuplicatedIDService.swift */; };
@@ -42,6 +50,7 @@
 		22B4F65321D7E84A0034346F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F65221D7E84A0034346F /* Font.swift */; };
 		22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F65621D7EBF10034346F /* Care3ViewController.swift */; };
 		22B4F65921D7ED4C0034346F /* FinishCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F65821D7ED4C0034346F /* FinishCareViewController.swift */; };
+		22D126FF21DD477900DDE8D5 /* AdoptCommnetMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */; };
 		22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4E21CF581E007A731C /* MyPage.storyboard */; };
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
 		22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5521CF58C3007A731C /* MainViewController.swift */; };
@@ -103,6 +112,14 @@
 		221291C521DBF50D006DA108 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionCommentViewController.swift; sourceTree = "<group>"; };
 		221291C921DC9E15006DA108 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		2219DB2221DCDAC600FF72D7 /* AdoptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptData.swift; sourceTree = "<group>"; };
+		2219DB2621DCDC2700FF72D7 /* AdoptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptService.swift; sourceTree = "<group>"; };
+		2219DB2821DCE4C500FF72D7 /* AdoptDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptDetailData.swift; sourceTree = "<group>"; };
+		2219DB2A21DCE5E000FF72D7 /* AdoptDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptDetailService.swift; sourceTree = "<group>"; };
+		2219DB2C21DCEA2200FF72D7 /* AdoptDetailMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptDetailMapping.swift; sourceTree = "<group>"; };
+		2219DB2E21DCFEC300FF72D7 /* AdoptCommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptCommentData.swift; sourceTree = "<group>"; };
+		2219DB3021DCFF2700FF72D7 /* AdoptCommnetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptCommnetService.swift; sourceTree = "<group>"; };
 		221A843121D7FDB2002BECED /* JoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinService.swift; sourceTree = "<group>"; };
 		221A843321D7FEA5002BECED /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		221A843521D806E6002BECED /* DuplicatedIDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedIDService.swift; sourceTree = "<group>"; };
@@ -133,6 +150,7 @@
 		22B4F65221D7E84A0034346F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		22B4F65621D7EBF10034346F /* Care3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Care3ViewController.swift; sourceTree = "<group>"; };
 		22B4F65821D7ED4C0034346F /* FinishCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCareViewController.swift; sourceTree = "<group>"; };
+		22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptCommnetMapping.swift; sourceTree = "<group>"; };
 		22FCCD4E21CF581E007A731C /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		22FCCD5521CF58C3007A731C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +235,7 @@
 		221291B521DB6894006DA108 /* Adoption */ = {
 			isa = PBXGroup;
 			children = (
+				2219DB2421DCDC0E00FF72D7 /* Util */,
 				221291B921DB68DB006DA108 /* Storyboard */,
 				221291BC21DBD9AB006DA108 /* VC */,
 			);
@@ -235,12 +254,43 @@
 			isa = PBXGroup;
 			children = (
 				221291C921DC9E15006DA108 /* HelpViewController.swift */,
+				2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */,
 				221291C121DBE0E5006DA108 /* AdoptionViewController.swift */,
 				221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */,
 				221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */,
 				221291C521DBF50D006DA108 /* CommentTableViewCell.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		2219DB2121DCDAA800FF72D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22D1270021DD478100DDE8D5 /* Mapping */,
+				2219DB2221DCDAC600FF72D7 /* AdoptData.swift */,
+				2219DB2821DCE4C500FF72D7 /* AdoptDetailData.swift */,
+				2219DB2E21DCFEC300FF72D7 /* AdoptCommentData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2219DB2421DCDC0E00FF72D7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2219DB2121DCDAA800FF72D7 /* Model */,
+				2219DB2521DCDC1500FF72D7 /* Service */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2219DB2521DCDC1500FF72D7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2219DB2621DCDC2700FF72D7 /* AdoptService.swift */,
+				2219DB2A21DCE5E000FF72D7 /* AdoptDetailService.swift */,
+				2219DB3021DCFF2700FF72D7 /* AdoptCommnetService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		221A844921D8DBFB002BECED /* Care */ = {
@@ -377,6 +427,15 @@
 				22B4F65821D7ED4C0034346F /* FinishCareViewController.swift */,
 			);
 			path = Care;
+			sourceTree = "<group>";
+		};
+		22D1270021DD478100DDE8D5 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				2219DB2C21DCEA2200FF72D7 /* AdoptDetailMapping.swift */,
+				22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */,
+			);
+			path = Mapping;
 			sourceTree = "<group>";
 		};
 		22FCCD4621CF5793007A731C /* MyPage */ = {
@@ -752,13 +811,16 @@
 				221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */,
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
 				221A844C21D8FB81002BECED /* TabBarController.swift in Sources */,
+				2219DB2921DCE4C500FF72D7 /* AdoptDetailData.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */,
 				221291CA21DC9E15006DA108 /* HelpViewController.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
+				2219DB2321DCDAC600FF72D7 /* AdoptData.swift in Sources */,
 				22FCCD7521D35142007A731C /* HttpResCode.swift in Sources */,
 				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
+				2219DB2D21DCEA2200FF72D7 /* AdoptDetailMapping.swift in Sources */,
 				591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */,
 				5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */,
 				596662B621D1F7A600055918 /* Test.swift in Sources */,
@@ -768,6 +830,7 @@
 				22B4F64721D793960034346F /* Care1ViewController.swift in Sources */,
 				22B4F65321D7E84A0034346F /* Font.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
+				2219DB3121DCFF2700FF72D7 /* AdoptCommnetService.swift in Sources */,
 				221A843221D7FDB3002BECED /* JoinService.swift in Sources */,
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
 				221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */,
@@ -776,9 +839,11 @@
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
 				22B4F65921D7ED4C0034346F /* FinishCareViewController.swift in Sources */,
 				22B4F64921D798020034346F /* Care2ViewController.swift in Sources */,
+				2219DB2021DCAD9900FF72D7 /* HelpTableViewCell.swift in Sources */,
 				221291B021DB653A006DA108 /* MapAPIKey.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				221A844621D8D789002BECED /* AuthenticatePhoneService.swift in Sources */,
+				2219DB2721DCDC2700FF72D7 /* AdoptService.swift in Sources */,
 				22B4F64F21D7CCA50034346F /* GuTableViewCell.swift in Sources */,
 				22B4F64D21D7CC610034346F /* CityTableViewCell.swift in Sources */,
 				221291C221DBE0E5006DA108 /* AdoptionViewController.swift in Sources */,
@@ -804,6 +869,7 @@
 				221A844821D8DBA0002BECED /* MessageData.swift in Sources */,
 				5916809621D3D90A00491F5C /* TempCell.swift in Sources */,
 				5916809A21D3DD2700491F5C /* BannerTableCell.swift in Sources */,
+				2219DB2F21DCFEC300FF72D7 /* AdoptCommentData.swift in Sources */,
 				22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
 				5962B6AE21DA0BBC00BB032D /* FundingBannerModel.swift in Sources */,
@@ -821,10 +887,12 @@
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
 				22B4F64B21D79B290034346F /* AreaViewController.swift in Sources */,
 				5962B6BF21DB221100BB032D /* TestVCCell.swift in Sources */,
+				22D126FF21DD477900DDE8D5 /* AdoptCommnetMapping.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
 				5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */,
 				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
+				2219DB2B21DCE5E000FF72D7 /* AdoptDetailService.swift in Sources */,
 				5962B6A821D8F95800BB032D /* NaverMapRequest.swift in Sources */,
 				593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */,
 				5962B6B321DA64C200BB032D /* Int.swift in Sources */,

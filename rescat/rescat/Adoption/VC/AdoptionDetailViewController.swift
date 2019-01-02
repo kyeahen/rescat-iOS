@@ -19,23 +19,112 @@ class AdoptionDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var catImageView: ImageSlideshow!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var sexLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var tnrLabel: UILabel!
+    @IBOutlet weak var protectLabel: UILabel!
+    @IBOutlet weak var etcLabel: UILabel!
+    @IBOutlet weak var adoptButton: UIButton!
     
-    //슬라이드쇼 테스트 소스
-    var imageArr: [InputSource] = [KingfisherSource(urlString: "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500")!, KingfisherSource(urlString: "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500")!]
+    var details: AdoptDetailData?
+    var idx: Int = 0
+    var tag: Int = 0
+    
+    var imageArr: [InputSource] = [InputSource]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTableView()
         setImageSlideShow()
+        setCustomView()
+        getAdoptDetail(_idx: idx)
+    }
+    
+    //MARK: 뷰 요소 커스텀 세팅
+    func setCustomView() {
+        if tag == 0 {
+            adoptButton.setTitle("입양할래요", for: .normal)
+        } else {
+            adoptButton.setTitle("임보할래요", for: .normal)
+        }
     }
     
     func setTableView() {
         //TODO: 더 나은 방법 생각해보기
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
+        
     }
 
 }
+
+//MARK: Networking Extension
+extension AdoptionDetailViewController {
+    
+    func getAdoptDetail(_idx: Int) {
+        
+        AdoptDetailService.shareInstance.getAdoptDetail(idx: _idx, completion: {
+            (result) in
+            
+            switch result {
+            case .networkSuccess(let data) :
+                let detailData = data as? AdoptDetailData
+                
+                if let resResult = detailData {
+                    self.details = resResult
+                    
+                    self.getData()
+                    self.getImageData()
+                }
+                break
+                
+            case .networkFail :
+                self.networkErrorAlert()
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    func getData() {
+        self.nameLabel.text = details?.name
+        self.ageLabel.text = details?.age
+        self.typeLabel.text = details?.breed
+        self.protectLabel.text = details?.vaccination ?? "모름"
+        self.etcLabel.text = details?.contents
+        
+        if details?.sex == 0 {
+            self.sexLabel.text = sexMapping.male.rawValue
+        } else {
+            self.sexLabel.text = sexMapping.female.rawValue
+        }
+        
+        if details?.tnr == 0 {
+            self.tnrLabel.text = TNRMapping.none.rawValue
+        } else {
+            self.tnrLabel.text = TNRMapping.yes.rawValue
+        }
+    }
+    
+    func getImageData() {
+        
+        guard let cnt = details?.photos.count else {return}
+        
+        for i in 0..<cnt {
+            if let url = details?.photos[i].url {
+                self.imageArr.append(KingfisherSource(urlString: url)!)
+            }
+        }
+        
+        self.catImageView.setImageInputs(self.imageArr)
+    }
+    
+}
+
 
 //MARK: ImageSlideShow Setting
 extension AdoptionDetailViewController {
@@ -57,9 +146,6 @@ extension AdoptionDetailViewController {
         catImageView.activityIndicator = DefaultActivityIndicator()
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(AdoptionDetailViewController.didTap))
         catImageView.addGestureRecognizer(recognizer)
-        
-        //이미지 넣기
-        catImageView.setImageInputs(self.imageArr)
         
     }
     

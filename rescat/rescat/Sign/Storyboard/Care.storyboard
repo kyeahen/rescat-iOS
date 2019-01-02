@@ -229,16 +229,16 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQG-ht-A7Z">
-                                <rect key="frame" x="69" y="206" width="237" height="37"/>
+                                <rect key="frame" x="63" y="206" width="249.5" height="37"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서울특별시 동대문구 휘경1동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfU-Y9-M1i">
-                                        <rect key="frame" x="17" y="9" width="169" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                                              " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfU-Y9-M1i">
+                                        <rect key="frame" x="17" y="9" width="181.5" height="19"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUT-Su-hoa">
-                                        <rect key="frame" x="196" y="6.5" width="24" height="24"/>
+                                        <rect key="frame" x="208.5" y="6.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="b2U-HR-XPr"/>
                                             <constraint firstAttribute="width" secondItem="AUT-Su-hoa" secondAttribute="height" multiplier="1:1" id="bMM-GZ-vLN"/>

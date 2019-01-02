@@ -13,6 +13,7 @@ struct DuplicatedIDService: PostableService, APIServie {
     typealias NetworkData = DefaultData
     static let shareInstance = DuplicatedIDService()
     
+    //MARK: POST -/api/users/duplicate/id(아이디 중복 검사)
     func postDuplicatedID(id: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let idURL = self.url("users/duplicate/id?id=\(id)")
