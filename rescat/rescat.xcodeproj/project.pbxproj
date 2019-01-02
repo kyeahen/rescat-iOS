@@ -10,6 +10,10 @@
 		221291B021DB653A006DA108 /* MapAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291AF21DB653A006DA108 /* MapAPIKey.swift */; };
 		221291BB21DB68ED006DA108 /* Adoption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221291BA21DB68ED006DA108 /* Adoption.storyboard */; };
 		221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */; };
+		221291C221DBE0E5006DA108 /* AdoptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C121DBE0E5006DA108 /* AdoptionViewController.swift */; };
+		221291C621DBF50D006DA108 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C521DBF50D006DA108 /* CommentTableViewCell.swift */; };
+		221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */; };
+		221291CA21DC9E15006DA108 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221291C921DC9E15006DA108 /* HelpViewController.swift */; };
 		221A843221D7FDB3002BECED /* JoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843121D7FDB2002BECED /* JoinService.swift */; };
 		221A843421D7FEA5002BECED /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843321D7FEA5002BECED /* TokenData.swift */; };
 		221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A843521D806E6002BECED /* DuplicatedIDService.swift */; };
@@ -95,6 +99,10 @@
 		221291AF21DB653A006DA108 /* MapAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAPIKey.swift; sourceTree = "<group>"; };
 		221291BA21DB68ED006DA108 /* Adoption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adoption.storyboard; sourceTree = "<group>"; };
 		221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionDetailViewController.swift; sourceTree = "<group>"; };
+		221291C121DBE0E5006DA108 /* AdoptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionViewController.swift; sourceTree = "<group>"; };
+		221291C521DBF50D006DA108 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionCommentViewController.swift; sourceTree = "<group>"; };
+		221291C921DC9E15006DA108 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		221A843121D7FDB2002BECED /* JoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinService.swift; sourceTree = "<group>"; };
 		221A843321D7FEA5002BECED /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		221A843521D806E6002BECED /* DuplicatedIDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedIDService.swift; sourceTree = "<group>"; };
@@ -226,7 +234,11 @@
 		221291BC21DBD9AB006DA108 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				221291C921DC9E15006DA108 /* HelpViewController.swift */,
+				221291C121DBE0E5006DA108 /* AdoptionViewController.swift */,
 				221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */,
+				221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */,
+				221291C521DBF50D006DA108 /* CommentTableViewCell.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -702,6 +714,7 @@
 				"${BUILT_PRODUCTS_DIR}/AACarousel/AACarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MXPagerView/MXPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework",
@@ -714,6 +727,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AACarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXParallaxHeader.framework",
@@ -735,10 +749,12 @@
 			files = (
 				22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */,
 				22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */,
+				221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */,
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
 				221A844C21D8FB81002BECED /* TabBarController.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */,
+				221291CA21DC9E15006DA108 /* HelpViewController.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
 				22FCCD7521D35142007A731C /* HttpResCode.swift in Sources */,
@@ -765,6 +781,7 @@
 				221A844621D8D789002BECED /* AuthenticatePhoneService.swift in Sources */,
 				22B4F64F21D7CCA50034346F /* GuTableViewCell.swift in Sources */,
 				22B4F64D21D7CC610034346F /* CityTableViewCell.swift in Sources */,
+				221291C221DBE0E5006DA108 /* AdoptionViewController.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
 				221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */,
 				22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */,
@@ -782,6 +799,7 @@
 				5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */,
 				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
+				221291C621DBF50D006DA108 /* CommentTableViewCell.swift in Sources */,
 				221A845021D9FA4D002BECED /* ReGeocodingService.swift in Sources */,
 				221A844821D8DBA0002BECED /* MessageData.swift in Sources */,
 				5916809621D3D90A00491F5C /* TempCell.swift in Sources */,

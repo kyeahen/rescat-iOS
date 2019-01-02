@@ -59,20 +59,39 @@ extension UIViewController {
         bar.backgroundColor = UIColor.clear
     }
     
+    //네비게이션바 타이틀 left
+    func setNaviTitle(name: String) {
+        let label = UILabel()
+        label.text = name
+        label.font = UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.tintColor = #colorLiteral(red: 0.1411602199, green: 0.141186893, blue: 0.1411544085, alpha: 1)
+        label.textAlignment = .left
+        self.navigationItem.titleView = label
+        
+//        label.snp.makeConstraints ({
+//            (make) in
+//            make.left.equalToSuperview().offset(offset)
+//        })
+        
+//        if let navigationBar = navigationController?.navigationBar {
+//
+//            label.widthAnchor.constraint(equalTo: navigationBar.widthAnchor, constant: -40).isActive = true
+//        }
+    }
+    
+    
+    
     //커스텀 백버튼 설정
-    func setBackBtn(color : UIColor){
+    func setBackBtn(){
 
-//        let backBTN = UIBarButtonItem(image: UIImage(named: "icBackBtn"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-//            style: .plain,
-//            target: self,
-//            action: #selector(self.pop))
-        let backBTN = UIBarButtonItem(title: "back", //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+        let backBTN = UIBarButtonItem(image: UIImage(named: "rectangle"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
             style: .plain,
             target: self,
             action: #selector(self.pop))
 
         navigationItem.leftBarButtonItem = backBTN
-        navigationItem.leftBarButtonItem?.tintColor = color
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
 

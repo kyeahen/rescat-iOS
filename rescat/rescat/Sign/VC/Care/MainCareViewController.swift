@@ -16,7 +16,9 @@ class MainCareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setLeftBarButtonItem()
         changeVC(num: 1)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +65,7 @@ class MainCareViewController: UIViewController {
         switch num {
             
         case 1:
-            setBackBtn(color: #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1))
+            setLeftBarButtonItem()
             
             UIView.animate(withDuration: 1.0) {
                 self.progressView.setProgress(0.25, animated: true)
@@ -147,11 +149,29 @@ extension UIViewController {
 //TODO: 이미지 첨부
 extension MainCareViewController {
     
+    //MARK: intro -> welcome
+    func setLeftBarButtonItem() {
+        
+        let leftButtonItem = UIBarButtonItem.init(
+            image: UIImage(named: "rectangle"),
+            style: .plain,
+            target: self,
+            action: #selector(backAction(sender:))
+        )
+        
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
+        self.navigationItem.leftBarButtonItem = leftButtonItem
+    }
+    
+    @objc func backAction(sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     //MARK: care1 -> intro
     func setLeftBarButtonItem1() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            title: "back1",
+            image: UIImage(named: "rectangle"),
             style: .plain,
             target: self,
             action: #selector(backAction1(sender:))
@@ -169,7 +189,7 @@ extension MainCareViewController {
     func setLeftBarButtonItem2() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            title: "back2",
+            image: UIImage(named: "rectangle"),
             style: .plain,
             target: self,
             action: #selector(backAction2(sender:))
@@ -187,7 +207,7 @@ extension MainCareViewController {
     func setLeftBarButtonItem3() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            title: "back3",
+            image: UIImage(named: "rectangle"),
             style: .plain,
             target: self,
             action: #selector(backAction3(sender:))
@@ -205,13 +225,13 @@ extension MainCareViewController {
     func setLeftBarButtonItem4() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            title: "back4",
+            image: UIImage(named: "rectangle"),
             style: .plain,
             target: self,
             action: #selector(backAction4(sender:))
         )
         
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         self.navigationItem.leftBarButtonItem = leftButtonItem
     }
     

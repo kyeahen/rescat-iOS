@@ -24,6 +24,7 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         hideKeyboardWhenTappedAround()
         
+        setBackBtn()
         setCustomView()
         setEmptyCheck()
 

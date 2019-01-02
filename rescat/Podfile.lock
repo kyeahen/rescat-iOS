@@ -9,6 +9,12 @@ PODS:
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
   - HMSegmentedControl (1.5.3)
+  - ImageSlideshow (1.7.0):
+    - ImageSlideshow/Core (= 1.7.0)
+  - ImageSlideshow/Core (1.7.0)
+  - ImageSlideshow/Kingfisher (1.7.0):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - Kingfisher (4.10.1)
   - MXPagerView (0.2.1)
   - MXParallaxHeader (0.6.1)
@@ -24,6 +30,8 @@ DEPENDENCIES:
   - Alamofire
   - GoogleMaps
   - GooglePlaces
+  - ImageSlideshow (~> 1.6)
+  - ImageSlideshow/Kingfisher
   - Kingfisher
   - MXSegmentedPager
   - SnapKit
@@ -36,6 +44,7 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - HMSegmentedControl
+    - ImageSlideshow
     - Kingfisher
     - MXPagerView
     - MXParallaxHeader
@@ -49,6 +58,7 @@ SPEC CHECKSUMS:
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
+  ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   MXPagerView: ede184b5191b2ed689ccf05a750a9978cce42414
   MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
@@ -56,6 +66,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: beafeaa617d6690165e714b0eb413f497c3014ff
+PODFILE CHECKSUM: 061e6f063a4a4edcf62f67b8b6e220ad6b5a5fe8
 
 COCOAPODS: 1.6.0.beta.2

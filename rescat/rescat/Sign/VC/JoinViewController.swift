@@ -38,24 +38,13 @@ class JoinViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.barTintColor = UIColor.white
         
+        setBackBtn()
         setCustomView()
         setEmptyCheck()
         
         //테이블 뷰 키보드 대응
         NotificationCenter.default.addObserver(self, selector: #selector(JoinViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(JoinViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
-        
-        let label = UILabel()
-        label.text = "Title Label"
-//        label.textAlignment = .left
-        label.font = UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)
-        self.navigationItem.titleView = label
-        
-        label.snp.makeConstraints ({
-            (make) in
-            make.centerX.equalToSuperview()
-            make.left.equalToSuperview().offset(100)
-        })
 
     }
     

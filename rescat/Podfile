@@ -10,9 +10,11 @@ target 'rescat' do
     pod 'SwiftyJSON'
     pod 'Kingfisher'
     pod 'SnapKit'
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
-pod 'AACarousel'
-pod 'MXSegmentedPager'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'AACarousel'
+    pod 'MXSegmentedPager'
+    pod 'ImageSlideshow', '~> 1.6'
+    pod 'ImageSlideshow/Kingfisher'
 
 end

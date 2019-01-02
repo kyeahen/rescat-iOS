@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyAvWkEE1bMbUtGKO23rPU2BMGMFWKglITw")
         GMSPlacesClient.provideAPIKey("AIzaSyAvWkEE1bMbUtGKO23rPU2BMGMFWKglITw")
+        
+        //navigationBar setting
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)]
 
         return true
     }
