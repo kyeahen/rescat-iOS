@@ -10,10 +10,31 @@ import UIKit
 
 class RegisterAdoptViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setCollectionView()
+    }
+    
+    func setCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
 
+}
+
+//MARK: CollectionView Extension
+extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
+        
+        return cell
+    }
+    
 }

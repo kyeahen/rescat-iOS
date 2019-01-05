@@ -54,6 +54,12 @@
 		22BE222A21E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE222921E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift */; };
 		22BE222E21E0AA84009AF7F7 /* SearchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE222D21E0AA84009AF7F7 /* SearchListTableViewCell.swift */; };
 		22BE223121E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223021E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift */; };
+		22BE223421E0B9C0009AF7F7 /* AreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223321E0B9C0009AF7F7 /* AreaCollectionViewCell.swift */; };
+		22BE223721E0B9E4009AF7F7 /* MyPageHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223621E0B9E4009AF7F7 /* MyPageHeaderTableViewCell.swift */; };
+		22BE223921E0B9F1009AF7F7 /* MyPageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223821E0B9F1009AF7F7 /* MyPageListTableViewCell.swift */; };
+		22BE223B21E0BA14009AF7F7 /* MyAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223A21E0BA14009AF7F7 /* MyAreaTableViewCell.swift */; };
+		22BE223D21E0E5CE009AF7F7 /* AreaSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223C21E0E5CE009AF7F7 /* AreaSettingViewController.swift */; };
+		22BE224021E0E62E009AF7F7 /* AreaSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223F21E0E62E009AF7F7 /* AreaSettingTableViewCell.swift */; };
 		22D126FF21DD477900DDE8D5 /* AdoptCommnetMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */; };
 		22D1270221DD528600DDE8D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22D1270121DD528600DDE8D5 /* GoogleService-Info.plist */; };
 		22D1270721DF640100DDE8D5 /* ApplyAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270621DF640100DDE8D5 /* ApplyAdoptViewController.swift */; };
@@ -163,6 +169,12 @@
 		22BE222921E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		22BE222D21E0AA84009AF7F7 /* SearchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListTableViewCell.swift; sourceTree = "<group>"; };
 		22BE223021E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		22BE223321E0B9C0009AF7F7 /* AreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaCollectionViewCell.swift; sourceTree = "<group>"; };
+		22BE223621E0B9E4009AF7F7 /* MyPageHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		22BE223821E0B9F1009AF7F7 /* MyPageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageListTableViewCell.swift; sourceTree = "<group>"; };
+		22BE223A21E0BA14009AF7F7 /* MyAreaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAreaTableViewCell.swift; sourceTree = "<group>"; };
+		22BE223C21E0E5CE009AF7F7 /* AreaSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSettingViewController.swift; sourceTree = "<group>"; };
+		22BE223F21E0E62E009AF7F7 /* AreaSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSettingTableViewCell.swift; sourceTree = "<group>"; };
 		22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptCommnetMapping.swift; sourceTree = "<group>"; };
 		22D1270121DD528600DDE8D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22D1270321DD5B1A00DDE8D5 /* rescat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rescat.entitlements; sourceTree = "<group>"; };
@@ -491,6 +503,27 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		22BE223221E0B9A6009AF7F7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				22FCCD5F21CF677C007A731C /* MyPageViewController.swift */,
+				22BE223A21E0BA14009AF7F7 /* MyAreaTableViewCell.swift */,
+				22BE223321E0B9C0009AF7F7 /* AreaCollectionViewCell.swift */,
+				22BE223621E0B9E4009AF7F7 /* MyPageHeaderTableViewCell.swift */,
+				22BE223821E0B9F1009AF7F7 /* MyPageListTableViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		22BE223E21E0E610009AF7F7 /* Area Setting */ = {
+			isa = PBXGroup;
+			children = (
+				22BE223C21E0E5CE009AF7F7 /* AreaSettingViewController.swift */,
+				22BE223F21E0E62E009AF7F7 /* AreaSettingTableViewCell.swift */,
+			);
+			path = "Area Setting";
+			sourceTree = "<group>";
+		};
 		22D1270021DD478100DDE8D5 /* Mapping */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,7 +590,8 @@
 		22FCCD5D21CF674D007A731C /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				22FCCD5F21CF677C007A731C /* MyPageViewController.swift */,
+				22BE223221E0B9A6009AF7F7 /* Main */,
+				22BE223E21E0E610009AF7F7 /* Area Setting */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -917,6 +951,7 @@
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
 				221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
+				22BE223721E0B9E4009AF7F7 /* MyPageHeaderTableViewCell.swift in Sources */,
 				5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */,
 				22BE222E21E0AA84009AF7F7 /* SearchListTableViewCell.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
@@ -947,7 +982,9 @@
 				5962B69121D79ACD00BB032D /* FundingDetailViewController.swift in Sources */,
 				5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */,
 				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
+				22BE223421E0B9C0009AF7F7 /* AreaCollectionViewCell.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
+				22BE223921E0B9F1009AF7F7 /* MyPageListTableViewCell.swift in Sources */,
 				221291C621DBF50D006DA108 /* CommentTableViewCell.swift in Sources */,
 				221A845021D9FA4D002BECED /* ReGeocodingService.swift in Sources */,
 				221A844821D8DBA0002BECED /* MessageData.swift in Sources */,
@@ -971,9 +1008,12 @@
 				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
 				22B4F64B21D79B290034346F /* AreaViewController.swift in Sources */,
+				22BE223D21E0E5CE009AF7F7 /* AreaSettingViewController.swift in Sources */,
 				5962B6BF21DB221100BB032D /* TestVCCell.swift in Sources */,
+				22BE223B21E0BA14009AF7F7 /* MyAreaTableViewCell.swift in Sources */,
 				22D126FF21DD477900DDE8D5 /* AdoptCommnetMapping.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
+				22BE224021E0E62E009AF7F7 /* AreaSettingTableViewCell.swift in Sources */,
 				5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */,
 				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
