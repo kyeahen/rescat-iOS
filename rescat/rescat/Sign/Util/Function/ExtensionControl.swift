@@ -83,7 +83,7 @@ extension UIViewController {
     //커스텀 백버튼 설정
     func setBackBtn(){
 
-        let backBTN = UIBarButtonItem(image: UIImage(named: "rectangle"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+        let backBTN = UIBarButtonItem(image: UIImage(named: "icBack"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
             style: .plain,
             target: self,
             action: #selector(self.pop))

@@ -14,6 +14,7 @@ class RegisterAdoptViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setBackBtn()
         setCollectionView()
     }
     

@@ -68,7 +68,7 @@ extension AdoptionCommentViewController: UITableViewDelegate, UITableViewDataSou
         let role = comments[indexPath.row].userRole
         if role == careMapping.care.rawValue {
             cell.iconImageView.isHidden = false
-            cell.iconImageView.image = UIImage(named: "icMapCat")
+            cell.iconImageView.image = UIImage(named: "iconCareTakerS")
         } else {
             cell.iconImageView.isHidden = true
         }

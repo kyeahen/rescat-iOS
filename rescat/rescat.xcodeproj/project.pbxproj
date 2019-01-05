@@ -32,6 +32,18 @@
 		221A844C21D8FB81002BECED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A844B21D8FB81002BECED /* TabBarController.swift */; };
 		221A844E21D9F764002BECED /* ReGeocodingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A844D21D9F764002BECED /* ReGeocodingData.swift */; };
 		221A845021D9FA4D002BECED /* ReGeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A844F21D9FA4D002BECED /* ReGeocodingService.swift */; };
+		222D7FBE21E13444000B7379 /* MyPageAddAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FBD21E13444000B7379 /* MyPageAddAreaViewController.swift */; };
+		222D7FC021E13501000B7379 /* SupportingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FBF21E13501000B7379 /* SupportingViewController.swift */; };
+		222D7FC221E1352A000B7379 /* MyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FC121E1352A000B7379 /* MyWriteViewController.swift */; };
+		222D7FC521E13553000B7379 /* MyWriteAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FC421E13553000B7379 /* MyWriteAdoptViewController.swift */; };
+		222D7FC721E13562000B7379 /* MyWriteSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FC621E13562000B7379 /* MyWriteSupportViewController.swift */; };
+		222D7FCA21E13652000B7379 /* ModMyDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FC921E13652000B7379 /* ModMyDataViewController.swift */; };
+		222D7FCE21E1367A000B7379 /* NickNameModViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FCD21E1367A000B7379 /* NickNameModViewController.swift */; };
+		222D7FD021E1368F000B7379 /* PhoneModViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FCF21E1368F000B7379 /* PhoneModViewController.swift */; };
+		222D7FD221E136D9000B7379 /* ModMyDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD121E136D9000B7379 /* ModMyDataTableViewCell.swift */; };
+		222D7FD421E13735000B7379 /* PasswordModViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD321E13735000B7379 /* PasswordModViewController.swift */; };
+		222D7FD621E13766000B7379 /* PostBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD521E13766000B7379 /* PostBoxViewController.swift */; };
+		222D7FD821E13781000B7379 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD721E13781000B7379 /* QuestionViewController.swift */; };
 		2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271880521CF541200E1BCAB /* AppDelegate.swift */; };
 		2271880B21CF541200E1BCAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880921CF541200E1BCAB /* Main.storyboard */; };
 		2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2271880C21CF541300E1BCAB /* Assets.xcassets */; };
@@ -165,6 +177,18 @@
 		221A844B21D8FB81002BECED /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		221A844D21D9F764002BECED /* ReGeocodingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReGeocodingData.swift; sourceTree = "<group>"; };
 		221A844F21D9FA4D002BECED /* ReGeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReGeocodingService.swift; sourceTree = "<group>"; };
+		222D7FBD21E13444000B7379 /* MyPageAddAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAddAreaViewController.swift; sourceTree = "<group>"; };
+		222D7FBF21E13501000B7379 /* SupportingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportingViewController.swift; sourceTree = "<group>"; };
+		222D7FC121E1352A000B7379 /* MyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteViewController.swift; sourceTree = "<group>"; };
+		222D7FC421E13553000B7379 /* MyWriteAdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteAdoptViewController.swift; sourceTree = "<group>"; };
+		222D7FC621E13562000B7379 /* MyWriteSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteSupportViewController.swift; sourceTree = "<group>"; };
+		222D7FC921E13652000B7379 /* ModMyDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModMyDataViewController.swift; sourceTree = "<group>"; };
+		222D7FCD21E1367A000B7379 /* NickNameModViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameModViewController.swift; sourceTree = "<group>"; };
+		222D7FCF21E1368F000B7379 /* PhoneModViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneModViewController.swift; sourceTree = "<group>"; };
+		222D7FD121E136D9000B7379 /* ModMyDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModMyDataTableViewCell.swift; sourceTree = "<group>"; };
+		222D7FD321E13735000B7379 /* PasswordModViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModViewController.swift; sourceTree = "<group>"; };
+		222D7FD521E13766000B7379 /* PostBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoxViewController.swift; sourceTree = "<group>"; };
+		222D7FD721E13781000B7379 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		2271880221CF541200E1BCAB /* rescat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rescat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271880521CF541200E1BCAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2271880A21CF541200E1BCAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -381,6 +405,28 @@
 			path = Care;
 			sourceTree = "<group>";
 		};
+		222D7FC321E1352E000B7379 /* My Content */ = {
+			isa = PBXGroup;
+			children = (
+				222D7FC121E1352A000B7379 /* MyWriteViewController.swift */,
+				222D7FC421E13553000B7379 /* MyWriteAdoptViewController.swift */,
+				222D7FC621E13562000B7379 /* MyWriteSupportViewController.swift */,
+			);
+			path = "My Content";
+			sourceTree = "<group>";
+		};
+		222D7FC821E1362B000B7379 /* Modify */ = {
+			isa = PBXGroup;
+			children = (
+				222D7FC921E13652000B7379 /* ModMyDataViewController.swift */,
+				222D7FD121E136D9000B7379 /* ModMyDataTableViewCell.swift */,
+				222D7FCD21E1367A000B7379 /* NickNameModViewController.swift */,
+				222D7FCF21E1368F000B7379 /* PhoneModViewController.swift */,
+				222D7FD321E13735000B7379 /* PasswordModViewController.swift */,
+			);
+			path = Modify;
+			sourceTree = "<group>";
+		};
 		227187F921CF541200E1BCAB = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +604,7 @@
 			children = (
 				22BE223C21E0E5CE009AF7F7 /* AreaSettingViewController.swift */,
 				22BE223F21E0E62E009AF7F7 /* AreaSettingTableViewCell.swift */,
+				222D7FBD21E13444000B7379 /* MyPageAddAreaViewController.swift */,
 			);
 			path = "Area Setting";
 			sourceTree = "<group>";
@@ -622,6 +669,11 @@
 			children = (
 				22BE223221E0B9A6009AF7F7 /* Main */,
 				22BE223E21E0E610009AF7F7 /* Area Setting */,
+				222D7FBF21E13501000B7379 /* SupportingViewController.swift */,
+				222D7FC321E1352E000B7379 /* My Content */,
+				222D7FC821E1362B000B7379 /* Modify */,
+				222D7FD521E13766000B7379 /* PostBoxViewController.swift */,
+				222D7FD721E13781000B7379 /* QuestionViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1023,10 +1075,13 @@
 			files = (
 				22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */,
 				22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */,
+				222D7FCA21E13652000B7379 /* ModMyDataViewController.swift in Sources */,
 				221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */,
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
 				5962B6E221DD2A3E00BB032D /* FundingCommentsViewController.swift in Sources */,
 				221A844C21D8FB81002BECED /* TabBarController.swift in Sources */,
+				222D7FC221E1352A000B7379 /* MyWriteViewController.swift in Sources */,
+				222D7FD821E13781000B7379 /* QuestionViewController.swift in Sources */,
 				2219DB2921DCE4C500FF72D7 /* AdoptDetailData.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */,
@@ -1055,6 +1110,7 @@
 				2219DB3121DCFF2700FF72D7 /* AdoptCommnetService.swift in Sources */,
 				22D1270D21DFC83200DDE8D5 /* CompleteAdoptViewController.swift in Sources */,
 				221A843221D7FDB3002BECED /* JoinService.swift in Sources */,
+				222D7FD021E1368F000B7379 /* PhoneModViewController.swift in Sources */,
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
 				221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
@@ -1068,7 +1124,9 @@
 				22B4F64921D798020034346F /* Care2ViewController.swift in Sources */,
 				2219DB2021DCAD9900FF72D7 /* HelpTableViewCell.swift in Sources */,
 				221291B021DB653A006DA108 /* MapAPIKey.swift in Sources */,
+				222D7FCE21E1367A000B7379 /* NickNameModViewController.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
+				222D7FD221E136D9000B7379 /* ModMyDataTableViewCell.swift in Sources */,
 				5962B6ED21DE364300BB032D /* FundingDetailTableCell.swift in Sources */,
 				221A844621D8D789002BECED /* AuthenticatePhoneService.swift in Sources */,
 				2219DB2721DCDC2700FF72D7 /* AdoptService.swift in Sources */,
@@ -1083,6 +1141,7 @@
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
 				221A844021D88C12002BECED /* ErrorData.swift in Sources */,
+				222D7FC021E13501000B7379 /* SupportingViewController.swift in Sources */,
 				59A8BCDC21DFBA120035DBB8 /* MapRequestModel.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
 				5962B6B521DB141E00BB032D /* FundingDetailModel.swift in Sources */,
@@ -1092,6 +1151,7 @@
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
 				5962B69121D79ACD00BB032D /* FundingDetailSegmentController.swift in Sources */,
 				5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */,
+				222D7FC521E13553000B7379 /* MyWriteAdoptViewController.swift in Sources */,
 				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
 				59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
@@ -1115,6 +1175,7 @@
 				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
 				22D1270B21DFC80100DDE8D5 /* IntroResisterViewController.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
+				222D7FD421E13735000B7379 /* PasswordModViewController.swift in Sources */,
 				221A843421D7FEA5002BECED /* TokenData.swift in Sources */,
 				22B4F64521D78BC80034346F /* IntroCareViewController.swift in Sources */,
 				22B4F65121D7CCB00034346F /* DongTableViewCell.swift in Sources */,
@@ -1137,12 +1198,15 @@
 				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
 				2219DB2B21DCE5E000FF72D7 /* AdoptDetailService.swift in Sources */,
+				222D7FBE21E13444000B7379 /* MyPageAddAreaViewController.swift in Sources */,
 				5962B6A821D8F95800BB032D /* NaverMapRequest.swift in Sources */,
 				5962B6EB21DE364300BB032D /* FundingDetailBottomTableCell.swift in Sources */,
 				22D1270721DF640100DDE8D5 /* ApplyAdoptViewController.swift in Sources */,
 				593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */,
 				5962B6B321DA64C200BB032D /* Int.swift in Sources */,
 				5962B6B121DA199600BB032D /* LocationUserDefaultService.swift in Sources */,
+				222D7FC721E13562000B7379 /* MyWriteSupportViewController.swift in Sources */,
+				222D7FD621E13766000B7379 /* PostBoxViewController.swift in Sources */,
 				22FCCD7721D3558A007A731C /* PostableService.swift in Sources */,
 				221A844E21D9F764002BECED /* ReGeocodingData.swift in Sources */,
 				5962B6EC21DE364300BB032D /* FundingDetailContentTableCell.swift in Sources */,

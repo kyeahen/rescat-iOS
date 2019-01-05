@@ -55,6 +55,11 @@ class HelpViewController: UIViewController {
     //MARK: rightBarButtonItem Action
     //TODO: 글작성으로 이동
     @objc func rightButtonAction(sender: UIBarButtonItem) {
+        
+        let writeVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: RegisterAdoptViewController.reuseIdentifier) as! RegisterAdoptViewController
+        
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(writeVC, animated: true)
     }
     
     //MARK: 테이블뷰 설정
