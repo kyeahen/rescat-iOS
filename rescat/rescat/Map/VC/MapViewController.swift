@@ -131,6 +131,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                                             preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "수정", style: .default, handler: { result in
             //doSomething
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "modifyVC") as! UINavigationController
+            self.present(vc, animated: true)
         }))
         actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
             //doSomething
@@ -158,7 +160,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 //        let view = DetailView(frame: self.view.frame)
 //        self.view.addSubview(view)
         let mapstoryboard = UIStoryboard(name: "Map", bundle: nil)
-        let vc = mapstoryboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        let vc = mapstoryboard.instantiateViewController(withIdentifier: "registerStartVC") as! UINavigationController
         self.present(vc, animated: true, completion: nil)
 
     }
@@ -287,7 +289,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 make.top.equalTo(self.detailView.snp.top)
 
             }
-            detailContents.modifyButton.addTarget(self, action: #selector(modifyRequestAction(_:)), for: .touchUpInside)
+//            detailContents.modifyButton.addTarget(self, action: #selector(modifyRequestAction(_:)), for: .touchUpInside)
 //            detailView.addSubview(detailContents)
 //            detailImageView = UIImageView()
 //            detailImageView.backgroundColor = UIColor.green
@@ -318,6 +320,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         // zoom in & out
+    }
+    
+    @IBAction func unwindToMainScreen(segue: UIStoryboardSegue) {
+        print("Unwind segue to main screen triggered!")
     }
 
 }

@@ -10,6 +10,7 @@ import UIKit
 import AACarousel
 class MainViewController: UIViewController , AACarouselDelegate , APIServiceCallback{
     
+    @IBOutlet var registerFundingButton: UIBarButtonItem!
     @IBOutlet var tempList : UICollectionView!
     @IBOutlet var tempTableList : UITableView!
     
@@ -25,8 +26,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
 //    var careList = [
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.navigationBar.isHidden = true
-        
+        self.tabBarController?.tabBar.isHidden = false
         let request = FundingRequest(self)
         request.requestMain()
         fundingBannerList.removeAll(); photoArray.removeAll()
@@ -43,7 +43,8 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         
         adoptionListButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
         fundingListButton.addTarget(self, action: #selector(viewFundingList), for: .touchUpInside)
-        
+//        registerFundingButton
+//        registerFundingButton.addT
         let nib1 = UINib(nibName: "FundingTableCell", bundle: nil)
         tempTableList.register(nib1, forCellReuseIdentifier: "FundingTableCell")
         let nib2 = UINib(nibName: "BannerTableCell", bundle: nil)
@@ -63,6 +64,12 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
 
     }
     
+    @IBAction func registerFundingAction(_ sender: Any) {
+     
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
         // Do any additional setup after loading the view.
     func downloadImages(_ url: String, _ index: Int) {
         
@@ -172,8 +179,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 2 {
             return
         } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailViewController") as! FundingDetailViewController
-            FundingDetailViewController.fundingIdx = gino(fundingList[indexPath.row].idx)
+            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
+            FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
 
             tableView.deselectRow(at: indexPath, animated: true)
             self.navigationController?.pushViewController(vc, animated: true)

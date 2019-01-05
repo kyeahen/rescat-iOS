@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FundingDetailTableCell" rowHeight="370" id="KGk-i7-Jjw" customClass="FundingDetailTableCell" customModule="rescat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="369.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0V-Bt-IPg" customClass="AACarousel" customModule="AACarousel">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                        <color key="backgroundColor" red="0.55119977679999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="210" id="YSl-6E-6Uz"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고양이 설명최대 200자대글자최대글자최대글자최대글자최대글자최대글자대글40자" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFB-Ip-Qkx">
+                        <rect key="frame" x="24" y="336" width="327" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고양이 설명최대 200자대글자최대글자최대글자최대글자최대글자최대글자대글40자" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lch-ew-720">
+                        <rect key="frame" x="24" y="278" width="327" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="hUf-yM-Wuf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMa-x0-Xpt">
+                        <rect key="frame" x="24" y="231" width="77" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="V4S-ge-HVN"/>
+                            <constraint firstAttribute="width" constant="77" id="oiy-lg-euW"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="f0V-Bt-IPg" secondAttribute="trailing" id="3ga-8r-rdz"/>
+                    <constraint firstItem="f0V-Bt-IPg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="A03-z7-r3g"/>
+                    <constraint firstItem="f0V-Bt-IPg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Lpb-Xb-UNs"/>
+                    <constraint firstItem="cMa-x0-Xpt" firstAttribute="top" secondItem="f0V-Bt-IPg" secondAttribute="bottom" constant="21" id="Weg-RZ-7iV"/>
+                    <constraint firstItem="dFB-Ip-Qkx" firstAttribute="top" secondItem="lch-ew-720" secondAttribute="bottom" constant="15" id="ZmO-W4-GZ4"/>
+                    <constraint firstItem="lch-ew-720" firstAttribute="trailing" secondItem="dFB-Ip-Qkx" secondAttribute="trailing" id="abx-MJ-inA"/>
+                    <constraint firstAttribute="bottom" secondItem="dFB-Ip-Qkx" secondAttribute="bottom" id="bWT-HT-AiP"/>
+                    <constraint firstItem="lch-ew-720" firstAttribute="leading" secondItem="dFB-Ip-Qkx" secondAttribute="leading" id="qPT-la-WCi"/>
+                    <constraint firstItem="cMa-x0-Xpt" firstAttribute="leading" secondItem="lch-ew-720" secondAttribute="leading" id="zO1-7r-SwY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="dFB-Ip-Qkx" secondAttribute="trailing" constant="24" id="Ehn-rH-lt8"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="leading" secondItem="dFB-Ip-Qkx" secondAttribute="leading" constant="-24" id="Tgt-x1-l6W"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryImageView" destination="cMa-x0-Xpt" id="cXM-4b-Lgm"/>
+                <outlet property="introductionLabel" destination="dFB-Ip-Qkx" id="HYg-8V-8Zh"/>
+                <outlet property="slideImageView" destination="f0V-Bt-IPg" id="oMH-IM-oU1"/>
+                <outlet property="titleLabel" destination="lch-ew-720" id="s7N-RD-Nzi"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="82.758620689655174"/>
+        </tableViewCell>
+    </objects>
+</document>

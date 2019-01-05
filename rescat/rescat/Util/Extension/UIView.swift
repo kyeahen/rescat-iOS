@@ -12,10 +12,10 @@ import SnapKit
 extension UIView {
     func drawPercentage( _ value : Double , _ overallColor : UIColor, _ dataColor : UIColor ) {
         
-        backgroundColor = overallColor
+        backgroundColor = dataColor
         let x = CGFloat(Float(frame.width) * Float(value))
         let v = UIView(frame: CGRect(x: x, y: 0, width: frame.width - x, height: frame.height))
-        v.backgroundColor = dataColor
+        v.backgroundColor = overallColor
         addSubview(v)
 
     }

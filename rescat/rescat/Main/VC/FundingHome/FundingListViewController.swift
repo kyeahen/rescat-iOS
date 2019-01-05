@@ -17,6 +17,11 @@ class FundingListViewController : UIViewController , APIServiceCallback{
     var request : FundingRequest!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        self.tabBarController?.tabBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        self.tabBarController?.tabBar.isHidden = false
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,17 +58,17 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         cell.titleLabel.text = gsno(funding.title)
         cell.introductionLabel.text = gsno(funding.introduction)
         cell.goalmoneyLabel.text = "\(gino(funding.goalAmount).getMoney())원"
-        let percentage : Int = gino(funding.currentAmount)/gino(funding.goalAmount)
-        cell.percentageLabel.text = "\(percentage)%"
+        let percentage = Float(gino(funding.currentAmount))/Float(gino(funding.goalAmount))
+        cell.percentageLabel.text = "\(Int(ceil(percentage*100)))%"
         cell.remaindaysLabel.text = gsno(funding.limitAt)
-        cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatPink(), UIColor.rescatPer())
+        cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailViewController") as! FundingDetailViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
         tableView.deselectRow(at: indexPath, animated: true)
-        FundingDetailViewController.fundingIdx = gino(fundingList[indexPath.row].idx)
+        FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

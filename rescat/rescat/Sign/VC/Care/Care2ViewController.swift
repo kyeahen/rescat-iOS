@@ -53,12 +53,5 @@ class Care2ViewController: UIViewController {
         
     }
     
-    //MARK: UnwindSegue (areaVC -> care2VC)
-    @IBAction func unwindToCare2(sender: UIStoryboardSegue) {
-        if let areaVC = sender.source as? AreaViewController {
-            areaView.isHidden = false
-            dataRecieved = areaVC.address
-        }
-    }
     
 }

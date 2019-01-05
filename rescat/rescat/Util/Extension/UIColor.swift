@@ -21,4 +21,8 @@ extension UIColor {
     static func rescatGray() -> UIColor {
         return UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
     }
+    static func rescatWhite() -> UIColor {
+        return UIColor(red: 255/255, green: 245/255, blue: 240/255, alpha: 1)
+
+    }
 }

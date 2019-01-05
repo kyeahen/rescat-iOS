@@ -14,7 +14,7 @@ class FirstViewController : UITableViewController , APIServiceCallback {
     @IBOutlet var payButton : UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("------ funding detail ------ \(FundingDetailViewController.fundingIdx)")
+        print("------ funding detail ------ \(FundingDetailSegmentController.fundingIdx)")
 
 //        payButton.addTarget(self, action: #selector(payButtonAction), for: .touchUpInside)
 //payButt

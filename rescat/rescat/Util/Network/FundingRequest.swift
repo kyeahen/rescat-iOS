@@ -18,7 +18,7 @@ class FundingRequest : APIServie {
                     let data = try decoder.decode([FundingModel].self, from: fundingList)
                     self.vc.requestCallback(data, APIServiceCode.FUNDING_MAIN)
                 } catch {
-                    print("decoder error")
+                    print("[FundingModel] main decoder error")
                 }
             case .failure(let error):
                 print(error)
@@ -39,7 +39,7 @@ class FundingRequest : APIServie {
                     let datas = try decoder.decode([FundingModel].self, from: fundinglist)
                     self.vc.requestCallback(datas, APIServiceCode.FUNDING_LIST)
                 } catch {
-                    print("decoder error")
+                    print("[FundingModel] list decoder error")
                 }
             case .failure(let error):
                 print(error)
@@ -65,7 +65,7 @@ class FundingRequest : APIServie {
             }
         }
     }
-    func requestFundingDetamil( _ idx : Int) {
+    func requestFundingDetail( _ idx : Int) {
         let url = self.url("fundings/\(idx)")
         Alamofire.request(url).responseData { (res) in
             switch res.result {
@@ -74,7 +74,7 @@ class FundingRequest : APIServie {
                 guard let fundingdetail = res.result.value else { return }
                 let decoder = JSONDecoder()
                 do {
-                    let data = try decoder.decode(FundingDetailPhoto.self, from: fundingdetail)
+                    let data = try decoder.decode(FundingDetailModel.self, from: fundingdetail)
                     self.vc.requestCallback(data, APIServiceCode.FUNDING_DETAIL)
                 } catch {
                     print("funding detail decode failure")
