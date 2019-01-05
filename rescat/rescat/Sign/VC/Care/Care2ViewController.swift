@@ -88,7 +88,6 @@ extension Care2ViewController {
         
         ReGeocodingService.getAddress(lat: _lat, lon: _lon) {
             (result) in
-            
             switch result {
                 
             case .success(let data) :
@@ -131,18 +130,22 @@ extension Care2ViewController: CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization() //권한 요청
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+        locationManager.requestLocation()
         
         areaView.isHidden = false
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //위치가 업데이트될때마다
-        if let coor = manager.location?.coordinate{
+        if let coor = manager.location?.coordinate {
 //            print("latitude: " + String(coor.latitude) + " / longitude: " + String(coor.longitude))
             getAddress(_lat: coor.latitude, _lon: coor.longitude)
+            print("위치")
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("location err")
     }
     
 }

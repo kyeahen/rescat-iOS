@@ -237,13 +237,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUT-Su-hoa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUT-Su-hoa">
                                         <rect key="frame" x="208.5" y="6.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="b2U-HR-XPr"/>
                                             <constraint firstAttribute="width" secondItem="AUT-Su-hoa" secondAttribute="height" multiplier="1:1" id="bMM-GZ-vLN"/>
                                         </constraints>
-                                        <state key="normal" title="X"/>
+                                        <state key="normal" image="icRenew"/>
                                         <connections>
                                             <action selector="reloadAction:" destination="aPC-fB-RVY" eventType="touchUpInside" id="3DF-Xg-zyE"/>
                                         </connections>
@@ -788,5 +788,6 @@
     <resources>
         <image name="buttonAddPhoto" width="150" height="150"/>
         <image name="buttonCtconfirmAddregion" width="160" height="37"/>
+        <image name="icRenew" width="24" height="24"/>
     </resources>
 </document>

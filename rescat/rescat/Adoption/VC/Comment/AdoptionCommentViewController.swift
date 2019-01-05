@@ -11,31 +11,28 @@ import UIKit
 class AdoptionCommentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var adoptButton: UIButton!
+    @IBOutlet weak var commentBottomC: NSLayoutConstraint!
     
     var comments: [AdoptCommentData] = [AdoptCommentData]() {
         didSet {
             self.tableView.reloadData()
         }
     }
+    
     var idx: Int = 0
     var tag: Int = 0
+    
+    var constraintInitVal : CGFloat = 0
+    var check = true
+    var keyboardDismissGesture: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setTableView()
         getAdoptComment(_idx: idx)
-        
-    }
-    
-    //MARK: 뷰 요소 커스텀 세팅
-    func setCustomView() {
-        if tag == 0 {
-            adoptButton.setTitle("입양할래요", for: .normal)
-        } else {
-            adoptButton.setTitle("임보할래요", for: .normal)
-        }
+        setKeyboardSetting()
+
     }
     
     //MARK: 테이블 뷰 세팅
@@ -48,8 +45,12 @@ class AdoptionCommentViewController: UIViewController {
         //TODO: 더 나은 방법 생각해보기
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
     }
-        
-        
+    
+    //MARK: 댓글 전송 액션
+    @objc func commentAction(sender: UIButton) {
+        self.simpleAlert(title: "넹", message: "넹")
+    }
+    
     
 }
 
@@ -110,3 +111,58 @@ extension AdoptionCommentViewController {
         })
     }
 }
+
+//MARK: Keyboard Setting
+extension AdoptionCommentViewController {
+    
+    func setKeyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if check {
+                constraintInitVal = commentBottomC.constant
+                commentBottomC.constant += keyboardSize.height
+                self.view.layoutIfNeeded()
+                check = false
+            }
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            commentBottomC.constant = constraintInitVal
+            self.view.layoutIfNeeded()
+            check = true
+        }
+    }
+    
+    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+        if isKeyboardVisible {
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+                view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        } else {
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
+    }
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
+    }
+}
+
+
+

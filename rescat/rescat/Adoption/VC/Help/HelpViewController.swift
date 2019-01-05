@@ -62,12 +62,15 @@ class HelpViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.tableFooterView = UIView(frame: .zero)
+        
         tableView.separatorColor = #colorLiteral(red: 0.9136453271, green: 0.9137768745, blue: 0.9136167169, alpha: 1)
     }
     
     @IBAction func listAction(_ sender: UIButton) {
         
-        
+        tag = sender.tag
+        print("컨테이너에서\(tag)")
         if sender.tag == 0 {
             adoptButton.setTitleColor(#colorLiteral(red: 0.948010385, green: 0.566582799, blue: 0.5670218468, alpha: 1), for: .normal)
             protectButton.setTitleColor(#colorLiteral(red: 0.7567955852, green: 0.7569058537, blue: 0.7567716241, alpha: 1), for: .normal)

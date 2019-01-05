@@ -202,6 +202,8 @@ class JoinViewController: UIViewController {
             self.simpleAlert(title: "회원가입 실패", message: "비밀번호가 일치하지 않습니다.")
         } else {
             postJoin(id: gsno(idTextField.text), pwd: gsno(pwdTextField.text), rePwd: gsno(pwdCheckTextField.text), nickName: gsno(nickNameTextField.text))
+            let welcomeVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "WelcomVCNavi")
+            self.present(welcomeVC, animated: true, completion: nil)
         }
         
     }

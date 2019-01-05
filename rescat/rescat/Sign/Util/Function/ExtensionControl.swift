@@ -223,7 +223,28 @@ extension UIButton {
     }
 }
 
+extension UITextField {
+    
+    func setTextField() {
+        self.layer.borderColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
+        self.layer.borderWidth = 1
+        self.makeRounded(cornerRadius: 8)
+    }
+}
+
 extension UITextView {
+    
+    func setTextView() {
+        self.layer.borderColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
+        self.layer.borderWidth = 1
+        self.makeRounded(cornerRadius: 8)
+    }
+    
+    func resetTintColor(){
+        let color = tintColor
+        tintColor = .clear
+        tintColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
+    }
     
     //텍스트뷰 스크롤 상단으로 초기화
     //따로 메소드를 호출하지 않아도 이 메소드가 extension에 선언된 것만으로 적용이 됩니다.
@@ -232,6 +253,7 @@ extension UITextView {
         super.draw(rect)
         setContentOffset(CGPoint.zero, animated: false)
     }
+    
 }
 
 extension CALayer {

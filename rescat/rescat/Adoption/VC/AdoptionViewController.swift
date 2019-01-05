@@ -18,28 +18,28 @@ class AdoptionViewController: MXSegmentedPagerController {
         
         super.viewDidLoad()
         
+        print("컨테이너에서\(tag)")
         setBackBtn()
         setTopTabBar()
-        setNaviTitle(name: "입양")
-        
-//        btn = UIButton()
-//        btn.frame = CGRect(x: 0, y: self.view.frame.height, width: 375, height: 49)
-//        btn.setTitle("입양할래", for: .normal)
-//        btn.backgroundColor = #colorLiteral(red: 0.948010385, green: 0.566582799, blue: 0.5670218468, alpha: 1)
-//        btn.titleLabel?.textColor = UIColor.white
-//        self.view.addSubview(btn)
-        
+        setCustomView()
     }
     
+    //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
-        if idx == 0 {
-            self.navigationItem.title = "입양"
+        if tag == 0 {
+            setNaviTitle(name: "입양")
         } else {
-            self.navigationItem.title = "임시보호"
+            setNaviTitle(name: "임시보호")
         }
     }
     
-    //MARK: 상단 탭바 설정
+   
+    //MARK: 입양할래요/임보할래요 액션 - idx
+    @objc func adoptAction(sender: UIButton) {
+        self.simpleAlert(title: "넹", message: "넹")
+    }
+    
+    //MARK: 상단 탭바 설정 - 라이브러리
     func setTopTabBar() {
         
         segmentedPager.backgroundColor = #colorLiteral(red: 0.9881489873, green: 0.9882906079, blue: 0.9881178737, alpha: 1)

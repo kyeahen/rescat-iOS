@@ -26,12 +26,12 @@ class AdoptionDetailViewController: UIViewController {
     @IBOutlet weak var tnrLabel: UILabel!
     @IBOutlet weak var protectLabel: UILabel!
     @IBOutlet weak var etcLabel: UILabel!
-    @IBOutlet weak var adoptButton: UIButton!
+
     
     var details: AdoptDetailData?
     var idx: Int = 0
     var tag: Int = 0
-    
+    var adoptButton = UIButton()
     var imageArr: [InputSource] = [InputSource]()
     
     override func viewDidLoad() {
@@ -41,21 +41,58 @@ class AdoptionDetailViewController: UIViewController {
         setImageSlideShow()
         setCustomView()
         getAdoptDetail(_idx: idx)
+        setFooterButton()
     }
     
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
-        if tag == 0 {
-            adoptButton.setTitle("입양할래요", for: .normal)
-        } else {
-            adoptButton.setTitle("임보할래요", for: .normal)
-        }
+//        if tag == 0 {
+//            adoptButton.setTitle("입양할래요", for: .normal)
+//        } else {
+//            adoptButton.setTitle("임보할래요", for: .normal)
+//        }
     }
     
     func setTableView() {
         //TODO: 더 나은 방법 생각해보기
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
         
+    }
+    
+    //MARK: 하단 버튼 세팅
+    func setFooterButton() {
+        
+        if tag == 0 {
+            adoptButton.setTitle("입양할래요", for: .normal)
+        } else {
+            adoptButton.setTitle("임보할래요", for: .normal)
+        }
+        
+        adoptButton.backgroundColor = #colorLiteral(red: 0.9108809829, green: 0.5436502695, blue: 0.5482131243, alpha: 1)
+        adoptButton.titleLabel?.textAlignment = .center
+        adoptButton.titleLabel?.textColor = UIColor.white
+        adoptButton.titleLabel?.font = UIFont(name: AppleSDGothicNeo.SemiBold.rawValue, size: 20)
+        
+        self.adoptButton.addTarget(self, action: #selector(adoptAction(sender:)), for: UIControl.Event.touchUpInside)
+        view.addSubview(adoptButton)
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        adoptButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+           adoptButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+            adoptButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -64),
+            adoptButton.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+            adoptButton.heightAnchor.constraint(equalToConstant: 49)
+        ])
+    }
+    
+    //MARK: 입양할래요/임보할래요 액션 - idx
+    @objc func adoptAction(sender: UIButton) {
+        self.simpleAlert(title: "넹", message: "넹")
     }
 
 }

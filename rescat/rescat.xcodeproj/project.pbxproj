@@ -50,7 +50,16 @@
 		22B4F65321D7E84A0034346F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F65221D7E84A0034346F /* Font.swift */; };
 		22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F65621D7EBF10034346F /* Care3ViewController.swift */; };
 		22B4F65921D7ED4C0034346F /* FinishCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4F65821D7ED4C0034346F /* FinishCareViewController.swift */; };
+		22BE222821E0A9CE009AF7F7 /* SearchCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE222721E0A9CE009AF7F7 /* SearchCatViewController.swift */; };
+		22BE222A21E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE222921E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift */; };
+		22BE222E21E0AA84009AF7F7 /* SearchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE222D21E0AA84009AF7F7 /* SearchListTableViewCell.swift */; };
+		22BE223121E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE223021E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift */; };
 		22D126FF21DD477900DDE8D5 /* AdoptCommnetMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */; };
+		22D1270221DD528600DDE8D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22D1270121DD528600DDE8D5 /* GoogleService-Info.plist */; };
+		22D1270721DF640100DDE8D5 /* ApplyAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270621DF640100DDE8D5 /* ApplyAdoptViewController.swift */; };
+		22D1270921DFC1E200DDE8D5 /* RegisterAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270821DFC1E200DDE8D5 /* RegisterAdoptViewController.swift */; };
+		22D1270B21DFC80100DDE8D5 /* IntroResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */; };
+		22D1270D21DFC83200DDE8D5 /* CompleteAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270C21DFC83200DDE8D5 /* CompleteAdoptViewController.swift */; };
 		22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4E21CF581E007A731C /* MyPage.storyboard */; };
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
 		22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5521CF58C3007A731C /* MainViewController.swift */; };
@@ -150,7 +159,18 @@
 		22B4F65221D7E84A0034346F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		22B4F65621D7EBF10034346F /* Care3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Care3ViewController.swift; sourceTree = "<group>"; };
 		22B4F65821D7ED4C0034346F /* FinishCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCareViewController.swift; sourceTree = "<group>"; };
+		22BE222721E0A9CE009AF7F7 /* SearchCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCatViewController.swift; sourceTree = "<group>"; };
+		22BE222921E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		22BE222D21E0AA84009AF7F7 /* SearchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListTableViewCell.swift; sourceTree = "<group>"; };
+		22BE223021E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		22D126FE21DD477900DDE8D5 /* AdoptCommnetMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptCommnetMapping.swift; sourceTree = "<group>"; };
+		22D1270121DD528600DDE8D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22D1270321DD5B1A00DDE8D5 /* rescat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rescat.entitlements; sourceTree = "<group>"; };
+		22D1270421DD64F700DDE8D5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		22D1270621DF640100DDE8D5 /* ApplyAdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyAdoptViewController.swift; sourceTree = "<group>"; };
+		22D1270821DFC1E200DDE8D5 /* RegisterAdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAdoptViewController.swift; sourceTree = "<group>"; };
+		22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroResisterViewController.swift; sourceTree = "<group>"; };
+		22D1270C21DFC83200DDE8D5 /* CompleteAdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteAdoptViewController.swift; sourceTree = "<group>"; };
 		22FCCD4E21CF581E007A731C /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		22FCCD5521CF58C3007A731C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -253,12 +273,15 @@
 		221291BC21DBD9AB006DA108 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				221291C921DC9E15006DA108 /* HelpViewController.swift */,
-				2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */,
+				22BE222421E0A98B009AF7F7 /* Help */,
 				221291C121DBE0E5006DA108 /* AdoptionViewController.swift */,
 				221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */,
-				221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */,
-				221291C521DBF50D006DA108 /* CommentTableViewCell.swift */,
+				22BE222521E0A99A009AF7F7 /* Comment */,
+				22D1270621DF640100DDE8D5 /* ApplyAdoptViewController.swift */,
+				22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */,
+				22BE222F21E0ACEC009AF7F7 /* Register */,
+				22D1270C21DFC83200DDE8D5 /* CompleteAdoptViewController.swift */,
+				22BE222621E0A9B0009AF7F7 /* Search */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -332,6 +355,7 @@
 		2271880421CF541200E1BCAB /* rescat */ = {
 			isa = PBXGroup;
 			children = (
+				22D1270321DD5B1A00DDE8D5 /* rescat.entitlements */,
 				596662B121D1F56100055918 /* Util */,
 				2271880521CF541200E1BCAB /* AppDelegate.swift */,
 				2271881721CF544400E1BCAB /* Sign */,
@@ -342,6 +366,7 @@
 				2271880E21CF541300E1BCAB /* LaunchScreen.storyboard */,
 				2271880C21CF541300E1BCAB /* Assets.xcassets */,
 				2271881121CF541300E1BCAB /* Info.plist */,
+				22D1270121DD528600DDE8D5 /* GoogleService-Info.plist */,
 			);
 			path = rescat;
 			sourceTree = "<group>";
@@ -427,6 +452,43 @@
 				22B4F65821D7ED4C0034346F /* FinishCareViewController.swift */,
 			);
 			path = Care;
+			sourceTree = "<group>";
+		};
+		22BE222421E0A98B009AF7F7 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				221291C921DC9E15006DA108 /* HelpViewController.swift */,
+				2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		22BE222521E0A99A009AF7F7 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				221291C721DBF5D9006DA108 /* AdoptionCommentViewController.swift */,
+				221291C521DBF50D006DA108 /* CommentTableViewCell.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		22BE222621E0A9B0009AF7F7 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				22BE222721E0A9CE009AF7F7 /* SearchCatViewController.swift */,
+				22BE222921E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift */,
+				22BE222D21E0AA84009AF7F7 /* SearchListTableViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		22BE222F21E0ACEC009AF7F7 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				22D1270821DFC1E200DDE8D5 /* RegisterAdoptViewController.swift */,
+				22BE223021E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		22D1270021DD478100DDE8D5 /* Mapping */ = {
@@ -638,6 +700,7 @@
 		5A1831A9F22952778B87427A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22D1270421DD64F700DDE8D5 /* UserNotifications.framework */,
 				4E3AE89B86086A0E04626D35 /* Pods_rescat.framework */,
 			);
 			name = Frameworks;
@@ -678,6 +741,14 @@
 				TargetAttributes = {
 					2271880121CF541200E1BCAB = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -709,6 +780,7 @@
 				22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */,
 				22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */,
 				2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */,
+				22D1270221DD528600DDE8D5 /* GoogleService-Info.plist in Resources */,
 				5916808E21D3914700491F5C /* DetailView.xib in Resources */,
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
@@ -772,6 +844,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-rescat/Pods-rescat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AACarousel/AACarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -780,11 +853,14 @@
 				"${BUILT_PRODUCTS_DIR}/MXSegmentedPager/MXSegmentedPager.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AACarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -793,6 +869,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXSegmentedPager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -818,6 +896,7 @@
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
 				2219DB2321DCDAC600FF72D7 /* AdoptData.swift in Sources */,
+				22BE222A21E0A9DF009AF7F7 /* SearchHeaderTableViewCell.swift in Sources */,
 				22FCCD7521D35142007A731C /* HttpResCode.swift in Sources */,
 				22FCCD6021CF677C007A731C /* MyPageViewController.swift in Sources */,
 				2219DB2D21DCEA2200FF72D7 /* AdoptDetailMapping.swift in Sources */,
@@ -825,17 +904,21 @@
 				5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */,
 				596662B621D1F7A600055918 /* Test.swift in Sources */,
 				5962B69F21D881A700BB032D /* UIView.swift in Sources */,
+				22D1270921DFC1E200DDE8D5 /* RegisterAdoptViewController.swift in Sources */,
 				22FCCD6F21D333B9007A731C /* ExtensionControl.swift in Sources */,
 				22FCCDA521D4DF54007A731C /* PostablePhotoService.swift in Sources */,
+				22BE223121E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift in Sources */,
 				22B4F64721D793960034346F /* Care1ViewController.swift in Sources */,
 				22B4F65321D7E84A0034346F /* Font.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				2219DB3121DCFF2700FF72D7 /* AdoptCommnetService.swift in Sources */,
+				22D1270D21DFC83200DDE8D5 /* CompleteAdoptViewController.swift in Sources */,
 				221A843221D7FDB3002BECED /* JoinService.swift in Sources */,
 				22FCCD7321D34EBF007A731C /* GettableService.swift in Sources */,
 				221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
 				5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */,
+				22BE222E21E0AA84009AF7F7 /* SearchListTableViewCell.swift in Sources */,
 				2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */,
 				22B4F65921D7ED4C0034346F /* FinishCareViewController.swift in Sources */,
 				22B4F64921D798020034346F /* Care2ViewController.swift in Sources */,
@@ -847,6 +930,7 @@
 				22B4F64F21D7CCA50034346F /* GuTableViewCell.swift in Sources */,
 				22B4F64D21D7CC610034346F /* CityTableViewCell.swift in Sources */,
 				221291C221DBE0E5006DA108 /* AdoptionViewController.swift in Sources */,
+				22BE222821E0A9CE009AF7F7 /* SearchCatViewController.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
 				221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */,
 				22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */,
@@ -877,6 +961,7 @@
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				5962B6A221D898D500BB032D /* FundingModel.swift in Sources */,
 				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
+				22D1270B21DFC80100DDE8D5 /* IntroResisterViewController.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				221A843421D7FEA5002BECED /* TokenData.swift in Sources */,
 				22B4F64521D78BC80034346F /* IntroCareViewController.swift in Sources */,
@@ -894,6 +979,7 @@
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
 				2219DB2B21DCE5E000FF72D7 /* AdoptDetailService.swift in Sources */,
 				5962B6A821D8F95800BB032D /* NaverMapRequest.swift in Sources */,
+				22D1270721DF640100DDE8D5 /* ApplyAdoptViewController.swift in Sources */,
 				593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */,
 				5962B6B321DA64C200BB032D /* Int.swift in Sources */,
 				5962B6B121DA199600BB032D /* LocationUserDefaultService.swift in Sources */,
@@ -1053,7 +1139,9 @@
 			baseConfigurationReference = 6E888DC89DBFA7B1CAA91301 /* Pods-rescat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = rescat/rescat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_STYLE[sdk=iphoneos*]" = Automatic;
 				DEVELOPMENT_TEAM = S3H456VQ6Y;
 				INFOPLIST_FILE = rescat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1061,7 +1149,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SOPT.rescat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamRescat.rescat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1073,6 +1161,7 @@
 			baseConfigurationReference = 9D3B299A3AF7A2535AE874D3 /* Pods-rescat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = rescat/rescat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S3H456VQ6Y;
 				INFOPLIST_FILE = rescat/Info.plist;
@@ -1081,7 +1170,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SOPT.rescat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamRescat.rescat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
