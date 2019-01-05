@@ -32,21 +32,15 @@ class MainSignViewController: UIViewController {
     func setCustomView() {
         
         skipButton.makeRounded(cornerRadius: 8)
-        joinButton.makeRounded(cornerRadius: 8)
-        joinButton.layer.addBorder(edge: .top, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
-        joinButton.layer.addBorder(edge: .bottom, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
-        joinButton.layer.addBorder(edge: .left, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
-        joinButton.layer.addBorder(edge: .right, color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), thickness: 2)
         
     }
     
-    //MARK: 로그인 액션
-    @IBAction func loginAction(_ sender: UIButton) {
+    //MARK: 로그인 없이 시작하기
+    @IBAction func SkipAction(_ sender: UIButton) {
         
-        let loginVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: LoginViewController.reuseIdentifier)
+        let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
         
-        self.navigationController?.pushViewController(loginVC, animated: true)
-        
+        self.present(mainVC, animated: true, completion: nil)
     }
     
 }

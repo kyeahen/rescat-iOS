@@ -9,8 +9,11 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import Firebase
+import UserNotifications
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -19,10 +22,79 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyAvWkEE1bMbUtGKO23rPU2BMGMFWKglITw")
         GMSPlacesClient.provideAPIKey("AIzaSyAvWkEE1bMbUtGKO23rPU2BMGMFWKglITw")
+        
+        //navigationBar setting
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)]
+        
+        //Firebase Setting
+        FirebaseApp.configure()
+        
+        //Push Setting
+        registerPushNotifications()
 
         return true
     }
+    
+    func registerPushNotifications() {
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                if error == nil{
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        } else {
+            DispatchQueue.main.async {
+                let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+                UIApplication.shared.registerUserNotificationSettings(settings)
+                UIApplication.shared.registerForRemoteNotifications() }
+            
+        }
+        
+    }
+    
+    //devicetoken 등록 성공시 실행되는 메소드
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = ((deviceToken as NSData).description.trimmingCharacters(in: CharacterSet(charactersIn: "<>")) as NSString).replacingOccurrences(of: " ", with: "")
+        print("Notification 등록 성공: \(deviceTokenString)")
+        
 
+    }
+    
+    //devicetoken 등록 실패시 실행되는 메소드
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Notification 등록 실패: \(error.localizedDescription)")
+
+    }
+    
+    // push notification when foreground (iOS 8.0 ~ 9.0)
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
+    
+    // push notification when foreground (iOS 10.0 ~ )
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("User Info = ",notification.request.content.userInfo)
+        completionHandler([.alert, .badge, .sound])
+        
+    }
+    
+   // push notification when background (라고 하지만 테스트해보면 정작 디버깅이 찍히지 않는다... 좀 더 알아봐야 할듯...)
+    @available(iOS 10.0, *) func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("User Info = ",response.notification.request.content.userInfo)
+        completionHandler()
+        
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

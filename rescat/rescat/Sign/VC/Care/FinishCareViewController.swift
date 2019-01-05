@@ -31,9 +31,9 @@ class FinishCareViewController: UIViewController {
     //MARK: 완료 액션
     //TODO: 메인 페이지로 이동
     @IBAction func finishAction(_ sender: UIButton) {
-//        let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier) as! TabBarController
-//
-//        self.present(tabVC, animated: true, completion: nil)
+        let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier) as! TabBarController
+
+        self.present(tabVC, animated: true, completion: nil)
     }
     
 }

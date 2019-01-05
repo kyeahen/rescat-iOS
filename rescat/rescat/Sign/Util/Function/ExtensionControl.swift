@@ -59,20 +59,37 @@ extension UIViewController {
         bar.backgroundColor = UIColor.clear
     }
     
+    //네비게이션바 타이틀 left
+    func setNaviTitle(name: String) {
+        let label = UILabel()
+        label.text = name
+        label.font = UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.tintColor = #colorLiteral(red: 0.1411602199, green: 0.141186893, blue: 0.1411544085, alpha: 1)
+        label.textAlignment = .left
+        self.navigationItem.titleView = label
+        
+//        label.snp.makeConstraints ({
+//            (make) in
+//            make.left.equalToSuperview().offset(offset)
+//        })
+        
+//        if let navigationBar = navigationController?.navigationBar {
+//
+//            label.widthAnchor.constraint(equalTo: navigationBar.widthAnchor, constant: -40).isActive = true
+//        }
+    }
+    
     //커스텀 백버튼 설정
-    func setBackBtn(color : UIColor){
+    func setBackBtn(){
 
-//        let backBTN = UIBarButtonItem(image: UIImage(named: "icBackBtn"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-//            style: .plain,
-//            target: self,
-//            action: #selector(self.pop))
-        let backBTN = UIBarButtonItem(title: "back", //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+        let backBTN = UIBarButtonItem(image: UIImage(named: "rectangle"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
             style: .plain,
             target: self,
             action: #selector(self.pop))
 
         navigationItem.leftBarButtonItem = backBTN
-        navigationItem.leftBarButtonItem?.tintColor = color
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
 
@@ -137,6 +154,22 @@ extension UIViewController {
         viewController.removeFromParent()
         
     }
+    
+    //데이트 변환
+    func setDate(createdAt: String , format: String) -> String{
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.timeZone = TimeZone(abbreviation: "KST") //Set timezone that you want
+        dateFormatterGet.locale = NSLocale.current
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = format
+        
+        guard let date = dateFormatterGet.date(from: createdAt) else {return ""}
+
+        return dateFormatterPrint.string(from: date)
+    }
 
 
 }
@@ -190,7 +223,28 @@ extension UIButton {
     }
 }
 
+extension UITextField {
+    
+    func setTextField() {
+        self.layer.borderColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
+        self.layer.borderWidth = 1
+        self.makeRounded(cornerRadius: 8)
+    }
+}
+
 extension UITextView {
+    
+    func setTextView() {
+        self.layer.borderColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
+        self.layer.borderWidth = 1
+        self.makeRounded(cornerRadius: 8)
+    }
+    
+    func resetTintColor(){
+        let color = tintColor
+        tintColor = .clear
+        tintColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
+    }
     
     //텍스트뷰 스크롤 상단으로 초기화
     //따로 메소드를 호출하지 않아도 이 메소드가 extension에 선언된 것만으로 적용이 됩니다.
@@ -199,6 +253,7 @@ extension UITextView {
         super.draw(rect)
         setContentOffset(CGPoint.zero, animated: false)
     }
+    
 }
 
 extension CALayer {
@@ -230,5 +285,4 @@ extension CALayer {
         self.addSublayer(border)
     }
 }
-
 

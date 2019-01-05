@@ -13,6 +13,7 @@ struct JoinService: PostableService, APIServie {
     typealias NetworkData = DefaultData
     static let shareInstance = JoinService()
     
+    //MARK: POST - /api/users (일반 유저 생성)
     func postJoin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let joinURL = self.url("users")

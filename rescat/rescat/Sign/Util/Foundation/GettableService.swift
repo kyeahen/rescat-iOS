@@ -41,8 +41,9 @@ extension GettableService {
         } else {
             token_header = nil
         }
+        print("이게 나의 토큰 \(token)")
 
-        Alamofire.request(encodedUrl, method: method, parameters: nil, headers: token_header).responseData {(res) in
+        Alamofire.request(encodedUrl, method: method, parameters: nil, headers: nil).responseData {(res) in
 
             switch res.result {
                 
@@ -52,19 +53,21 @@ extension GettableService {
                     print("Networking Get Here!")
                     print(JSON(value))
                     
+                    let resCode = self.gino(res.response?.statusCode)
+                    print(resCode)
+                    
                     let decoder = JSONDecoder()
                     
                     do {
-                        let resCode = self.gino(res.response?.statusCode)
-                        print(resCode)
+                        print("들감")
                         let data = try decoder.decode(NetworkData.self, from: value)
                         
                         let result : networkResult = (resCode, data)
                         completion(.success(result))
                         
                     }catch{
-                        
-                        completion(.error("Error Get"))
+                        print("Catch GET")
+                        completion(.error("\(resCode)"))
                     }
                 }
                 break

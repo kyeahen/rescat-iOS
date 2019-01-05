@@ -7,46 +7,75 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
-struct ReGeocodingService: GettableService {
+struct ReGeocodingService {
+
+    typealias networkResult = (resCode: Int, resResult: Codable)
     
-    //MARK: 전체 코스 종류 및 정보 보기 - /api/course
-    typealias NetworkData = ReGeocodingData
-    static let shareInstance = ReGeocodingService()
-    
-    func getAddressData(lat: String, lon: String, completion : @escaping (NetworkResult<Any>) -> Void) {
+    static func getAddress(lat: Double, lon: Double, completion: @escaping (Result<networkResult>)-> Void) {
+     
+        let mapURL = "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&coords=\(lon),\(lat)&sourcecrs=epsg:4326&output=json&orders=addr,admcode"
         
-        let addressURL = "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&coords=\(lat),\(lon)&sourcecrs=epsg:4326&output=json&orders=addr,admcode"
-        
-        get(addressURL) { (result) in
+        let header: HTTPHeaders = [ "Content-Type" : "application/json",
+                             "X-NCP-APIGW-API-KEY-ID" : "bedux5fmyf",
+                             "X-NCP-APIGW-API-KEY" : "EFYzlcjoUiUrlScgQEc3SiqCrIa2uvcPkxoltOaL"]
+
+        Alamofire.request(mapURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header).responseData() {
+            (res) in
             
-            switch result {
+            switch res.result {
                 
-            case .success(let networkResult):
-                switch networkResult.resCode{
+            case .success:
+                
+                if let value = res.result.value {
                     
-                case HttpResponseCode.getSuccess.rawValue : //200
-                    completion(.networkSuccess(networkResult.resResult))
+                    let decoder = JSONDecoder()
                     
-                case HttpResponseCode.serverErr.rawValue : //500
-                    completion(.serverErr)
+                    do {
+                        let status = res.response?.statusCode
+                        let addressData = try decoder.decode(ReGeocodingData.self, from: value)
+                        let nullData = DefaultData()
+                        
+                        print(JSON(value))
+                        
+                        if status == 200 {
+                            
+                            let code = addressData.status.code
+                            if code == 0 {
+                                
+                                let result : networkResult = (0, addressData)
+                                completion(.success(result))
+            
+                                print("성공데스")
+                            } else {
+                                let result : networkResult = (3, nullData)
+                                completion(.success(result))
+                            }
+                        } else if status == 400 {
+                            let result : networkResult = (3, nullData)
+                            completion(.success(result))
+                        } else {
+
+                            let result : networkResult = (3, nullData)
+                            completion(.success(result))
+                        }
+                        
+                    } catch {
+                        print("변수 문제")
+                        
+                    }
                     
-                default :
-                    print("Success: \(networkResult.resCode)")
-                    break
                 }
                 break
                 
-            case .error(let errMessage) :
-                
-                print(errMessage)
+            case .failure(let err):
+                print(err.localizedDescription)
                 break
-                
-            case .failure(_) :
-                completion(.networkFail)
-                print("Fail: Network Fail")
             }
         }
+        
     }
 }
 

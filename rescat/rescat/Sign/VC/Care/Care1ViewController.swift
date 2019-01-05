@@ -21,12 +21,9 @@ class Care1ViewController: UIViewController {
     
     var parentVC : MainCareViewController?
     var messageCode: Int?
-    var check: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(check)
         
         setCustomView()
         setEmptyCheck()
@@ -106,18 +103,25 @@ class Care1ViewController: UIViewController {
     //MARK: 문자발송 액션
     @IBAction func messageAction(_ sender: UIButton) {
         
-        check = !check
-//        postAuthenticatePhone(_phone: gsno(phoneTextField.text))
-        print(check)
-        
+        UserDefaults.standard.removeObject(forKey: "phone")
+        UserDefaults.standard.set(gsno(phoneTextField.text), forKey: "phone")
+        postAuthenticatePhone(_phone: gsno(phoneTextField.text))
     }
     
     //MARK: 다음 액션
     @IBAction func nextAction(_ sender: UIButton) {
-        if phoneTextField.text == "" || numTextField.text == ""  || check == false {
+        
+        let phone = UserDefaults.standard.string(forKey: "phone")
+        if phoneTextField.text == "" || numTextField.text == "" {
             simpleAlert(title: "", message: "휴대폰 인증을 완료해주세요.")
         } else if numTextField.text != messageCode?.description {
             self.simpleAlert(title: "인증 실패", message: "인증 번호가 일치하지 않습니다.")
+        } else if phone != phoneTextField.text {
+            self.simpleAlert(title: "인증 실패", message:
+            """
+            입력된 전화번호가 발송된 전화번호와
+            일치하지 않습니다.
+            """)
         } else {
             parentVC?.changeVC(num: 3)
         }

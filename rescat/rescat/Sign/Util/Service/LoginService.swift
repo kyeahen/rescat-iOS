@@ -13,6 +13,7 @@ struct LoginService: PostableService, APIServie {
     typealias NetworkData = DefaultData
     static let shareInstance = LoginService()
     
+    //MARK: POST - /api/users/login (유저 로그인)
     func postLogin(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let loginURL = self.url("users/login")

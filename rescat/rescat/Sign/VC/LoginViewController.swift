@@ -22,7 +22,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+        hideKeyboardWhenTappedAround()
         
+        setBackBtn()
         setCustomView()
         setEmptyCheck()
 
@@ -89,6 +91,8 @@ class LoginViewController: UIViewController {
             self.simpleAlert(title: "실패", message: "모든 항목을 입력해주세요.")
         } else {
             postLogin(id: gsno(idTextField.text), pwd: gsno(pwdTextField.text))
+            let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+            self.present(tabVC, animated: true, completion: nil)
         }
     }
     
