@@ -12,6 +12,7 @@ class AdoptionCommentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentBottomC: NSLayoutConstraint!
+    @IBOutlet weak var commentTextField: UITextField!
     
     var comments: [AdoptCommentData] = [AdoptCommentData]() {
         didSet {
@@ -35,6 +36,10 @@ class AdoptionCommentViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     //MARK: 테이블 뷰 세팅
     func setTableView() {
         tableView.delegate = self
@@ -47,10 +52,28 @@ class AdoptionCommentViewController: UIViewController {
     }
     
     //MARK: 댓글 전송 액션
-    @objc func commentAction(sender: UIButton) {
-        self.simpleAlert(title: "넹", message: "넹")
+    @IBAction func commentAction(_ sender: UIButton) {
+        postComment(idx: idx, contents: gsno(commentTextField.text))
     }
     
+    //MARK: 댓글 삭제 및 신고 액션
+    func reportAction(c_id: Int) {
+        
+        let actionSheet = UIAlertController(title: "", message: "기타", preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
+        actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: { result in
+            self.reportContent(idx: self.idx, c_id: c_id)
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
+            
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+
+    }
+
     
 }
 
@@ -77,15 +100,19 @@ extension AdoptionCommentViewController: UITableViewDelegate, UITableViewDataSou
         cell.timeLabel.text = setDate(createdAt: comments[indexPath.row].createdAt, format: "MM/dd   HH:mm")
         cell.contentLabel.text = comments[indexPath.row].contents
         
+        cell.configure(data: comments[indexPath.row])
+        cell.reportHandler = reportAction
+        
+        
         return cell
     }
 
-    
 }
 
 //MARK: Networking Extension
 extension AdoptionCommentViewController {
     
+    //댓글 조회
     func getAdoptComment(_idx: Int) {
         
         AdoptCommentService.shareInstance.getAdoptComment(idx: _idx, completion: {
@@ -110,6 +137,58 @@ extension AdoptionCommentViewController {
             }
         })
     }
+    
+    //댓글 전송
+    func postComment(idx: Int, contents: String) {
+        
+        let params : [String : Any] = ["contents": contents,
+                                       "photoUrl": ""]
+        
+        PostCommentService.shareInstance.postComment(idx: idx, params: params) {(result) in
+            
+            switch result {
+            case .networkSuccess(_ ): //201
+                self.getAdoptComment(_idx: idx)
+                self.commentTextField.text = ""
+
+                break
+                
+            case .networkFail :
+                self.networkErrorAlert()
+                break
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
+                break
+            }
+        }
+    }
+    
+    //댓글 삭제
+    func reportContent(idx: Int, c_id: Int) {
+        
+        DeleteCommentService.shareInstance.deleteComment(idx: idx, c_id: c_id, completion: { (result) in
+
+            switch result {
+            case .networkSuccess(_):
+                self.simpleAlert(title: "성공", message: "해당 댓글을 삭제하였습니다.")
+                self.getAdoptComment(_idx: idx)
+                break
+                
+            case .accessDenied :
+                self.simpleAlert(title: "권한 없음", message: "해당 댓글을 삭제할 수 없습니다.")
+                
+            case .networkFail :
+                self.networkErrorAlert()
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    
 }
 
 //MARK: Keyboard Setting

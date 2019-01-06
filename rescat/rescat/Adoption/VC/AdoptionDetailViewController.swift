@@ -27,7 +27,6 @@ class AdoptionDetailViewController: UIViewController {
     @IBOutlet weak var protectLabel: UILabel!
     @IBOutlet weak var etcLabel: UILabel!
 
-    
     var details: AdoptDetailData?
     var idx: Int = 0
     var tag: Int = 0
@@ -39,20 +38,11 @@ class AdoptionDetailViewController: UIViewController {
         
         setTableView()
         setImageSlideShow()
-        setCustomView()
         getAdoptDetail(_idx: idx)
         setFooterButton()
     }
     
-    //MARK: 뷰 요소 커스텀 세팅
-    func setCustomView() {
-//        if tag == 0 {
-//            adoptButton.setTitle("입양할래요", for: .normal)
-//        } else {
-//            adoptButton.setTitle("임보할래요", for: .normal)
-//        }
-    }
-    
+    //MARK: 테이블 뷰 세팅
     func setTableView() {
         //TODO: 더 나은 방법 생각해보기
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
@@ -92,7 +82,30 @@ class AdoptionDetailViewController: UIViewController {
     
     //MARK: 입양할래요/임보할래요 액션 - idx
     @objc func adoptAction(sender: UIButton) {
-        self.simpleAlert(title: "넹", message: "넹")
+        
+        let token = UserDefaults.standard.string(forKey: "token")
+        
+        if token != "-1" {
+            let applyVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: ApplyAdoptViewController.reuseIdentifier) as! ApplyAdoptViewController
+            
+            applyVC.idx = idx
+            applyVC.tag = tag
+            
+            if tag == 0 {
+                applyVC.titleName = "입양 신청서"
+            } else {
+                 applyVC.titleName = "임시보호 신청서"
+            }
+            
+            self.navigationController?.pushViewController(applyVC, animated: true)
+        } else {
+            self.simpleAlert(title: "회원가입이 필요해요!", message:
+            """
+            입양을 진행하기 위해서는
+            회원가입을 진행해주세요.
+            """)
+        }
+
     }
 
 }
@@ -100,6 +113,7 @@ class AdoptionDetailViewController: UIViewController {
 //MARK: Networking Extension
 extension AdoptionDetailViewController {
     
+    //입양, 임보 리스트 조회
     func getAdoptDetail(_idx: Int) {
         
         AdoptDetailService.shareInstance.getAdoptDetail(idx: _idx, completion: {
@@ -159,6 +173,7 @@ extension AdoptionDetailViewController {
         
         self.catImageView.setImageInputs(self.imageArr)
     }
+    
     
 }
 

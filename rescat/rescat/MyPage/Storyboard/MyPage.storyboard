@@ -1748,7 +1748,7 @@
         <image name="icExitG" width="23" height="22"/>
         <image name="icMypageMore" width="24" height="24"/>
         <image name="icMypageMoreBeige" width="24" height="24"/>
-        <image name="icRenew" width="24" height="24"/>
+        <image name="icRenew" width="18" height="18"/>
         <image name="iconCareTakerS" width="21" height="21"/>
     </resources>
 </document>

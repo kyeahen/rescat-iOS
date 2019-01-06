@@ -11,6 +11,14 @@ import UIKit
 class RegisterAdoptViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var breedTextField: UITextField!
+    
+    var dataRecieved: String? {
+        willSet {
+            breedTextField.text = newValue
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +29,13 @@ class RegisterAdoptViewController: UIViewController {
     func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    //MARK: UnwindSegue (breedVC -> resisterVC)
+    @IBAction func unwindToRegister(sender: UIStoryboardSegue) {
+        if let breedVC = sender.source as? SearchCatViewController {
+            dataRecieved = breedVC.cat
+        }
     }
 
 }

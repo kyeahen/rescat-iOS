@@ -110,7 +110,7 @@ extension HelpViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel.text = adopts[indexPath.row].contents
         cell.viewLabel.text = adopts[indexPath.row].viewCount.description
         cell.catImageView.kf.setImage(with: URL(string: adopts[indexPath.row].photo.url), placeholder: UIImage())
-        cell.timeLabel.text = setDate(createdAt: adopts[indexPath.row].createdAt, format: "MM/ss  HH:mm")
+        cell.timeLabel.text = setDate(createdAt: adopts[indexPath.row].createdAt, format: "MM/dd  HH:mm")
 
         return cell
     }

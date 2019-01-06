@@ -23,8 +23,18 @@ extension UIViewController {
     func simpleAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        alert.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+    //확인 팝업 - 버튼 커스텀
+    func simpleAlertButton(title: String, message: String, buttonMessage: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
+        let okAction = UIAlertAction(title: buttonMessage, style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
@@ -33,7 +43,7 @@ extension UIViewController {
     func networkErrorAlert() {
         
         let alert = UIAlertController(title: "네트워크 오류", message: "네트워크 상태를 확인해주세요", preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        alert.view.tintColor = #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)

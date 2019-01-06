@@ -57,13 +57,6 @@ extension PostableService {
                     
                     //성공 모델
                     if JSON(value) == JSON.null {
-                        
-                        //응답 헤더(토큰)
-                        let AllHeader = JSON(res.response?.allHeaderFields)
-                        if let tokens = AllHeader["Authorization"].string {
-                            print("토큰: \(tokens)")
-                            UserDefaultService.setUserDefault(value: tokens, key: "token")
-                        }
 
                         let result : networkResult = (resCode, DefaultData()) as! (resCode: Int, resResult: Self.NetworkData)
                         completion(.success(result))

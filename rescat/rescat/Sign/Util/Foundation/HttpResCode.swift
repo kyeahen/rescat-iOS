@@ -29,7 +29,7 @@ enum NetworkResult<T> {
     case networkSuccess(T) //200
     case badRequest //400
     case accessDenied //401
-    case nullValue
+    case nullValue //404
     case duplicated //409
     case wrongInput
     case serverErr //500

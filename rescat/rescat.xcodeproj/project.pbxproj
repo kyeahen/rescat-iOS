@@ -44,6 +44,15 @@
 		222D7FD421E13735000B7379 /* PasswordModViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD321E13735000B7379 /* PasswordModViewController.swift */; };
 		222D7FD621E13766000B7379 /* PostBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD521E13766000B7379 /* PostBoxViewController.swift */; };
 		222D7FD821E13781000B7379 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD721E13781000B7379 /* QuestionViewController.swift */; };
+		222D7FDA21E140DE000B7379 /* ApplyAdoptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FD921E140DE000B7379 /* ApplyAdoptService.swift */; };
+		222D7FDE21E1530F000B7379 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FDD21E1530F000B7379 /* RadioButton.swift */; };
+		222D7FE021E15A75000B7379 /* BreedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FDF21E15A75000B7379 /* BreedService.swift */; };
+		222D7FE221E15A98000B7379 /* BreedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FE121E15A98000B7379 /* BreedData.swift */; };
+		222D7FE421E17800000B7379 /* PostCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FE321E17800000B7379 /* PostCommentService.swift */; };
+		222D7FE821E1BB94000B7379 /* DeleteCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FE721E1BB94000B7379 /* DeleteCommentService.swift */; };
+		222D7FEA21E1C6E4000B7379 /* DeletableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FE921E1C6E4000B7379 /* DeletableService.swift */; };
+		222D7FEF21E1D535000B7379 /* MyPageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FEE21E1D535000B7379 /* MyPageData.swift */; };
+		222D7FF121E1D545000B7379 /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D7FF021E1D545000B7379 /* MyPageService.swift */; };
 		2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271880521CF541200E1BCAB /* AppDelegate.swift */; };
 		2271880B21CF541200E1BCAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880921CF541200E1BCAB /* Main.storyboard */; };
 		2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2271880C21CF541300E1BCAB /* Assets.xcassets */; };
@@ -90,7 +99,6 @@
 		22FCCD7721D3558A007A731C /* PostableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7621D3558A007A731C /* PostableService.swift */; };
 		22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7921D35620007A731C /* DefaultData.swift */; };
 		22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD7D21D35B48007A731C /* LoginService.swift */; };
-		22FCCDA021D49694007A731C /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD9F21D49694007A731C /* LoginData.swift */; };
 		22FCCDA221D497E8007A731C /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA121D497E8007A731C /* UserDefaultService.swift */; };
 		22FCCDA521D4DF54007A731C /* PostablePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */; };
 		22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCDCE21D5F6C1007A731C /* LoginViewController.swift */; };
@@ -189,6 +197,15 @@
 		222D7FD321E13735000B7379 /* PasswordModViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModViewController.swift; sourceTree = "<group>"; };
 		222D7FD521E13766000B7379 /* PostBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoxViewController.swift; sourceTree = "<group>"; };
 		222D7FD721E13781000B7379 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		222D7FD921E140DE000B7379 /* ApplyAdoptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyAdoptService.swift; sourceTree = "<group>"; };
+		222D7FDD21E1530F000B7379 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		222D7FDF21E15A75000B7379 /* BreedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedService.swift; sourceTree = "<group>"; };
+		222D7FE121E15A98000B7379 /* BreedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedData.swift; sourceTree = "<group>"; };
+		222D7FE321E17800000B7379 /* PostCommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentService.swift; sourceTree = "<group>"; };
+		222D7FE721E1BB94000B7379 /* DeleteCommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentService.swift; sourceTree = "<group>"; };
+		222D7FE921E1C6E4000B7379 /* DeletableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableService.swift; sourceTree = "<group>"; };
+		222D7FEE21E1D535000B7379 /* MyPageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageData.swift; sourceTree = "<group>"; };
+		222D7FF021E1D545000B7379 /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
 		2271880221CF541200E1BCAB /* rescat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rescat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271880521CF541200E1BCAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2271880A21CF541200E1BCAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -239,7 +256,6 @@
 		22FCCD7621D3558A007A731C /* PostableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostableService.swift; sourceTree = "<group>"; };
 		22FCCD7921D35620007A731C /* DefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
 		22FCCD7D21D35B48007A731C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		22FCCD9F21D49694007A731C /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		22FCCDA121D497E8007A731C /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostablePhotoService.swift; sourceTree = "<group>"; };
 		22FCCDCE21D5F6C1007A731C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +380,7 @@
 				2219DB2221DCDAC600FF72D7 /* AdoptData.swift */,
 				2219DB2821DCE4C500FF72D7 /* AdoptDetailData.swift */,
 				2219DB2E21DCFEC300FF72D7 /* AdoptCommentData.swift */,
+				222D7FE121E15A98000B7379 /* BreedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +390,7 @@
 			children = (
 				2219DB2121DCDAA800FF72D7 /* Model */,
 				2219DB2521DCDC1500FF72D7 /* Service */,
+				222D7FDD21E1530F000B7379 /* RadioButton.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -383,6 +401,10 @@
 				2219DB2621DCDC2700FF72D7 /* AdoptService.swift */,
 				2219DB2A21DCE5E000FF72D7 /* AdoptDetailService.swift */,
 				2219DB3021DCFF2700FF72D7 /* AdoptCommnetService.swift */,
+				222D7FE321E17800000B7379 /* PostCommentService.swift */,
+				222D7FD921E140DE000B7379 /* ApplyAdoptService.swift */,
+				222D7FDF21E15A75000B7379 /* BreedService.swift */,
+				222D7FE721E1BB94000B7379 /* DeleteCommentService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -425,6 +447,31 @@
 				222D7FD321E13735000B7379 /* PasswordModViewController.swift */,
 			);
 			path = Modify;
+			sourceTree = "<group>";
+		};
+		222D7FEB21E1D511000B7379 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				222D7FEC21E1D517000B7379 /* Model */,
+				222D7FED21E1D51C000B7379 /* Service */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		222D7FEC21E1D517000B7379 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				222D7FEE21E1D535000B7379 /* MyPageData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		222D7FED21E1D51C000B7379 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				222D7FF021E1D545000B7379 /* MyPageService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		227187F921CF541200E1BCAB = {
@@ -621,6 +668,7 @@
 		22FCCD4621CF5793007A731C /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				222D7FEB21E1D511000B7379 /* Util */,
 				22FCCD4921CF57D7007A731C /* Storyboard */,
 				22FCCD5D21CF674D007A731C /* VC */,
 			);
@@ -715,7 +763,6 @@
 				221A844921D8DBFB002BECED /* Care */,
 				22FCCD7921D35620007A731C /* DefaultData.swift */,
 				221A843321D7FEA5002BECED /* TokenData.swift */,
-				22FCCD9F21D49694007A731C /* LoginData.swift */,
 				221A843F21D88C12002BECED /* ErrorData.swift */,
 			);
 			path = Model;
@@ -727,6 +774,7 @@
 				22FCCD7421D35142007A731C /* HttpResCode.swift */,
 				22FCCD7221D34EBF007A731C /* GettableService.swift */,
 				22FCCD7621D3558A007A731C /* PostableService.swift */,
+				222D7FE921E1C6E4000B7379 /* DeletableService.swift */,
 				22FCCDA421D4DF54007A731C /* PostablePhotoService.swift */,
 				22FCCDA121D497E8007A731C /* UserDefaultService.swift */,
 				22B4F65221D7E84A0034346F /* Font.swift */,
@@ -1076,6 +1124,7 @@
 				22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */,
 				22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */,
 				222D7FCA21E13652000B7379 /* ModMyDataViewController.swift in Sources */,
+				222D7FEA21E1C6E4000B7379 /* DeletableService.swift in Sources */,
 				221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */,
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
 				5962B6E221DD2A3E00BB032D /* FundingCommentsViewController.swift in Sources */,
@@ -1087,6 +1136,7 @@
 				5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */,
 				221291CA21DC9E15006DA108 /* HelpViewController.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
+				222D7FF121E1D545000B7379 /* MyPageService.swift in Sources */,
 				59A8BCDA21DF83420035DBB8 /* FundingRegisterCompleteVC.swift in Sources */,
 				591680B521D514C400491F5C /* FundingListViewController.swift in Sources */,
 				2219DB2321DCDAC600FF72D7 /* AdoptData.swift in Sources */,
@@ -1128,6 +1178,7 @@
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				222D7FD221E136D9000B7379 /* ModMyDataTableViewCell.swift in Sources */,
 				5962B6ED21DE364300BB032D /* FundingDetailTableCell.swift in Sources */,
+				222D7FEF21E1D535000B7379 /* MyPageData.swift in Sources */,
 				221A844621D8D789002BECED /* AuthenticatePhoneService.swift in Sources */,
 				2219DB2721DCDC2700FF72D7 /* AdoptService.swift in Sources */,
 				22B4F64F21D7CCA50034346F /* GuTableViewCell.swift in Sources */,
@@ -1135,7 +1186,9 @@
 				221291C221DBE0E5006DA108 /* AdoptionViewController.swift in Sources */,
 				22BE222821E0A9CE009AF7F7 /* SearchCatViewController.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
+				222D7FE421E17800000B7379 /* PostCommentService.swift in Sources */,
 				221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */,
+				222D7FDE21E1530F000B7379 /* RadioButton.swift in Sources */,
 				22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
@@ -1155,6 +1208,7 @@
 				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
 				59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
+				222D7FE821E1BB94000B7379 /* DeleteCommentService.swift in Sources */,
 				59A8BCE621E0ADCA0035DBB8 /* FundingRequestModel.swift in Sources */,
 				22BE223421E0B9C0009AF7F7 /* AreaCollectionViewCell.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
@@ -1172,13 +1226,13 @@
 				5962B6AA21D9F62800BB032D /* UIColor.swift in Sources */,
 				22FCCD5A21CF5F8E007A731C /* JoinViewController.swift in Sources */,
 				5962B6A221D898D500BB032D /* FundingModel.swift in Sources */,
-				22FCCDA021D49694007A731C /* LoginData.swift in Sources */,
 				22D1270B21DFC80100DDE8D5 /* IntroResisterViewController.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				222D7FD421E13735000B7379 /* PasswordModViewController.swift in Sources */,
 				221A843421D7FEA5002BECED /* TokenData.swift in Sources */,
 				22B4F64521D78BC80034346F /* IntroCareViewController.swift in Sources */,
 				22B4F65121D7CCB00034346F /* DongTableViewCell.swift in Sources */,
+				222D7FE021E15A75000B7379 /* BreedService.swift in Sources */,
 				5962B6E421DD2A7D00BB032D /* FundingCommentTableViewCell.swift in Sources */,
 				221A843A21D80BB6002BECED /* DuplicatedNickService.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
@@ -1186,6 +1240,7 @@
 				59A8BCE221E096760035DBB8 /* Encodable.swift in Sources */,
 				59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */,
 				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
+				222D7FDA21E140DE000B7379 /* ApplyAdoptService.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
 				22B4F64B21D79B290034346F /* AreaViewController.swift in Sources */,
 				22BE223D21E0E5CE009AF7F7 /* AreaSettingViewController.swift in Sources */,
@@ -1193,6 +1248,7 @@
 				22BE223B21E0BA14009AF7F7 /* MyAreaTableViewCell.swift in Sources */,
 				22D126FF21DD477900DDE8D5 /* AdoptCommnetMapping.swift in Sources */,
 				596662B321D1F57500055918 /* APIService.swift in Sources */,
+				222D7FE221E15A98000B7379 /* BreedData.swift in Sources */,
 				22BE224021E0E62E009AF7F7 /* AreaSettingTableViewCell.swift in Sources */,
 				5962B69921D7D92C00BB032D /* ModifyViewController.swift in Sources */,
 				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
