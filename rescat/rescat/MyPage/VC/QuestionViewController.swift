@@ -13,18 +13,24 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setBackBtn()
+    }
+
+    //MARK: 카톡 아이디 복사 액션
+    @IBAction func idCopyAction(_ sender: UIButton) {
+        let pb: UIPasteboard = UIPasteboard.general
+        pb.string = "@rescat"
+        self.showToast(message: "복사되었습니다.")
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: 이메일 복사 액션
+    @IBAction func emailCopyAction(_ sender: UIButton) {
+        let pb: UIPasteboard = UIPasteboard.general
+        pb.string = "iamrescat@gmail.com"
+        self.showToast(message: "복사되었습니다.")
     }
-    */
-
+    
+    
 }

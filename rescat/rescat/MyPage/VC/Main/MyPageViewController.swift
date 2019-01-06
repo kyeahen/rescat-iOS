@@ -12,21 +12,60 @@ class MyPageViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewBottomC: NSLayoutConstraint!
+    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var careImageView: UIImageView!
     
     var secondArr = ["내가 참여한 후원글", "내가 작성한 글"]
     var thirdArr = ["정보수정", "비밀번호 변경", "문의하기", "로그아웃"]
     
+    var regions : [MyPageRegions] = [MyPageRegions]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getMyPage()
         setTableView()
-//        viewBottomC.constant = 0
+        
     }
     
+    //MARK: 뷰 요소 커스텀 세팅
+    func setCustomView() {
+
+    }
+
+    //MARK: 테이블 뷰 요소 세팅
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    //MARK: 케어테이커 || 회원가입 액션
+    @IBAction func buttonAction(_ sender: UIButton) {
+        
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
+        
+        if role == careMapping.member.rawValue { //케어테이커 인증하기로 이동 - 멤버
+            let careVC = UIStoryboard(name: "Care", bundle: nil).instantiateViewController(withIdentifier: MainCareViewController.reuseIdentifier)
+           
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(careVC, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        } else { //회원가입로 이동 - 게스트
+            let joinVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: JoinViewController.reuseIdentifier)
+           
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(joinVC, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
+    }
+    
 
 }
 
@@ -45,9 +84,6 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             headerCell.titleLabel.text = "내 활동"
         } else if section == 2 {
             headerCell.titleLabel.text = "계정 정보"
-        } else {
-            headerCell.isHidden = true
-            headerCell.heightAnchor.constraint(equalToConstant: 0)
         }
         
         return headerCell
@@ -73,6 +109,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: MyAreaTableViewCell.reuseIdentifier) as! MyAreaTableViewCell
             
+            cell.regions = regions
             cell.collectionView.reloadData()
             
             return cell
@@ -95,11 +132,147 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
+        
         if section == 0 {
             return 0
-        } else {
+        } else if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
             return 47
+        } else {
+            return 0
+        }
+        
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
+
+        if indexPath.section == 0 { //지역 설정 - 케어테이커만
+            if role == careMapping.care.rawValue {
+                return 115
+            } else {
+                return 0
+            }
+        } else if indexPath.section == 1 {
+            if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+
+                return 44
+            } else {
+                return 0
+            }
+        } else {
+            if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+                
+                return 44
+            } else {
+                return 0
+            }
+        }
+
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            
+            if indexPath.row == 0 { //내가 참여한 후원글
+                let applyFundVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: SupportingViewController.reuseIdentifier)
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(applyFundVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            } else { //내가 작성한 글
+                let myWriteVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: MyWriteViewController.reuseIdentifier)
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(myWriteVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            }
+        } else if indexPath.section == 2 {
+            
+            if indexPath.row == 0 { //정보수정
+                let modDataVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: ModMyDataViewController.reuseIdentifier)
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(modDataVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            } else if indexPath.row == 1 { //비밀번호 변경
+                let pwdVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PasswordModViewController.reuseIdentifier)
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(pwdVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            } else if indexPath.row == 2 { //문의하기
+                let qesVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: QuestionViewController.reuseIdentifier)
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(qesVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            } else {
+                self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
+                    UserDefaults.standard.removeObject(forKey: "token")
+                    UserDefaults.standard.set("-1", forKey: "token")
+                    self.performSegue(withIdentifier: "unwindToHome", sender: nil)
+                    })
+            }
         }
     }
     
+}
+
+//MARK: Networking Extension
+extension MyPageViewController {
+    
+    //마이페이지 조회
+    func getMyPage() {
+        MyPageService.shareInstance.getMypageInit(completion: {
+            (result) in
+            
+            switch result {
+            case .networkSuccess(let data) :
+                let myPageData = data as? MyPageData
+                
+                
+                if let resResult = myPageData {
+                    
+                    let regionData = resResult.regions as? [MyPageRegions]
+                    if let areaResult = regionData {
+                        self.regions = areaResult
+                    }
+                    
+                    UserDefaults.standard.set(resResult.role, forKey: "role")
+                    print("나의 역할은 \(self.gsno(UserDefaults.standard.string(forKey: "role")))")
+                    
+                    if resResult.role == careMapping.care.rawValue {
+                        self.viewBottomC.constant = 0
+                        self.joinButton.isHidden = true
+                        self.careImageView.isHidden = false
+                    } else {
+                        self.viewBottomC.constant = 79
+                        self.joinButton.isHidden = false
+                        self.careImageView.isHidden = true
+                    }
+                    
+                    self.nickNameLabel.text = resResult.nickname
+                    self.idLabel.text = resResult.id
+                    
+                }
+                self.joinButton.setImage(UIImage(named: "buttonMypageCaretaker"), for: .normal)
+                self.tableView.reloadData()
+                break
+                
+            case .accessDenied :
+                self.nickNameLabel.text = "회원가입이 필요해요!"
+                self.idLabel.text = "현재 비회원입니다."
+                self.joinButton.setImage(UIImage(named: "buttonMypageJoin"), for: .normal) 
+                
+                break
+                
+            case .networkFail :
+                self.networkErrorAlert()
+                break
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+            
+            
+        })
+    }
 }

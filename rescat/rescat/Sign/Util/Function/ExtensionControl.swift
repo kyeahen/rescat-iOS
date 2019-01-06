@@ -52,7 +52,7 @@ extension UIViewController {
     //확인, 취소 팝업
     func simpleAlertwithHandler(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        alert.view.tintColor = #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
         let cancelAction = UIAlertAction(title: "취소",style: .cancel, handler: nil)
         alert.addAction(okAction)
@@ -179,6 +179,27 @@ extension UIViewController {
         guard let date = dateFormatterGet.date(from: createdAt) else {return ""}
 
         return dateFormatterPrint.string(from: date)
+    }
+    
+    //커스텀 토스트
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: AppleSDGothicNeo.Medium.rawValue, size: 14.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 
 

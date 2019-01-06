@@ -153,6 +153,10 @@ extension AdoptionCommentViewController {
 
                 break
                 
+            case .accessDenied: //401
+                self.simpleAlert(title: "권한 없음", message: "회원가입 후, 이용 가능합니다.")
+                break
+                
             case .networkFail :
                 self.networkErrorAlert()
                 break

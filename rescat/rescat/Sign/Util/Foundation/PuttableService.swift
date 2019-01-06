@@ -1,29 +1,29 @@
 //
-//  PostableService.swift
+//  PuttableService.swift
 //  rescat
 //
-//  Created by 김예은 on 26/12/2018.
-//  Copyright © 2018 kyeahen. All rights reserved.
+//  Created by 김예은 on 06/01/2019.
+//  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 import SwiftyJSON
 
-protocol PostableService {
+protocol PuttableService {
     
     associatedtype NetworkData : Codable
     typealias networkResult = (resCode: Int, resResult: NetworkData)
-    func post(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
+    func put(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
 }
 
-extension PostableService {
+extension PuttableService {
     
     func gino(_ value : Int?) -> Int {
         return value ?? 0
     }
     
-    func post(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void){
+    func put(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void){
         
         guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Networking - invalid URL")
@@ -41,13 +41,13 @@ extension PostableService {
             token_header = nil
         }
         
-        Alamofire.request(encodedUrl, method: .post, parameters: params, encoding: JSONEncoding.default, headers: token_header).responseData(){
+        Alamofire.request(encodedUrl, method: .put, parameters: params, encoding: JSONEncoding.default, headers: token_header).responseData(){
             (res) in
             
             switch res.result {
             case .success:
-
-                print("Networking Post Here")
+                
+                print("Networking Put Here")
                 
                 if let value = res.result.value {
                     let resCode = self.gino(res.response?.statusCode)
@@ -57,7 +57,7 @@ extension PostableService {
                     
                     //성공 모델
                     if JSON(value) == JSON.null {
-
+                        
                         let result : networkResult = (resCode, DefaultData()) as! (resCode: Int, resResult: Self.NetworkData)
                         completion(.success(result))
                         break
@@ -68,14 +68,14 @@ extension PostableService {
                     
                     //실패 모델
                     do {
-
+                        
                         let resData = try decoder.decode(NetworkData.self, from: value)
                         
                         let result : networkResult = (resCode, resData)
                         
                         completion(.success(result))
                     }catch{ //변수 문제 예외 예상
-                        print("Catch Post")
+                        print("Catch Put")
                         
                         
                         completion(.error("\(resCode)"))

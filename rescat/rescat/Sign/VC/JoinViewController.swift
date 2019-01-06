@@ -230,6 +230,7 @@ extension JoinViewController {
                 let welcomeVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "WelcomVCNavi")
                 
                 self.present(welcomeVC, animated: true, completion: nil)
+                UserDefaults.standard.removeObject(forKey: "role")
                 break
                 
             case .badRequest: //400
@@ -265,6 +266,14 @@ extension JoinViewController {
                 self.idLabel.textColor = #colorLiteral(red: 0.4895007014, green: 0.8178752065, blue: 0.1274456084, alpha: 1)
                 break
                 
+            case .badRequest :
+                self.simpleAlert(title: "", message:
+                """
+                아이디는 영문자로 시작하는
+                6~20자 영문자 또는 숫자이어야 합니다.
+                """)
+                break
+                
             case .duplicated :
                 
                 self.idLabel.isHidden = false
@@ -296,6 +305,14 @@ extension JoinViewController {
                 self.nickNameLabel.isHidden = false
                 self.nickNameLabel.text = "사용할 수 있는 닉네임입니다."
                 self.nickNameLabel.textColor = #colorLiteral(red: 0.4895007014, green: 0.8178752065, blue: 0.1274456084, alpha: 1)
+                break
+                
+            case .badRequest :
+                self.simpleAlert(title: "", message:
+                """
+                닉네임은 특수문자 제외
+                2~20자이어야 합니다.
+                """)
                 break
                 
             case .duplicated :

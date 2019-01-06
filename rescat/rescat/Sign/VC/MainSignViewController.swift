@@ -40,9 +40,13 @@ class MainSignViewController: UIViewController {
         
         UserDefaults.standard.removeObject(forKey: "token")
         UserDefaults.standard.set("-1", forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "role")
         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier) 
         
         self.present(mainVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
     }
     
 }

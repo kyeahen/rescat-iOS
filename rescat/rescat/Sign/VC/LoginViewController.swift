@@ -91,8 +91,6 @@ class LoginViewController: UIViewController {
             self.simpleAlert(title: "실패", message: "모든 항목을 입력해주세요.")
         } else {
             postLogin(id: gsno(idTextField.text), pwd: gsno(pwdTextField.text))
-            let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
-            self.present(tabVC, animated: true, completion: nil)
         }
     }
     
@@ -111,7 +109,9 @@ extension LoginViewController {
             
             switch result {
             case .networkSuccess( _): //200
-                self.simpleAlert(title: "로그인 성공", message: "환영합니다.")
+                UserDefaults.standard.removeObject(forKey: "role")
+                let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+                self.present(tabVC, animated: true, completion: nil)
                 break
             
             case .accessDenied, .badRequest: //401(없는 사용자), 400(비번 불일치)

@@ -27,6 +27,9 @@ struct DuplicatedNickService: PostableService, APIServie {
                 case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
                     
+                case HttpResponseCode.badRequest.rawValue : //400
+                    completion(.badRequest)
+                    
                 case HttpResponseCode.conflict.rawValue : //409
                     completion(.duplicated)
                     

@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+struct MyPageData: Codable {
+    let id: String
+    let mileage: Int?
+    let nickname: String
+    let phone: String?
+    let regions: [MyPageRegions]?
+    let role: String? //MEMBER, CARETAKER, GUEST
+    let name: String?
+}
+
+struct MyPageRegions: Codable {
+    let code: Int
+    let name: String
+}

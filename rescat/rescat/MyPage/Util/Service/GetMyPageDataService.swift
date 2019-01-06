@@ -1,5 +1,5 @@
 //
-//  MyPageService.swift
+//  GetMyPageDataService.swift
 //  rescat
 //
 //  Created by 김예은 on 06/01/2019.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct MyPageService: GettableService, APIServie {
+struct GetMyPageDataService: GettableService, APIServie {
     
     typealias NetworkData = MyPageData
-    static let shareInstance = MyPageService()
+    static let shareInstance = GetMyPageDataService()
     
-    //MARK: GET - /api/users/mypage (마이페이지 조회)
-    func getMypageInit(completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: GET - /api/users/mypage/edit (회원정보 조회)
+    func getMyDataInit(completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let myPageURL = self.url("users/mypage")
+        let editURL = self.url("users/mypage/edit")
         
-        get(myPageURL) { (result) in
+        get(editURL) { (result) in
             switch result {
                 
             case .success(let networkResult):
@@ -58,4 +58,3 @@ struct MyPageService: GettableService, APIServie {
         }
     }
 }
-

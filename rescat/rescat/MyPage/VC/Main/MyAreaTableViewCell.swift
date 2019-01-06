@@ -12,6 +12,11 @@ class MyAreaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var areaButton: UIButton!
+    var regions: [MyPageRegions] = [MyPageRegions]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +36,7 @@ class MyAreaTableViewCell: UITableViewCell {
 extension MyAreaTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return regions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,7 +48,10 @@ extension MyAreaTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
             cell.backgroundColor = #colorLiteral(red: 0.7470303178, green: 0.5998028517, blue: 0.5045881271, alpha: 1)
         }
         
-        cell.areaLabel.text = "동대문구"
+        let area = regions[indexPath.row].name
+        let dong = area.components(separatedBy: " ")
+        cell.areaLabel.text = dong[2]
+        
         cell.layer.cornerRadius = 20
         
         return cell
