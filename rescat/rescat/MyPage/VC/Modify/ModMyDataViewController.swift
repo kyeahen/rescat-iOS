@@ -24,12 +24,14 @@ class ModMyDataViewController: UIViewController {
     var dataRecieved: String? {
         willSet {
             myPages[2] = newValue as! String
+
         }
     }
     
     var dataRecieved1: String? {
         willSet {
             myPages[3] = newValue as! String
+
         }
     }
     
@@ -115,12 +117,6 @@ extension ModMyDataViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
-}
-
-//MARK: Networking Extension
-extension ModMyDataViewController {
-    
     //회원정보 조회
     func getMyData() {
         GetMyPageDataService.shareInstance.getMyDataInit(completion: {
@@ -134,7 +130,7 @@ extension ModMyDataViewController {
                 if let resResult = myPageData {
                     
                     if role == careMapping.care.rawValue {
-
+                        
                         self.myPages.append(self.gsno(resResult.name))
                         self.myPages.append(self.gsno(resResult.id))
                         self.myPages.append(self.gsno(resResult.nickname))
@@ -160,8 +156,8 @@ extension ModMyDataViewController {
                 break
             }
             
-            
         })
     }
+    
+    
 }
-

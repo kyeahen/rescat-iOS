@@ -60,6 +60,7 @@ class HelpViewController: UIViewController {
         
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(writeVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
     
     //MARK: 테이블뷰 설정
@@ -110,8 +111,7 @@ extension HelpViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel.text = adopts[indexPath.row].contents
         cell.viewLabel.text = adopts[indexPath.row].viewCount.description
         cell.catImageView.kf.setImage(with: URL(string: adopts[indexPath.row].photo.url), placeholder: UIImage())
-        cell.timeLabel.text = setDate(createdAt: adopts[indexPath.row].createdAt, format: "MM/dd  HH:mm")
-
+        cell.timeLabel.text = setHours(start: adopts[indexPath.row].createdAt)
         return cell
     }
     

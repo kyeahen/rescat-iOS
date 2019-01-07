@@ -29,15 +29,6 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
-    //확인 팝업 - 버튼 커스텀
-    func simpleAlertButton(title: String, message: String, buttonMessage: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
-        let okAction = UIAlertAction(title: buttonMessage, style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
     
     //네트워크 에러 팝업
     func networkErrorAlert() {
@@ -47,6 +38,17 @@ extension UIViewController {
         let okAction = UIAlertAction(title: "확인",style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+    
+    //확인, 취소 팝업 - 버튼 커스텀
+    func simpleAlertwithCustom(title: String, message: String, ok: String, cancel: String, okHandler : ((UIAlertAction) -> Void)?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.tintColor = #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
+        let okAction = UIAlertAction(title: ok,style: .default, handler: okHandler)
+        let cancelAction = UIAlertAction(title: cancel,style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     //확인, 취소 팝업
@@ -201,6 +203,29 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+    
+    //1시간전
+    func setHours(start: String) -> String {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let day  = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
+        let interval = NSDate().timeIntervalSince(day)
+        let hour = Int(interval / 3600)
+
+        return "\(hour)시간 전"
+    }
+    
+    func setDday(start: String) -> Int {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let day = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
+        let interval = NSDate().timeIntervalSince(day)
+        let days = Int(interval / 86400)
+        
+        return days
+    }
 
 
 }
@@ -261,6 +286,12 @@ extension UITextField {
         self.layer.borderWidth = 1
         self.makeRounded(cornerRadius: 8)
     }
+    
+    func setTextField(radius: CGFloat, color: CGColor) {
+        self.layer.borderColor = color
+        self.layer.borderWidth = 1
+        self.makeRounded(cornerRadius: radius)
+    }
 }
 
 extension UITextView {
@@ -317,3 +348,16 @@ extension CALayer {
     }
 }
 
+extension Int {
+    
+    //숫자 콤마
+    private static var commaFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
+    internal var commaRepresentation: String {
+        return Int.commaFormatter.string(from: NSNumber(value: self)) ?? ""
+    }
+}

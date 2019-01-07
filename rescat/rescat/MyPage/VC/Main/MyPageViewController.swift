@@ -34,16 +34,34 @@ class MyPageViewController: UIViewController{
         setTableView()
         
     }
-    
-    //MARK: 뷰 요소 커스텀 세팅
-    func setCustomView() {
-
-    }
 
     //MARK: 테이블 뷰 요소 세팅
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    //MARK: rightBarButtonItem Setting
+    func setRightBarButtonItem() {
+        let rightButtonItem = UIBarButtonItem.init(
+            title: "우체통",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonAction(sender:))
+        )
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor =  #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
+    }
+    
+    //MARK: rightBarButtonItem Action
+    @objc func rightButtonAction(sender: UIBarButtonItem) {
+        let postVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier)
+        
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(postVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
     
     //MARK: 케어테이커 || 회원가입 액션
@@ -247,6 +265,10 @@ extension MyPageViewController {
                         self.joinButton.isHidden = false
                         self.careImageView.isHidden = true
                     }
+                    
+                    if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue {
+                        self.setRightBarButtonItem()
+                    } 
                     
                     self.nickNameLabel.text = resResult.nickname
                     self.idLabel.text = resResult.id

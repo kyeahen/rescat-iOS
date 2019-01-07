@@ -17,6 +17,7 @@ target 'rescat' do
     pod 'ImageSlideshow', '~> 1.6'
     pod 'ImageSlideshow/Kingfisher'
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     pod 'UITextView+Placeholder'
 
 end

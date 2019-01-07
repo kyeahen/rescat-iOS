@@ -70,8 +70,7 @@ class NickNameModViewController: UIViewController {
         if nickNameTextField.text == "" {
             self.simpleAlert(title: "수정 실패", message: "수정할 닉네임을 입력해주세요.")
         } else {
-            nickName = gsno(nickNameTextField.text)
-            self.performSegue(withIdentifier: "unwindToListNick", sender: self)
+            putModNickName(_nickname: gsno(nickNameTextField.text))
         }
 
     }
@@ -118,6 +117,35 @@ extension NickNameModViewController {
                 break
                 
             default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
+                break
+            }
+            
+        }
+    }
+    
+    //MARK: 닉네임 수정
+    func putModNickName(_nickname : String) {
+        
+        ModifyUserDataService.shareInstance.putModNickNameData(nickname: _nickname, params: [:]) {
+            (result) in
+            
+            switch result {
+            case .networkSuccess(_ ):
+                self.nickName = self.gsno(self.nickNameTextField.text)
+                self.performSegue(withIdentifier: "unwindToListNick", sender: self)
+                break
+                
+                
+            case .accessDenied:
+                self.simpleAlert(title: "권한 없음", message: "회원 가입 후, 이용할 수 있습니다.")
+                break
+                
+            case .networkFail:
+                self.networkErrorAlert()
+                break
+                
+            default:
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
                 break
             }

@@ -11,8 +11,8 @@ import MXSegmentedPager
 
 class AdoptionViewController: MXSegmentedPagerController {
 
-    var idx: Int = 0
-    var tag: Int = 0
+    var idx: Int = 0 //글 번호
+    var tag: Int = 0 //입양 - 임보 구분
     
     override func viewDidLoad() {
         
@@ -31,12 +31,6 @@ class AdoptionViewController: MXSegmentedPagerController {
         } else {
             setNaviTitle(name: "임시보호")
         }
-    }
-    
-   
-    //MARK: 입양할래요/임보할래요 액션 - idx
-    @objc func adoptAction(sender: UIButton) {
-        self.simpleAlert(title: "넹", message: "넹")
     }
     
     //MARK: 상단 탭바 설정 - 라이브러리
@@ -60,12 +54,12 @@ class AdoptionViewController: MXSegmentedPagerController {
     }
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, didScrollWith parallaxHeader: MXParallaxHeader) {
-                print("progress \(parallaxHeader.progress)")
+                //print("progress \(parallaxHeader.progress)")
     }
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, viewControllerForPageAt index: Int) -> UIViewController {
         
-        if index == 0 {
+        if index == 0 { //상세보기
             let detailVC = super.segmentedPager(segmentedPager, viewControllerForPageAt: 0) as! AdoptionDetailViewController
             
             detailVC.idx = idx
@@ -73,7 +67,7 @@ class AdoptionViewController: MXSegmentedPagerController {
             
             return detailVC
             
-        } else {
+        } else { //리뷰
             let commnetVC = super.segmentedPager(segmentedPager, viewControllerForPageAt: 1) as! AdoptionCommentViewController
             
             commnetVC.idx = idx

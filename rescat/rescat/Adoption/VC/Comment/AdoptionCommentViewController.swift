@@ -13,6 +13,8 @@ class AdoptionCommentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentBottomC: NSLayoutConstraint!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentView: UIView!
+    
     
     var comments: [AdoptCommentData] = [AdoptCommentData]() {
         didSet {
@@ -31,6 +33,7 @@ class AdoptionCommentViewController: UIViewController {
         super.viewDidLoad()
 
         setTableView()
+        setCustomView()
         getAdoptComment(_idx: idx)
         setKeyboardSetting()
 
@@ -38,6 +41,12 @@ class AdoptionCommentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
+    }
+    
+    //MARK: 뷰 요소 커스텀 세팅
+    func setCustomView(){
+        commentView.layer.addBorder(edge: .top, color: #colorLiteral(red: 0.752874434, green: 0.7529841065, blue: 0.7528504729, alpha: 1), thickness: 0.5
+        )
     }
     
     //MARK: 테이블 뷰 세팅

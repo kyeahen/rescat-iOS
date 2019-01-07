@@ -95,8 +95,7 @@ class PhoneModViewController: UIViewController {
             일치하지 않습니다.
             """)
         } else {
-            phoneNum = gsno(phoneTextField.text)
-            self.performSegue(withIdentifier: "unwindToListPhone", sender: self)
+            putModPhone(_phone: gsno(phoneTextField.text))
             
         }
     }
@@ -107,7 +106,7 @@ class PhoneModViewController: UIViewController {
     }
 }
 
-//MAKR: Networking Action
+//MARK: Networking Extension
 extension PhoneModViewController {
     
     //MARK: 휴대폰 인증
@@ -147,5 +146,36 @@ extension PhoneModViewController {
             
         }
     }
+    
+    //MARK: 번호 수정
+    func putModPhone(_phone : String) {
+        
+        ModifyUserDataService.shareInstance.putModPhoneData(phone: _phone, params: [:]) {
+            (result) in
+            
+            switch result {
+            case .networkSuccess(_ ):
+                self.phoneNum = self.gsno(self.phoneTextField.text)
+                self.performSegue(withIdentifier: "unwindToListPhone", sender: self)
+                break
+                
+
+            case .accessDenied:
+                self.simpleAlert(title: "권한 없음", message: "회원 가입 후, 이용할 수 있습니다.")
+                break
+                
+            case .networkFail:
+                self.networkErrorAlert()
+                break
+                
+            default:
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
+                break
+            }
+            
+        }
+    }
+    
+    
     
 }

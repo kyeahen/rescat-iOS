@@ -1,22 +1,22 @@
 //
-//  ApplyAdoptService.swift
+//  RegisterAdoptService.swift
 //  rescat
 //
-//  Created by 김예은 on 06/01/2019.
+//  Created by 김예은 on 08/01/2019.
 //  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct ApplyAdoptService: PostableService, APIServie {
+struct RegisterAdoptService: PostableService, APIServie {
     
     typealias NetworkData = DefaultData
-    static let shareInstance = ApplyAdoptService()
+    static let shareInstance = RegisterAdoptService()
     
-    //MARK: POST - api/care-posts/{idx}/applications (입양/임시보호 신청)
-    func postApplyAdopt(idx: Int, params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: POST - api/care-posts (입양/임시보호 글등록)
+    func postRegisterAdopt(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let adoptURL = self.url("care-posts/\(idx)/applications")
+        let adoptURL = self.url("care-posts")
         
         post(adoptURL, params: params) { (result) in
             switch result {
@@ -29,12 +29,6 @@ struct ApplyAdoptService: PostableService, APIServie {
                     
                 case HttpResponseCode.badRequest.rawValue : //400
                     completion(.badRequest)
-                    
-                case HttpResponseCode.accessDenied.rawValue : //401
-                    completion(.accessDenied)
-                    
-                case HttpResponseCode.badRequest.rawValue : //404
-                    completion(.nullValue)
                     
                 case HttpResponseCode.conflict.rawValue : //409
                     completion(.duplicated)
@@ -50,19 +44,9 @@ struct ApplyAdoptService: PostableService, APIServie {
                 
             case .error(let resCode):
                 switch resCode {
-                    
-                case HttpResponseCode.badRequest.rawValue.description : //400
-                    completion(.badRequest)
-                    
-                case HttpResponseCode.accessDenied.rawValue.description : //401
-                    completion(.accessDenied)
-                    
-                case HttpResponseCode.badRequest.rawValue.description : //404
-                    completion(.nullValue)
-                    
+
                 case HttpResponseCode.conflict.rawValue.description : //409
                     completion(.duplicated)
-                    
                     
                 default :
                     print("Error: \(resCode)")

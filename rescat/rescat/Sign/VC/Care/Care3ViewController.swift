@@ -16,9 +16,13 @@ class Care3ViewController: UIViewController {
     var parentVC : MainCareViewController?
     let imagePicker : UIImagePickerController = UIImagePickerController()
     
+    var imgUrl : String?
+    var check:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        check = 0
         setCustomView()
     }
     
@@ -35,10 +39,58 @@ class Care3ViewController: UIViewController {
     
     //MARK: 다음 액션
     @IBAction func nextAction(_ sender: UIButton) {
-        
-        parentVC?.changeVC(num: 5)
+        if check == 0 {
+            self.simpleAlert(title: "", message: "실시간 사진 인증을 완료해주세요.")
+        } else {
+            parentVC?.changeVC(num: 5)
+            UserDefaults.standard.set(imgUrl, forKey: "caretakerPhoto")
+        }
     }
     
+    
+}
+
+//MARK: Networking Extension
+extension Care3ViewController {
+    
+    func addImage(image : Data?){
+        let params : [String : Any] = [:]
+        var images : [String : Data]?
+        
+        if let image_ = image {
+            images = [
+                "data" : image_
+            ]
+        }
+        
+        PostImageService.shareInstance.addPhoto(params: params, image: images, completion: { [weak self] (result) in
+            
+            guard let `self` = self else { return }
+            switch result {
+                
+            case .networkSuccess(let data):
+                let data = data as? PhotoData
+                if let img = data?.photoUrl {
+                    self.imageView.kf.setImage(with: URL(string: img), placeholder: UIImage())
+                    self.imgUrl = img
+                    self.check = 1
+                }
+                break
+                
+            case .large :
+                self.simpleAlert(title: "업로드 실패", message: "업로드 가능한 이미지 최대 크기는 10MB입니다.")
+                break
+                
+            case .networkFail :
+                self.networkErrorAlert()
+                break
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+            break
+            }
+        })
+    }
     
 }
 
@@ -80,8 +132,12 @@ extension Care3ViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         if let editedImage = info[.editedImage] as? UIImage {
             imageView.image = editedImage
+            let photo = editedImage.jpegData(compressionQuality: 0.3)
+            addImage(image: photo) //이미지 추가
         } else if let selectedImage = info[.originalImage] as? UIImage as? UIImage{
             imageView.image = selectedImage
+            let photo = selectedImage.jpegData(compressionQuality: 0.3)
+            addImage(image: photo)
         }
         
         self.dismiss(animated: true) {

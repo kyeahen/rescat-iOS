@@ -33,11 +33,17 @@ class SearchCatViewController: UIViewController {
         super.viewDidLoad()
 
         setTableView()
+        setCustomView()
         setBackBtn()
         getCatList()
         
         searchTextField.addTarget(self, action: #selector(SearchCatViewController.textFieldDidChange(_:)),
                                   for: UIControl.Event.editingChanged)
+    }
+    
+    //MARK: 뷰 요소 커스텀 세팅
+    func setCustomView() {
+        searchTextField.setTextField(radius: 2, color: #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1))
     }
     
     //MARK: 테이블 뷰 세팅
@@ -144,10 +150,10 @@ extension SearchCatViewController {
                     self.breeds = resResult
                     
                     for i in 0..<self.breeds.count {
-                        let korean = self.breeds[i].korean
+//                        let korean = self.breeds[i].korean
                         let english = self.breeds[i].english
-                        let name = "\(korean)(\(english))"
-                        self.breedData.append(name)
+//                        let name = "\(korean)(\(english))"
+                        self.breedData.append(english)
                     }
                     
                 }
