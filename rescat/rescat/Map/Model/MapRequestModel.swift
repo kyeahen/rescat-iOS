@@ -25,4 +25,10 @@ struct MapRequestModel : Codable {
     var age : String?
     var tnr : Int?
     var markerIdx : Int?
+//    func getProperty() -> [String:Any] {
+//        var param = [String:Any]()
+//        if editCategory == nil {
+//            param["photoUrl"] =
+//        }
+//    }
 }

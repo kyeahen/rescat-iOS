@@ -17,20 +17,23 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     @IBOutlet var fundingListButton : UIButton!
     @IBOutlet var adoptionListButton : UIButton!
 
+    @IBOutlet weak var mainBannerImageView: UIImageView!
     // ------라이브러리 test 중이라 나중에 코드 정리할 예정------
     @IBOutlet var reviewImage : AACarousel!
     var titleArray = [String]()
     var photoArray = [String]()
     var fundingList = [FundingModel]()
     var fundingBannerList = [FundingBannerModel]()
+    var mainBannerList = [FundingBannerModel]()
 //    var careList = [
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         let request = FundingRequest(self)
         request.requestMain()
-        fundingBannerList.removeAll(); photoArray.removeAll()
         request.requestFundingBannerList()
+        request.requestAdvertiseBanner()
+        fundingBannerList.removeAll(); photoArray.removeAll()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -206,6 +209,11 @@ extension MainViewController {
             reviewImage.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
             reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
 
+        } else if ( code == APIServiceCode.MAIN_BOTTOM_BANNER_LIST ) {
+            mainBannerList = datas as! [FundingBannerModel]
+            let url = URL(string:gsno(mainBannerList[0].photoUrl))
+            mainBannerImageView.kf.setImage(with: url)
         }
+        
     }
 }

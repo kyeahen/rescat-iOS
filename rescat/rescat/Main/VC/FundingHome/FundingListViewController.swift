@@ -59,7 +59,8 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         cell.introductionLabel.text = gsno(funding.introduction)
         cell.goalmoneyLabel.text = "\(gino(funding.goalAmount).getMoney())원"
         let percentage = Float(gino(funding.currentAmount))/Float(gino(funding.goalAmount))
-        cell.percentageLabel.text = "\(Int(ceil(percentage*100)))%"
+        print("percentage - \(percentage)")
+//        cell.percentageLabel.text = "\(Int(ceil(percentage*100)))%"
         cell.remaindaysLabel.text = gsno(funding.limitAt)
         cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))

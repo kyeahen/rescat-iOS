@@ -93,6 +93,7 @@
 		5916809E21D3DD4100491F5C /* FundingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5916809D21D3DD4100491F5C /* FundingTableCell.xib */; };
 		591680B521D514C400491F5C /* FundingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680B421D514C400491F5C /* FundingListViewController.swift */; };
 		591680BD21D746BE00491F5C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591680BC21D746BE00491F5C /* SearchViewController.swift */; };
+		591A2A0C21E23FB500B3BFBF /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591A2A0B21E23FB500B3BFBF /* TestVC.swift */; };
 		593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */; };
 		5962B69121D79ACD00BB032D /* FundingDetailSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69021D79ACD00BB032D /* FundingDetailSegmentController.swift */; };
 		5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */; };
@@ -124,7 +125,6 @@
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
 		596662BF21D20DC100055918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662BE21D20DC100055918 /* ViewController.swift */; };
 		596662C021D211B800055918 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596662C221D211B800055918 /* Map.storyboard */; };
-		59A8BCCE21DE6F100035DBB8 /* RegisterVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCD21DE6F100035DBB8 /* RegisterVC2.swift */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -231,6 +231,7 @@
 		5916809D21D3DD4100491F5C /* FundingTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FundingTableCell.xib; sourceTree = "<group>"; };
 		591680B421D514C400491F5C /* FundingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListViewController.swift; sourceTree = "<group>"; };
 		591680BC21D746BE00491F5C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		591A2A0B21E23FB500B3BFBF /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		5962B69021D79ACD00BB032D /* FundingDetailSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingDetailSegmentController.swift; sourceTree = "<group>"; };
 		5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -262,7 +263,6 @@
 		596662B921D1FCF000055918 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		596662BE21D20DC100055918 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		596662C121D211B800055918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
-		59A8BCCD21DE6F100035DBB8 /* RegisterVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC2.swift; sourceTree = "<group>"; };
 		59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC3.swift; sourceTree = "<group>"; };
 		59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController2.swift; sourceTree = "<group>"; };
 		59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterVC.swift; sourceTree = "<group>"; };
@@ -480,9 +480,9 @@
 				591680BC21D746BE00491F5C /* SearchViewController.swift */,
 				593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */,
 				5962B69821D7D92C00BB032D /* ModifyViewController.swift */,
-				59A8BCCD21DE6F100035DBB8 /* RegisterVC2.swift */,
 				59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */,
 				59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */,
+				591A2A0B21E23FB500B3BFBF /* TestVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1076,6 +1076,7 @@
 				22B4F64D21D7CC610034346F /* CityTableViewCell.swift in Sources */,
 				221291C221DBE0E5006DA108 /* AdoptionViewController.swift in Sources */,
 				22BE222821E0A9CE009AF7F7 /* SearchCatViewController.swift in Sources */,
+				591A2A0C21E23FB500B3BFBF /* TestVC.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,
 				221291BE21DBDA09006DA108 /* AdoptionDetailViewController.swift in Sources */,
 				22B4F65721D7EBF10034346F /* Care3ViewController.swift in Sources */,
@@ -1088,7 +1089,6 @@
 				5962B6B521DB141E00BB032D /* FundingDetailModel.swift in Sources */,
 				22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
-				59A8BCCE21DE6F100035DBB8 /* RegisterVC2.swift in Sources */,
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
 				5962B69121D79ACD00BB032D /* FundingDetailSegmentController.swift in Sources */,
 				5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */,
@@ -1300,6 +1300,7 @@
 			baseConfigurationReference = 6E888DC89DBFA7B1CAA91301 /* Pods-rescat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = rescat/rescat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				"CODE_SIGN_STYLE[sdk=iphoneos*]" = Automatic;
@@ -1322,6 +1323,7 @@
 			baseConfigurationReference = 9D3B299A3AF7A2535AE874D3 /* Pods-rescat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = rescat/rescat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S3H456VQ6Y;

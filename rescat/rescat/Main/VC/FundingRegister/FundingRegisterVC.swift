@@ -21,6 +21,7 @@ class FundingRegisterVC : UIViewController , UITextFieldDelegate , UITextViewDel
     @IBOutlet var representImageView3 : UIImageView!
     @IBOutlet var representImageView4 : UIImageView!
     var representImageArray = [UIImageView]()
+    var keyboardStatus = 0
 
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet var descriptionTextView : UITextView!
@@ -35,7 +36,9 @@ class FundingRegisterVC : UIViewController , UITextFieldDelegate , UITextViewDel
     @IBOutlet var provementImageView2 : UIImageView!
     @IBOutlet var provementImageView3 : UIImageView!
     @IBOutlet var provementImageView4 : UIImageView!
+    
     var provementImageArray = [UIImageView]()
+    var datePicker = UIDatePicker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,9 @@ class FundingRegisterVC : UIViewController , UITextFieldDelegate , UITextViewDel
         goalAmountTextField.delegate = self ; goalAmountTextField.tag = 2
         locationTextField.delegate = self ; locationTextField.tag = 3
         
+        goalAmountTextField.keyboardType = .decimalPad
+        showDatePicker()
+
         descriptionTextView.delegate = self ; descriptionTextView.tag = 0
         detailDescriptionTextView.delegate = self ; descriptionTextView.tag = 1
         
@@ -69,22 +75,73 @@ class FundingRegisterVC : UIViewController , UITextFieldDelegate , UITextViewDel
         provementImageArray.append(provementImageView3)
         provementImageArray.append(provementImageView4)
         
+        descriptionTextView.textContainer.maximumNumberOfLines = 3
+        detailDescriptionTextView.textContainer.maximumNumberOfLines = 10
         for (index, element) in provementImageArray.enumerated() {
             element.tag = index
             
         }
+        var tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(tapGesture)
 
+
+    }
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+       
+        if ( keyboardStatus == 1) {
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y += 150
+            }
+            keyboardStatus = 0
+            
+        }
+        self.view.endEditing(true)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
     }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.becomeFirstResponder()
+//        if ( keyboardStatus == 0 ){
+//            UIView.animate(withDuration: 0.1) {
+//                self.view.frame.origin.y -= 150
+//            }
+//            keyboardStatus = 1
+//        }
+
+    }
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+//        if ( keyboardStatus == 1 ){
+//            UIView.animate(withDuration: 0.1) {
+//                self.view.frame.origin.y += 150
+//            }
+//            keyboardStatus = 0
+//        }
+        return true
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("begin")
+        
+        if ( keyboardStatus == 0 ){
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y -= 150
+            }
+            keyboardStatus = 1
+        }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 0 - title, 1 - due date, 2 - goal, 3 - location
 
+        print("return")
+        if ( keyboardStatus == 1 ){
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y += 150
+            }
+            keyboardStatus = 0
+        }
         textField.resignFirstResponder()
 
         if ( textField.tag == 0 ) {
@@ -102,7 +159,7 @@ class FundingRegisterVC : UIViewController , UITextFieldDelegate , UITextViewDel
 
     @IBAction func nextAction( _ sender : UIButton!){
         if ( gsno(titleTextField.text) == "" || gsno(dueDateTextField.text) == "" || gsno(goalAmountTextField.text) == "" || gsno(locationTextField.text) == "" ) {
-            print("정보를 입력해주세요")
+            self.simpleAlert(title: "error", message: "정보를 입력하세요")
             return
         }
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC2") as! FundingRegisterVC2
@@ -121,6 +178,48 @@ class FundingRegisterVC : UIViewController , UITextFieldDelegate , UITextViewDel
     }
     @objc func representImageSelect(sender: UITapGestureRecognizer) {
         print("tap")
+     
 //        print(sender.)
+    }
+    func showDatePicker(){
+        //Formate Date
+        datePicker.datePickerMode = .date
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        dueDateTextField.inputAccessoryView = toolbar
+        dueDateTextField.inputView = datePicker
+        
+    }
+    
+    @objc func donedatePicker(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        dueDateTextField.text = formatter.string(from: datePicker.date)
+        if ( keyboardStatus == 1 ) {
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y += 150
+            }
+            keyboardStatus = 0
+        }
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        if ( keyboardStatus == 1 ) {
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y += 150
+            }
+            keyboardStatus = 0
+        }
+        self.view.endEditing(true)
     }
 }

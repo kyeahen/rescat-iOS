@@ -19,8 +19,8 @@ class NaverMapRequest : APIServie {
         
         let header : HTTPHeaders = [
             "Content-Type": "application/json",
-            "X-NCP-APIGW-API-KEY-ID" : "zjxctni8q2",
-            "X-NCP-APIGW-API-KEY" : "rkhS5Aq2agIC4nF2tb0vALW2WazwHrs4MiSoKddZ" ]
+            "X-NCP-APIGW-API-KEY-ID" : MapAPIKey.reverseGeocodeClientKey,
+            "X-NCP-APIGW-API-KEY" : MapAPIKey.reverseGeocodeKey ]
 
         let url = "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&coords=\(long),\(lat)&sourcecrs=epsg:4326&output=json&orders=addr,admcode"
         let encodedUrl : URL = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
@@ -50,10 +50,11 @@ class NaverMapRequest : APIServie {
     }
     func requestGeocoder( _ address : String ) {
         
+        print("requestGEocode \(address)")
         let header : HTTPHeaders = [
             "Content-Type": "application/json",
-            "X-NCP-APIGW-API-KEY-ID" : "k8mj3vh9as",
-                       "X-NCP-APIGW-API-KEY" : "ZqXLZhQLfy3F64oLJ2PZVOXFVhMk5k7RWMstU2A5" ]
+            "X-NCP-APIGW-API-KEY-ID" : MapAPIKey.geocodeClientKey,
+                       "X-NCP-APIGW-API-KEY" : MapAPIKey.geocodeKey ]
         let url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=\(address)"
         let encodedUrl : URL = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
         Alamofire.request(encodedUrl, headers : header).responseData { (res) in
@@ -64,7 +65,8 @@ class NaverMapRequest : APIServie {
                 let long = json["addresses"][0]["x"]
                 let lat = json["addresses"][0]["y"]
                 let add = "\(lat) \(long)"
-                self.vc.requestCallback(add, 1)
+                print("add - \(add)")
+                self.vc.requestCallback(add, APIServiceCode.GEOCODE)
             case .failure(let error):
                 print("naver geocoder request failure error - \(error)")
             }

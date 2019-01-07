@@ -13,8 +13,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     var pickerView : UIPickerView!
     var locationButton : UITextField!
+    var currentRegion = ""
 //    var pick
-    var myLocation = ["서울시 서초구 서초동", "서울특별시 성북구 월곡1동", "서울특별시 성북구 월곡2동"]
+    var myLocation = [String]()
     @IBOutlet var registerButton : UIBarButtonItem!
     @IBOutlet var searchButton : UIBarButtonItem!
     @IBOutlet var mapView : GMSMapView!
@@ -41,6 +42,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print("Map viewDidLoad")
         super.viewDidLoad()
 
+        for (index, element) in LocationUserDefaultService.getLocation().enumerated(){
+            myLocation.append(gsno(element.keys.first))
+        }
         buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
         for (index, element) in buttons.enumerated() {
             element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
@@ -95,15 +99,22 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         searchButton.action = #selector(searchButtonAction)
         
         //  내 도시로 focus
+        let naverRequest = NaverMapRequest(self)
+//        print("naver request \(?)")
         self.mapView.delegate = self
-        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
+        currentRegion = myLocation[0]
+        naverRequest.requestGeocoder(myLocation[0])
+//        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // get datas from server
-//        self.self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
 
+
+        let res = LocationUserDefaultService.getLocation()
+        print("location \(res[0].keys.first)")
         let request = Test(self)
         request.testRequest()
     }
@@ -143,8 +154,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     @objc func selectLocation(_ sender : UIButton!){
 
-        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(36.899999), longitude: CLLocationDegrees(127.03111111))
-        self.mapView.animate(toLocation: move)
+        let map = NaverMapRequest(self)
+        map.requestGeocoder(gsno(locationButton.text))
+//        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(36.899999), longitude: CLLocationDegrees(127.03111111))
+//        self.mapView.animate(toLocation: move)
         locationButton.resignFirstResponder()
 
     }
@@ -160,8 +173,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 //        let view = DetailView(frame: self.view.frame)
 //        self.view.addSubview(view)
         let mapstoryboard = UIStoryboard(name: "Map", bundle: nil)
-        let vc = mapstoryboard.instantiateViewController(withIdentifier: "registerStartVC") as! UINavigationController
-        self.present(vc, animated: true, completion: nil)
+        let vc = mapstoryboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        self.navigationController?.pushViewController(vc, animated: true)
+//        self.present(vc, animated: true, completion: nil)
 
     }
     @objc func searchButtonAction(_ sender : UIBarButtonItem!){
@@ -195,6 +209,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func loadMapView(latitude : Double, longitude : Double, zoom : Float){
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: zoom)
         self.mapView.camera = camera
+        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        self.mapView.animate(toLocation: move)
     
     }
     func focusMarkerView(){
@@ -250,10 +266,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return LocationUserDefaultService.getLocation().count
         return myLocation.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return myLocation[row]
+        
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         locationButton.text = myLocation[row]
@@ -331,7 +349,18 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 extension MapViewController{
     // network call back
     func requestCallback(_ datas: Any, _ code: Int) {
-        initData = datas as! [TestModel]
-        makeMarkerView(initData)
+//        if ( code == APIServiceCode.)
+        if ( code == APIServiceCode.GEOCODE ) {
+            let location = datas as! String
+            let coordinate = location.split(separator: " ")
+//            loadMapView(latitude: Double(coordinate[0]), longitude: Double(coordinate[1]), zoom: 15.0)
+//            coordinate
+//            print("GEOCODE RESULT \(Float(coordinate[0]))")
+            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
+        } else {
+            initData = datas as! [TestModel]
+            makeMarkerView(initData)
+
+        }
     }
 }

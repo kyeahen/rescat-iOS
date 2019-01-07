@@ -26,7 +26,10 @@ class APIServiceCode {
     static let FUNDING_BANNER_LIST = 102
     static let FUNDING_DETAIL = 103
     static let FUNDING_COMMENTS = 104
+    static let MAIN_BOTTOM_BANNER_LIST = 105
     static let CARE_POST_MAIN = 110
     static let CARE_POST_LIST = 111
     static let BANNER_TYPE = 112
+    static let GEOCODE = 120
+    static let REVERSE_GEOCODE = 121
 }

@@ -105,5 +105,23 @@ class FundingRequest : APIServie {
         
         }
     }
+    func requestAdvertiseBanner () {
+        let url = self.url("banners/advertisement-banners")
+        Alamofire.request(url).responseData { (res) in
+            switch res.result {
+            case .success:
+                guard let adv = res.result.value else { return }
+                let decoder = JSONDecoder()
+                do {
+                    let datas = try decoder.decode([FundingBannerModel].self, from: adv)
+                    self.vc.requestCallback(datas, APIServiceCode.MAIN_BOTTOM_BANNER_LIST)
+                }catch{
+                    print("main bottom decode failure")
+                }
+            case .failure(let error):
+                print("main bottom banner request error - \(error)")
+            }
+        }
+    }
 
 }

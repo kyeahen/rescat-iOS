@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXy-Mj-qTV">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dsc0204" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-LH-8EV">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-LH-8EV">
                             <rect key="frame" x="16.5" y="7.5" width="342" height="155"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -50,7 +50,4 @@
             <point key="canvasLocation" x="53.600000000000001" y="83.658170914542737"/>
         </view>
     </objects>
-    <resources>
-        <image name="dsc0204" width="340" height="163"/>
-    </resources>
 </document>

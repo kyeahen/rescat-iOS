@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeD-6x-6WY">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageExCat" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-Yr-tqc">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-Yr-tqc">
                             <rect key="frame" x="17.5" y="7.5" width="340" height="165"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="340" id="gAK-Tx-yp5"/>
@@ -106,6 +106,5 @@
     </objects>
     <resources>
         <image name="cardLableSupport" width="83" height="21"/>
-        <image name="imageExCat" width="342" height="165"/>
     </resources>
 </document>

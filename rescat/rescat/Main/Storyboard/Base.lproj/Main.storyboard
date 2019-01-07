@@ -129,7 +129,7 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sbt-vI-fjM">
                                                                             <rect key="frame" x="4" y="3.5" width="142" height="185"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageCat" translatesAutoresizingMaskIntoConstraints="NO" id="5jN-xE-577">
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5jN-xE-577">
                                                                                     <rect key="frame" x="33" y="13" width="76" height="76"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" secondItem="5jN-xE-577" secondAttribute="height" id="6BK-RY-tAs"/>
@@ -150,7 +150,7 @@
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lableCardShort" translatesAutoresizingMaskIntoConstraints="NO" id="gBg-kO-V9n">
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gBg-kO-V9n">
                                                                                     <rect key="frame" x="8" y="19" width="59" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="59" id="ctl-e2-LH7"/>
@@ -163,7 +163,7 @@
                                                                                         <constraint firstAttribute="width" constant="84" id="FU7-Se-DE7"/>
                                                                                         <constraint firstAttribute="height" constant="84" id="c5t-ec-69f"/>
                                                                                     </constraints>
-                                                                                    <state key="normal" title="Button" image="iconMoreRound"/>
+                                                                                    <state key="normal" title="Button"/>
                                                                                 </button>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -248,7 +248,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvo-q9-Pj7" colorLabel="IBBuiltInLabel-Red">
                                                 <rect key="frame" x="0.0" y="1189" width="375" height="125"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bannerAdBottom" translatesAutoresizingMaskIntoConstraints="NO" id="JPB-Y0-svL">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPB-Y0-svL">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                                     </imageView>
                                                 </subviews>
@@ -317,6 +317,7 @@
                     <connections>
                         <outlet property="adoptionListButton" destination="G9K-wb-pe4" id="WRm-cS-Aql"/>
                         <outlet property="fundingListButton" destination="oua-oT-rp5" id="zxx-ap-X2a"/>
+                        <outlet property="mainBannerImageView" destination="JPB-Y0-svL" id="PPL-R1-wf4"/>
                         <outlet property="registerFundingButton" destination="Soh-19-OO2" id="MOl-XB-qM9"/>
                         <outlet property="reviewImage" destination="OQk-ee-DrW" id="fed-rQ-J2w"/>
                         <outlet property="tempList" destination="bFJ-QE-S5u" id="vm2-ks-nuM"/>
@@ -1237,15 +1238,21 @@
                         <viewLayoutGuide key="safeArea" id="pg0-Vg-HxW"/>
                     </view>
                     <size key="freeformSize" width="375" height="752"/>
+                    <connections>
+                        <outlet property="accountTextField" destination="Pnb-pU-y6t" id="ZZS-fC-GfA"/>
+                        <outlet property="introductionTextView" destination="8da-xA-tvS" id="KY7-85-e8R"/>
+                        <outlet property="nameTextField" destination="9xt-2c-sev" id="pwn-dC-BXZ"/>
+                        <outlet property="numberTextField" destination="vGO-3k-AIZ" id="lqv-xq-Wbn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uX-FS-0zG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3802" y="2618"/>
         </scene>
-        <!--View Controller-->
+        <!--Funding RegisterVC2-->
         <scene sceneID="UF9-PA-UWG">
             <objects>
-                <viewController id="5rW-po-3Ld" sceneMemberID="viewController">
+                <viewController id="5rW-po-3Ld" customClass="FundingRegisterVC2" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0bx-RQ-Clv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1398,10 +1405,12 @@
                         <viewLayoutGuide key="safeArea" id="ekg-pO-nrH"/>
                     </view>
                     <connections>
+                        <outlet property="accountTextField" destination="Nlo-rd-788" id="0UI-IC-rXd"/>
                         <outlet property="bottomView" destination="mkf-VL-z79" id="3fq-6z-Vwl"/>
                         <outlet property="depositTextField" destination="Nlo-rd-788" id="rVW-Hg-fTQ"/>
                         <outlet property="introductionTextView" destination="azd-sL-CAE" id="bKa-13-Dvh"/>
                         <outlet property="nameTextField" destination="WoG-b2-nHv" id="IZd-CT-t7G"/>
+                        <outlet property="numberTextField" destination="GuG-go-8SJ" id="hfq-Ip-eEz"/>
                         <outlet property="phoneTextField" destination="GuG-go-8SJ" id="5Dn-we-5a9"/>
                     </connections>
                 </viewController>
@@ -1484,12 +1493,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bannerAdBottom" width="375" height="125"/>
         <image name="buttonRadioOff" width="22" height="22"/>
         <image name="buttonRadioOn" width="22" height="22"/>
         <image name="icAddPhoto" width="69" height="69"/>
-        <image name="iconMoreRound" width="86" height="86"/>
-        <image name="imageCat" width="78" height="78"/>
-        <image name="lableCardShort" width="59" height="21"/>
     </resources>
 </document>

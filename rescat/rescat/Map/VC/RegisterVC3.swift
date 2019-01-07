@@ -15,15 +15,30 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
     @IBOutlet var mylocationButton : UIButton!
     @IBOutlet var registerButton : UIButton!
     @IBOutlet var outerView : UIView!
+
+    var requestMap : MapRequest!
+    var requestAddress : NaverMapRequest!
+    var registerMap : MapRequestModel = MapRequestModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        requestMap = MapRequest(self)
+        requestAddress = NaverMapRequest(self)
+        
         outerView.drawShadow(10.0)
-        outerView.roundCorner(30.0)
+        outerView.roundCorner(15.0)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mapView.delegate = self
-        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
+        let location = LocationUserDefaultService.getLocations().first
+        guard let mainLocation = location else {
+            loadMapView(latitude: 37.300, longitude: 127.027610, zoom: 15.0)
+            return
+        }
+        
+        loadMapView(latitude: gdno(mainLocation.first?.key), longitude: gdno(mainLocation.first?.value), zoom: 15.0)
 
     }
     func loadMapView(latitude : Double, longitude : Double, zoom : Float){
@@ -38,6 +53,9 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
 
         registerButton.isHidden = false
         let position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+
+        
+        self.mapView.animate(toLocation: position)
 
         let marker = GMSMarker()
 
@@ -54,42 +72,68 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
 
 
     }
-    func requestCallback(_ datas: Any, _ code: Int) {
-        
-    }
+   
     @IBAction func gotoMyLocation( _ sender : UIButton!){
-        
+        self.simpleAlert(title: "alert", message: "내위치 이동")
     }
     
     @IBAction func registerImage( _ sender : UIButton!) {
         
         let request = MapRequest(self)
+        
+        if gino(registerMap.registerType) == 1 {
+            
+        } else {
+            
+        }
 
 //        request.addPhoto(dataImageView)
         let data = dataImageView.image?.jpegData(compressionQuality: 1.0)
 //        request.addPhoto(data!)
-        var m : MapRequestModel = MapRequestModel()
+        for i in 0..<5{
+            var m : MapRequestModel = MapRequestModel()
+           
+            m.requestType = 0
+            m.registerType = 0
+            let lat = Double.random(lower: 37.04149, 127.020924)
+            let long = Double.random(lower: 127.020924, 127.040959)
+            m.lat = lat; m.lng = long
+            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
+            m.regionFullName = "서울특별시 강남구 논현1동"
+            m.name = "피어캣"
+            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
 
-        m.requestType = 0;
-        m.registerType = 2;
-        m.name = "피어캣"
-//        m.etc = "etc"
-        m.lat = 37.0001 ;
-        m.lng = 127.00001 ;
-        m.address = "asd";
-        m.phone = "010-3676-2713"
-        m.radius = 0
-        m.sex = 0
-        m.age = "10"
-        m.phtoUrl = nil
-        m.regionFullName = "서울특별시 서초구 서초3동"
+            
+            
+            // ----------
+//            m.requestType = 0
+//            m.registerType = 1
+//            let lat = Double.random(lower: 37.04149, 127.020924)
+//            let long = Double.random(lower: 127.020924, 127.040959)
+//            m.lat = lat; m.lng = long
+//            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
+//            m.regionFullName = "서울특별시 강남구 신사동"
+//            m.name = "피어캣"
+//            m.address = "everywhere"
+//            m.phone = "010-3676-2713"
+//            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
+         
+            
+            request.addMapData(m)
+        }
 
-        request.addMapData(m)
+
 
         self.performSegue(withIdentifier: "unWindToMain", sender: nil)
         // go to home
 
         
+    }
+    func requestCallback(_ datas: Any, _ code: Int) {
+     
+        if ( code == APIServiceCode.GEOCODE) {
+            
+        }
     }
     
 }
