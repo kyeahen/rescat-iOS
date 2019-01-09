@@ -17,6 +17,7 @@ struct AdoptData: Codable {
     let viewCount: Int
     let createdAt: String
     let isFinished: Bool?
+    let updatedAt: String
 }
 
 struct AdoptPhotoData: Codable {

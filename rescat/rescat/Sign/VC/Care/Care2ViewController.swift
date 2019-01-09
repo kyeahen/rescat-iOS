@@ -108,6 +108,7 @@ extension Care2ViewController {
                     let address = "\(si) \(gu) \(dong)"
                     self.areaLabel.text = address
                     self.check = 1
+                    self.addAreaButton.isHidden = true
                     self.areaView.isHidden = false
                     
                 } else if data.resCode == 3 {

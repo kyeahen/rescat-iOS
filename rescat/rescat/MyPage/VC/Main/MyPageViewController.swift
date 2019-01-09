@@ -32,6 +32,7 @@ class MyPageViewController: UIViewController{
 
         getMyPage()
         setTableView()
+
         
     }
 
@@ -82,6 +83,15 @@ class MyPageViewController: UIViewController{
             self.navigationController?.pushViewController(joinVC, animated: true)
             self.hidesBottomBarWhenPushed = false
         }
+    }
+    
+    //MARK: 활동 지역 설정 액션
+    @IBAction func areaAction(_ sender: UIButton) {
+        let areaVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: AreaSettingViewController.reuseIdentifier)
+        
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(areaVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
     
 

@@ -10,7 +10,6 @@ import UIKit
 
 class PostBoxTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     

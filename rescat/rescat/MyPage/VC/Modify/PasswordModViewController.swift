@@ -23,6 +23,7 @@ class PasswordModViewController: UIViewController {
 
         setCustomView()
         setEmptyCheck()
+        hideKeyboardWhenTappedAround()
     }
     
     //MARK: 뷰 요소 커스텀 세팅
@@ -109,12 +110,31 @@ class PasswordModViewController: UIViewController {
             NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
     }
     
+    func isValidPassword(password: String) -> Bool {
+        
+        let pwRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,12}$"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", pwRegEx)
+        return emailTest.evaluate(with: password)
+        
+    }
+    
     //MARK: rightBarButtonItem Action
     @objc func rightButtonAction(sender: UIBarButtonItem) {
+        
+        guard let password = pwdTextField.text else {return}
+        let validPassword = isValidPassword(password: password)
+        
+        guard let new = newTextField.text else {return}
+        let validNew = isValidPassword(password: new)
+
         if pwdTextField.text == "" || rePwdTextField.text == "" || newTextField.text == "" {
             self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
+            
         } else if newTextField.text != rePwdTextField.text {
           self.simpleAlert(title: "변경 실패", message: "새 비밀번호가 일치하지 않습니다")
+            
+        } else if !validPassword || !validNew {
+            self.simpleAlert(title: "", message: "비밀번호 형식이 올바르지 않습니다.")
         } else {
             putModPwd(pwd: gsno(pwdTextField.text), newPwd: gsno(rePwdTextField.text), reNewPwd: gsno(newTextField.text))
         }
@@ -140,11 +160,11 @@ extension PasswordModViewController {
                 break
                 
             case .badRequest : //400
-                self.simpleAlert(title: "변경 실패", message: "비밀번호 형식이 알맞지 않거나 틀렸습니다.")
+                self.simpleAlert(title: "", message: "비밀번호가 틀렸습니다.")
                 break
                 
             case .accessDenied : //401
-                self.simpleAlert(title: "권한 없음", message: "회원가입 후, 이용 가능합니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용 가능합니다.")
                 break
                 
             case .networkFail :

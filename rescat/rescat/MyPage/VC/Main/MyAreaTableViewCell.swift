@@ -60,18 +60,3 @@ extension MyAreaTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
 
 }
 
-extension MyAreaTableViewCell: UICollectionViewDelegateFlowLayout {
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AreaCollectionViewCell.reuseIdentifier, for: indexPath) as! AreaCollectionViewCell
-//
-//        print(cell.areaLabel.text?.size ?? CGSize(width: 100, height: 34))
-//
-//
-//        return cell.areaLabel.text?.size(withAttributes: [
-//            NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.SemiBold.rawValue, size: 17)
-//            ]) ?? CGSize(width: 100, height: 34)
-//    }
-
-}

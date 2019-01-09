@@ -17,12 +17,14 @@ class NickNameModViewController: UIViewController {
     @IBOutlet weak var checkButton: UIButton!
     
     var nickName: String = ""
+    var nickCheck: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setCustomView()
         setEmptyCheck()
+        hideKeyboardWhenTappedAround()
     }
     
     //MARK: 뷰 요소 커스텀 세팅
@@ -68,7 +70,9 @@ class NickNameModViewController: UIViewController {
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
         
         if nickNameTextField.text == "" {
-            self.simpleAlert(title: "수정 실패", message: "수정할 닉네임을 입력해주세요.")
+            self.simpleAlert(title: "", message: "수정할 닉네임을 입력해주세요.")
+        } else if nickCheck == 0{
+            self.simpleAlert(title: "", message: "닉네임 중복확인을 완료해주세요.")
         } else {
             putModNickName(_nickname: gsno(nickNameTextField.text))
         }
@@ -91,7 +95,7 @@ extension NickNameModViewController {
             
             switch result {
             case .networkSuccess( _):
-                
+                self.nickCheck = 1
                 self.checkLabel.isHidden = false
                 self.checkLabel.text = "사용할 수 있는 닉네임입니다."
                 self.checkLabel.textColor = #colorLiteral(red: 0.4895007014, green: 0.8178752065, blue: 0.1274456084, alpha: 1)
@@ -138,7 +142,7 @@ extension NickNameModViewController {
                 
                 
             case .accessDenied:
-                self.simpleAlert(title: "권한 없음", message: "회원 가입 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail:

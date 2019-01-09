@@ -67,13 +67,14 @@ extension FinishCareViewController {
                 UserDefaults.standard.removeObject(forKey: "caretakerPhoto")
                 break
                 
+            //FIXME: 수정
             case .badRequest: //400
-                print("4000")
+                self.simpleAlert(title: "", message: "다시 시도해주세요")
                 break
                 
             case .duplicated: //401
                 
-                self.simpleAlert(title: "", message: "권한 없음")
+                self.simpleAlert(title: "", message: "권한이 없습니다.")
                 break
                 
             case .networkFail:

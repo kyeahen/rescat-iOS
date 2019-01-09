@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
+
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -91,6 +92,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Messaging.messaging().apnsToken = deviceToken
     }
     
+//    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+//        let rootViewController = self.window?.rootViewController as! UINavigationController
+//        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
+//        let mvc = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as!
+//        PostBoxViewController
+//        rootViewController.pushViewController(mvc, animated: true)
+//    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // print(userInfo)
+
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let postVC = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as! PostBoxViewController
+        let tabBar = self.window?.rootViewController as? UITabBarController
+        let nav = tabBar?.selectedViewController as? UINavigationController
+        nav?.pushViewController(postVC, animated: true)
+
+
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -123,6 +144,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler(UNNotificationPresentationOptions.alert)
         let userInfo = notification.request.content.userInfo
         
         // With swizzling disabled you must let Messaging know about the message, for Analytics

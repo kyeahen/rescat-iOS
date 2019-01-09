@@ -1,22 +1,22 @@
 //
-//  DeleteMyPageAreaService.swift
+//  DeletePhotoService.swift
 //  rescat
 //
-//  Created by 김예은 on 07/01/2019.
+//  Created by 김예은 on 08/01/2019.
 //  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct DeleteMyPageAreaService: DeletableService, APIServie {
+struct DeletePhotoService: DeletableService, APIServie {
     
     typealias NetworkData = DefaultData
-    static let shareInstance = DeleteMyPageAreaService()
+    static let shareInstance = DeletePhotoService()
     
-    //MARK: Delete - api/users/mypage/region (지역 삭제)
-    func deleteArea(completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: Delete - /api/photo (댓글 삭제)
+    func deletePhoto(photoUrl: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let deleteURL = self.url("users/mypage/region")
+        let deleteURL = self.url("photo?photoUrl=\(photoUrl)")
         
         delete(deleteURL) { (result) in
             switch result {
@@ -26,7 +26,7 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
-                    
+
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
                     
@@ -41,7 +41,7 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
                 
             case .error(let resCode):
                 switch resCode {
-
+                    
                 case HttpResponseCode.accessDenied.rawValue.description : //401
                     completion(.accessDenied)
                     

@@ -24,6 +24,12 @@
 		22174FB321E3FE0200144F81 /* PostBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FB221E3FE0200144F81 /* PostBoxTableViewCell.swift */; };
 		22174FB521E3FE5A00144F81 /* PostBoxAdoptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FB421E3FE5A00144F81 /* PostBoxAdoptTableViewCell.swift */; };
 		22174FB721E4060200144F81 /* PostBoxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FB621E4060200144F81 /* PostBoxDetailViewController.swift */; };
+		22174FBB21E4ABCA00144F81 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FBA21E4ABCA00144F81 /* AddressSearchViewController.swift */; };
+		22174FBF21E4B53700144F81 /* MyPageAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FBE21E4B53700144F81 /* MyPageAreaCollectionViewCell.swift */; };
+		22174FC321E4C70900144F81 /* DeletePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FC221E4C70900144F81 /* DeletePhotoService.swift */; };
+		22174FC521E4DF5E00144F81 /* UpdateAreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FC421E4DF5E00144F81 /* UpdateAreaService.swift */; };
+		22174FC721E5DEF900144F81 /* CommentWarningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FC621E5DEF800144F81 /* CommentWarningService.swift */; };
+		22174FC921E5DFDE00144F81 /* DetailWarningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22174FC821E5DFDE00144F81 /* DetailWarningService.swift */; };
 		2219DB2021DCAD9900FF72D7 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */; };
 		2219DB2321DCDAC600FF72D7 /* AdoptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2221DCDAC600FF72D7 /* AdoptData.swift */; };
 		2219DB2721DCDC2700FF72D7 /* AdoptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219DB2621DCDC2700FF72D7 /* AdoptService.swift */; };
@@ -203,6 +209,12 @@
 		22174FB221E3FE0200144F81 /* PostBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoxTableViewCell.swift; sourceTree = "<group>"; };
 		22174FB421E3FE5A00144F81 /* PostBoxAdoptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoxAdoptTableViewCell.swift; sourceTree = "<group>"; };
 		22174FB621E4060200144F81 /* PostBoxDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoxDetailViewController.swift; sourceTree = "<group>"; };
+		22174FBA21E4ABCA00144F81 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
+		22174FBE21E4B53700144F81 /* MyPageAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAreaCollectionViewCell.swift; sourceTree = "<group>"; };
+		22174FC221E4C70900144F81 /* DeletePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePhotoService.swift; sourceTree = "<group>"; };
+		22174FC421E4DF5E00144F81 /* UpdateAreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAreaService.swift; sourceTree = "<group>"; };
+		22174FC621E5DEF800144F81 /* CommentWarningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentWarningService.swift; sourceTree = "<group>"; };
+		22174FC821E5DFDE00144F81 /* DetailWarningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWarningService.swift; sourceTree = "<group>"; };
 		2219DB1F21DCAD9900FF72D7 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		2219DB2221DCDAC600FF72D7 /* AdoptData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptData.swift; sourceTree = "<group>"; };
 		2219DB2621DCDC2700FF72D7 /* AdoptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptService.swift; sourceTree = "<group>"; };
@@ -412,12 +424,12 @@
 		221291BC21DBD9AB006DA108 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */,
 				22BE222421E0A98B009AF7F7 /* Help */,
 				221291C121DBE0E5006DA108 /* AdoptionViewController.swift */,
 				221291BD21DBDA09006DA108 /* AdoptionDetailViewController.swift */,
 				22BE222521E0A99A009AF7F7 /* Comment */,
-				22D1270621DF640100DDE8D5 /* ApplyAdoptViewController.swift */,
-				22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */,
+				22174FB921E4AB9800144F81 /* Apply */,
 				22BE222F21E0ACEC009AF7F7 /* Register */,
 				22D1270C21DFC83200DDE8D5 /* CompleteAdoptViewController.swift */,
 				22BE222621E0A9B0009AF7F7 /* Search */,
@@ -434,6 +446,15 @@
 				22174FB621E4060200144F81 /* PostBoxDetailViewController.swift */,
 			);
 			path = PostBox;
+			sourceTree = "<group>";
+		};
+		22174FB921E4AB9800144F81 /* Apply */ = {
+			isa = PBXGroup;
+			children = (
+				22D1270621DF640100DDE8D5 /* ApplyAdoptViewController.swift */,
+				22174FBA21E4ABCA00144F81 /* AddressSearchViewController.swift */,
+			);
+			path = Apply;
 			sourceTree = "<group>";
 		};
 		2219DB2121DCDAA800FF72D7 /* Model */ = {
@@ -468,6 +489,8 @@
 				222D7FD921E140DE000B7379 /* ApplyAdoptService.swift */,
 				222D7FDF21E15A75000B7379 /* BreedService.swift */,
 				22174FA321E3E2AF00144F81 /* RegisterAdoptService.swift */,
+				22174FC621E5DEF800144F81 /* CommentWarningService.swift */,
+				22174FC821E5DFDE00144F81 /* DetailWarningService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -489,6 +512,7 @@
 				221A844F21D9FA4D002BECED /* ReGeocodingService.swift */,
 				222D800221E2754A000B7379 /* CaretakerService.swift */,
 				222D800621E27BB3000B7379 /* UploadPhotoService.swift */,
+				22174FC221E4C70900144F81 /* DeletePhotoService.swift */,
 			);
 			path = Care;
 			sourceTree = "<group>";
@@ -552,6 +576,7 @@
 				222D801A21E386BF000B7379 /* GetMySupportService.swift */,
 				22174FAD21E3FCD400144F81 /* PostBoxListService.swift */,
 				22174FAF21E3FD6200144F81 /* PostBoxDetailService.swift */,
+				22174FC421E4DF5E00144F81 /* UpdateAreaService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -734,6 +759,7 @@
 				22BE223C21E0E5CE009AF7F7 /* AreaSettingViewController.swift */,
 				22BE223F21E0E62E009AF7F7 /* AreaSettingTableViewCell.swift */,
 				222D7FBD21E13444000B7379 /* MyPageAddAreaViewController.swift */,
+				22174FBE21E4B53700144F81 /* MyPageAreaCollectionViewCell.swift */,
 			);
 			path = "Area Setting";
 			sourceTree = "<group>";
@@ -1211,12 +1237,15 @@
 			files = (
 				22FCCDCF21D5F6C1007A731C /* LoginViewController.swift in Sources */,
 				22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */,
+				22174FC921E5DFDE00144F81 /* DetailWarningService.swift in Sources */,
 				222D7FCA21E13652000B7379 /* ModMyDataViewController.swift in Sources */,
 				222D7FEA21E1C6E4000B7379 /* DeletableService.swift in Sources */,
 				221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */,
+				22174FBB21E4ABCA00144F81 /* AddressSearchViewController.swift in Sources */,
 				22FCCD5C21CF663F007A731C /* MainSignViewController.swift in Sources */,
 				222D800921E27BE6000B7379 /* PhotoData.swift in Sources */,
 				5962B6E221DD2A3E00BB032D /* FundingCommentsViewController.swift in Sources */,
+				22174FBF21E4B53700144F81 /* MyPageAreaCollectionViewCell.swift in Sources */,
 				221A844C21D8FB81002BECED /* TabBarController.swift in Sources */,
 				222D7FC221E1352A000B7379 /* MyWriteViewController.swift in Sources */,
 				222D7FD821E13781000B7379 /* QuestionViewController.swift in Sources */,
@@ -1342,6 +1371,7 @@
 				22B4F65121D7CCB00034346F /* DongTableViewCell.swift in Sources */,
 				222D7FE021E15A75000B7379 /* BreedService.swift in Sources */,
 				222D7FFF21E240B9000B7379 /* PuttableService.swift in Sources */,
+				22174FC521E4DF5E00144F81 /* UpdateAreaService.swift in Sources */,
 				222D800B21E2EFF5000B7379 /* MyWriteAdoptTableViewCell.swift in Sources */,
 				5962B6E421DD2A7D00BB032D /* FundingCommentTableViewCell.swift in Sources */,
 				221A843A21D80BB6002BECED /* DuplicatedNickService.swift in Sources */,
@@ -1366,6 +1396,8 @@
 				5962B69521D7C71800BB032D /* FirstViewController.swift in Sources */,
 				22FCCD7A21D35620007A731C /* DefaultData.swift in Sources */,
 				2219DB2B21DCE5E000FF72D7 /* AdoptDetailService.swift in Sources */,
+				22174FC721E5DEF900144F81 /* CommentWarningService.swift in Sources */,
+				22174FC321E4C70900144F81 /* DeletePhotoService.swift in Sources */,
 				222D7FBE21E13444000B7379 /* MyPageAddAreaViewController.swift in Sources */,
 				5962B6A821D8F95800BB032D /* NaverMapRequest.swift in Sources */,
 				5962B6EB21DE364300BB032D /* FundingDetailBottomTableCell.swift in Sources */,

@@ -32,7 +32,19 @@ class SupportingViewController: UIViewController {
         
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.separatorColor = #colorLiteral(red: 0.9136453271, green: 0.9137768745, blue: 0.9136167169, alpha: 1)
+        
+        // 테이블뷰의 스크롤 위에 새로고침이 되는 action을 추가
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView(_:)), for: .valueChanged)
     }
+    
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func startReloadTableView(_ sender: UIRefreshControl) {
+        getSupportList()
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
+
     
     func progressInit(part: Int, all: Int) -> Float {
         let percent = Int (Double(part)/Double(all) * 100.0)
@@ -59,7 +71,7 @@ extension SupportingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = supports[indexPath.row].title
         cell.contentLabel.text = supports[indexPath.row].introduction
         cell.moneyLabel.text = supports[indexPath.row].goalAmount.commaRepresentation
-        cell.dayLabel.text = setDate(createdAt: gsno(supports[indexPath.row].limitAt), format: "MM:dd  HH:mm")
+        cell.dayLabel.text = setDday(start: supports[indexPath.row].limitAt ?? "").description
         
         cell.supportImageView.kf.setImage(with: URL(string: supports[indexPath.row].mainPhoto.url), placeholder: UIImage())
         
@@ -109,7 +121,7 @@ extension SupportingViewController {
                 break
                 
             case .accessDenied :
-                self.simpleAlert(title: "권한 없음", message: "회원가입 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail :

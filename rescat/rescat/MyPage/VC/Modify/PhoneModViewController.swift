@@ -20,11 +20,14 @@ class PhoneModViewController: UIViewController {
     var messageCode: Int?
     var phoneNum: String = ""
     
+    var phoneCheck: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCustomView()
         setEmptyCheck()
+        hideKeyboardWhenTappedAround()
     }
     
     //MARK: 뷰 요소 커스텀 세팅
@@ -72,6 +75,8 @@ class PhoneModViewController: UIViewController {
         }
     }
     
+    
+    
     //MARK: 문자발송 액션
     @IBAction func messageAction(_ sender: UIButton) {
         
@@ -84,7 +89,7 @@ class PhoneModViewController: UIViewController {
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
         
         var phone = UserDefaults.standard.string(forKey: "phone")
-        if phoneTextField.text == "" || numTextField.text == "" {
+        if phoneTextField.text == "" || numTextField.text == "" || phoneCheck == 0 {
             simpleAlert(title: "", message: "휴대폰 인증을 완료해주세요.")
         } else if numTextField.text != messageCode?.description {
             self.simpleAlert(title: "인증 실패", message: "인증 번호가 일치하지 않습니다.")
@@ -119,12 +124,13 @@ extension PhoneModViewController {
             case .networkSuccess(let codeData):
                 let code = codeData as? Int
                 self.messageCode = code
+                self.phoneCheck = 1
                 self.simpleAlert(title: "발송 완료", message: "인증 번호가 발송되었습니다.")
                 break
                 
             //FIXME: 400 에러 수정
             case .badRequest:
-                self.simpleAlert(title: "인증 실패", message: "핸드폰 번호 형식이 올바르지 않습니다.")
+                self.simpleAlert(title: "", message: "핸드폰 번호 형식이 올바르지 않습니다.")
                 break
                 
             case .requestFail:
@@ -161,7 +167,7 @@ extension PhoneModViewController {
                 
 
             case .accessDenied:
-                self.simpleAlert(title: "권한 없음", message: "회원 가입 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail:

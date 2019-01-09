@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AdoptionCommentViewController: UIViewController {
+class AdoptionCommentViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentBottomC: NSLayoutConstraint!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentView: UIView!
-    
+    @IBOutlet weak var commentButton: UIButton!
     
     var comments: [AdoptCommentData] = [AdoptCommentData]() {
         didSet {
@@ -40,14 +40,41 @@ class AdoptionCommentViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.tableView.reloadData()
+
     }
     
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView(){
-        commentView.layer.addBorder(edge: .top, color: #colorLiteral(red: 0.752874434, green: 0.7529841065, blue: 0.7528504729, alpha: 1), thickness: 0.5
-        )
+        
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        if token == "-1" {
+            commentView.isHidden = true
+            commentBottomC.constant = -49
+        } else {
+            commentView.isHidden = false
+            commentBottomC.constant = 64
+        }
+        
+        commentTextField.delegate = self
+        commentView.layer.addBorder(edge: .top, color: #colorLiteral(red: 0.752874434, green: 0.7529841065, blue: 0.7528504729, alpha: 1), thickness: 1)
+        commentTextField.addTarget(self, action: #selector(emptyCommentCheck), for: .editingChanged)
     }
+    
+    //MARK: 댓글 공백 체크 함수
+    @objc func emptyCommentCheck() {
+        
+        if commentTextField.text == ""{
+            commentView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            commentButton.setTitleColor(#colorLiteral(red: 0.5999459028, green: 0.6000347733, blue: 0.5999264717, alpha: 1), for: .disabled)
+            
+        } else {
+            commentView.backgroundColor = #colorLiteral(red: 0.9489366412, green: 0.9490728974, blue: 0.9489069581, alpha: 1)
+            commentButton.setTitleColor(#colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1), for: .normal)
+        }
+    }
+
     
     //MARK: 테이블 뷰 세팅
     func setTableView() {
@@ -55,31 +82,66 @@ class AdoptionCommentViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView(frame: .zero)
-        
-        //TODO: 더 나은 방법 생각해보기
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
+        
+        // 테이블뷰의 스크롤 위에 새로고침이 되는 action을 추가
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView(_:)), for: .valueChanged)
+    }
+    
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func startReloadTableView(_ sender: UIRefreshControl) {
+        getAdoptComment(_idx: idx)
+        tableView.reloadData()
+        sender.endRefreshing()
     }
     
     //MARK: 댓글 전송 액션
     @IBAction func commentAction(_ sender: UIButton) {
-        postComment(idx: idx, contents: gsno(commentTextField.text))
+        enterComment()
+        commentView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        commentButton.setTitleColor(#colorLiteral(red: 0.5999459028, green: 0.6000347733, blue: 0.5999264717, alpha: 1), for: .normal)
+    }
+    
+    //키보드 엔터 버튼으로 전송
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == commentTextField {
+            enterComment()
+        }
+        return true
+    }
+    
+    func enterComment() {
+        if commentTextField.text != "" {
+             postComment(idx: idx, contents: gsno(commentTextField.text))
+        }
     }
     
     //MARK: 댓글 삭제 및 신고 액션
-    func reportAction(c_id: Int) {
+    func reportAction(c_id: Int, isWriter: Bool) {
         
-        let actionSheet = UIAlertController(title: "", message: "기타", preferredStyle: .actionSheet)
-        actionSheet.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
-        actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: { result in
-            self.reportContent(idx: self.idx, c_id: c_id)
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        
+        if token == "-1" {
+            self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있어요.")
+        } else {
+            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            actionSheet.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
             
-        }))
-        actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
-            
-            
-        }))
-        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
+            if isWriter == true { //내가 작성한 댓글이면 삭제 가능
+                actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: { result in
+                    self.reportContent(idx: self.idx, c_id: c_id)
+                    
+                }))
+            } else { //내가 작성한 댓글이 아니면 신고 가능
+                actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
+                    self.warnContent(idx: self.idx, c_id: c_id)
+                }))
+            }
+
+            actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(actionSheet, animated: true, completion: nil)
+        }
 
     }
 
@@ -106,7 +168,7 @@ extension AdoptionCommentViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         cell.nickNameLabel.text = comments[indexPath.row].nickname
-        cell.timeLabel.text = setDate(createdAt: comments[indexPath.row].createdAt, format: "MM/dd   HH:mm")
+        cell.timeLabel.text = setDate(createdAt: gsno(comments[indexPath.row].createdAt), format: "MM/dd  MHH:mm")
         cell.contentLabel.text = comments[indexPath.row].contents
         
         cell.configure(data: comments[indexPath.row])
@@ -163,7 +225,7 @@ extension AdoptionCommentViewController {
                 break
                 
             case .accessDenied: //401
-                self.simpleAlert(title: "권한 없음", message: "회원가입 후, 이용 가능합니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용 가능합니다.")
                 break
                 
             case .networkFail :
@@ -184,12 +246,33 @@ extension AdoptionCommentViewController {
 
             switch result {
             case .networkSuccess(_):
-                self.simpleAlert(title: "성공", message: "해당 댓글을 삭제하였습니다.")
+                self.simpleAlert(title: "", message: "해당 댓글을 삭제하였습니다.")
                 self.getAdoptComment(_idx: idx)
                 break
                 
             case .accessDenied :
                 self.simpleAlert(title: "권한 없음", message: "해당 댓글을 삭제할 수 없습니다.")
+                
+            case .networkFail :
+                self.networkErrorAlert()
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    //댓글 신고
+    func warnContent(idx: Int, c_id: Int) {
+        
+        CommentWarningService.shareInstance.postWarnComment(idx: idx, cId: c_id, params: [:], completion: { (result) in
+            
+            switch result {
+            case .networkSuccess(_):
+                self.simpleAlert(title: "", message: "해당 댓글을 신고하였습니다.")
+                self.getAdoptComment(_idx: idx)
+                break
                 
             case .networkFail :
                 self.networkErrorAlert()

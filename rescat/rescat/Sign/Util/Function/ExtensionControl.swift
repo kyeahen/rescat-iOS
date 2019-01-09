@@ -204,7 +204,7 @@ extension UIViewController {
         })
     }
     
-    //1시간전
+    //1시간 전
     func setHours(start: String) -> String {
         let dateFormatter = DateFormatter()
 
@@ -212,19 +212,36 @@ extension UIViewController {
         let day  = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
         let interval = NSDate().timeIntervalSince(day)
         let hour = Int(interval / 3600)
+        
+        if hour <= 24 {
+            return "\(hour)시간 전"
+        } else {
+            return setDate(createdAt: start, format: "MM/dd  HH:ss")
+        }
 
-        return "\(hour)시간 전"
     }
     
+    //100일 남음
     func setDday(start: String) -> Int {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.'sss'+'ssss"
         let day = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
         let interval = NSDate().timeIntervalSince(day)
         let days = Int(interval / 86400)
         
         return days
+    }
+    
+    //키보드 대응
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 
@@ -292,6 +309,13 @@ extension UITextField {
         self.layer.borderWidth = 1
         self.makeRounded(cornerRadius: radius)
     }
+    
+    func shake() {
+        self.transform = CGAffineTransform(translationX: 20, y: 0)
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
 }
 
 extension UITextView {
@@ -300,6 +324,7 @@ extension UITextView {
         self.layer.borderColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
         self.layer.borderWidth = 1
         self.makeRounded(cornerRadius: 8)
+        resetTintColor()
     }
     
     func resetTintColor(){

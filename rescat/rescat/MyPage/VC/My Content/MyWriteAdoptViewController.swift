@@ -34,6 +34,17 @@ class MyWriteAdoptViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
         tableView.separatorColor = #colorLiteral(red: 0.9136453271, green: 0.9137768745, blue: 0.9136167169, alpha: 1)
+        
+        // 테이블뷰의 스크롤 위에 새로고침이 되는 action을 추가
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView(_:)), for: .valueChanged)
+    }
+    
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func startReloadTableView(_ sender: UIRefreshControl) {
+        getMyAdoptList()
+        tableView.reloadData()
+        sender.endRefreshing()
     }
 
 }
@@ -50,7 +61,7 @@ extension MyWriteAdoptViewController: UITableViewDataSource, UITableViewDelegate
         
         cell.titleLabel.text = myAdopts[indexPath.row].name
         cell.contentLabel.text = myAdopts[indexPath.row].contents
-        cell.timeLabel.text = setHours(start: myAdopts[indexPath.row].createdAt)
+        cell.timeLabel.text = setHours(start: myAdopts[indexPath.row].updatedAt)
         cell.countLabel.text = myAdopts[indexPath.row].viewCount.description
         
         if myAdopts[indexPath.row].type == 0 {
@@ -73,8 +84,6 @@ extension MyWriteAdoptViewController: UITableViewDataSource, UITableViewDelegate
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    
-    
 }
 
 //MARK: Networking Extension
@@ -96,7 +105,7 @@ extension MyWriteAdoptViewController {
                 break
                 
             case .accessDenied :
-                self.simpleAlert(title: "권한 없음", message: "회원가입 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail :

@@ -52,7 +52,7 @@ class MyPageAddAreaViewController: UIViewController {
     //MARK: 완료 액션(unwind segue)
     //TODO: 위치 찾았으면 넘어가기
     @IBAction func saveAction(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "unwindToArea", sender: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

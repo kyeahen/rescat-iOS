@@ -133,18 +133,6 @@ class MainCareViewController: UIViewController {
 
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
 //MARK: ChildViewController BackButton Setting
 //TODO: 이미지 첨부
 extension MainCareViewController {

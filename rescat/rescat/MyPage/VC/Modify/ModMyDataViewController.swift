@@ -114,6 +114,7 @@ extension ModMyDataViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.contentLabel.text = myPages[indexPath.row]
+        
         return cell
     }
     
@@ -136,15 +137,17 @@ extension ModMyDataViewController: UITableViewDelegate, UITableViewDataSource {
                         self.myPages.append(self.gsno(resResult.nickname))
                         self.myPages.append(self.gsno(resResult.phone))
                     } else {
+                        self.myPages.append(self.gsno(resResult.name))
                         self.myPages.append(self.gsno(resResult.id))
                         self.myPages.append(self.gsno(resResult.nickname))
+
                     }
                     
                 }
                 break
                 
             case .accessDenied :
-                self.simpleAlert(title: "권한 없음", message: "회원가입 후 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "로그인 후 이용할 수 있습니다.")
                 break
                 
             case .networkFail :

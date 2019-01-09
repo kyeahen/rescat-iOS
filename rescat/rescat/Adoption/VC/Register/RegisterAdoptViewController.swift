@@ -20,6 +20,9 @@ class RegisterAdoptViewController: UIViewController {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var etcTextView: UITextView!
     
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
     var dataRecieved: String? {
         willSet {
             breedTextField.text = newValue
@@ -43,8 +46,16 @@ class RegisterAdoptViewController: UIViewController {
     var tnrCheck: Int = 0
     var vacCheck: Int = 0
     
-    var imageArr: [UIImage] = [UIImage(named: "icAddPhoto") ?? UIImage()]
-    var imageNum: Int = 0
+    var imageArr: [UIImage] = [UIImage(named: "icAddPhoto") ?? UIImage()] {
+        willSet {
+            collectionView.reloadData()
+        }
+    }
+    var imageNum: Int = 0 {
+        willSet {
+            collectionView.reloadData()
+        }
+    }
     let imagePicker : UIImagePickerController = UIImagePickerController()
     var imageUrl: [String] = [String]()
     var imageCheck: Int = 0
@@ -80,7 +91,6 @@ class RegisterAdoptViewController: UIViewController {
         //datePicker
         initDatePicker1()
         initDatePicker2()
-        
 
     }
     
@@ -88,6 +98,30 @@ class RegisterAdoptViewController: UIViewController {
     func setCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    //MARK: 필드 초기화
+    func setReset() {
+        imageArr.removeAll()
+        imageArr.append(UIImage(named: "icAddPhoto") ?? UIImage())
+        imageUrl.removeAll()
+        oneTextView.text = ""
+        nameTextField.text = ""
+        ageTextField.text = ""
+        sexButton[0].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        sexButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        breedTextField.text = ""
+        startTextField.text = ""
+        endTextField.text = ""
+        tnrButton[0].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        tnrButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[0].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[2].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[3].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[4].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        etcTextView.text = ""
+        
     }
     
     //MARK: UnwindSegue (breedVC -> resisterVC)
@@ -106,6 +140,23 @@ class RegisterAdoptViewController: UIViewController {
             if sender.tag == aButton.tag{
                 aButton.isSelected = true;
                 aButton.setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+                
+                if sender.tag == 0 {
+                    dateLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    startTextField.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    endTextField.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    startTextField.isUserInteractionEnabled = false
+                    endTextField.isUserInteractionEnabled = false
+                    
+                    self.setReset()
+                } else {
+                    dateLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    startTextField.layer.borderColor = #colorLiteral(red: 0.918808341, green: 0.5516380668, blue: 0.5516873598, alpha: 1)
+                    endTextField.layer.borderColor = #colorLiteral(red: 0.918808341, green: 0.5516380668, blue: 0.5516873598, alpha: 1)
+                    startTextField.isUserInteractionEnabled = true
+                    endTextField.isUserInteractionEnabled = true
+                    self.setReset()
+                }
             }else{
                 aButton.isSelected = false;
                 aButton.setImage(UIImage(named: "buttonRadioOff"), for: .normal)
@@ -118,7 +169,7 @@ class RegisterAdoptViewController: UIViewController {
         sexCheck = 1
         for  aButton: UIButton in sexButton! {
             
-            typeTag = sender.tag
+            sexTag = sender.tag
             if sender.tag == aButton.tag{
                 aButton.isSelected = true;
                 aButton.setImage(UIImage(named: "buttonRadioOn"), for: .normal)
@@ -134,7 +185,7 @@ class RegisterAdoptViewController: UIViewController {
         tnrCheck = 1
         for  aButton: UIButton in tnrButton! {
             
-            typeTag = sender.tag
+            tnrTag = sender.tag
             if sender.tag == aButton.tag{
                 aButton.isSelected = true;
                 aButton.setImage(UIImage(named: "buttonRadioOn"), for: .normal)
@@ -150,7 +201,7 @@ class RegisterAdoptViewController: UIViewController {
         vacCheck = 1
         for  aButton: UIButton in vacButton! {
             
-            typeTag = sender.tag
+            vacTag = sender.tag
             if sender.tag == aButton.tag{
                 aButton.isSelected = true;
                 aButton.setImage(UIImage(named: "buttonRadioOn"), for: .normal)
@@ -163,18 +214,38 @@ class RegisterAdoptViewController: UIViewController {
     
     //MARK: 등록할래요 액션
     @IBAction func saveAction(_ sender: UIButton) {
-        if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || startTextField.text == "" || endTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" {
-            
-            self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
-        }else {
-            
-            self.simpleAlertwithCustom(title: "", message: """
+        print(typeTag)
+        
+        if typeTag == 0 { //입양일 때
+            if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" || imageNum == 0 {
+                
+                self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
+            } else {
+                self.simpleAlertwithCustom(title: "", message: """
                 글이 등록된 후에는 수정이 불가합니다.
                 다시 한 번 확인해주세요 !
                 """, ok: "작성 완료", cancel: "다시 확인") { (action) in
                     self.postRegisterAdopt()
+                }
             }
+        } else { //임보일 때
+            
+            if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || startTextField.text == "" || endTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" || imageNum == 0 {
+                
+                self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
+            }else {
+                
+                self.simpleAlertwithCustom(title: "", message: """
+                글이 등록된 후에는 수정이 불가합니다.
+                다시 한 번 확인해주세요 !
+                """, ok: "작성 완료", cancel: "다시 확인") { (action) in
+                    self.postRegisterAdopt()
+                }
+            }
+            
         }
+                
+
     }
     
     
@@ -190,8 +261,9 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
+
         
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { //첫번째에 더하기 버튼
             cell.deleteButton.isHidden = true
         } else {
             cell.deleteButton.isHidden = false
@@ -204,23 +276,35 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
+    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        openGallery()
+
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
+        
+            if indexPath.row == 0 { //첫번째에 더하기 버튼
+                if imageNum < 3 { //3장을 넘지 않을 때
+                    openGallery()
+    
+                } else  {
+                    self.simpleAlert(title: "", message: "사진을 최대 3장까지 첨부가능합니다.")
+
+                }
+            }
+                
     }
     
     //MARK: 이미지 삭제
     @objc func deleteImageFromButton(button: UIButton) {
-        
-        imageArr.remove(at: button.tag)
-        imageNum -= 1
-        collectionView.reloadData()
+ 
+        self.deletePhoto(url: imageUrl[button.tag - 1], tag: button.tag)
+
     }
     
 }
 
 //MARK: Networking Extension
 extension RegisterAdoptViewController {
-    
     
     //입양,임보 등록
     func postRegisterAdopt() {
@@ -318,7 +402,7 @@ extension RegisterAdoptViewController {
     }
     
     //사진 첨부
-    func addImage(image : Data?){
+    func addImage(image : Data?) {
         let params : [String : Any] = [:]
         var images : [String : Data]?
         
@@ -337,6 +421,7 @@ extension RegisterAdoptViewController {
                 let data = data as? PhotoData
                 if let img = data?.photoUrl {
                     self.imageUrl.append(img)
+
                     self.imageCheck = 1
                 }
                 break
@@ -348,6 +433,34 @@ extension RegisterAdoptViewController {
             case .networkFail :
                 self.networkErrorAlert()
                 break
+                
+            default :
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+                break
+            }
+        })
+    }
+    
+    //사진 삭제
+    func deletePhoto(url: String, tag: Int) {
+        
+        DeletePhotoService.shareInstance.deletePhoto(photoUrl: url , completion: { (result) in
+            
+            switch result {
+            case .networkSuccess(_):
+                
+                self.imageArr.remove(at: tag)
+                self.imageUrl.remove(at: tag - 1)
+                self.imageNum -= 1
+                self.collectionView.reloadData()
+
+                break
+                
+            case .accessDenied :
+                self.simpleAlert(title: "권한 없음", message: "해당 사진을 삭제할 수 없습니다.")
+                
+            case .networkFail :
+                self.networkErrorAlert()
                 
             default :
                 self.simpleAlert(title: "오류", message: "다시 시도해주세요")
@@ -400,11 +513,17 @@ extension RegisterAdoptViewController: UIImagePickerControllerDelegate, UINaviga
             imageNum += 1
             let photo = editedImage.jpegData(compressionQuality: 0.3)
             addImage(image: photo) //이미지 추가
+//            if imageNum == 3 {
+//                imageArr[0] = UIImage(named: "icAddPhotoOff") ?? UIImage()
+//                print(imageArr.count)
+//            }
+            
         } else if let selectedImage = info[.originalImage] as? UIImage as? UIImage{
             imageArr.append(selectedImage)
             imageNum += 1
             let photo = selectedImage.jpegData(compressionQuality: 0.3)
             addImage(image: photo)
+ 
         }
         
         self.dismiss(animated: true) {
@@ -465,6 +584,7 @@ extension RegisterAdoptViewController {
         
         bar.setItems([doneButton], animated: true)
         textField.inputAccessoryView = bar
+        doneButton.tintColor = #colorLiteral(red: 0.918808341, green: 0.5516380668, blue: 0.5516873598, alpha: 1)
         
         if let tempView = inputView as? UIView {
             textField.inputView = tempView

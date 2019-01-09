@@ -17,12 +17,7 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var roleTextField: UITextField!
     @IBOutlet weak var mainAddressTextField: UITextField!
     @IBOutlet weak var subAddressTextField: UITextField!
-    @IBOutlet weak var contentTextView: UITextView! {
-        willSet {
-//            contentTextView.tintColor = #colorLiteral(red: 0.948010385, green: 0.566582799, blue: 0.5670218468, alpha: 1)
-//            contentTextView.reloadInputViews()
-        }
-    }
+    @IBOutlet weak var contentTextView: UITextView!
     
     @IBOutlet var houseButtons: [UIButton]!
     @IBOutlet var statusButtons: [UIButton]!
@@ -63,6 +58,10 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate {
         contentTextView.tintColor = #colorLiteral(red: 0.948010385, green: 0.566582799, blue: 0.5670218468, alpha: 1)
         
         self.navigationItem.title = titleName
+    }
+    
+    @IBAction func unwindTOPost(_ sender: UIStoryboardSegue) {
+        print(#function)
     }
     
     //MARK: 자택형태 액션
@@ -175,12 +174,19 @@ extension ApplyAdoptViewController {
             
             switch result {
             case .networkSuccess( _): //200
+                let comVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier:
+                    "ComNaviVC")
+                
+                self.present(comVC, animated: true, completion: nil)
+                break
+                
+            case .duplicated: //409
+                self.simpleAlert(title: "", message: "이미 신청한 글입니다.")
                 self.navigationController?.popViewController(animated: true)
                 break
                 
-            case .duplicated:
-                self.simpleAlert(title: "", message: "이미 신청한 글입니다.")
-                self.navigationController?.popViewController(animated: true)
+            case .badRequest: //400
+                self.simpleAlert(title: "", message: "신청이 완료된 글입니다.")
                 break
                 
             case .networkFail :

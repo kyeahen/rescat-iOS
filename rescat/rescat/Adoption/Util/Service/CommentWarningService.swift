@@ -1,24 +1,24 @@
 //
-//  DeleteMyPageAreaService.swift
+//  CommentWarningService.swift
 //  rescat
 //
-//  Created by 김예은 on 07/01/2019.
+//  Created by 김예은 on 09/01/2019.
 //  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct DeleteMyPageAreaService: DeletableService, APIServie {
+struct CommentWarningService: PostableService, APIServie {
     
     typealias NetworkData = DefaultData
-    static let shareInstance = DeleteMyPageAreaService()
+    static let shareInstance = CommentWarningService()
     
-    //MARK: Delete - api/users/mypage/region (지역 삭제)
-    func deleteArea(completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: POST - /api/care-posts/{idx}/comments/{comment-idx}/warning (댓글 신고)
+    func postWarnComment(idx: Int, cId: Int, params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let deleteURL = self.url("users/mypage/region")
+        let warnURL = self.url("care-posts/\(idx)/comments/\(cId)/warning")
         
-        delete(deleteURL) { (result) in
+        post(warnURL, params: params) { (result) in
             switch result {
                 
             case .success(let networkResult):
@@ -26,6 +26,9 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
+                    
+                case HttpResponseCode.badRequest.rawValue : //400
+                    completion(.badRequest)
                     
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
@@ -41,7 +44,10 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
                 
             case .error(let resCode):
                 switch resCode {
-
+                    
+                case HttpResponseCode.badRequest.rawValue.description : //400
+                    completion(.badRequest)
+                    
                 case HttpResponseCode.accessDenied.rawValue.description : //401
                     completion(.accessDenied)
                     

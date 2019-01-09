@@ -32,7 +32,19 @@ class MyWriteSupportViewController: UIViewController {
         
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.separatorColor = #colorLiteral(red: 0.9136453271, green: 0.9137768745, blue: 0.9136167169, alpha: 1)
+        
+        // 테이블뷰의 스크롤 위에 새로고침이 되는 action을 추가
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView(_:)), for: .valueChanged)
     }
+    
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func startReloadTableView(_ sender: UIRefreshControl) {
+        getMySupportList()
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
+
     
     //MARK: 상단 목록으로 올리기
     @IBAction func topAction(_ sender: UIButton) {
@@ -112,7 +124,7 @@ extension MyWriteSupportViewController {
                 break
                 
             case .accessDenied :
-                self.simpleAlert(title: "권한 없음", message: "회원가입 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail :
