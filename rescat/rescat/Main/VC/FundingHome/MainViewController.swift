@@ -18,21 +18,22 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     @IBOutlet var adoptionListButton : UIButton!
 
     @IBOutlet weak var mainBannerImageView: UIImageView!
-    // ------라이브러리 test 중이라 나중에 코드 정리할 예정------
     @IBOutlet var reviewImage : AACarousel!
+    var isFirst = false
     var titleArray = [String]()
     var photoArray = [String]()
     var fundingList = [FundingModel]()
     var fundingBannerList = [FundingBannerModel]()
     var mainBannerList = [FundingBannerModel]()
-//    var careList = [
+    var randomBanner : FundingBannerModel!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         let request = FundingRequest(self)
         request.requestMain()
-        request.requestFundingBannerList()
-        request.requestAdvertiseBanner()
+        request.requestFundingBannerList(0); request.requestFundingBannerList(1);
+        request.requestFundingBannerList(2)
+
         fundingBannerList.removeAll(); photoArray.removeAll()
     }
     override func viewDidLoad() {
@@ -130,6 +131,9 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     }
     */
 
+    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
+        print("Unwind segue to home screen triggered!")
+    }
 }
 extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -139,11 +143,12 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TempCell", for: indexPath) as! TempCell
-        cell.outerView.drawShadow(4)
+        cell.outerView.drawShadow(3)
 
         if ( indexPath.row == 4 ) {
             cell.imageView.isHidden = true; cell.characterLabel.isHidden = true; cell.markImageView.isHidden = true; cell.nameLabel.isHidden = true;
             cell.listButton.isHidden = false
+            cell.listButton.setImage(UIImage(named:"iconRescatcardMoreRound"), for: .normal)
             cell.listButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
         }
         return cell
@@ -158,7 +163,13 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableCell", for: indexPath) as! BannerTableCell
-            cell.bannerImageView.drawShadow(3)
+            if ( isFirst) {
+                guard let url = randomBanner.photoUrl else { return cell }
+//                print("random url \(url)")
+                cell.bannerImageView.kf.setImage(with: URL(string: url))
+                cell.bannerImageView.drawShadow(5)
+
+            }
             return cell
         } else {
             
@@ -166,7 +177,18 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = gsno(fundingList[indexPath.row].title)
             guard let photo = fundingList[indexPath.row].mainPhoto else { return cell }
             cell.backgroundImageView.kf.setImage(with: URL(string: gsno(photo.url)))
-            cell.backgroundImageView.drawShadow(3)
+//            cell.backgroundImageView.roundCorner(10.0)
+            cell.backgroundImageView.drawShadow(5)
+
+//            cell.
+            cell.backView.backgroundColor = UIColor.black ; cell.backView.alpha = 0.3
+            cell.remainLabel.text = gsno(fundingList[indexPath.row].limitAt)
+//            cell.
+            
+            let percentage = Float(gino(fundingList[indexPath.row].currentAmount)) / Float(gino(fundingList[indexPath.row].goalAmount))
+            cell.goalLabel.text = "\(Int(percentage*100))% 달성"
+//            cell.stageView.drawPercentage(Double(percentage), UIColor.white, UIColor.recatBrown())
+            cell.stageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatBrown())
             return cell
         }
 
@@ -180,6 +202,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
+            UIApplication.shared.open(URL(string:"www.naver.com")!, options: [:], completionHandler: nil)
             return
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
@@ -197,7 +220,6 @@ extension MainViewController {
         if ( code == APIServiceCode.FUNDING_MAIN ) {
             fundingList = datas as! [FundingModel]
             print("fundingList model len \(fundingList.count)}")
-            tempTableList.reloadData()
         } else if ( code == APIServiceCode.FUNDING_BANNER_LIST ) {
             fundingBannerList = datas as! [FundingBannerModel]
             print("fundingBannerList model len \(fundingBannerList.count)")
@@ -209,11 +231,14 @@ extension MainViewController {
             reviewImage.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
             reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
 
-        } else if ( code == APIServiceCode.MAIN_BOTTOM_BANNER_LIST ) {
+        } else if ( code == APIServiceCode.FUNDING_BOTTOM_BANNER_LIST ) {
             mainBannerList = datas as! [FundingBannerModel]
             let url = URL(string:gsno(mainBannerList[0].photoUrl))
             mainBannerImageView.kf.setImage(with: url)
+        } else if ( code == APIServiceCode.FUNDING_RANDOM_BANNER ) {
+            randomBanner = datas as! FundingBannerModel
+            isFirst = true
         }
-        
+        tempTableList.reloadData()
     }
 }

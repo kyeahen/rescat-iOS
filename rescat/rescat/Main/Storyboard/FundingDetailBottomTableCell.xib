@@ -19,16 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="166.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCV-hG-lnz">
-                        <rect key="frame" x="0.0" y="117" width="375" height="49"/>
-                        <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="49" id="s98-QD-70i"/>
-                        </constraints>
-                        <state key="normal" title="입양할래요">
-                            <color key="titleColor" red="0.55119977679999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GIc-XW-jlV">
                         <rect key="frame" x="0.0" y="27" width="375" height="90"/>
                         <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,17 +28,13 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uCV-hG-lnz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9ze-bG-q58"/>
-                    <constraint firstAttribute="trailing" secondItem="uCV-hG-lnz" secondAttribute="trailing" id="OCK-zi-zyP"/>
                     <constraint firstItem="GIc-XW-jlV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Sas-Nx-h80"/>
                     <constraint firstAttribute="trailing" secondItem="GIc-XW-jlV" secondAttribute="trailing" id="cJG-Tn-dgk"/>
                     <constraint firstItem="GIc-XW-jlV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="s1M-X0-nOt"/>
-                    <constraint firstItem="uCV-hG-lnz" firstAttribute="top" secondItem="GIc-XW-jlV" secondAttribute="bottom" id="vaB-fe-w1o"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="adoptionButton" destination="uCV-hG-lnz" id="ssI-vV-qac"/>
                 <outlet property="illustrateImageView" destination="GIc-XW-jlV" id="CLl-84-5tV"/>
             </connections>
         </tableViewCell>

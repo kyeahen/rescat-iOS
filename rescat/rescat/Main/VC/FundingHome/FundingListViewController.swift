@@ -59,17 +59,20 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         cell.introductionLabel.text = gsno(funding.introduction)
         cell.goalmoneyLabel.text = "\(gino(funding.goalAmount).getMoney())원"
         let percentage = Float(gino(funding.currentAmount))/Float(gino(funding.goalAmount))
-        print("percentage - \(percentage)")
-//        cell.percentageLabel.text = "\(Int(ceil(percentage*100)))%"
+//        print("percentage - \(funding.title) - \(percentage)")
+        cell.percentageLabel.text = "\(Int(percentage*100))%"
         cell.remaindaysLabel.text = gsno(funding.limitAt)
-        cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatPer(), UIColor.rescatPink())
+        cell.percentageView.drawPercentage(Double(percentage),
+                                           UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))
+//        print("percantage - \(percentage)")
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
         tableView.deselectRow(at: indexPath, animated: true)
         FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
+        print("Funding idx - \(fundingList[indexPath.row].idx)")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -79,6 +82,7 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
 extension FundingListViewController {
     func requestCallback(_ datas: Any, _ code: Int) {
         fundingList = datas as! [FundingModel]
+        print(fundingList.count)
         listTableView.reloadData()
     }
 }

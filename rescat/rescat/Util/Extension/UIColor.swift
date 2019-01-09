@@ -25,4 +25,7 @@ extension UIColor {
         return UIColor(red: 255/255, green: 245/255, blue: 240/255, alpha: 1)
 
     }
+    static func rescatBrown() -> UIColor{
+        return UIColor(red: 110/255, green: 77/255, blue: 55/255, alpha: 1)
+    }
 }

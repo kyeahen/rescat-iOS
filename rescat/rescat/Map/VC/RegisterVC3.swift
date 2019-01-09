@@ -32,7 +32,7 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mapView.delegate = self
-        let location = LocationUserDefaultService.getLocations().first
+        let location = UserInfo.getLocations().first
         guard let mainLocation = location else {
             loadMapView(latitude: 37.300, longitude: 127.027610, zoom: 15.0)
             return
@@ -88,39 +88,44 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
         }
 
 //        request.addPhoto(dataImageView)
-        let data = dataImageView.image?.jpegData(compressionQuality: 1.0)
-//        request.addPhoto(data!)
-        for i in 0..<5{
-            var m : MapRequestModel = MapRequestModel()
-           
-            m.requestType = 0
-            m.registerType = 0
-            let lat = Double.random(lower: 37.04149, 127.020924)
-            let long = Double.random(lower: 127.020924, 127.040959)
-            m.lat = lat; m.lng = long
-            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
-            m.regionFullName = "서울특별시 강남구 논현1동"
-            m.name = "피어캣"
-            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
-
-            
-            
-            // ----------
+//        var datas = [Data]()
+//        for i in 0..<5 {
+//            guard let  data = dataImageView.image?.jpegData(compressionQuality: 1.0) else { return }
+//            datas.append(data)
+//
+//        }
+//        PhotoRequest.uploadPhotos(datas)
+//        for i in 0..<5{
+//            var m : MapRequestModel = MapRequestModel()
+//
 //            m.requestType = 0
-//            m.registerType = 1
+//            m.registerType = 0
 //            let lat = Double.random(lower: 37.04149, 127.020924)
 //            let long = Double.random(lower: 127.020924, 127.040959)
 //            m.lat = lat; m.lng = long
 //            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
-//            m.regionFullName = "서울특별시 강남구 신사동"
+//            m.regionFullName = "서울특별시 강남구 논현1동"
 //            m.name = "피어캣"
-//            m.address = "everywhere"
-//            m.phone = "010-3676-2713"
 //            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
-         
-            
-            request.addMapData(m)
-        }
+//
+//
+//
+//            // ----------
+////            m.requestType = 0
+////            m.registerType = 1
+////            let lat = Double.random(lower: 37.04149, 127.020924)
+////            let long = Double.random(lower: 127.020924, 127.040959)
+////            m.lat = lat; m.lng = long
+////            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
+////            m.regionFullName = "서울특별시 강남구 신사동"
+////            m.name = "피어캣"
+////            m.address = "everywhere"
+////            m.phone = "010-3676-2713"
+////            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
+//
+//
+//            request.addMapData(m)
+//        }
 
 
 

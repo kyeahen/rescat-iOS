@@ -20,16 +20,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-LH-8EV">
-                            <rect key="frame" x="16.5" y="7.5" width="342" height="155"/>
+                            <rect key="frame" x="22" y="7.5" width="331" height="155"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="342" id="GrH-mz-NY1"/>
-                                <constraint firstAttribute="height" constant="155" id="UmW-rz-ZAb"/>
-                            </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1hg-LH-8EV" secondAttribute="bottom" constant="7.5" id="DjH-nh-s5X"/>
+                        <constraint firstAttribute="trailing" secondItem="1hg-LH-8EV" secondAttribute="trailing" constant="22" id="IiD-CP-soC"/>
+                        <constraint firstItem="1hg-LH-8EV" firstAttribute="leading" secondItem="TXy-Mj-qTV" secondAttribute="leading" constant="22" id="Ymx-W6-0kp"/>
+                        <constraint firstItem="1hg-LH-8EV" firstAttribute="top" secondItem="TXy-Mj-qTV" secondAttribute="top" constant="7.5" id="btO-pu-z1b"/>
                         <constraint firstItem="1hg-LH-8EV" firstAttribute="centerY" secondItem="TXy-Mj-qTV" secondAttribute="centerY" id="gRt-VE-Sob"/>
                         <constraint firstItem="1hg-LH-8EV" firstAttribute="centerX" secondItem="TXy-Mj-qTV" secondAttribute="centerX" id="yE9-E1-g1R"/>
                     </constraints>

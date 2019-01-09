@@ -644,12 +644,12 @@
         <!--RegisterVC3-->
         <scene sceneID="6fD-QA-ITB">
             <objects>
-                <viewController id="YWb-AJ-dAt" customClass="RegisterVC3" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC3" id="YWb-AJ-dAt" customClass="RegisterVC3" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3de-Zu-2Hb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-4k-wha">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="adCard" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-4k-wha">
                                 <rect key="frame" x="67" y="269" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -753,7 +753,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Er6-Lx-6tM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KRf-E5-mPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="registerStartVC" automaticallyAdjustsScrollViewInsets="NO" id="mmC-Gh-gNj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hcL-xX-G2D">
@@ -765,6 +764,7 @@
                         <segue destination="r2a-LR-UDI" kind="relationship" relationship="rootViewController" id="03h-61-CCn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRf-E5-mPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="688.79999999999995" y="63.418290854572717"/>
         </scene>
@@ -788,6 +788,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="adCard" width="332" height="155"/>
         <image name="icGps" width="48" height="48"/>
         <image name="iconNewPost" width="24" height="24"/>
         <image name="iconSearch" width="24" height="24"/>

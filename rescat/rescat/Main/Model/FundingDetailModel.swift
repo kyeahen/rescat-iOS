@@ -15,8 +15,8 @@ class FundingDetailModel : Codable{
     var mainRegion : String?
     var nickname : String?
     var title : String?
-    var photos : [FundingDetailPhoto]?
-    var certifications : [FundingDetailPhoto]?
+    var photos : [FundingPhotoModel]?
+    var certifications : [FundingPhotoModel]?
 
 }
 class FundingDetailPhoto : Codable {

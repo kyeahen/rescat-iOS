@@ -20,13 +20,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-Yr-tqc">
-                            <rect key="frame" x="17.5" y="7.5" width="340" height="165"/>
+                            <rect key="frame" x="22" y="7.5" width="331" height="165"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="340" id="gAK-Tx-yp5"/>
                                 <constraint firstAttribute="height" constant="165" id="gK0-kH-2BL"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="165" id="oSZ-7V-7gx"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUq-s8-Eqx">
+                            <rect key="frame" x="22" y="7.5" width="331" height="165"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfi-e2-FhS">
                             <rect key="frame" x="34" y="56" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -68,22 +71,28 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="centerX" secondItem="OeD-6x-6WY" secondAttribute="centerX" id="7hv-Uj-VHM"/>
+                        <constraint firstItem="kfi-e2-FhS" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="34" id="0g8-7y-Mf2"/>
+                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="22" id="21D-os-1OR"/>
+                        <constraint firstAttribute="trailing" secondItem="EDI-Yr-tqc" secondAttribute="trailing" constant="22" id="7ke-Mf-SBS"/>
+                        <constraint firstItem="oUq-s8-Eqx" firstAttribute="trailing" secondItem="EDI-Yr-tqc" secondAttribute="trailing" id="BWG-jK-IE9"/>
                         <constraint firstAttribute="trailing" secondItem="RZO-8N-xhs" secondAttribute="trailing" constant="39" id="DJ0-aB-ljF"/>
                         <constraint firstItem="ERg-Mj-Xc5" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="34" id="Gdo-YV-Lr5"/>
+                        <constraint firstItem="oUq-s8-Eqx" firstAttribute="top" secondItem="EDI-Yr-tqc" secondAttribute="top" id="IZK-iJ-WDI"/>
                         <constraint firstAttribute="trailing" secondItem="hS3-PP-4D8" secondAttribute="trailing" constant="40" id="J74-Qn-zq0"/>
                         <constraint firstItem="RZO-8N-xhs" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="39" id="LH2-In-wV2"/>
+                        <constraint firstItem="oUq-s8-Eqx" firstAttribute="leading" secondItem="EDI-Yr-tqc" secondAttribute="leading" id="NON-gv-7s0"/>
                         <constraint firstItem="hS3-PP-4D8" firstAttribute="centerY" secondItem="5IA-os-ox0" secondAttribute="centerY" id="WQ1-Sb-Kzz"/>
+                        <constraint firstItem="oUq-s8-Eqx" firstAttribute="bottom" secondItem="EDI-Yr-tqc" secondAttribute="bottom" id="YdF-RW-TpH"/>
                         <constraint firstAttribute="height" constant="180" id="aJW-pN-MCS"/>
-                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="centerY" secondItem="OeD-6x-6WY" secondAttribute="centerY" id="bln-ec-HE8"/>
                         <constraint firstItem="5IA-os-ox0" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="40" id="dSu-Ps-Qu2"/>
                         <constraint firstItem="kfi-e2-FhS" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="56" id="euP-sd-9Zt"/>
-                        <constraint firstItem="kfi-e2-FhS" firstAttribute="leading" secondItem="ERg-Mj-Xc5" secondAttribute="leading" id="ftH-Pn-L9o"/>
+                        <constraint firstItem="EDI-Yr-tqc" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="7.5" id="lrm-1v-NJ2"/>
                         <constraint firstAttribute="bottom" secondItem="5IA-os-ox0" secondAttribute="bottom" constant="43" id="m3W-Eh-Pmz"/>
                         <constraint firstItem="ERg-Mj-Xc5" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="18" id="oo5-x7-KWM"/>
                         <constraint firstItem="RZO-8N-xhs" firstAttribute="top" secondItem="Pzv-0W-2F3" secondAttribute="bottom" constant="15" id="pS6-fX-5q0"/>
                         <constraint firstItem="Pzv-0W-2F3" firstAttribute="leading" secondItem="kfi-e2-FhS" secondAttribute="leading" id="s4U-7y-BT9"/>
                         <constraint firstItem="Pzv-0W-2F3" firstAttribute="top" secondItem="OeD-6x-6WY" secondAttribute="top" constant="79" id="wuz-LJ-9rH"/>
+                        <constraint firstAttribute="bottom" secondItem="EDI-Yr-tqc" secondAttribute="bottom" constant="7.5" id="yv5-lB-2VR"/>
                     </constraints>
                 </view>
             </subviews>
@@ -96,9 +105,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="backView" destination="oUq-s8-Eqx" id="qti-q1-cBy"/>
                 <outlet property="backgroundImageView" destination="EDI-Yr-tqc" id="fgY-5h-hyC"/>
                 <outlet property="contentsLabel" destination="Pzv-0W-2F3" id="cY9-YK-mkW"/>
                 <outlet property="goalLabel" destination="5IA-os-ox0" id="bMp-oN-jwx"/>
+                <outlet property="labelImageView" destination="ERg-Mj-Xc5" id="2Gf-uu-WdO"/>
+                <outlet property="remainLabel" destination="hS3-PP-4D8" id="ccm-2j-Z2y"/>
+                <outlet property="stageView" destination="RZO-8N-xhs" id="MpX-7j-Z96"/>
                 <outlet property="titleLabel" destination="kfi-e2-FhS" id="yNw-Zh-HwM"/>
             </connections>
             <point key="canvasLocation" x="53.600000000000001" y="83.208395802098963"/>

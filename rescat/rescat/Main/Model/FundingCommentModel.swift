@@ -4,4 +4,5 @@ class FundingCommentModel : Codable {
     var contents : String?
     var nickname : String?
     var userRole : String?
+    var isWriter : Bool?
 }

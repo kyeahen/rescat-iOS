@@ -1,5 +1,7 @@
 import Foundation
-class LocationUserDefaultService {
+import Alamofire
+import UIKit
+class UserInfo {
     
     static func setLocation( _ address : [String]) {
         // 새로운 지역 등록
@@ -18,6 +20,20 @@ class LocationUserDefaultService {
     static func getLocations() -> [[Double:Double]] {
         return [[37.51921427344564:127.02255720149053], [37.518076734351915:127.02757463871035], [127.04271830419171:37.511649039698966]]
     }
+    static func getHeader() -> HTTPHeaders {
+//        guard let token = UserDefaults.standard.string(forKey: "token") else { return nil }
+        
+        let header : HTTPHeaders = ["Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSeWFuZ1QiLCJ1c2VyX2lkeCI6MTYsImV4cCI6MTU0OTYwMDcxM30.ap7jGUe_3b7-9llpKqe3ruxlsaInWmpYN7B_vgnlJkA"]
+        return header
+    }
 
-   
+//    static func getKeyboardHeight() -> CGFloat{
+//        let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+//        let keyboardRectangle = keyboardFrame.cgRectValue
+//        let keyboardHeight = keyboardRectangle.height
+//        return keyboardHeight
+        
+        
+//    }
+    
 }

@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 class FundingTableCell : UITableViewCell {
 
+    @IBOutlet var labelImageView : UIImageView!
+    @IBOutlet var backView : UIView!
     @IBOutlet var backgroundImageView : UIImageView!
     @IBOutlet var titleLabel : UILabel!
     @IBOutlet var contentsLabel : UILabel!

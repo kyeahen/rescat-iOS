@@ -11,7 +11,6 @@ import UIKit
 class FundingCommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentsLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var caretakerImageView: UIImageView!

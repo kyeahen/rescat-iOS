@@ -11,7 +11,7 @@ import UIKit
 class FundingDetailContentTableCell: UITableViewCell {
     @IBOutlet weak var percentageLabel: UILabel!
     
-    @IBOutlet weak var contentsLabel: UILabel!
+    @IBOutlet weak var contentsLabel: UITextView!
     @IBOutlet weak var remainDateLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var percentageView: UIView!

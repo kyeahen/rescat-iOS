@@ -42,7 +42,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print("Map viewDidLoad")
         super.viewDidLoad()
 
-        for (index, element) in LocationUserDefaultService.getLocation().enumerated(){
+        for (index, element) in UserInfo.getLocation().enumerated(){
             myLocation.append(gsno(element.keys.first))
         }
         buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
@@ -113,7 +113,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.tabBarController?.tabBar.isHidden = false
 
 
-        let res = LocationUserDefaultService.getLocation()
+        let res = UserInfo.getLocation()
         print("location \(res[0].keys.first)")
         let request = Test(self)
         request.testRequest()
@@ -266,7 +266,6 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return LocationUserDefaultService.getLocation().count
         return myLocation.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

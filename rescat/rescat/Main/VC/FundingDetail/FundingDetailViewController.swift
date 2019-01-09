@@ -5,6 +5,7 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
     
     var fundingContent : FundingDetailModel!
     var resultTableCellCnt : Int = 0
+    @IBOutlet var fundingButton : UIButton!
     @IBOutlet var testTable : UITableView!
     
     override func viewDidLoad() {
@@ -12,12 +13,14 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
         super.viewDidLoad()
         testTable.delegate = self
         testTable.dataSource = self
+        testTable.separatorStyle = .none
         let nib1 = UINib(nibName: "FundingDetailTableCell", bundle: nil)
         testTable.register(nib1, forCellReuseIdentifier: "FundingDetailTableCell")
         let nib2 = UINib(nibName: "FundingDetailContentTableCell", bundle: nil)
         testTable.register(nib2, forCellReuseIdentifier: "FundingDetailContentTableCell")
         let nib3 = UINib(nibName: "FundingDetailBottomTableCell", bundle: nil)
         testTable.register(nib3, forCellReuseIdentifier: "FundingDetailBottomTableCell")
+        fundingButton.addTarget(self, action: #selector(fundingAction(_:)), for: .touchUpInside)
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -56,11 +59,12 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
             print("photo count \(photos.count)")
             cell.reloadSlideImageView(photos)
             if gino(fundingContent.category) == 0 {
-                cell.categoryImageView.image = UIImage(named: "cardLableSupport-2")
+                cell.categoryImageView.image = UIImage(named: "cardLableSupport")
 
             } else {
-                cell.categoryImageView.image = UIImage(named: "cardLableSupport-1")
+                cell.categoryImageView.image = UIImage(named: "cardLableProject")
             }
+            cell.selectionStyle = .none
             return cell
         } else if ( indexPath.row == 1) {
            
@@ -69,10 +73,17 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 let cell = tableView.dequeueReusableCell(withIdentifier: "FundingDetailContentTableCell", for: indexPath) as! FundingDetailContentTableCell
                 cell.contentsLabel.text = gsno(fundingContent.contents)
                 cell.currentAmountLabel.text = "\(gino(fundingContent.currentAmount).getMoney())원"
-                let percentage = gino(fundingContent.currentAmount) / gino(fundingContent.goalAmount)
-                cell.percentageLabel.text = "\(percentage)%"
+                let percentage = Float(gino(fundingContent.currentAmount)) / Float(gino(fundingContent.goalAmount))
+                cell.percentageLabel.text = "\(Int(percentage*100))%"
                 cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatPink())
-                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
+//                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
+                cell.selectionStyle = .none
+                let imageArray : [UIImageView] = [cell.image1,cell.image2,cell.image3]
+                guard let imageCnt = fundingContent.certifications else { return cell }
+                for i in 0..<imageCnt.count{
+                    guard let url = imageCnt[i].url else { return cell }
+                    imageArray[i].kf.setImage(with: URL(string:url))
+                }
                 return cell
                 
             } else {
@@ -83,10 +94,12 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 let percentage =  Float(gino(fundingContent.currentAmount)) / Float(gino(fundingContent.goalAmount))
                 cell.percentageLabel.text = "\(Int(ceil(percentage*100)))%"
                 cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatPink())
-                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
+//                DateFormatter
+//                cell.dueDateLabel.text = fundingContent.limitAt
               
                 cell.label1.isHidden = true; cell.label2.isHidden = true
                 cell.image1.isHidden = true; cell.image2.isHidden = true; cell.image3.isHidden = true
+                cell.selectionStyle = .none
                 return cell
                 
             }
@@ -95,9 +108,15 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "FundingDetailBottomTableCell", for: indexPath) as! FundingDetailBottomTableCell
 //            cell.title.text = "asd"
+//            cell.adoptionButton.addTarget(self, action: #selector(fundingAction(_:)), for: .touchUpInside)
+            cell.selectionStyle = .none
             return cell
 
         }
+    }
+    @objc func fundingAction ( _ sender : UIButton!){
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportViewController") as! FundingSupportViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     func requestCallback(_ datas: Any, _ code: Int) {
         if code == APIServiceCode.FUNDING_DETAIL {
