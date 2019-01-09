@@ -105,6 +105,7 @@ class RegisterAdoptViewController: UIViewController {
         imageArr.removeAll()
         imageArr.append(UIImage(named: "icAddPhoto") ?? UIImage())
         imageUrl.removeAll()
+        imageNum = 0
         oneTextView.text = ""
         nameTextField.text = ""
         ageTextField.text = ""
@@ -150,7 +151,7 @@ class RegisterAdoptViewController: UIViewController {
                     
                     self.setReset()
                 } else {
-                    dateLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    dateLabel.textColor = #colorLiteral(red: 0.1372389793, green: 0.1372650564, blue: 0.1372332573, alpha: 1)
                     startTextField.layer.borderColor = #colorLiteral(red: 0.918808341, green: 0.5516380668, blue: 0.5516873598, alpha: 1)
                     endTextField.layer.borderColor = #colorLiteral(red: 0.918808341, green: 0.5516380668, blue: 0.5516873598, alpha: 1)
                     startTextField.isUserInteractionEnabled = true
@@ -218,7 +219,7 @@ class RegisterAdoptViewController: UIViewController {
         
         if typeTag == 0 { //입양일 때
             if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" || imageNum == 0 {
-                
+
                 self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
             } else {
                 self.simpleAlertwithCustom(title: "", message: """
@@ -229,12 +230,12 @@ class RegisterAdoptViewController: UIViewController {
                 }
             }
         } else { //임보일 때
-            
+
             if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || startTextField.text == "" || endTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" || imageNum == 0 {
-                
+
                 self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
             }else {
-                
+
                 self.simpleAlertwithCustom(title: "", message: """
                 글이 등록된 후에는 수정이 불가합니다.
                 다시 한 번 확인해주세요 !
@@ -242,9 +243,9 @@ class RegisterAdoptViewController: UIViewController {
                     self.postRegisterAdopt()
                 }
             }
-            
+
         }
-                
+        
 
     }
     
@@ -263,13 +264,13 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
 
         
-        if indexPath.row == 0 { //첫번째에 더하기 버튼
+        if imageArr.count - indexPath.row - 1 == 0 { //첫번째에 더하기 버튼
             cell.deleteButton.isHidden = true
         } else {
             cell.deleteButton.isHidden = false
         }
         
-        cell.imageView.image = imageArr[indexPath.row]
+        cell.imageView.image = imageArr[imageArr.count - indexPath.row - 1]
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteImageFromButton(button:)), for: .touchUpInside)
         
@@ -282,12 +283,12 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
         
-            if indexPath.row == 0 { //첫번째에 더하기 버튼
+            if imageArr.count - indexPath.row - 1 == 0 { //첫번째에 더하기 버튼
                 if imageNum < 3 { //3장을 넘지 않을 때
                     openGallery()
     
                 } else  {
-                    self.simpleAlert(title: "", message: "사진을 최대 3장까지 첨부가능합니다.")
+                    self.simpleAlert(title: "", message: "사진은 최대 3장까지 첨부가능합니다.")
 
                 }
             }
@@ -296,8 +297,8 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
     
     //MARK: 이미지 삭제
     @objc func deleteImageFromButton(button: UIButton) {
- 
-        self.deletePhoto(url: imageUrl[button.tag - 1], tag: button.tag)
+        self.deletePhoto(url: imageUrl[imageUrl.count - button.tag - 1], tag: button.tag)
+
 
     }
     
@@ -381,11 +382,13 @@ extension RegisterAdoptViewController {
             
             switch result {
             case .networkSuccess( _): //200
-                self.navigationController?.popViewController(animated: true)
+                let comVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: CompleteAdoptViewController.reuseIdentifier)
+                
+                self.present(comVC, animated: true, completion: nil)
                 break
                 
             case .duplicated://409
-                self.simpleAlert(title: "", message: "이미 신청한 글입니다.")
+                self.simpleAlert(title: "", message: "게시 승인되지 않은 작성글이 있습니다.")
                 self.navigationController?.popViewController(animated: true)
                 break
                 
@@ -449,8 +452,8 @@ extension RegisterAdoptViewController {
             switch result {
             case .networkSuccess(_):
                 
-                self.imageArr.remove(at: tag)
-                self.imageUrl.remove(at: tag - 1)
+                self.imageArr.remove(at: self.imageArr.count - tag - 1)
+                self.imageUrl.remove(at: self.imageUrl.count - tag - 1)
                 self.imageNum -= 1
                 self.collectionView.reloadData()
 
@@ -513,10 +516,6 @@ extension RegisterAdoptViewController: UIImagePickerControllerDelegate, UINaviga
             imageNum += 1
             let photo = editedImage.jpegData(compressionQuality: 0.3)
             addImage(image: photo) //이미지 추가
-//            if imageNum == 3 {
-//                imageArr[0] = UIImage(named: "icAddPhotoOff") ?? UIImage()
-//                print(imageArr.count)
-//            }
             
         } else if let selectedImage = info[.originalImage] as? UIImage as? UIImage{
             imageArr.append(selectedImage)

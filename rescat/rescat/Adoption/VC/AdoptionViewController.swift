@@ -127,6 +127,10 @@ extension AdoptionViewController {
                 self.simpleAlert(title: "", message: "자신이 작성한 글은 신고할 수 없습니다.")
                 break
                 
+            case .duplicated:
+                self.simpleAlert(title: "", message: "이미 신고한 글입니다.")
+                break
+                
             case .networkFail :
                 self.networkErrorAlert()
                 

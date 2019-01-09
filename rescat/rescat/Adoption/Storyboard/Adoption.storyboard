@@ -1014,7 +1014,7 @@
                                             </constraints>
                                             <color key="textColor" red="0.41425788402557373" green="0.30715775489807129" blue="0.22743332386016846" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="직업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUT-gy-OX6">
                                             <rect key="frame" x="33" y="239" width="29.5" height="21"/>
@@ -1334,7 +1334,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJD-vR-e6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YdW-Rp-TDC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3182" y="809"/>
+            <point key="canvasLocation" x="3188" y="280"/>
+        </scene>
+        <!--입양 신청서-->
+        <scene sceneID="GhM-ZM-bZU">
+            <objects>
+                <viewController storyboardIdentifier="ApplySuccessViewController" title="입양 신청서" id="3j5-8r-BZ4" customClass="ApplySuccessViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ey-Zs-F5n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wnf-ZT-qYm">
+                                <rect key="frame" x="0.0" y="309" width="375" height="358"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edf-6j-AGP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CS3-1t-E8x"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="입양/임시보호 글 작성" id="dMR-9a-Xnc">
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="72p-Tz-wYt">
+                                            <color key="tintColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="homeAction:" destination="3j5-8r-BZ4" id="YfD-O8-cCv"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PHG-D4-Wea">
+                                <rect key="frame" x="33" y="122" width="201.5" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입양" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy9-6l-W90">
+                                        <rect key="frame" x="0.0" y="0.0" width="31.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <color key="textColor" red="0.13725611567497253" green="0.13725271821022034" blue="0.1372549831867218" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신청이 완료되었습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1Z-ld-An2">
+                                        <rect key="frame" x="36.5" y="0.0" width="165" height="22"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <color key="textColor" red="0.13725611569999999" green="0.13725271820000001" blue="0.13725498320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-on-8Po">
+                                <rect key="frame" x="33" y="144" width="254" height="86.5"/>
+                                <string key="text">당신의 아름다운 결정을 지지합니다!
+
+작성한 개인정보는 입양/임시보호를 
+위해 글 게시자에게 보여집니다.</string>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <color key="textColor" red="0.13725611569999999" green="0.13725271820000001" blue="0.13725498320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="edf-6j-AGP" firstAttribute="trailing" secondItem="c5u-ri-txs" secondAttribute="trailing" id="0d3-7o-fpr"/>
+                            <constraint firstItem="BaX-on-8Po" firstAttribute="top" secondItem="PHG-D4-Wea" secondAttribute="bottom" id="1PF-Nr-vWC"/>
+                            <constraint firstItem="c5u-ri-txs" firstAttribute="bottom" secondItem="Wnf-ZT-qYm" secondAttribute="bottom" id="4jk-xF-mGb"/>
+                            <constraint firstItem="c5u-ri-txs" firstAttribute="trailing" secondItem="Wnf-ZT-qYm" secondAttribute="trailing" id="Kcy-Mv-elx"/>
+                            <constraint firstItem="PHG-D4-Wea" firstAttribute="top" secondItem="edf-6j-AGP" secondAttribute="bottom" constant="58" id="Oco-Ao-K2J"/>
+                            <constraint firstItem="Wnf-ZT-qYm" firstAttribute="height" secondItem="6ey-Zs-F5n" secondAttribute="height" multiplier="358:667" id="VGo-XR-bSO"/>
+                            <constraint firstItem="edf-6j-AGP" firstAttribute="leading" secondItem="c5u-ri-txs" secondAttribute="leading" id="Z1W-xC-jWo"/>
+                            <constraint firstItem="Wnf-ZT-qYm" firstAttribute="leading" secondItem="6ey-Zs-F5n" secondAttribute="leading" id="lrg-Ul-zNM"/>
+                            <constraint firstItem="BaX-on-8Po" firstAttribute="leading" secondItem="PHG-D4-Wea" secondAttribute="leading" id="pB8-QK-5lf"/>
+                            <constraint firstItem="PHG-D4-Wea" firstAttribute="leading" secondItem="c5u-ri-txs" secondAttribute="leading" constant="33" id="sWK-8l-Iql"/>
+                            <constraint firstItem="edf-6j-AGP" firstAttribute="top" secondItem="c5u-ri-txs" secondAttribute="top" id="ymJ-Bn-03a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c5u-ri-txs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WG7-d6-Lel"/>
+                    <connections>
+                        <outlet property="naviBar" destination="edf-6j-AGP" id="YmH-0q-HoS"/>
+                        <outlet property="okButton" destination="72p-Tz-wYt" id="Lut-Gq-VY5"/>
+                        <outlet property="typeLabel" destination="Uy9-6l-W90" id="Evc-qE-ibb"/>
+                        <segue destination="qD2-HM-4Ne" kind="unwind" identifier="unwindToTab1" unwindAction="unwindToTabWithSender:" id="fZ3-70-3c0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1U-R5-2N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qD2-HM-4Ne" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4175" y="279"/>
         </scene>
         <!--입양/임시보호 글 작성-->
         <scene sceneID="Pg5-ao-thr">
@@ -1348,37 +1432,58 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="358"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFW-W1-NNB">
-                                <rect key="frame" x="29" y="461" width="317.5" height="86.5"/>
+                                <rect key="frame" x="55" y="429" width="265" height="72"/>
                                 <string key="text">입양, 임보 등록 정보 작성이 완료되었습니다. 
 
 24시간 이내에 승인 여부가 결정됩니다. 
 마이페이지 &gt; 알리미 를 확인해주세요.</string>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
                                 <color key="textColor" red="0.13725611569999999" green="0.13725271820000001" blue="0.13725498320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ucm-3j-Ssk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AyC-J6-YIx"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="입양/임시보호 글 작성" id="bpC-tE-DfD">
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="Yjr-Mg-Pyg">
+                                            <color key="tintColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="homeAction:" destination="dJ6-H1-ZpN" id="ze8-DE-xfu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="rKA-al-egG" firstAttribute="trailing" secondItem="TT6-7Y-wsM" secondAttribute="trailing" id="2b2-f7-mdO"/>
-                            <constraint firstItem="gFW-W1-NNB" firstAttribute="top" secondItem="TT6-7Y-wsM" secondAttribute="bottom" constant="39" id="Cii-fu-4jM"/>
+                            <constraint firstItem="Ucm-3j-Ssk" firstAttribute="top" secondItem="rKA-al-egG" secondAttribute="top" id="BsE-14-hQZ"/>
+                            <constraint firstItem="gFW-W1-NNB" firstAttribute="top" secondItem="TT6-7Y-wsM" secondAttribute="bottom" constant="7" id="Cii-fu-4jM"/>
+                            <constraint firstItem="TT6-7Y-wsM" firstAttribute="top" secondItem="Ucm-3j-Ssk" secondAttribute="bottom" id="IyD-tN-Xlg"/>
                             <constraint firstItem="TT6-7Y-wsM" firstAttribute="leading" secondItem="rKA-al-egG" secondAttribute="leading" id="Jh5-vx-AFV"/>
                             <constraint firstItem="rKA-al-egG" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gFW-W1-NNB" secondAttribute="bottom" constant="10" id="Nw0-31-TqZ"/>
                             <constraint firstItem="TT6-7Y-wsM" firstAttribute="height" secondItem="kvg-SV-WZ5" secondAttribute="height" multiplier="358:667" id="arK-hh-MUN"/>
                             <constraint firstItem="gFW-W1-NNB" firstAttribute="centerX" secondItem="TT6-7Y-wsM" secondAttribute="centerX" id="fVI-YN-yJd"/>
-                            <constraint firstItem="TT6-7Y-wsM" firstAttribute="top" secondItem="rKA-al-egG" secondAttribute="top" id="pDf-7e-gdX"/>
+                            <constraint firstItem="rKA-al-egG" firstAttribute="trailing" secondItem="Ucm-3j-Ssk" secondAttribute="trailing" id="jcS-IK-yyI"/>
+                            <constraint firstItem="Ucm-3j-Ssk" firstAttribute="leading" secondItem="kvg-SV-WZ5" secondAttribute="leading" id="r2J-TW-9g8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rKA-al-egG"/>
                     </view>
                     <navigationItem key="navigationItem" title="입양/임시보호 글 작성" id="D9S-Qq-RGv"/>
                     <connections>
+                        <outlet property="naviBar" destination="Ucm-3j-Ssk" id="5vk-mF-zPI"/>
+                        <outlet property="okButton" destination="Yjr-Mg-Pyg" id="MIS-UT-UZk"/>
                         <segue destination="e2s-yj-K9p" kind="unwind" identifier="unwindToTab" unwindAction="unwindToTabWithSender:" id="dT1-tK-fh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2I-86-BEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="e2s-yj-K9p" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4402" y="44"/>
+            <point key="canvasLocation" x="4318" y="-1415"/>
         </scene>
         <!--입양-->
         <scene sceneID="vhb-ce-0sE">
@@ -1755,24 +1860,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EqN-xy-lsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1572" y="131.78410794602701"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xri-XL-Jj1">
-            <objects>
-                <navigationController storyboardIdentifier="ComNaviVC" automaticallyAdjustsScrollViewInsets="NO" id="z9J-ym-zBb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Jx-FP-yeT">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dJ6-H1-ZpN" kind="relationship" relationship="rootViewController" id="l0W-xI-vrz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x84-8P-upR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3600.8000000000002" y="43.628185907046479"/>
         </scene>
     </scenes>
     <resources>

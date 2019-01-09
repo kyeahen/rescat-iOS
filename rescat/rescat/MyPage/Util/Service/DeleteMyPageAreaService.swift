@@ -14,11 +14,11 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
     static let shareInstance = DeleteMyPageAreaService()
     
     //MARK: Delete - api/users/mypage/region (지역 삭제)
-    func deleteArea(completion: @escaping (NetworkResult<Any>) -> Void) {
+    func deleteArea(address: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let deleteURL = self.url("users/mypage/region")
+        let deleteURL = self.url("users/mypage/region?regionFullName=\(address)")
         
-        delete(deleteURL) { (result) in
+        delete(deleteURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):
@@ -26,6 +26,9 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
+                    
+                case HttpResponseCode.badRequest.rawValue : //400
+                    completion(.badRequest)
                     
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
@@ -41,6 +44,9 @@ struct DeleteMyPageAreaService: DeletableService, APIServie {
                 
             case .error(let resCode):
                 switch resCode {
+                    
+                case HttpResponseCode.badRequest.rawValue.description : //400
+                    completion(.badRequest)
 
                 case HttpResponseCode.accessDenied.rawValue.description : //401
                     completion(.accessDenied)

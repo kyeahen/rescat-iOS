@@ -35,6 +35,10 @@ class MyPageViewController: UIViewController{
 
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getMyPage()
+    }
 
     //MARK: 테이블 뷰 요소 세팅
     func setTableView() {

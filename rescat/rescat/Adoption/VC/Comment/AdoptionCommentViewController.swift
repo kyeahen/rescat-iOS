@@ -252,7 +252,8 @@ extension AdoptionCommentViewController {
                 
             case .accessDenied :
                 self.simpleAlert(title: "권한 없음", message: "해당 댓글을 삭제할 수 없습니다.")
-                
+                break
+            
             case .networkFail :
                 self.networkErrorAlert()
                 
@@ -272,6 +273,10 @@ extension AdoptionCommentViewController {
             case .networkSuccess(_):
                 self.simpleAlert(title: "", message: "해당 댓글을 신고하였습니다.")
                 self.getAdoptComment(_idx: idx)
+                break
+                
+            case .duplicated:
+                self.simpleAlert(title: "", message: "이미 신고한 글입니다.")
                 break
                 
             case .networkFail :

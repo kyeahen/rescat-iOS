@@ -1,34 +1,31 @@
 //
-//  DetailWarningService.swift
+//  AddAreaService.swift
 //  rescat
 //
-//  Created by 김예은 on 09/01/2019.
+//  Created by 김예은 on 10/01/2019.
 //  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct DetailWarningService: PostableService, APIServie {
+struct AddAreaService: PostableService, APIServie {
     
     typealias NetworkData = DefaultData
-    static let shareInstance = DetailWarningService()
+    static let shareInstance = AddAreaService()
     
-    //MARK: POST - /api/care-posts/{idx}/warning (상세보기 신고)
-    func postWarnDetail(idx: Int, params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: POST - /api/users/mypage/region (지역 추가)
+    func postAddArea(address: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let warnURL = self.url("care-posts/\(idx)/warning")
+        let addURL = self.url("users/mypage/region?regionFullName=\(address)")
         
-        post(warnURL, params: params) { (result) in
+        post(addURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):
                 switch networkResult.resCode {
                     
-                case HttpResponseCode.getSuccess.rawValue : //201
+                case HttpResponseCode.postSuccess.rawValue : //201
                     completion(.networkSuccess(networkResult.resResult))
-                    
-                case HttpResponseCode.badRequest.rawValue : //400
-                    completion(.badRequest)
                     
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
@@ -56,6 +53,9 @@ struct DetailWarningService: PostableService, APIServie {
                     
                 case HttpResponseCode.conflict.rawValue.description : //409
                     completion(.duplicated)
+                    
+                case HttpResponseCode.serverErr.rawValue.description : //500
+                    completion(.serverErr)
                     
                 default :
                     print("Error: \(resCode)")

@@ -14,7 +14,7 @@ protocol DeletableService {
     
     associatedtype NetworkData : Codable
     typealias networkResult = (resCode: Int, resResult: NetworkData)
-    func delete(_ URL: String, completion: @escaping (Result<networkResult>) -> Void)
+    func delete(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
 }
 
 extension DeletableService {
@@ -23,7 +23,7 @@ extension DeletableService {
         return value ?? 0
     }
     
-    func delete(_ URL: String, completion: @escaping (Result<networkResult>) -> Void){
+    func delete(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void){
         
         guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Networking - invalid URL")
@@ -41,7 +41,7 @@ extension DeletableService {
             token_header = nil
         }
         
-        Alamofire.request(encodedUrl, method: .delete, encoding: JSONEncoding.default, headers: token_header).responseData(){
+        Alamofire.request(encodedUrl, method: .delete, parameters: params, encoding: JSONEncoding.default, headers: token_header).responseData(){
             (res) in
             
             switch res.result {
