@@ -11,107 +11,105 @@ import Alamofire
 import SwiftyJSON
 import UIKit
 
-//TODO: 테스트 필요
-protocol PostablePhotoService {
+protocol PostablePhtotoService {
     
     associatedtype NetworkData : Codable
-    typealias networkResult = (resCode: Int, resResult: NetworkData)
-    func postPhoto(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
+    typealias networkResult = (resCode : Int, resResult : NetworkData)
+    func savePhotoContent(_ URL:String, params : [String : Any], imageData : [String : Data]?, completion : @escaping (Result<networkResult>)->Void)
 }
 
-extension PostablePhotoService {
+extension PostablePhtotoService {
     
     func gino(_ value : Int?) -> Int {
         return value ?? 0
     }
     
-    func postPhoto(_ URL: String, image: UIImage, completion: @escaping (Result<networkResult>) -> Void) {
-
+    
+    
+    func savePhotoContent(_ URL:String, params : [String : Any], imageData : [String : Data]?, completion : @escaping (Result<networkResult>)->Void) {
+        
         
         guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("Networking - invalid URL")
+            print("networking - invalid url")
             return
         }
-        
-        print("URL은 \(encodedUrl)")
+        print("url 은 \(encodedUrl)")
         
         let token = UserDefaults.standard.string(forKey: "token") ?? "-1"
-        
         var token_header: HTTPHeaders?
+        
         if token != "-1" {
             token_header = [ "authorization" : token ]
         } else {
             token_header = nil
         }
         
-        guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
-        
         Alamofire.upload(multipartFormData: { multipartFormData in
             
-            multipartFormData.append(imageData, withName: "photo", fileName: "image.jpg", mimeType: "image/jpg")
+            for (x,y) in params {
+                if y is String {
+                    multipartFormData.append((y as! String).data(using: .utf8)!, withName: x)
+                }
+                else if y is Int {
+                    multipartFormData.append("\(y)".data(using: .utf8)!, withName: x)
+                } else if y is Double {
+                    multipartFormData.append("\(y)".data(using: .utf8)!, withName: x)
+                }
+                print("param key is \(x), value is \(y)")
+            }
             
-        }, to: URL, method: .post, headers: token_header) { (encodingResult) in
+            let calendar = Calendar.current
+            let time=calendar.dateComponents([.hour,.minute,.second], from: Date())
+            let imgName = "\(time.hour!):\(time.minute!):\(time.second!)"
             
-            switch encodingResult {
+            
+            if let images_ = imageData {
                 
-            case .success(request: let upload, streamingFromDisk: _, streamFileURL: _) :
-                
-                upload.responseData(completionHandler: {(res) in
+                for (x,y) in images_ {
+                    multipartFormData.append(y, withName: x, fileName: "\(imgName).jpeg", mimeType: "image/png")
                     
-                    switch res.result {
+                }
+            }
+            
+        }, to: encodedUrl, method: .post, headers: token_header, encodingCompletion:{
+            (encodingResult) in
+            switch encodingResult {
+            case .success(let upload,_,_):
+                upload.responseData(completionHandler: { (res) in
+                    
+                    switch res.result{
+                        
                     case .success:
-                        
-                        print("Networking Post Photo Here")
-                        
                         if let value = res.result.value {
-                            let resCode = self.gino(res.response?.statusCode)
-                            print(resCode)
-                            
+                            print(res.response?.statusCode ?? 00)
                             print(JSON(value))
-                            
-                            if JSON(value) == JSON.null {
-                                let result : networkResult = (resCode, DefaultData()) as! (resCode: Int, resResult: Self.NetworkData)
-                                completion(.success(result))
-                                break
-                            }
-                            
                             let decoder = JSONDecoder()
-                            
                             do {
+                                
+                                let resCode = self.gino(res.response?.statusCode)
                                 let data = try decoder.decode(NetworkData.self, from: value)
                                 
                                 let result : networkResult = (resCode, data)
                                 completion(.success(result))
+                                
+                                
                             }catch{
-                                print("Error Post Photo")
-                                completion(.error("\(resCode)"))
+                                completion(.error("error post photo"))
                             }
+                            
+                            
                         }
-                        
-                        break
-                        
-                        
                     case .failure(let err):
-                        
                         print(err.localizedDescription)
-                        completion(.failure(err))
+                        
                         break
                     }
                 })
-                
                 break
-                
             case .failure(let err):
                 print(err.localizedDescription)
-                completion(.failure(err))
+                break
             }
-            
-        }
+        })
     }
-    
-    
-    
-    
 }
-
-

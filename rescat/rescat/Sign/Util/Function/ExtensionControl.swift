@@ -23,26 +23,38 @@ extension UIViewController {
     func simpleAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        alert.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    
     
     //네트워크 에러 팝업
     func networkErrorAlert() {
         
         let alert = UIAlertController(title: "네트워크 오류", message: "네트워크 상태를 확인해주세요", preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        alert.view.tintColor = #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)
     }
     
+    //확인, 취소 팝업 - 버튼 커스텀
+    func simpleAlertwithCustom(title: String, message: String, ok: String, cancel: String, okHandler : ((UIAlertAction) -> Void)?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.tintColor = #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
+        let okAction = UIAlertAction(title: ok,style: .default, handler: okHandler)
+        let cancelAction = UIAlertAction(title: cancel,style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     //확인, 취소 팝업
     func simpleAlertwithHandler(title: String, message: String, okHandler : ((UIAlertAction) -> Void)?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.view.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        alert.view.tintColor = #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
         let okAction = UIAlertAction(title: "확인",style: .default, handler: okHandler)
         let cancelAction = UIAlertAction(title: "취소",style: .cancel, handler: nil)
         alert.addAction(okAction)
@@ -83,7 +95,7 @@ extension UIViewController {
     //커스텀 백버튼 설정
     func setBackBtn(){
 
-        let backBTN = UIBarButtonItem(image: UIImage(named: "rectangle"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+        let backBTN = UIBarButtonItem(image: UIImage(named: "icBack"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
             style: .plain,
             target: self,
             action: #selector(self.pop))
@@ -170,6 +182,67 @@ extension UIViewController {
 
         return dateFormatterPrint.string(from: date)
     }
+    
+    //커스텀 토스트
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: AppleSDGothicNeo.Medium.rawValue, size: 14.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
+    //1시간 전
+    func setHours(start: String) -> String {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let day  = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
+        let interval = NSDate().timeIntervalSince(day)
+        let hour = Int(interval / 3600)
+        
+        if hour <= 24 {
+            return "\(hour)시간 전"
+        } else {
+            return setDate(createdAt: start, format: "MM/dd  HH:ss")
+        }
+
+    }
+    
+    //100일 남음
+    func setDday(start: String) -> Int {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.'sss'+'ssss"
+        let day = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
+        let interval = NSDate().timeIntervalSince(day)
+        let days = Int(interval / 86400)
+        
+        return days
+    }
+    
+    //키보드 대응
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 
 
 }
@@ -230,6 +303,19 @@ extension UITextField {
         self.layer.borderWidth = 1
         self.makeRounded(cornerRadius: 8)
     }
+    
+    func setTextField(radius: CGFloat, color: CGColor) {
+        self.layer.borderColor = color
+        self.layer.borderWidth = 1
+        self.makeRounded(cornerRadius: radius)
+    }
+    
+    func shake() {
+        self.transform = CGAffineTransform(translationX: 20, y: 0)
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
 }
 
 extension UITextView {
@@ -238,6 +324,7 @@ extension UITextView {
         self.layer.borderColor = #colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1)
         self.layer.borderWidth = 1
         self.makeRounded(cornerRadius: 8)
+        resetTintColor()
     }
     
     func resetTintColor(){
@@ -286,3 +373,16 @@ extension CALayer {
     }
 }
 
+extension Int {
+    
+    //숫자 콤마
+    private static var commaFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
+    internal var commaRepresentation: String {
+        return Int.commaFormatter.string(from: NSNumber(value: self)) ?? ""
+    }
+}

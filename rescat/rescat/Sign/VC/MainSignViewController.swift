@@ -38,9 +38,15 @@ class MainSignViewController: UIViewController {
     //MARK: 로그인 없이 시작하기
     @IBAction func SkipAction(_ sender: UIButton) {
         
-        let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.set("-1", forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "role")
+        let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier) 
         
         self.present(mainVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
     }
     
 }

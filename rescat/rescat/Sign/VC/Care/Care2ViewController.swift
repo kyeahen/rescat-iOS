@@ -21,12 +21,13 @@ class Care2ViewController: UIViewController {
     
     var parentVC : MainCareViewController?
     var locationManager: CLLocationManager!
+    var check: Int = 0
     
-    var dataRecieved: String? {
-        willSet {
-            areaLabel.text = newValue
-        }
-    }
+//    var dataRecieved: String? {
+//        willSet {
+//            areaLabel.text = newValue
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,18 +63,23 @@ class Care2ViewController: UIViewController {
     }
     
     //MARK: 다음 액션
-    //TODO: 사용자 위치와 사용자가 입력한 주소가 동일해야 3단계로 이동 가능
+    //TODO: 사용자 위치가 설정되어있어야 가능
     @IBAction func nextAction(_ sender: UIButton) {
-        parentVC?.changeVC(num: 4)
-    }
-    
-    //MARK: UnwindSegue (areaVC -> care2VC)
-    @IBAction func unwindToCare2(sender: UIStoryboardSegue) {
-        if let areaVC = sender.source as? AreaViewController {
-            areaView.isHidden = false
-            dataRecieved = areaVC.address
+        if check == 0 {
+            self.simpleAlert(title: "", message: "지역 설정을 완료해주세요.")
+        } else {
+            UserDefaults.standard.set(areaLabel.text, forKey: "caretakerArea")
+            parentVC?.changeVC(num: 4)
         }
     }
+    
+//    //MARK: UnwindSegue (areaVC -> care2VC)
+//    @IBAction func unwindToCare2(sender: UIStoryboardSegue) {
+//        if let areaVC = sender.source as? AreaViewController {
+//            areaView.isHidden = false
+//            dataRecieved = areaVC.address
+//        }
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.loader.stopAnimating()
@@ -101,6 +107,9 @@ extension Care2ViewController {
                     
                     let address = "\(si) \(gu) \(dong)"
                     self.areaLabel.text = address
+                    self.check = 1
+                    self.addAreaButton.isHidden = true
+                    self.areaView.isHidden = false
                     
                 } else if data.resCode == 3 {
                     self.simpleAlert(title: "실패", message: "현재 위치를 찾을 수 없습니다.")
@@ -132,7 +141,6 @@ extension Care2ViewController: CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestLocation()
         
-        areaView.isHidden = false
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

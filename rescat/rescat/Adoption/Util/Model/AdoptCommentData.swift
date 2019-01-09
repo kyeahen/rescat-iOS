@@ -9,10 +9,12 @@
 import Foundation
 
 struct AdoptCommentData: Codable {
-    let createdAt: String
+    let createdAt: String?
     let idx: Int
     let contents: String
     let photoUrl: String?
     let nickname: String
     let userRole: String
+    let isWriter: Bool?
+    let warning: Int
 }

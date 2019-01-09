@@ -15,6 +15,7 @@ enum HttpResponseCode: Int{
     case accessDenied = 401
     case forbidden = 403
     case conflict = 409
+    case large = 413
     case serverErr = 500
     case notImplemented = 501
 }
@@ -29,9 +30,10 @@ enum NetworkResult<T> {
     case networkSuccess(T) //200
     case badRequest //400
     case accessDenied //401
-    case nullValue
+    case nullValue //404
     case duplicated //409
     case wrongInput
+    case large //413
     case serverErr //500
     case requestFail //501
     case networkFail

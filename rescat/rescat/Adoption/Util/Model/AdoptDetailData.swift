@@ -25,4 +25,8 @@ struct AdoptDetailData: Codable {
     let type: Int
     let vaccination: String?
     let viewCount: Int
+    let isFinished: Bool //입양 완료된 상태
+    let isSubmitted: Bool //신청서를 작성한 상태
+    let warning: Int
+    let isWriter: Bool
 }
