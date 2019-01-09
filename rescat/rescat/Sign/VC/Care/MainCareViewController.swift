@@ -133,18 +133,6 @@ class MainCareViewController: UIViewController {
 
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
 //MARK: ChildViewController BackButton Setting
 //TODO: 이미지 첨부
 extension MainCareViewController {
@@ -153,14 +141,14 @@ extension MainCareViewController {
     func setLeftBarButtonItem() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            image: UIImage(named: "rectangle"),
+            image: UIImage(named: "icBack"),
             style: .plain,
             target: self,
             action: #selector(backAction(sender:))
         )
         
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
         self.navigationItem.leftBarButtonItem = leftButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
     }
     
     @objc func backAction(sender: UIBarButtonItem) {
@@ -171,14 +159,14 @@ extension MainCareViewController {
     func setLeftBarButtonItem1() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            image: UIImage(named: "rectangle"),
+            image: UIImage(named: "icBack"),
             style: .plain,
             target: self,
             action: #selector(backAction1(sender:))
         )
-        
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
         self.navigationItem.leftBarButtonItem = leftButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
+
     }
     
     @objc func backAction1(sender: UIBarButtonItem) {
@@ -189,14 +177,14 @@ extension MainCareViewController {
     func setLeftBarButtonItem2() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            image: UIImage(named: "rectangle"),
+            image: UIImage(named: "icBack"),
             style: .plain,
             target: self,
             action: #selector(backAction2(sender:))
         )
         
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
         self.navigationItem.leftBarButtonItem = leftButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
     }
     
     @objc func backAction2(sender: UIBarButtonItem) {
@@ -207,14 +195,14 @@ extension MainCareViewController {
     func setLeftBarButtonItem3() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            image: UIImage(named: "rectangle"),
+            image: UIImage(named: "icBack"),
             style: .plain,
             target: self,
             action: #selector(backAction3(sender:))
         )
         
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
         self.navigationItem.leftBarButtonItem = leftButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
     }
     
     @objc func backAction3(sender: UIBarButtonItem) {
@@ -225,14 +213,14 @@ extension MainCareViewController {
     func setLeftBarButtonItem4() {
         
         let leftButtonItem = UIBarButtonItem.init(
-            image: UIImage(named: "rectangle"),
+            image: UIImage(named: "icBack"),
             style: .plain,
             target: self,
             action: #selector(backAction4(sender:))
         )
         
-        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
         self.navigationItem.leftBarButtonItem = leftButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4210352302, green: 0.298186332, blue: 0.2102506161, alpha: 1)
     }
     
     @objc func backAction4(sender: UIBarButtonItem) {

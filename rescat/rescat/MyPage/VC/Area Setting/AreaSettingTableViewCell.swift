@@ -21,4 +21,5 @@ class AreaSettingTableViewCell: UITableViewCell {
         backView.makeRounded(cornerRadius: 17.5)
     }
 
+
 }

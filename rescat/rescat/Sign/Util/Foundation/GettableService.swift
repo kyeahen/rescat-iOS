@@ -43,7 +43,7 @@ extension GettableService {
         }
         print("이게 나의 토큰 \(token)")
 
-        Alamofire.request(encodedUrl, method: method, parameters: nil, headers: nil).responseData {(res) in
+        Alamofire.request(encodedUrl, method: method, parameters: nil, headers: token_header).responseData {(res) in
 
             switch res.result {
                 

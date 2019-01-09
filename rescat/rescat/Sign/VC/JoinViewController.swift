@@ -32,6 +32,9 @@ class JoinViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var idCheck: Int = 0
+    var nickCheck: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -198,12 +201,14 @@ class JoinViewController: UIViewController {
         
         if idTextField.text == "" || pwdTextField.text == "" || pwdCheckTextField.text == "" || nickNameTextField.text == "" {
             self.simpleAlert(title: "회원가입 실패", message: "모든 항목을 입력해주세요.")
+        } else if idCheck == 0 {
+            self.simpleAlert(title: "", message: "아이디 중복확인을 완료해주세요.")
+        } else if nickCheck == 0{
+            self.simpleAlert(title: "", message: "닉네임 중복확인을 완료해주세요.")
         } else if pwdTextField.text != pwdCheckTextField.text {
             self.simpleAlert(title: "회원가입 실패", message: "비밀번호가 일치하지 않습니다.")
         } else {
             postJoin(id: gsno(idTextField.text), pwd: gsno(pwdTextField.text), rePwd: gsno(pwdCheckTextField.text), nickName: gsno(nickNameTextField.text))
-            let welcomeVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "WelcomVCNavi")
-            self.present(welcomeVC, animated: true, completion: nil)
         }
         
     }
@@ -230,6 +235,7 @@ extension JoinViewController {
                 let welcomeVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "WelcomVCNavi")
                 
                 self.present(welcomeVC, animated: true, completion: nil)
+                UserDefaults.standard.removeObject(forKey: "role")
                 break
                 
             case .badRequest: //400
@@ -259,10 +265,14 @@ extension JoinViewController {
             
             switch result {
             case .networkSuccess( _):
-                
+                self.idCheck = 1
                 self.idLabel.isHidden = false
                 self.idLabel.text = "사용할 수 있는 아이디입니다."
                 self.idLabel.textColor = #colorLiteral(red: 0.4895007014, green: 0.8178752065, blue: 0.1274456084, alpha: 1)
+                break
+                
+            case .badRequest :
+                self.simpleAlert(title: "", message: "아이디 형식이 올바르지 않습니다.")
                 break
                 
             case .duplicated :
@@ -292,10 +302,14 @@ extension JoinViewController {
             
             switch result {
             case .networkSuccess( _):
-                
+                self.nickCheck = 1
                 self.nickNameLabel.isHidden = false
                 self.nickNameLabel.text = "사용할 수 있는 닉네임입니다."
                 self.nickNameLabel.textColor = #colorLiteral(red: 0.4895007014, green: 0.8178752065, blue: 0.1274456084, alpha: 1)
+                break
+                
+            case .badRequest :
+                self.simpleAlert(title: "", message: "닉네임 형식이 올바르지 않습니다.")
                 break
                 
             case .duplicated :

@@ -10,7 +10,7 @@ import Foundation
 
 struct JoinService: PostableService, APIServie {
     
-    typealias NetworkData = DefaultData
+    typealias NetworkData = TokenData
     static let shareInstance = JoinService()
     
     //MARK: POST - /api/users (일반 유저 생성)
@@ -25,6 +25,9 @@ struct JoinService: PostableService, APIServie {
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.postSuccess.rawValue : //201
+                    UserDefaults.standard.set(networkResult.resResult.token, forKey: "token")
+                    let token = UserDefaults.standard.string(forKey: "token")
+                    print("토큰: \(token)")
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400

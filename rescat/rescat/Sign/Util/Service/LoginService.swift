@@ -10,7 +10,7 @@ import Foundation
 
 struct LoginService: PostableService, APIServie {
     
-    typealias NetworkData = DefaultData
+    typealias NetworkData = TokenData
     static let shareInstance = LoginService()
     
     //MARK: POST - /api/users/login (유저 로그인)
@@ -25,6 +25,9 @@ struct LoginService: PostableService, APIServie {
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
+                    UserDefaults.standard.set(networkResult.resResult.token, forKey: "token")
+                    let token = UserDefaults.standard.string(forKey: "token")
+                    print("토큰: \(token)")
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400

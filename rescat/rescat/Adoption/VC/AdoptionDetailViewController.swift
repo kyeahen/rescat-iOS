@@ -26,38 +26,28 @@ class AdoptionDetailViewController: UIViewController {
     @IBOutlet weak var tnrLabel: UILabel!
     @IBOutlet weak var protectLabel: UILabel!
     @IBOutlet weak var etcLabel: UILabel!
-
+    @IBOutlet weak var adoptButton: UIButton!
+    @IBOutlet weak var bottomC: NSLayoutConstraint!
     
     var details: AdoptDetailData?
     var idx: Int = 0
     var tag: Int = 0
-    var adoptButton = UIButton()
     var imageArr: [InputSource] = [InputSource]()
+    
+    var apply: Bool?
+    var finish: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTableView()
         setImageSlideShow()
-        setCustomView()
-        getAdoptDetail(_idx: idx)
         setFooterButton()
+        getAdoptDetail(_idx: idx)
+        adoptButton.isHidden = true
+ 
     }
     
-    //MARK: 뷰 요소 커스텀 세팅
-    func setCustomView() {
-//        if tag == 0 {
-//            adoptButton.setTitle("입양할래요", for: .normal)
-//        } else {
-//            adoptButton.setTitle("임보할래요", for: .normal)
-//        }
-    }
-    
-    func setTableView() {
-        //TODO: 더 나은 방법 생각해보기
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0.0, bottom: 64, right: 0.0)
-        
-    }
+
     
     //MARK: 하단 버튼 세팅
     func setFooterButton() {
@@ -68,38 +58,55 @@ class AdoptionDetailViewController: UIViewController {
             adoptButton.setTitle("임보할래요", for: .normal)
         }
         
-        adoptButton.backgroundColor = #colorLiteral(red: 0.9108809829, green: 0.5436502695, blue: 0.5482131243, alpha: 1)
-        adoptButton.titleLabel?.textAlignment = .center
-        adoptButton.titleLabel?.textColor = UIColor.white
-        adoptButton.titleLabel?.font = UIFont(name: AppleSDGothicNeo.SemiBold.rawValue, size: 20)
-        
-        self.adoptButton.addTarget(self, action: #selector(adoptAction(sender:)), for: UIControl.Event.touchUpInside)
-        view.addSubview(adoptButton)
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        
-        adoptButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-           adoptButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
-            adoptButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -64),
-            adoptButton.widthAnchor.constraint(equalToConstant: self.view.frame.width),
-            adoptButton.heightAnchor.constraint(equalToConstant: 49)
-        ])
     }
     
     //MARK: 입양할래요/임보할래요 액션 - idx
-    @objc func adoptAction(sender: UIButton) {
-        self.simpleAlert(title: "넹", message: "넹")
+    @IBAction func adoptAction(_ sender: UIButton) {
+        
+        let token = UserDefaults.standard.string(forKey: "token")
+    
+        
+        if token != "-1" {
+            
+            if apply == true {
+                self.simpleAlert(title: "", message: "이미 신청한 글입니다.")
+            } else if finish == true {
+                self.simpleAlert(title: "", message: "마감된 글 입니다.")
+            } else {
+                let applyVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: ApplyAdoptViewController.reuseIdentifier) as! ApplyAdoptViewController
+                
+                applyVC.idx = idx
+                applyVC.tag = tag
+                
+                if tag == 0 {
+                    applyVC.titleName = "입양 신청서"
+                } else {
+                    applyVC.titleName = "임시보호 신청서"
+                }
+                
+                self.navigationController?.pushViewController(applyVC, animated: true)
+            }
+            
+        } else {
+            self.simpleAlert(title: "로그인이 필요해요!", message:
+            """
+            입양 및 임보를 진행하기 위해서는
+            로그인을 진행해주세요.
+            """)
+        }
+
+        
     }
+    
+
+  
 
 }
 
 //MARK: Networking Extension
 extension AdoptionDetailViewController {
     
+    //입양, 임보 리스트 조회
     func getAdoptDetail(_idx: Int) {
         
         AdoptDetailService.shareInstance.getAdoptDetail(idx: _idx, completion: {
@@ -128,12 +135,24 @@ extension AdoptionDetailViewController {
     }
     
     func getData() {
+        
+        //글작성자 확인 여부
+        if details?.isWriter == true {
+            self.adoptButton.isHidden = true
+            self.bottomC.constant = 15
+        } else {
+            self.adoptButton.isHidden = false
+            self.bottomC.constant = 64
+        }
+        
+        self.apply = details?.isSubmitted //신청자 확인 여부
+        self.finish = details?.isFinished //마감 확인 여부
         self.nameLabel.text = details?.name
         self.ageLabel.text = details?.age
         self.typeLabel.text = details?.breed
-        self.protectLabel.text = details?.vaccination ?? "모름"
         self.etcLabel.text = details?.contents
         
+        //값 맵핑
         if details?.sex == 0 {
             self.sexLabel.text = sexMapping.male.rawValue
         } else {
@@ -145,6 +164,27 @@ extension AdoptionDetailViewController {
         } else {
             self.tnrLabel.text = TNRMapping.yes.rawValue
         }
+        
+        switch details?.vaccination {
+        case vacMapping.know.rawValue:
+            self.protectLabel.text = vacMappingKo.know.rawValue
+            break
+        case vacMapping.none.rawValue:
+            self.protectLabel.text = vacMappingKo.none.rawValue
+            break
+        case vacMapping.one.rawValue:
+            self.protectLabel.text = vacMappingKo.one.rawValue
+            break
+        case vacMapping.two.rawValue:
+            self.protectLabel.text = vacMappingKo.two.rawValue
+            break
+        case vacMapping.three.rawValue:
+            self.protectLabel.text = vacMappingKo.three.rawValue
+            break
+        default:
+            break
+        }
+        
     }
     
     func getImageData() {
@@ -159,6 +199,7 @@ extension AdoptionDetailViewController {
         
         self.catImageView.setImageInputs(self.imageArr)
     }
+    
     
 }
 
