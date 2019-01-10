@@ -18,6 +18,16 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackBtn()
+       
+        let warningBtn = UIBarButtonItem(image: UIImage(named: "icEtc"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+            style: .plain,
+            target: self,
+            action: #selector(warningAction(_:)))
+        warningBtn.tintColor = UIColor.gray
+        
+        navigationItem.rightBarButtonItem = warningBtn
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+        
         if FundingDetailSegmentController.category == 0 {
             self.setNaviTitle(name: "치료비 후원")
         } else {
@@ -37,11 +47,23 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
         super.viewWillAppear(animated)
 //        self.tabBarController?.tabBar.isHidden = true
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        self.tabBarController?.tabBar.isHidden = false
-
+    
+    @objc func warningAction ( _ sender : UIButton! ){
+        
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
+            //doSomething
+            //            fundingRequest
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+        
+        
     }
+
  
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, titleForSectionAt index: Int) -> String {
         return ["상세정보", "댓글",][index]

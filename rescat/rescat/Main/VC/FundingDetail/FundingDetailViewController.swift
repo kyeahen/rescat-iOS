@@ -3,20 +3,20 @@ import AACarousel
 class FundingDetailViewController : UIViewController , UITableViewDelegate , UITableViewDataSource, APIServiceCallback{
     
     
-    var fundingContent : FundingDetailModel!
-    var resultTableCellCnt : Int = 0
     @IBOutlet var fundingButton : UIButton!
     @IBOutlet var testTable : UITableView!
-    
+
+    var fundingContent : FundingDetailModel!
+    var resultTableCellCnt : Int = 0
+    var fundingRequest : FundingRequest!
     override func viewDidLoad() {
         print("------ funding detail contents view controller ------ ")
         super.viewDidLoad()
         
-        self.setBackBtn()
+//        self.setBackBtn()
+      
         
-        
-        testTable.delegate = self
-        testTable.dataSource = self
+        testTable.delegate = self ; testTable.dataSource = self
         testTable.separatorStyle = .none
         let nib1 = UINib(nibName: "FundingDetailTableCell", bundle: nil)
         testTable.register(nib1, forCellReuseIdentifier: "FundingDetailTableCell")
@@ -29,8 +29,8 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let request = FundingRequest(self)
-        request.requestFundingDetail(FundingDetailSegmentController.fundingIdx)
+        fundingRequest = FundingRequest(self)
+        fundingRequest.requestFundingDetail(FundingDetailSegmentController.fundingIdx)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultTableCellCnt

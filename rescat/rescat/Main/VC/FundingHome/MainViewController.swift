@@ -44,7 +44,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         super.viewDidLoad()
         
         
-        UserDefaults.standard.set("MEMBER", forKey: "role")
+        UserDefaults.standard.set("NOT", forKey: "role")
         
         self.setNaviTitle(name: "Rescat")
 

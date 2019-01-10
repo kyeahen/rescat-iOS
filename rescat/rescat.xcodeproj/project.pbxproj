@@ -417,6 +417,7 @@
 		221291B321DB6884006DA108 /* FundingDetail */ = {
 			isa = PBXGroup;
 			children = (
+				5962B69021D79ACD00BB032D /* FundingDetailSegmentController.swift */,
 				5962B6EF21DE367300BB032D /* FundingDetailViewController.swift */,
 				5962B6E721DE364200BB032D /* FundingDetailBottomTableCell.swift */,
 				5962B6E821DE364200BB032D /* FundingDetailContentTableCell.swift */,
@@ -1019,7 +1020,6 @@
 				5916809521D3D90A00491F5C /* TempCell.swift */,
 				5916809921D3DD2700491F5C /* BannerTableCell.swift */,
 				5916809B21D3DD3900491F5C /* FundingTableCell.swift */,
-				5962B69021D79ACD00BB032D /* FundingDetailSegmentController.swift */,
 				5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */,
 				5962B69421D7C71800BB032D /* FirstViewController.swift */,
 				5962B6BE21DB221100BB032D /* TestVCCell.swift */,

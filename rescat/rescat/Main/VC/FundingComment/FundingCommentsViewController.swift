@@ -60,12 +60,17 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     }
    
     @objc func viewActionSheet( _ sender : UIButton!){
+        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        if role == "NOT" {
+            self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있어요.")
+            return
+        }
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
         
         if ( gbno(fundingComments[sender.tag].isWriter) ) {
-            actionSheet.addAction(UIAlertAction(title: "삭제 - \(sender.tag)", style: .default, handler: { result in
+            actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: { result in
                 self.request.requestFundingCommentDelete(FundingDetailSegmentController.fundingIdx, self.gino(self.fundingComments[sender.tag].idx))
                 self.fundingComments.remove(at: sender.tag)
                 self.commentTableView.reloadData()
@@ -79,13 +84,16 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         self.present(actionSheet, animated: true, completion: nil)
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FundingCommentTableViewCell", for: indexPath) as! FundingCommentTableViewCell
 //        print("--comment \(indexPath.row) \(gsno(fundingComments[indexPath.row].contents))")
         let comment = fundingComments[indexPath.row]
         cell.nicknameLabel.text = gsno(comment.nickname)
         cell.dateLabel.text = setDate(createdAt: gsno(comment.createdAt), format: "MM/dd HH:mm")
-        print("isWriter - \(comment.nickname) , \(comment.isWriter)")
+//        print("isWriter - \(comment.nickname) , \(comment.isWriter)")
         if gsno(comment.userRole) == "CARETAKER" {
             cell.caretakerImageView.image = UIImage(named: "iconCareTakerS")
         } else {
