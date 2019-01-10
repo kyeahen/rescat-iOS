@@ -19,6 +19,8 @@ class IntroResisterViewController: UIViewController {
     //MARK: 후원 글작성 액션
     @IBAction func supportAction(_ sender: UIButton) {
         //후원 글작성 뷰로 이동(push)
+        let fundVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingRegisterVC.reuseIdentifier)
+        self.navigationController?.pushViewController(fundVC, animated: true)
     }
     
 }
