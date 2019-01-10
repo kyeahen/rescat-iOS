@@ -212,9 +212,14 @@ extension UIViewController {
         let day  = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
         let interval = NSDate().timeIntervalSince(day)
         let hour = Int(interval / 3600)
+        let minute = Int(interval / 60) % 60
         
         if hour <= 24 {
-            return "\(hour)시간 전"
+            if hour < 0 {
+                return "\(minute)분 전"
+            } else {
+                return "\(hour)시간 전"
+            }
         } else {
             return setDate(createdAt: start, format: "MM/dd  HH:ss")
         }
@@ -225,7 +230,7 @@ extension UIViewController {
     func setDday(start: String) -> String {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.'sss'+'ssss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let day = dateFormatter.date(from: start)! //문자열을 date포맷으로 변경
         let interval = NSDate().timeIntervalSince(day)
         let days = Int(interval / 86400)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ApplyAdoptViewController: UIViewController,UITextViewDelegate {
+class ApplyAdoptViewController: UIViewController,UITextViewDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,16 +35,45 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate {
 
         setCustomView()
         setBackBtn()
+        setTextView()
+        setTextField()
         
         //테이블 뷰 키보드 대응
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         
     }
+
+
+    
+    func setTextField() {
+        nameTextField.delegate = self
+        phoneTextField.delegate = self
+        roleTextField.delegate = self
+        mainAddressTextField.delegate = self
+        subAddressTextField.delegate = self
+    }
+    
+    func setTextView() {
+        contentTextView.delegate = self
+    }
     
     //MARK: 키보드 대응 method
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     //MARK: 뷰 요소 커스텀 세팅

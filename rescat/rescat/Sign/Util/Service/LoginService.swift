@@ -30,6 +30,7 @@ struct LoginService: PostableService, APIServie {
                     print("토큰 \(networkResult.resResult.role)")
 
                     UserDefaults.standard.set(networkResult.resResult.role, forKey: "role") //등급
+                    print("로그인 서비스에서 \(UserDefaults.standard.string(forKey: "role"))")
                     UserDefaults.standard.set(networkResult.resResult.mileage, forKey: "mileage") //마일리지
                     UserDefaults.standard.set(networkResult.resResult.emdCodes, forKey: "emdCodes")//코드
                     UserDefaults.standard.set(networkResult.resResult.regions, forKey: "regions")//코드

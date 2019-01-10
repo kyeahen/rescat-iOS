@@ -35,6 +35,7 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
     @IBOutlet var tnrImageView2 : UIImageView!
     @IBOutlet var tnrImageView3 : UIImageView!
 
+    @IBOutlet var hiddenView : UIView!
     var keyboardDismissGesture: UITapGestureRecognizer?
     var check = false
     var curCategory = 0
@@ -43,23 +44,35 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
         setKeyboardSetting()
         type1Button.tag = 0 ; type1Button.addTarget(self, action: #selector(changeTypeButtonAction(_:)), for: .touchUpInside)
         type1Button.tag = 0 ; type2Button.addTarget(self, action: #selector(changeTypeButtonAction(_:)), for: .touchUpInside)
+        type1Button.tag = 0 ; type2Button.tag = 1
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     @objc func changeTypeButtonAction( _ sender : UIButton!){
-        if sender.tag == 0 {
-            typeLabel.text = "배식소 이름"
+        if sender.tag == 1 && curCategory == 0 {
+            typeLabel.text = "배식소 이름" ; curCategory = 1
+            hiddenView.isHidden = true ; scrollView.isScrollEnabled = false
             propertyTextField.text = ""; nameTextField.text = "" ; nameTextField.placeholder = "배식소 이름을 14자 이내로 적어주세요."
-            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: 600)
-
+            scrollView.frame = CGRect(x: 0, y: 0, width: 375, height: 667)
+            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.scrollView.frame.height)
+//
 //            scrollView.
             
-        } else {
-            typeLabel.text = "고양이 이름"
+        } else if sender.tag == 0 && curCategory == 1{
+            typeLabel.text = "고양이 이름" ; curCategory = 0
+            hiddenView.isHidden = false ; scrollView.isScrollEnabled = true
+        
             //            representImageView.image = UIImage(named: String)
             propertyTextField.text = ""; nameTextField.text = "" ; nameTextField.placeholder = "고양이 이름을 14자 이내로 적어주세요."
-            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: 600)
+            scrollView.frame = CGRect(x: 0, y: 0, width: 375, height: 1000)
+            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.scrollView.frame.height - 250)
 
         }
+        //
+        
+        
     }
     @objc func gotoNextStep ( _ sender : UIButton! ) {
         if gsno(nameTextField.text) == "" || gsno(propertyTextField.text) == "" {

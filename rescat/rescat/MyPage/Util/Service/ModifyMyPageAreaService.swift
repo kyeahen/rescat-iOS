@@ -1,31 +1,34 @@
 //
-//  PostBoxDetailService.swift
+//  ModifyMyPageAreaService.swift
 //  rescat
 //
-//  Created by 김예은 on 08/01/2019.
+//  Created by 김예은 on 10/01/2019.
 //  Copyright © 2019 kyeahen. All rights reserved.
 //
 
 import Foundation
 
-struct PostBoxDetailService: GettableService, APIServie {
+struct ModifyMyPageAreaService: PuttableService, APIServie {
     
-    typealias NetworkData = PostBoxDetailData
-    static let shareInstance = PostBoxDetailService()
+    typealias NetworkData = DefaultData
+    static let shareInstance = ModifyMyPageAreaService()
     
-    //MARK: GET - /api/users/mypage/notification-box/{idx} (우체통 상세 조회)
-    func getPostBoxDetail(idx: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    //MARK: PUT - api/users/mypage/region (케어테이커 지역 수정)
+    func putMyPageArea(params: [String : Any], completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let detailURL = self.url("users/mypage/notification-box/\(idx)")
+        let modURL = self.url("users/mypage/region")
         
-        get(detailURL) { (result) in
+        put(modURL, params: params) { (result) in
             switch result {
                 
             case .success(let networkResult):
-                switch networkResult.resCode{
+                switch networkResult.resCode {
                     
-                case HttpResponseCode.getSuccess.rawValue : //200
+                case HttpResponseCode.postSuccess.rawValue : //201
                     completion(.networkSuccess(networkResult.resResult))
+                    
+                case HttpResponseCode.badRequest.rawValue : //400
+                    completion(.badRequest)
                     
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
@@ -42,6 +45,9 @@ struct PostBoxDetailService: GettableService, APIServie {
             case .error(let resCode):
                 switch resCode {
                     
+                case HttpResponseCode.badRequest.rawValue.description : //400
+                    completion(.badRequest)
+                    
                 case HttpResponseCode.accessDenied.rawValue.description : //401
                     completion(.accessDenied)
                     
@@ -51,10 +57,11 @@ struct PostBoxDetailService: GettableService, APIServie {
                 }
                 break
                 
-            case .failure(_) :
+            case .failure(_):
                 completion(.networkFail)
                 print("Fail: Network Fail")
             }
         }
+        
     }
 }
