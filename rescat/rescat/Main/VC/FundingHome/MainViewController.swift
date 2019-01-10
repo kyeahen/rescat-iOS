@@ -29,7 +29,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     var randomBanner : FundingBannerModel!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+ 
         let request = FundingRequest(self)
         let request2 = CarePostRequest(self)
        
@@ -94,9 +94,9 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         
         let adoption = UIStoryboard(name: "Adoption", bundle: nil)
         let vc = adoption.instantiateViewController(withIdentifier: IntroResisterViewController.reuseIdentifier) as! IntroResisterViewController
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(vc, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
 
         
     }
@@ -254,9 +254,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             FundingDetailSegmentController.category = gino(fundingList[indexPath.row].category)
 
             tableView.deselectRow(at: indexPath, animated: true)
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(vc, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
         }
     }
     

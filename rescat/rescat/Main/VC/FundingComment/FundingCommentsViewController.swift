@@ -64,7 +64,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
 
         if ( token == "-1") {
-            self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있어요.")
+            self.simpleAlert(title: "", message: "회원가입 후, 이용할 수 있어요.")
             return
 
         }

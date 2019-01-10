@@ -88,6 +88,8 @@
 		224D343A21E7C46B00E6FC1B /* UpdateAreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D343921E7C46B00E6FC1B /* UpdateAreaData.swift */; };
 		224D343C21E7C62B00E6FC1B /* ArrayEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D343B21E7C62B00E6FC1B /* ArrayEncoding.swift */; };
 		224D343E21E7C7B200E6FC1B /* PuttableArrayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D343D21E7C7B200E6FC1B /* PuttableArrayService.swift */; };
+		224D344221E7CE9300E6FC1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224D344021E7CD9C00E6FC1B /* GoogleService-Info.plist */; };
+		224D344421E7E71C00E6FC1B /* AcceptAdoptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D344321E7E71C00E6FC1B /* AcceptAdoptService.swift */; };
 		2271880621CF541200E1BCAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271880521CF541200E1BCAB /* AppDelegate.swift */; };
 		2271880B21CF541200E1BCAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2271880921CF541200E1BCAB /* Main.storyboard */; };
 		2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2271880C21CF541300E1BCAB /* Assets.xcassets */; };
@@ -199,7 +201,6 @@
 		598879BC21E71347008FE49E /* CarePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BB21E71347008FE49E /* CarePostRequest.swift */; };
 		598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BD21E71414008FE49E /* CarePostMainModel.swift */; };
 		598879C221E79D57008FE49E /* Register1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879C121E79D57008FE49E /* Register1VC.swift */; };
-		598879C421E7A81D008FE49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 598879C321E7A81C008FE49E /* GoogleService-Info.plist */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -296,6 +297,8 @@
 		224D343921E7C46B00E6FC1B /* UpdateAreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAreaData.swift; sourceTree = "<group>"; };
 		224D343B21E7C62B00E6FC1B /* ArrayEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayEncoding.swift; sourceTree = "<group>"; };
 		224D343D21E7C7B200E6FC1B /* PuttableArrayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttableArrayService.swift; sourceTree = "<group>"; };
+		224D344021E7CD9C00E6FC1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/For-yeeun/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		224D344321E7E71C00E6FC1B /* AcceptAdoptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptAdoptService.swift; sourceTree = "<group>"; };
 		2271880221CF541200E1BCAB /* rescat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rescat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271880521CF541200E1BCAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2271880A21CF541200E1BCAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -631,8 +634,17 @@
 				222D801821E355DB000B7379 /* DeleteMyPageAreaService.swift */,
 				22DA019521E66B5F00C26CEA /* AddAreaService.swift */,
 				22DA019821E768C400C26CEA /* ModifyMyPageAreaService.swift */,
+				224D344321E7E71C00E6FC1B /* AcceptAdoptService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		224D343F21E7CD6700E6FC1B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				598879C321E7A81C008FE49E /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		227187F921CF541200E1BCAB = {
@@ -642,6 +654,7 @@
 				2271880321CF541200E1BCAB /* Products */,
 				59F97C50FD4004040591AFA9 /* Pods */,
 				5A1831A9F22952778B87427A /* Frameworks */,
+				224D343F21E7CD6700E6FC1B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -656,12 +669,11 @@
 		2271880421CF541200E1BCAB /* rescat */ = {
 			isa = PBXGroup;
 			children = (
-
 				22DA019D21E789E400C26CEA /* splashIos@1x.gif */,
 				22DA019F21E789E400C26CEA /* splashIos@2x.gif */,
 				22DA019E21E789E400C26CEA /* splashIos@3x.gif */,
-				22DA019A21E77CC800C26CEA /* GoogleService-Info.plist */,
 				22D1270321DD5B1A00DDE8D5 /* rescat.entitlements */,
+				224D344021E7CD9C00E6FC1B /* GoogleService-Info.plist */,
 				596662B121D1F56100055918 /* Util */,
 				2271880521CF541200E1BCAB /* AppDelegate.swift */,
 				2271881721CF544400E1BCAB /* Sign */,
@@ -1175,6 +1187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224D344221E7CE9300E6FC1B /* GoogleService-Info.plist in Resources */,
 				22A4DEC221D7362B00565FB6 /* Care.storyboard in Resources */,
 				5962B6F421DE36AA00BB032D /* FundingDetailTableCell.xib in Resources */,
 				22DA01A921E78FA600C26CEA /* Splash.storyboard in Resources */,
@@ -1186,7 +1199,6 @@
 				5916808E21D3914700491F5C /* DetailView.xib in Resources */,
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
 				5962B6F621DE36AA00BB032D /* FundingDetailBottomTableCell.xib in Resources */,
-				598879C421E7A81D008FE49E /* GoogleService-Info.plist in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
 				22DA01A221E789E500C26CEA /* splashIos@2x.gif in Resources */,
 				221291BB21DB68ED006DA108 /* Adoption.storyboard in Resources */,
@@ -1299,6 +1311,7 @@
 				591A2A1A21E5D69E00B3BFBF /* FundingSupportCompleteViewController.swift in Sources */,
 				22FCCD7E21D35B48007A731C /* LoginService.swift in Sources */,
 				22174FC921E5DFDE00144F81 /* DetailWarningService.swift in Sources */,
+				224D344421E7E71C00E6FC1B /* AcceptAdoptService.swift in Sources */,
 				222D7FCA21E13652000B7379 /* ModMyDataViewController.swift in Sources */,
 				222D7FEA21E1C6E4000B7379 /* DeletableService.swift in Sources */,
 				221291C821DBF5D9006DA108 /* AdoptionCommentViewController.swift in Sources */,

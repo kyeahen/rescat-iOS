@@ -164,7 +164,7 @@ extension PasswordModViewController {
                 break
                 
             case .accessDenied : //401
-                self.simpleAlert(title: "", message: "로그인 후, 이용 가능합니다.")
+                self.simpleAlert(title: "", message: "회원가입 후, 이용 가능합니다.")
                 break
                 
             case .networkFail :

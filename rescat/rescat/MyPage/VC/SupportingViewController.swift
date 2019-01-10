@@ -121,7 +121,7 @@ extension SupportingViewController {
                 break
                 
             case .accessDenied :
-                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "회원가입 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail :

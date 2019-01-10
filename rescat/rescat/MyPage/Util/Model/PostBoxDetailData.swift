@@ -9,33 +9,25 @@
 import Foundation
 
 struct PostBoxDetailData: Codable {
+    let targetIdx: Int
+    let targetType: String
+    let careApplication: CareApplication
+}
+
+struct CareApplication: Codable {
     let createdAt: String
     let idx: Int
-    let title: String
-    let contents: String
-    let introduction: String
-    let goalAmount: Int
-    let currentAmount: Int
-    let bankName: String
-    let account: String
-    let mainRegion: String
-    let certifications: [PostCertiData]
-    let category: Int
-    let photos: [PostPhotoData]
-    let limitAt: String
-    let isConfirmed: Int
-    let nickname: String
-    let isWriter: Bool
+    let type: Int
+    let name: String
+    let phone: String
+    let birth: String?
+    let job: String
+    let address: String
+    let houseType: String
+    let companionExperience: Bool
+    let finalWord: String
+    let isAccepted: Bool
+    let title: String?
 }
 
-struct PostCertiData: Codable {
-    let createdAt: String
-    let url: String
-    let isCertification: Bool
-}
 
-struct PostPhotoData: Codable {
-    let createdAt: String
-    let url: String
-    let isCertification: Bool
-}

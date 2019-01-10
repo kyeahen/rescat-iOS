@@ -54,7 +54,7 @@ class AdoptionCommentViewController: UIViewController, UITextFieldDelegate {
             commentBottomC.constant = -49
         } else {
             commentView.isHidden = false
-            commentBottomC.constant = 64
+            commentBottomC.constant = 113
         }
         
         commentTextField.delegate = self
@@ -123,7 +123,7 @@ class AdoptionCommentViewController: UIViewController, UITextFieldDelegate {
         let token = gsno(UserDefaults.standard.string(forKey: "token"))
         
         if token == "-1" {
-            self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있어요.")
+            self.simpleAlert(title: "", message: "회원가입 후, 이용할 수 있어요.")
         } else {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             actionSheet.view.tintColor = #colorLiteral(red: 0.9400809407, green: 0.5585930943, blue: 0.5635480285, alpha: 1)
@@ -168,7 +168,7 @@ extension AdoptionCommentViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         cell.nickNameLabel.text = comments[indexPath.row].nickname
-        cell.timeLabel.text = setDate(createdAt: gsno(comments[indexPath.row].createdAt), format: "MM/dd  MHH:mm")
+        cell.timeLabel.text = setDate(createdAt: gsno(comments[indexPath.row].createdAt), format: "MM/dd  HH:mm")
         cell.contentLabel.text = comments[indexPath.row].contents
         
         cell.configure(data: comments[indexPath.row])
@@ -225,7 +225,7 @@ extension AdoptionCommentViewController {
                 break
                 
             case .accessDenied: //401
-                self.simpleAlert(title: "", message: "로그인 후, 이용 가능합니다.")
+                self.simpleAlert(title: "", message: "회원가입 후, 이용 가능합니다.")
                 break
                 
             case .networkFail :
@@ -306,7 +306,7 @@ extension AdoptionCommentViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if check {
                 constraintInitVal = commentBottomC.constant
-                commentBottomC.constant += keyboardSize.height
+                commentBottomC.constant += keyboardSize.height - 49
                 self.view.layoutIfNeeded()
                 check = false
             }

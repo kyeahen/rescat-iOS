@@ -185,9 +185,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let join = UIStoryboard(name: "Sign", bundle: nil)
             let vc = join.instantiateViewController(withIdentifier: "JoinViewController") as! JoinViewController
             
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(vc, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
 
         } else {
             // 케어테이커
@@ -196,9 +196,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
             let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
 //            self.present(vc, animated:  true)
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(vc, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
 
         }
     }

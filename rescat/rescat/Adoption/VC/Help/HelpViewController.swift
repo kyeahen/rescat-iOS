@@ -69,9 +69,9 @@ class HelpViewController: UIViewController {
         
         let writeVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: RegisterAdoptViewController.reuseIdentifier) as! RegisterAdoptViewController
         
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(writeVC, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
     }
     
     //MARK: 테이블뷰 설정

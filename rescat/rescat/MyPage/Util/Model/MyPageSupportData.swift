@@ -17,10 +17,11 @@ struct MyPageSupportData: Codable {
     let limitAt: String?
     let mainPhoto: MySupportPhotoData
     let title: String
+    let name: String?
+    let phone: String?
 }
 
 struct MySupportPhotoData: Codable {
     let createdAt: String
-    let isCertification: Bool
     let url: String
 }

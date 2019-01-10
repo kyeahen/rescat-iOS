@@ -139,10 +139,10 @@ extension AdoptionDetailViewController {
         //글작성자 확인 여부
         if details?.isWriter == true {
             self.adoptButton.isHidden = true
-            self.bottomC.constant = 15
+            self.bottomC.constant = 64
         } else {
             self.adoptButton.isHidden = false
-            self.bottomC.constant = 64
+            self.bottomC.constant = 113
         }
         
         self.apply = details?.isSubmitted //신청자 확인 여부
@@ -211,7 +211,7 @@ extension AdoptionDetailViewController {
         
         catImageView.slideshowInterval = 3.0
         catImageView.pageIndicatorPosition = .init(horizontal: .center, vertical: .under)
-        catImageView.contentScaleMode = UIView.ContentMode.scaleToFill
+        catImageView.contentScaleMode = UIView.ContentMode.scaleAspectFill
         
         //PageControl Setting
         let pageControl = UIPageControl()

@@ -261,6 +261,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jiw-re-JcM"/>
                     </view>
+                    <connections>
+                        <outlet property="adoptButton" destination="k4F-Q5-qrV" id="3vL-vI-LXK"/>
+                        <outlet property="supportButton" destination="lVN-gF-eIp" id="rC2-LR-8gr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dj-Dr-6Xq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,7 +273,7 @@
         <!--입양 임시보호 등록 정보-->
         <scene sceneID="uJT-Hf-2fL">
             <objects>
-                <viewController storyboardIdentifier="RegisterAdoptViewController" title="입양 임시보호 등록 정보" hidesBottomBarWhenPushed="YES" id="pIn-VV-CdF" customClass="RegisterAdoptViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterAdoptViewController" title="입양 임시보호 등록 정보" id="pIn-VV-CdF" customClass="RegisterAdoptViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iD2-WH-X1m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1297"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1484,7 +1488,7 @@
         <!--입양-->
         <scene sceneID="vhb-ce-0sE">
             <objects>
-                <viewController storyboardIdentifier="AdoptionViewController" title="입양" hidesBottomBarWhenPushed="YES" id="ago-A0-Zkf" customClass="AdoptionViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdoptionViewController" title="입양" id="ago-A0-Zkf" customClass="AdoptionViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WXb-hb-a2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1506,7 +1510,7 @@
             <objects>
                 <viewController storyboardIdentifier="AdoptionDetailViewController" title="상세정보" id="pID-Fw-7cM" customClass="AdoptionDetailViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tps-WX-7yF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="864"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="913"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IvP-ld-xaL">
@@ -1523,9 +1527,9 @@
                                                 <constraint firstAttribute="height" constant="210" id="xf6-HK-bft"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-tg-9Zb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttomIllust1" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-tg-9Zb">
                                             <rect key="frame" x="0.0" y="641" width="375" height="90"/>
-                                            <color key="backgroundColor" red="0.70808166269999995" green="0.58965998890000004" blue="0.50586587189999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="90" id="c9i-Gi-PGI"/>
                                             </constraints>
@@ -1641,10 +1645,10 @@
                                         <constraint firstItem="SJf-Ry-g8V" firstAttribute="leading" secondItem="rhZ-7f-cFG" secondAttribute="leading" id="VfS-dB-TFl"/>
                                         <constraint firstItem="pd7-TF-vH3" firstAttribute="leading" secondItem="VPs-d2-UY4" secondAttribute="leading" id="W1z-Xz-XzN"/>
                                         <constraint firstItem="9En-A6-SEc" firstAttribute="top" secondItem="gpL-zS-pqa" secondAttribute="bottom" constant="9" id="Wh7-Va-q9M"/>
-                                        <constraint firstAttribute="bottom" secondItem="LgX-tg-9Zb" secondAttribute="bottom" id="XQw-x0-MS7"/>
                                         <constraint firstItem="ylq-Lv-RyU" firstAttribute="centerY" secondItem="Xz6-j0-lXd" secondAttribute="centerY" id="Ygx-cE-wpD"/>
                                         <constraint firstItem="ylq-Lv-RyU" firstAttribute="leading" secondItem="9ca-Nu-ETf" secondAttribute="leading" id="a4Y-zf-jjx"/>
                                         <constraint firstItem="6Y8-qV-BdD" firstAttribute="leading" secondItem="SJf-Ry-g8V" secondAttribute="leading" id="aX0-Wl-rdb"/>
+                                        <constraint firstAttribute="bottom" secondItem="LgX-tg-9Zb" secondAttribute="bottom" id="di3-bj-Ao9"/>
                                         <constraint firstItem="LgX-tg-9Zb" firstAttribute="leading" secondItem="bFF-Bt-htz" secondAttribute="leading" id="hTa-ny-RbX"/>
                                         <constraint firstItem="rhZ-7f-cFG" firstAttribute="leading" secondItem="4Ax-bG-hdO" secondAttribute="leading" id="hTl-JK-w59"/>
                                         <constraint firstItem="9ca-Nu-ETf" firstAttribute="leading" secondItem="Y3i-g9-8hc" secondAttribute="leading" id="iQi-Di-fQu"/>
@@ -1689,12 +1693,12 @@
                             <constraint firstItem="IvP-ld-xaL" firstAttribute="top" secondItem="Tps-WX-7yF" secondAttribute="top" id="gBw-Wl-eWt"/>
                             <constraint firstItem="hi5-4F-wRk" firstAttribute="top" secondItem="IvP-ld-xaL" secondAttribute="bottom" id="jbE-9b-TlZ"/>
                             <constraint firstItem="hi5-4F-wRk" firstAttribute="leading" secondItem="JU8-LD-yHD" secondAttribute="leading" id="lgW-fr-BnI"/>
-                            <constraint firstItem="JU8-LD-yHD" firstAttribute="bottom" secondItem="hi5-4F-wRk" secondAttribute="bottom" constant="64" id="s3b-gn-iPZ"/>
+                            <constraint firstItem="JU8-LD-yHD" firstAttribute="bottom" secondItem="hi5-4F-wRk" secondAttribute="bottom" constant="113" id="s3b-gn-iPZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JU8-LD-yHD"/>
                     </view>
                     <navigationItem key="navigationItem" id="Tpj-jS-ukH"/>
-                    <size key="freeformSize" width="375" height="864"/>
+                    <size key="freeformSize" width="375" height="913"/>
                     <connections>
                         <outlet property="adoptButton" destination="hi5-4F-wRk" id="g0Y-wK-Sag"/>
                         <outlet property="ageLabel" destination="VPs-d2-UY4" id="cTl-M3-4HT"/>
@@ -1722,7 +1726,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bls-UW-kxi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                                 <color key="backgroundColor" red="0.98824185129999997" green="0.98822349310000002" blue="0.98823589089999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.56470984220504761" green="0.56469881534576416" blue="0.56470626592636108" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1798,7 +1802,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8MQ-hi-Pe9">
-                                <rect key="frame" x="0.0" y="554" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="505" width="375" height="49"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="댓글을 남겨보세요:)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEa-uU-JnO">
                                         <rect key="frame" x="15" y="8" width="300" height="30"/>
@@ -1839,7 +1843,7 @@
                             <constraint firstItem="bls-UW-kxi" firstAttribute="top" secondItem="nLV-SQ-NUQ" secondAttribute="top" id="AXe-Fs-FId"/>
                             <constraint firstAttribute="trailing" secondItem="bls-UW-kxi" secondAttribute="trailing" id="Crw-e6-1sz"/>
                             <constraint firstItem="bls-UW-kxi" firstAttribute="leading" secondItem="nLV-SQ-NUQ" secondAttribute="leading" id="NQR-PC-nyL"/>
-                            <constraint firstAttribute="bottom" secondItem="8MQ-hi-Pe9" secondAttribute="bottom" constant="64" id="sj6-pb-6VW"/>
+                            <constraint firstAttribute="bottom" secondItem="8MQ-hi-Pe9" secondAttribute="bottom" constant="113" id="sj6-pb-6VW"/>
                             <constraint firstItem="8MQ-hi-Pe9" firstAttribute="trailing" secondItem="fQD-Eh-btQ" secondAttribute="trailing" id="ts0-x0-uN0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQD-Eh-btQ"/>
@@ -1859,6 +1863,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="buttomIllust1" width="375" height="90"/>
         <image name="buttonRadioOff" width="22" height="22"/>
         <image name="doneWait" width="375" height="358"/>
         <image name="icAddPhotoOn" width="69" height="69"/>

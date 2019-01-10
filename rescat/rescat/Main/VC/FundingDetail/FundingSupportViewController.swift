@@ -30,7 +30,7 @@ class FundingSupportViewController : UIViewController, APIServiceCallback {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+
     }
     @objc func finalButtonAction( _ sender : UIButton!){
         if gsno(inputTextField.text) == "" || Int(gsno(inputTextField.text)) == 0 {

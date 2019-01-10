@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgLogin" translatesAutoresizingMaskIntoConstraints="NO" id="BBf-Eu-zWA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginIllust" translatesAutoresizingMaskIntoConstraints="NO" id="BBf-Eu-zWA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcD-AJ-qx7">
@@ -57,14 +57,14 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 계정을 가지고 있나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMg-VY-ghf">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="32"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdB-PZ-2qx">
                                         <rect key="frame" x="177" y="0.0" width="42" height="32"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <state key="normal" title="로그인">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" red="0.87200194600000003" green="0.56898188589999998" blue="0.56077390910000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -75,13 +75,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="symbol" translatesAutoresizingMaskIntoConstraints="NO" id="5MO-sx-BgI">
-                                <rect key="frame" x="140" y="195.5" width="95" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="CuY-rK-0A5"/>
-                                    <constraint firstAttribute="width" secondItem="5MO-sx-BgI" secondAttribute="height" multiplier="95:93" id="TpQ-tD-9YO"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.57927531003952026" green="0.51076531410217285" blue="0.45489174127578735" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -94,8 +87,6 @@
                             <constraint firstItem="WpQ-lw-YkI" firstAttribute="trailing" secondItem="BBf-Eu-zWA" secondAttribute="trailing" id="Oi0-5h-9Km"/>
                             <constraint firstItem="BBf-Eu-zWA" firstAttribute="leading" secondItem="WpQ-lw-YkI" secondAttribute="leading" id="R9q-s7-dVE"/>
                             <constraint firstItem="WpQ-lw-YkI" firstAttribute="bottom" secondItem="bf7-dD-1fm" secondAttribute="bottom" constant="46" id="WMX-ID-UWp"/>
-                            <constraint firstItem="5MO-sx-BgI" firstAttribute="centerX" secondItem="WpQ-lw-YkI" secondAttribute="centerX" id="bRL-vS-Gj9"/>
-                            <constraint firstItem="BBf-Eu-zWA" firstAttribute="top" secondItem="5MO-sx-BgI" secondAttribute="bottom" constant="-288.5" id="djj-ES-ymZ"/>
                             <constraint firstItem="bf7-dD-1fm" firstAttribute="centerX" secondItem="8hf-ZJ-e3n" secondAttribute="centerX" id="e7A-l4-RWc"/>
                             <constraint firstItem="BBf-Eu-zWA" firstAttribute="top" secondItem="UVh-9I-GtN" secondAttribute="top" id="g8s-uM-jK3"/>
                             <constraint firstItem="WpQ-lw-YkI" firstAttribute="trailing" secondItem="jcD-AJ-qx7" secondAttribute="trailing" constant="27" id="i2F-Wz-jW2"/>
@@ -601,10 +592,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bgLogin" width="375" height="667"/>
         <image name="buttonJoin" width="320" height="46"/>
         <image name="buttonMaybeLater" width="162" height="48"/>
         <image name="join02" width="375" height="667"/>
-        <image name="symbol" width="95" height="93"/>
+        <image name="loginIllust" width="375" height="667"/>
     </resources>
 </document>
