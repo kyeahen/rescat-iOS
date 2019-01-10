@@ -1516,7 +1516,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3M-Lf-2br" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="M3M-Lf-2br" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                             <color key="backgroundColor" red="0.94774287940000002" green="0.86765569450000002" blue="0.81175488230000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>

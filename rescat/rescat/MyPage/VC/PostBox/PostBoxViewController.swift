@@ -23,6 +23,8 @@ class PostBoxViewController: UIViewController {
         setBackBtn()
         setTableView()
         getPostBoxInit()
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
 
     }
     
@@ -120,3 +122,4 @@ extension PostBoxViewController {
         })
     }
 }
+
