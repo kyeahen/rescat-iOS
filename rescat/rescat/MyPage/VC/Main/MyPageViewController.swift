@@ -49,7 +49,7 @@ class MyPageViewController: UIViewController{
     //MARK: rightBarButtonItem Setting
     func setRightBarButtonItem() {
         let rightButtonItem = UIBarButtonItem.init(
-            title: "우체통",
+            image: UIImage(named: "icMessage"),
             style: .done,
             target: self,
             action: #selector(rightButtonAction(sender:))
@@ -282,10 +282,12 @@ extension MyPageViewController {
                         self.viewBottomC.constant = 0
                         self.joinButton.isHidden = true
                         self.careImageView.isHidden = false
+                        self.backImageView.image = UIImage(named: "mypageCaretaker")
                     } else {
                         self.viewBottomC.constant = 79
                         self.joinButton.isHidden = false
                         self.careImageView.isHidden = true
+                        self.backImageView.image = UIImage(named: "mypageNormal")
                     }
                     
                     if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue {
