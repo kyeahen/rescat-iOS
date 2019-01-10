@@ -249,11 +249,13 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
 
             } else {
                 self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
-                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+//                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                    
                     UserDefaults.standard.removeObject(forKey: "token")
                     UserDefaults.standard.removeObject(forKey: "fcmToken")
                     UserDefaults.standard.set("-1", forKey: "token")
- 
+                    let signVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "MainSignNaviVC")
+                    self.present(signVC, animated: true, completion: nil)
                     })
             }
         }

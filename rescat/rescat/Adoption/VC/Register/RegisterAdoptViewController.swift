@@ -311,13 +311,13 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
         
-            if imageArr.count - indexPath.row - 1 == 0 { //첫번째에 더하기 버튼
+            if imageArr.count - indexPath.row - 1 == 0 {
                 if imageNum < 3 { //3장을 넘지 않을 때
                     openGallery()
     
                 } else  {
                     self.simpleAlert(title: "", message: "사진은 최대 3장까지 첨부가능합니다.")
-
+                    
                 }
             }
                 
