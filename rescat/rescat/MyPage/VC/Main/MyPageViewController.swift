@@ -250,6 +250,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
                     UserDefaults.standard.removeObject(forKey: "token")
+                    UserDefaults.standard.set("-1", forKey: "token")
                     self.performSegue(withIdentifier: "unwindToHome", sender: nil)
                     })
             }
@@ -299,9 +300,8 @@ extension MyPageViewController {
                     } 
                     
                     self.nickNameLabel.text = resResult.nickname
+                    self.idLabel.isHidden = false
                     self.idLabel.text = resResult.id
-                    
-                    
                     
                 }
                 self.joinButton.setImage(UIImage(named: "buttonMypageCaretaker"), for: .normal)
@@ -310,7 +310,7 @@ extension MyPageViewController {
                 
             case .accessDenied :
                 self.nickNameLabel.text = "회원가입이 필요해요!"
-                self.idLabel.text = "현재 비회원입니다."
+                self.idLabel.isHidden = true
                 self.joinButton.setImage(UIImage(named: "buttonMypageJoin"), for: .normal) 
                 
                 break

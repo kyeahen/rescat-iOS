@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import SwiftyJSON
 
-struct ModifyMyPageAreaService: PuttableService, APIServie {
+struct ModifyMyPageAreaService: PuttableArrayService, APIServie {
     
     typealias NetworkData = DefaultData
     static let shareInstance = ModifyMyPageAreaService()
@@ -18,13 +19,15 @@ struct ModifyMyPageAreaService: PuttableService, APIServie {
         
         let modURL = self.url("users/mypage/region")
         
-        put(modURL, params: params) { (result) in
+        putArray(modURL, params: params) { (result) in
+            
+            print(JSON(params))
             switch result {
-                
+            
             case .success(let networkResult):
                 switch networkResult.resCode {
                     
-                case HttpResponseCode.postSuccess.rawValue : //201
+                case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400

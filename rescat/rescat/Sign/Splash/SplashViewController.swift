@@ -12,27 +12,27 @@ import SwiftGifOrigin
 class SplashViewController: UIViewController {
     
     @IBOutlet var splashGifImg: UIImageView!
-    
     let delayInSeconds = 3.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        splashGifImg.image = UIImage.gif(name: "splahIos@3x.gif")
-//        
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
-//   
-//            guard let token = UserDefaults.standard.string(forKey: "token") else {return}
-//            
-//            if token == "-1" {
-//                let signVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "MainSignNaviVC")
-//                self.present(signVC, animated: true, completion: nil)
-//                
-//            } else {
-//                    let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
-//                    self.present(tabVC, animated: true)
-//            }
-//        }
+        
+        let image = UIImage.gif(name: "splashIos@3x")
+        splashGifImg.image = image
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
+            print("들어옴")
+            let token = UserDefaults.standard.string(forKey: "token")
+            
+            if token == "-1" || token == nil {
+                let signVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "MainSignNaviVC")
+                self.present(signVC, animated: true, completion: nil)
+                
+            } else {
+                    let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+                    self.present(tabVC, animated: true)
+            }
+        }
 
     }
     
