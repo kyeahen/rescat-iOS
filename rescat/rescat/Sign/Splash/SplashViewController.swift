@@ -12,7 +12,7 @@ import SwiftGifOrigin
 class SplashViewController: UIViewController {
     
     @IBOutlet var splashGifImg: UIImageView!
-    let delayInSeconds = 3.0
+    let delayInSeconds = 1.5
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -194,7 +194,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.section == 0 { //지역 설정 - 케어테이커만
             if role == careMapping.care.rawValue {
-                return 115
+               return 115
             } else {
                 return 0
             }
@@ -251,7 +251,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
                     UserDefaults.standard.removeObject(forKey: "token")
                     UserDefaults.standard.set("-1", forKey: "token")
-                    self.performSegue(withIdentifier: "unwindToHome", sender: nil)
+                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
                     })
             }
         }
