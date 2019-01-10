@@ -33,7 +33,7 @@ class FundingListViewController : UIViewController , APIServiceCallback{
             action: #selector(registerFunding))
         
         navigationItem.rightBarButtonItem = registerBtn
-        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
 
         listTableView.delegate = self
@@ -47,17 +47,23 @@ class FundingListViewController : UIViewController , APIServiceCallback{
     }
     @objc func registerFunding(){
 
+        
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-
+        
+        print("register \(token)")
         if ( token == "-1" )
         {
             self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
         } else {
             guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-            if role != "CARETAKER" {
+            print("role \(role)")
+            if role == "MEMBER" {
+                print("~~~member")
                 self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
                 return
             } else {
+                print("~~~caretaker")
+
                 let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
                 self.navigationController?.pushViewController(vc, animated: true)
                 

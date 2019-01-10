@@ -190,6 +190,7 @@
 		598879BC21E71347008FE49E /* CarePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BB21E71347008FE49E /* CarePostRequest.swift */; };
 		598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BD21E71414008FE49E /* CarePostMainModel.swift */; };
 		598879C021E75B7E008FE49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 598879BF21E75B7E008FE49E /* GoogleService-Info.plist */; };
+		598879C221E79D57008FE49E /* Register1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879C121E79D57008FE49E /* Register1VC.swift */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -393,6 +394,7 @@
 		598879BB21E71347008FE49E /* CarePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostRequest.swift; sourceTree = "<group>"; };
 		598879BD21E71414008FE49E /* CarePostMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostMainModel.swift; sourceTree = "<group>"; };
 		598879BF21E75B7E008FE49E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		598879C121E79D57008FE49E /* Register1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register1VC.swift; sourceTree = "<group>"; };
 		59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC3.swift; sourceTree = "<group>"; };
 		59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController2.swift; sourceTree = "<group>"; };
 		59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterVC.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */,
 				59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */,
 				591A2A0B21E23FB500B3BFBF /* TestVC.swift */,
+				598879C121E79D57008FE49E /* Register1VC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1437,6 +1440,7 @@
 				5962B6B121DA199600BB032D /* UserInfo.swift in Sources */,
 				222D7FC721E13562000B7379 /* MyWriteSupportViewController.swift in Sources */,
 				222D7FD621E13766000B7379 /* PostBoxViewController.swift in Sources */,
+				598879C221E79D57008FE49E /* Register1VC.swift in Sources */,
 				22174FB521E3FE5A00144F81 /* PostBoxAdoptTableViewCell.swift in Sources */,
 				22FCCD7721D3558A007A731C /* PostableService.swift in Sources */,
 				221A844E21D9F764002BECED /* ReGeocodingData.swift in Sources */,

@@ -22,7 +22,11 @@ class UserInfo {
     }
     static func getHeader() -> HTTPHeaders {
         
-        let header : HTTPHeaders = ["Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSeWFuZ1QiLCJ1c2VyX2lkeCI6MTYsImV4cCI6MTU0OTc5MDExM30.FhHRl-jXpmprkrCOXGdsBGHeB-_BCoFfFPQofR9X6OI"]
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            let header : HTTPHeaders = [:]
+            return header
+        }
+        let header : HTTPHeaders = ["Authorization": token]
         return header
     }
     static let notMessage = "회원가입을 하고 케어테이커 인증을 하면, \n우리 동네 길냥이, 배식소, 병원 정보를\n한 눈에 확인할 수 있어요."

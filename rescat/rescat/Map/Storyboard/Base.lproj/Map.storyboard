@@ -683,10 +683,10 @@
             </objects>
             <point key="canvasLocation" x="1628" y="63.418290854572717"/>
         </scene>
-        <!--View Controller-->
+        <!--Register1VC-->
         <scene sceneID="ghP-Mc-W6M">
             <objects>
-                <viewController id="3CJ-Wb-mxb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register1VC" id="3CJ-Wb-mxb" customClass="Register1VC" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KCw-PS-Nnh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="867"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -906,6 +906,21 @@
                         <viewLayoutGuide key="safeArea" id="iGw-op-Y24"/>
                     </view>
                     <size key="freeformSize" width="375" height="867"/>
+                    <connections>
+                        <outlet property="ageTextField" destination="8Fo-jk-Xgl" id="Rp6-sI-PgT"/>
+                        <outlet property="nameTextField" destination="8qQ-Bc-j1O" id="4XP-WO-ZrF"/>
+                        <outlet property="propertyTextField" destination="PWl-4U-kah" id="fzl-6C-3MS"/>
+                        <outlet property="representImageView" destination="jey-4u-7q6" id="Xym-p8-Buq"/>
+                        <outlet property="scrollView" destination="fXF-PQ-uxy" id="UV0-8b-Tkp"/>
+                        <outlet property="sexButton1" destination="IIC-bq-5M7" id="F7t-ZD-zzG"/>
+                        <outlet property="sexButton2" destination="yTY-jJ-BIT" id="LY9-9c-bpf"/>
+                        <outlet property="tnrButton1" destination="9Kg-o1-Fii" id="CwP-Jg-Zs0"/>
+                        <outlet property="tnrButton2" destination="5j6-tm-9hE" id="Ivz-Jd-sox"/>
+                        <outlet property="tnrButton3" destination="zqZ-K2-BO5" id="mv8-Vw-UVr"/>
+                        <outlet property="type1Button" destination="U6Z-oR-Lkl" id="1zP-Gh-5kt"/>
+                        <outlet property="type2Button" destination="dKi-jz-M5O" id="SSI-Ay-RJh"/>
+                        <outlet property="typeLabel" destination="slB-y9-Gpk" id="XxJ-br-0ul"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLZ-eM-oCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
