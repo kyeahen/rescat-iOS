@@ -25,11 +25,15 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     var fundingList = [FundingModel]()
     var fundingBannerList = [FundingBannerModel]()
     var mainBannerList = [FundingBannerModel]()
+    var carepostList = [CarePostMainModel]()
     var randomBanner : FundingBannerModel!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         let request = FundingRequest(self)
+        let request2 = CarePostRequest(self)
+       
+        request2.getCarePostMain()
         request.requestMain()
         request.requestFundingBannerList(0); request.requestFundingBannerList(1);
         request.requestFundingBannerList(2)
@@ -39,6 +43,11 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        UserDefaults.standard.set("MEMBER", forKey: "role")
+        
+        self.setNaviTitle(name: "Rescat")
+
         tempList.delegate = self
         tempList.dataSource = self
         tempTableList.delegate = self
@@ -71,7 +80,10 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     @IBAction func registerFundingAction(_ sender: Any) {
      
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = false
+
         
     }
         // Do any additional setup after loading the view.
@@ -137,14 +149,24 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
 }
 extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return carepostList.count
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TempCell", for: indexPath) as! TempCell
+        let care = carepostList[indexPath.row]
+        if gino(care.type) == 0 {
+            cell.markImageView.image = UIImage(named: "cardLableAdoption")
+        } else {
+            cell.markImageView.image = UIImage(named: "lableCardTemporarily")
+        }
+        cell.nameLabel.text = gsno(care.name)
+        cell.characterLabel.text = gsno(care.contents)
+        cell.imageView.roundCorner(36.0)
+        cell.imageView.kf.setImage(with: URL(string:gsno(care.photo?.url)))
         cell.outerView.drawShadow(3)
-
+        
         if ( indexPath.row == 4 ) {
             cell.imageView.isHidden = true; cell.characterLabel.isHidden = true; cell.markImageView.isHidden = true; cell.nameLabel.isHidden = true;
             cell.listButton.isHidden = false
@@ -207,9 +229,12 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
             FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
+            FundingDetailSegmentController.category = gino(fundingList[indexPath.row].category)
 
             tableView.deselectRow(at: indexPath, animated: true)
+            self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
+            self.hidesBottomBarWhenPushed = false
         }
     }
     
@@ -219,10 +244,10 @@ extension MainViewController {
     func requestCallback(_ datas: Any, _ code: Int) {
         if ( code == APIServiceCode.FUNDING_MAIN ) {
             fundingList = datas as! [FundingModel]
-            print("fundingList model len \(fundingList.count)}")
+//            print("fundingList model len \(fundingList.count)}")
         } else if ( code == APIServiceCode.FUNDING_BANNER_LIST ) {
             fundingBannerList = datas as! [FundingBannerModel]
-            print("fundingBannerList model len \(fundingBannerList.count)")
+//            print("fundingBannerList model len \(fundingBannerList.count)")
             for i in 0..<fundingBannerList.count {
                 photoArray.append(gsno(fundingBannerList[i].photoUrl))
             }
@@ -238,7 +263,11 @@ extension MainViewController {
         } else if ( code == APIServiceCode.FUNDING_RANDOM_BANNER ) {
             randomBanner = datas as! FundingBannerModel
             isFirst = true
+        } else if code == APIServiceCode.CARE_POST_MAIN {
+            carepostList = datas as! [CarePostMainModel]
+            print("care post main")
         }
+        tempList.reloadData()
         tempTableList.reloadData()
     }
 }

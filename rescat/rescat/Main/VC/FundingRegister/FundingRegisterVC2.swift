@@ -22,11 +22,13 @@ class FundingRegisterVC2 : UIViewController , UITextFieldDelegate , UITextViewDe
     var bankPickerView : UIPickerView!
     var keyBoardStatus = 0
     var bankNameList = [FundingBankModel]()
-    var bankName = ["선택","KB은행","우리은행","IBK은행"]
     
     var fundingRequest : FundingRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setBackBtn()
+        self.setNaviTitle(name: "후원 요청글 작성하기")
+    
         print("funding detail model - \(gsno(fundingDetail.title))")
         nameTextField.delegate = self ; nameTextField.tag = 0
         nameTextField.layer.borderWidth = 1.0; nameTextField.roundCorner(10.0)
@@ -92,14 +94,13 @@ class FundingRegisterVC2 : UIViewController , UITextFieldDelegate , UITextViewDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(FundingRegisterVC2.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(FundingRegisterVC2.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
-    
-        
-        
+      
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fundingRequest = FundingRequest(self)
         fundingRequest.getBankList()
+        self.tabBarController?.tabBar.isHidden = true
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -172,17 +173,21 @@ class FundingRegisterVC2 : UIViewController , UITextFieldDelegate , UITextViewDe
     @objc func registerAction ( _  sender : UIButton!) {
         
         if ( gsno(nameTextField.text) == "" || gsno(numberTextField.text) == "" || gsno(bankNameTextField.text) == "" || gsno(accountTextField.text) == "" ){
-            self.simpleAlert(title: "error", message: "정보를 입력하여주세요.")
+            self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
         } else {
 
-            print("register")
-            
             fundingDetail.name = gsno(nameTextField.text)
             fundingDetail.phone = gsno(numberTextField.text)
             fundingDetail.bankName = gsno(bankNameList[sender.tag].english)
             fundingDetail.account = gsno(accountTextField.text)
             
-            fundingRequest.postFundingDetail(fundingDetail)
+            self.simpleAlertwithCustom(title: "", message: """
+                글이 등록된 후에는 수정이 불가합니다.
+                다시 한 번 확인해주세요 !
+                """, ok: "작성 완료", cancel: "다시 확인") { (action) in
+                    self.fundingRequest.postFundingDetail(self.fundingDetail)
+
+            }
             
             
         }
@@ -217,12 +222,14 @@ class FundingRegisterVC2 : UIViewController , UITextFieldDelegate , UITextViewDe
             
         } else if code == APIServiceCode.FUNDING_DETAIL_POST {
             let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterCompleteVC") as! FundingRegisterCompleteVC
-            //            vc.fund
-            
             self.navigationController?.pushViewController(vc, animated: true)
 
         } else if code == APIServiceCode.SERVER_ERROR {
             self.simpleAlert(title: "error", message: "server error")
+        } else if code == APIServiceCode.EXCEPTION_ERROR1 {
+            let errors = datas as! [FundingRequestExceptionModel]
+            print("funding request error \(errors[0].field)")
+            self.simpleAlert(title: "입력형식 오류", message: gsno(errors[0].message))
         }
     }
 }

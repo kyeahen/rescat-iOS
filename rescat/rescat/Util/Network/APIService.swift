@@ -38,7 +38,7 @@ class APIServiceCode {
     static let FUNDING_DETAIL_POST = 111
     static let FUNDING_MIELGE_POST = 112
     static let FUNDING_BANK_LIST = 113
-    static let CARE_POST_MAIN = 120
+    static let CARE_POST_MAIN = 114
     static let CARE_POST_LIST = 121
     static let BANNER_TYPE = 122
     static let GEOCODE = 123

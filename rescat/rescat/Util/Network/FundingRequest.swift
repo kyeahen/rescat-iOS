@@ -234,27 +234,34 @@ class FundingRequest : APIServie {
         let param = try! encoder.encode(model) as! [String:Any]
 
         print(param)
-        print("case1")
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseData { (res) in
             switch res.result {
             case .success:
                
                 if let value = res.result.value {
-                    print(JSON(value))
-                    print("case2")
+                    
                     guard let statusCode = res.response?.statusCode else { return }
+                    
                     if statusCode == 500 {
                         print("internal error")
                         self.vc.requestCallback(1, APIServiceCode.SERVER_ERROR)
-                    } else if ( statusCode == 200){
+                    } else if  statusCode == 200{
                         
                         print("success")
                         guard let data = res.result.value else { return }
                         print("funding detail post result - \(data)")
                         self.vc.requestCallback(data, APIServiceCode.FUNDING_DETAIL_POST)
                         
-                    } else {
-                        print("case 3")
+                    } else if statusCode == 400{
+                       
+                        let decoder = JSONDecoder()
+                        do {
+                            let banks = try decoder.decode([FundingRequestExceptionModel].self, from: value)
+                            self.vc.requestCallback(banks, APIServiceCode.EXCEPTION_ERROR1)
+                        } catch {
+                            print("[FundingModel] main decoder error")
+                        }
+
                     }
                 }
             case .failure(let error):

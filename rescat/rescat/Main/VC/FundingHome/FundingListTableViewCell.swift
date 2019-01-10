@@ -16,4 +16,5 @@ class FundingListTableViewCell : UITableViewCell {
     @IBOutlet var remaindaysLabel : UILabel!
     @IBOutlet var percentageLabel : UILabel!
     @IBOutlet var percentageView : UIView!
+    @IBOutlet var bottomView : UIView!
 }

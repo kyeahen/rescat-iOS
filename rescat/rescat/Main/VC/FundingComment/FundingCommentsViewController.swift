@@ -17,6 +17,8 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         commentTextField.delegate = self
         commentSendButton.addTarget(self, action: #selector(postCommentAction(_:)), for: .touchUpInside)
         
+//        UIKeyboardType.
+
         
     }
     
@@ -29,15 +31,16 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        
         if ( keyboardStatus ) {
-            keyboardStatus = false ; self.view.frame.origin.y += 280
+            keyboardStatus = false ; self.view.frame.origin.y += 270
         }
         textField.resignFirstResponder()
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
 
+        print("keyboard height \(KeyboardService.keyboardHeight())")
         if ( !keyboardStatus ) {
-            keyboardStatus = true ; self.view.frame.origin.y -= 280
+            keyboardStatus = true ; self.view.frame.origin.y -= 270
         }
         textField.becomeFirstResponder()
     }
@@ -47,7 +50,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
             self.simpleAlert(title: "error", message: "메시지를 입력하세요")
         }
         if ( keyboardStatus ) {
-            keyboardStatus = false ; self.view.frame.origin.y += 280
+            keyboardStatus = false ; self.view.frame.origin.y += 270
             commentTextField.resignFirstResponder()
         }
         let comment = gsno(commentTextField.text)
@@ -103,16 +106,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         return fundingComments.count
     }
    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        print("keyboardWillShow")
-        
-        if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-//            commentTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//
-
-            self.view.frame = CGRect(x: 0, y: -keyboardHeight, width: self.view.frame.width, height: self.view.frame.height)
-        }
-    }
+    
     
     func requestCallback(_ datas: Any, _ code: Int) {
         if code == APIServiceCode.FUNDING_COMMENTS {

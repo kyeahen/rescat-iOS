@@ -8,7 +8,7 @@ struct FundingRequestModel : Codable {
     var contents : String?
     var goalAmount : Int?
     var introduction : String?
-    var limitAt : Date?
+    var limitAt : String?
     var mainRegion : String?
     var photoUrls : [String]?
     var title : String?

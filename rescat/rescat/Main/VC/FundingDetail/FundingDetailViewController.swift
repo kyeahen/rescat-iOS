@@ -11,6 +11,10 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
     override func viewDidLoad() {
         print("------ funding detail contents view controller ------ ")
         super.viewDidLoad()
+        
+        self.setBackBtn()
+        
+        
         testTable.delegate = self
         testTable.dataSource = self
         testTable.separatorStyle = .none
@@ -115,8 +119,16 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
         }
     }
     @objc func fundingAction ( _ sender : UIButton!){
+        
+        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        
+        if role == "NOT" {
+            self.simpleAlert(title: "", message: "회원만 이용할 수 있는 메뉴입니다.")
+            return
+        }
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportViewController") as! FundingSupportViewController
         self.navigationController?.pushViewController(vc, animated: true)
+
     }
     func requestCallback(_ datas: Any, _ code: Int) {
         if code == APIServiceCode.FUNDING_DETAIL {

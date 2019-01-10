@@ -48,10 +48,11 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mySetBackBtn()
+        self.setNaviTitle(name: "후원 요청글 작성하기")
+
         self.navigationItem.hidesBackButton = true
 //        UIBarButtonItem(
-        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back(_:)))
-        self.navigationItem.leftBarButtonItem = newBackButton
 
         // 0 - title, 1 - due date, 2 - goal, 3 - location
         titleTextField.delegate = self ; titleTextField.tag = 0 ;
@@ -110,6 +111,18 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    func mySetBackBtn(){
+        
+        let backBTN = UIBarButtonItem(image: UIImage(named: "icBack"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+            style: .plain,
+            target: self,
+            action: #selector(back(_:)))
+        
+        navigationItem.leftBarButtonItem = backBTN
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
+
     @objc func back( _ sender: UIBarButtonItem!) {
         // Perform your custom actions
         // ...
@@ -128,6 +141,7 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.tabBarController?.tabBar.isHidden = true
     }
 
@@ -180,6 +194,7 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FundingRegisterCollectionView", for: indexPath) as! FundingRegisterCollectionView
             
             if indexPath.row == 3 {
+                cell.deleteButton.isHidden = true
                 return cell
             }
         
@@ -187,7 +202,7 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
             cell.imageView.image = imageArr[indexPath.row]
             
             cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.setImage(UIImage(named:"rectangle"), for: .normal)
+            cell.deleteButton.setImage(UIImage(named:"icRemove"), for: .normal)
             cell.deleteButton.addTarget(self, action: #selector(deleteImageFromButton1(button:)), for: .touchUpInside)
             
             if imageArr.count == 1 && indexPath.row == 0 {
@@ -204,13 +219,14 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FundingRegisterCollectionView", for: indexPath) as! FundingRegisterCollectionView
            
             if indexPath.row == 3 {
+                cell.deleteButton.isHidden = true
                 return cell
             }
             
             cell.imageView.image = imageArr0[indexPath.row]
             
             cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.setImage(UIImage(named:"rectangle"), for: .normal)
+            cell.deleteButton.setImage(UIImage(named:"icRemove"), for: .normal)
             cell.deleteButton.addTarget(self, action: #selector(deleteImageFromButton0(button:)), for: .touchUpInside)
             
             if imageArr0.count == 1 && indexPath.row == 0 {
@@ -231,17 +247,17 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
 
     @IBAction func nextAction( _ sender : UIButton!){
         if ( curCategory == 0 && (imageArrUrls.count == 0 || imageArr0Urls.count == 0)) {
-            self.simpleAlert(title: "error", message: "최소 한장이상의 사진이 필요합니다.")
+            self.simpleAlert(title: "", message: "최소 한장이상의 사진이 필요합니다.")
             
         } else if ( curCategory == 1 && imageArr0Urls.count == 0){
-            self.simpleAlert(title: "error", message: "최소 한장이상의 사진이 필요합니다.")
+            self.simpleAlert(title: "", message: "최소 한장이상의 사진이 필요합니다.")
             
         }
         else if ( gsno(titleTextField.text) == "" || gsno(dueDateTextField.text) == "" || gsno(goalAmountTextField.text) == "" || gsno(locationTextField.text) == "" ) {
-            self.simpleAlert(title: "error", message: "정보를 입력하세요")
+            self.simpleAlert(title: "", message: "모든 항목을 입력해주세요")
             
-        } else if ( Int(gsno(goalAmountTextField.text)) == 0 ) {
-            self.simpleAlert(title: "error", message:  "최소 목표 금액은 200,000원입니다.")
+        } else if ( Int(gsno(goalAmountTextField.text))! < 10000 ) {
+            self.simpleAlert(title: "", message:  "최소 금액은 10000원 이상입니다.")
         } else {
         
             print("gotonext")
@@ -254,28 +270,11 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
             vc.fundingDetail.mainRegion = gsno(locationTextField.text)
             vc.fundingDetail.category = curCategory
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(identifier: "UTC")
-            dateFormatter.dateFormat = "YYYY-MM-dd'T'HH-mm-ss"
-            guard let date = dateFormatter.date(from: "\(gsno(dueDateTextField.text))T23-59-59") else {
-                fatalError("ERROR: Date conversion failed due to mismatched format.")
-            }
-            vc.fundingDetail.limitAt = datePicker.date
+           
+            vc.fundingDetail.limitAt = "\(gsno(dueDateTextField.text))T23:59:59"
             vc.fundingDetail.certificationUrls = imageArrUrls
             vc.fundingDetail.photoUrls = imageArr0Urls
-//            var certifis = [FundingPhotoModel]()
-//            for i in 0..<certifications.count {
-//                let certi = FundingPhotoModel() ; certi.url = certifications[i]
-//                certifis.append(certi)
-//            }
-//            vc.fundingDetail.certifications = certifis
-////            var photos = [FundingPhotoModel]()
-////            for i in 0..<photoUrls.count {
-////                let p = FundingPhotoModel() ; p.url = photoUrls[i]
-////                photos.append(p)
-////            }
-//            vc.fundingDetail.photos =
-////            reque
+
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -292,7 +291,7 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
             curCategory = 0
             
             
-            imageArr = [UIImage(named:"icAddPhoto")!]
+//            imageArr = [UIImage(named:"icAddPhoto")!]
             representCollectionView.reloadData()
             imageArrUrls.forEach { (element) in
                 PhotoRequest.deletePhoto(element)
@@ -315,7 +314,7 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
             overScrollView.contentSize = CGSize(width: self.overScrollView.frame.width, height: 1115) // You can set height, whatever you want.
             curCategory = 1
             
-            imageArr0 = [UIImage(named:"icAddPhoto")!]
+//            imageArr0 = [UIImage(named:"icAddPhoto")!]
             mainCollectionView.reloadData()
             imageArr0Urls.forEach { (element) in
                 PhotoRequest.deletePhoto(element)
@@ -404,7 +403,7 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
     }
     @objc func goalAmountDoneAction() {
         if ( Int(gsno(goalAmountTextField.text)) == 0 ) {
-            self.simpleAlert(title: "error", message: "0원 이상 금액만 입력할 수 있습니다.")
+            self.simpleAlert(title: "", message: "0원 이상 금액만 입력할 수 있습니다.")
         }
         goalAmountTextField.resignFirstResponder()
     }

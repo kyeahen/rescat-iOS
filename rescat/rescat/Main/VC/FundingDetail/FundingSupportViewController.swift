@@ -13,6 +13,16 @@ class FundingSupportViewController : UIViewController, APIServiceCallback {
     @IBOutlet var finalButton : UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setBackBtn()
+        if FundingDetailSegmentController.category == 0 {
+            self.setNaviTitle(name: "치료비 후원")
+        } else {
+            self.setNaviTitle(name: "프로젝트 후원")
+        }
+        inputTextField.layer.borderWidth = 1.0; inputTextField.roundCorner(10.0)
+        inputTextField.layer.borderColor = UIColor.rescatPink().cgColor
+
         inputTextField.keyboardType = .decimalPad
         inputTextField.inputAccessoryView = accessoryView()
         inputTextField.inputAccessoryView?.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)

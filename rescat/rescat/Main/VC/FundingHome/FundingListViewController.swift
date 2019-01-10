@@ -17,7 +17,7 @@ class FundingListViewController : UIViewController , APIServiceCallback{
     var request : FundingRequest!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -25,6 +25,17 @@ class FundingListViewController : UIViewController , APIServiceCallback{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setBackBtn()
+        self.setNaviTitle(name: "후원할래요")
+        let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+            style: .plain,
+            target: self,
+            action: #selector(registerFunding))
+        
+        navigationItem.rightBarButtonItem = registerBtn
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+
         listTableView.delegate = self
         listTableView.dataSource = self
         button1.tag = 0; button1.addTarget(self, action: #selector(loadViewAction), for: .touchUpInside)
@@ -33,6 +44,18 @@ class FundingListViewController : UIViewController , APIServiceCallback{
         request = FundingRequest(self)
         request.requestList(0)
         
+    }
+    @objc func registerFunding(){
+        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        print(role)
+        if role != "CARETAKER" {
+            self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
+            return
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }
     }
     @objc func loadViewAction(_ sender: UIButton!){
         if ( sender.tag == 0 ) {
@@ -62,18 +85,24 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
 //        print("percentage - \(funding.title) - \(percentage)")
         cell.percentageLabel.text = "\(Int(percentage*100))%"
         cell.remaindaysLabel.text = gsno(funding.limitAt)
+//        print(setDday(start: gsno(funding.limitAt)))
         cell.percentageView.drawPercentage(Double(percentage),
                                            UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))
-//        print("percantage - \(percentage)")
+        cell.bottomView.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
+        cell.bottomView.layer.borderWidth = 0.3
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
         tableView.deselectRow(at: indexPath, animated: true)
         FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
-        print("Funding idx - \(fundingList[indexPath.row].idx)")
+        FundingDetailSegmentController.category = gino(fundingList[indexPath.row].category)
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
     
     

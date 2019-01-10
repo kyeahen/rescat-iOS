@@ -152,6 +152,8 @@
 		591A2A1821E4C6FA00B3BFBF /* FundingRegisterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591A2A1721E4C6FA00B3BFBF /* FundingRegisterCollectionView.swift */; };
 		591A2A1A21E5D69E00B3BFBF /* FundingSupportCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591A2A1921E5D69E00B3BFBF /* FundingSupportCompleteViewController.swift */; };
 		591A2A1C21E5DFBE00B3BFBF /* FundingBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591A2A1B21E5DFBE00B3BFBF /* FundingBankModel.swift */; };
+		5931378421E65A32006BA8A8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931378321E65A32006BA8A8 /* Keyboard.swift */; };
+		5931378621E6F05A006BA8A8 /* FundingRequestExceptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931378521E6F05A006BA8A8 /* FundingRequestExceptionModel.swift */; };
 		593FA4B821D78717009CAF16 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */; };
 		5962B69121D79ACD00BB032D /* FundingDetailSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69021D79ACD00BB032D /* FundingDetailSegmentController.swift */; };
 		5962B69321D79D9200BB032D /* FundingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */; };
@@ -183,6 +185,8 @@
 		596662BA21D1FCF000055918 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662B921D1FCF000055918 /* TestModel.swift */; };
 		596662BF21D20DC100055918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596662BE21D20DC100055918 /* ViewController.swift */; };
 		596662C021D211B800055918 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596662C221D211B800055918 /* Map.storyboard */; };
+		598879BC21E71347008FE49E /* CarePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BB21E71347008FE49E /* CarePostRequest.swift */; };
+		598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BD21E71414008FE49E /* CarePostMainModel.swift */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -348,6 +352,8 @@
 		591A2A1721E4C6FA00B3BFBF /* FundingRegisterCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterCollectionView.swift; sourceTree = "<group>"; };
 		591A2A1921E5D69E00B3BFBF /* FundingSupportCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingSupportCompleteViewController.swift; sourceTree = "<group>"; };
 		591A2A1B21E5DFBE00B3BFBF /* FundingBankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingBankModel.swift; sourceTree = "<group>"; };
+		5931378321E65A32006BA8A8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		5931378521E6F05A006BA8A8 /* FundingRequestExceptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRequestExceptionModel.swift; sourceTree = "<group>"; };
 		593FA4B721D78717009CAF16 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		5962B69021D79ACD00BB032D /* FundingDetailSegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingDetailSegmentController.swift; sourceTree = "<group>"; };
 		5962B69221D79D9200BB032D /* FundingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -379,6 +385,8 @@
 		596662B921D1FCF000055918 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		596662BE21D20DC100055918 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		596662C121D211B800055918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
+		598879BB21E71347008FE49E /* CarePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostRequest.swift; sourceTree = "<group>"; };
+		598879BD21E71414008FE49E /* CarePostMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostMainModel.swift; sourceTree = "<group>"; };
 		59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC3.swift; sourceTree = "<group>"; };
 		59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController2.swift; sourceTree = "<group>"; };
 		59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterVC.swift; sourceTree = "<group>"; };
@@ -922,6 +930,8 @@
 				5962B6B421DB141E00BB032D /* FundingDetailModel.swift */,
 				5962B6B821DB188400BB032D /* FundingCommentModel.swift */,
 				591A2A1B21E5DFBE00B3BFBF /* FundingBankModel.swift */,
+				5931378521E6F05A006BA8A8 /* FundingRequestExceptionModel.swift */,
+				598879BD21E71414008FE49E /* CarePostMainModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -964,6 +974,7 @@
 				5962B6A721D8F95800BB032D /* NaverMapRequest.swift */,
 				59A8BCDF21DFBE8D0035DBB8 /* MapRequest.swift */,
 				591A2A1521E4A28200B3BFBF /* PhotoRequest.swift */,
+				598879BB21E71347008FE49E /* CarePostRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -994,6 +1005,7 @@
 				5962B6A921D9F62800BB032D /* UIColor.swift */,
 				5962B6B221DA64C200BB032D /* Int.swift */,
 				59A8BCE121E096760035DBB8 /* Encodable.swift */,
+				5931378321E65A32006BA8A8 /* Keyboard.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1276,7 +1288,9 @@
 				22BE223121E0AD13009AF7F7 /* ResisterImageCollectionViewCell.swift in Sources */,
 				22B4F64721D793960034346F /* Care1ViewController.swift in Sources */,
 				222D800D21E2F551000B7379 /* MyWriteSupportTableViewCell.swift in Sources */,
+				5931378421E65A32006BA8A8 /* Keyboard.swift in Sources */,
 				22B4F65321D7E84A0034346F /* Font.swift in Sources */,
+				598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				2219DB3121DCFF2700FF72D7 /* AdoptCommnetService.swift in Sources */,
 				22D1270D21DFC83200DDE8D5 /* CompleteAdoptViewController.swift in Sources */,
@@ -1377,10 +1391,12 @@
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				59A8BCE421E0ABA40035DBB8 /* FundingRegisterVC2.swift in Sources */,
 				59A8BCE221E096760035DBB8 /* Encodable.swift in Sources */,
+				5931378621E6F05A006BA8A8 /* FundingRequestExceptionModel.swift in Sources */,
 				59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */,
 				22B4F64321D764E40034346F /* MainCareViewController.swift in Sources */,
 				222D801121E3345E000B7379 /* MyPageAdoptData.swift in Sources */,
 				222D7FDA21E140DE000B7379 /* ApplyAdoptService.swift in Sources */,
+				598879BC21E71347008FE49E /* CarePostRequest.swift in Sources */,
 				22174FA821E3E58A00144F81 /* VacMapping.swift in Sources */,
 				22A4DEC021D6014900565FB6 /* WelcomeJoinViewController.swift in Sources */,
 				22B4F64B21D79B290034346F /* AreaViewController.swift in Sources */,
@@ -1406,7 +1422,7 @@
 				222D801921E355DB000B7379 /* DeleteMyPageAreaService.swift in Sources */,
 				5962B6B321DA64C200BB032D /* Int.swift in Sources */,
 				5962B6B121DA199600BB032D /* UserInfo.swift in Sources */,
-				5962B6B121DA199600BB032D /* LocationUserDefaultService.swift in Sources */,
+				5962B6B121DA199600BB032D /* UserInfo.swift in Sources */,
 				222D7FC721E13562000B7379 /* MyWriteSupportViewController.swift in Sources */,
 				222D7FD621E13766000B7379 /* PostBoxViewController.swift in Sources */,
 				22174FB521E3FE5A00144F81 /* PostBoxAdoptTableViewCell.swift in Sources */,

@@ -12,14 +12,22 @@ import MXSegmentedPager
 class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCallback{
     
     var idx : Int! // funding detail idx
+    static var category : Int!
     static var fundingIdx = -1 
     var fundingDetailInfo : FundingDetailModel!
     override func viewDidLoad() {
-        print("--- 1 ---")
         super.viewDidLoad()
+        self.setBackBtn()
+        if FundingDetailSegmentController.category == 0 {
+            self.setNaviTitle(name: "치료비 후원")
+        } else {
+            self.setNaviTitle(name: "프로젝트 후원")
+        }
+
         segmentedPager.backgroundColor = .white
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
         segmentedPager.segmentedControl.backgroundColor = .white
+//        segmentedPager.segmentedControl.title
         segmentedPager.segmentedControl.titleTextAttributes = [kCTForegroundColorAttributeName : UIColor.gray]
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [kCTForegroundColorAttributeName : UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1)]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
@@ -27,11 +35,11 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+//        self.tabBarController?.tabBar.isHidden = false
 
     }
  
