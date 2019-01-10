@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
         setBackBtn()
         setCustomView()
         setEmptyCheck()
+    
 
     }
     
@@ -112,7 +113,6 @@ extension LoginViewController {
             
             switch result {
             case .networkSuccess( _): //200
-                UserDefaults.standard.removeObject(forKey: "role")
                 let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
                 self.present(tabVC, animated: true, completion: nil)
                 break
