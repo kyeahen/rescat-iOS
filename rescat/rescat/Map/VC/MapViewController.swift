@@ -44,7 +44,16 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.setNaviTitle(name: "우리동네 길냥이")
 
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-//        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        if ( token == "-1" ){
+            print("지도테스트---비로그인")
+        } else {
+            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+            if ( role == "CARETAKER") {
+                print("지도테스트---케어테이커")
+            } else {
+                print("지도테스트---멤버")
+            }
+        }
         
         if ( token == "-1" ) {
             
@@ -248,7 +257,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 //        let view = DetailView(frame: self.view.frame)
 //        self.view.addSubview(view)
         let mapstoryboard = UIStoryboard(name: "Map", bundle: nil)
-        let vc = mapstoryboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        let vc = mapstoryboard.instantiateViewController(withIdentifier: "Register1VC") as!
+        Register1VC
         self.navigationController?.pushViewController(vc, animated: true)
 //        self.present(vc, animated: true, completion: nil)
 

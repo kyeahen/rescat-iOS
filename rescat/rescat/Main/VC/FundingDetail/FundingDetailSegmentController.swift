@@ -40,8 +40,10 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
 //        segmentedPager.segmentedControl.title
         segmentedPager.segmentedControl.titleTextAttributes = [kCTForegroundColorAttributeName : UIColor.gray]
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [kCTForegroundColorAttributeName : UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1)]
+//        segmentedPager.segmentedControl.titleTextAttributes = [kCTParagraphStyleAttributeName : 10]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
         segmentedPager.segmentedControl.selectionIndicatorColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1)
+//        segmentedPager.segmentedControl.titleTextAttributes
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -33,6 +33,17 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         let request = FundingRequest(self)
         let request2 = CarePostRequest(self)
        
+//        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+//        if ( token == "-1" ){
+//            print("테스트---비로그인")
+//        } else {
+//            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+//            if ( role == "CARETAKER") {
+//                print("테스트---케어테이커")
+//            } else {
+//                print("테스트---멤버")
+//            }
+//        }
         request2.getCarePostMain()
         request.requestMain()
         request.requestFundingBannerList(0); request.requestFundingBannerList(1);
@@ -44,9 +55,10 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         super.viewDidLoad()
         
         
+     
 //        UserDefaults.standard.set("NOT", forKey: "role")
         
-        self.setNaviTitle(name: "Rescat")
+        self.setNaviTitle(name: "안녕, 길냥이")
 
         tempList.delegate = self
         tempList.dataSource = self
