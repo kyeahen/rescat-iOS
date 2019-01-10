@@ -106,10 +106,10 @@ extension AreaSettingViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         
-        let areaCnt = areaArr.count
-        let index = areaCnt - (areaCnt - myAreas.count)
+        let areaCnt = areaArr.count //3
+        let index = areaCnt - (areaCnt - myAreas.count) //빈 배열 인덱스 시작값
         
-        if indexPath.row < index {
+        if indexPath.row < index - 1 {
             return true
         } else if myAreas.count == 1 {
             return false
@@ -120,8 +120,8 @@ extension AreaSettingViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
-            let item = myAreas.remove(at: sourceIndexPath.item)
-            myAreas.insert(item, at: destinationIndexPath.item)
+            let item = areaArr.remove(at: sourceIndexPath.item)
+            areaArr.insert(item, at: destinationIndexPath.item)
             print(myAreas)
             print(areaArr)
 

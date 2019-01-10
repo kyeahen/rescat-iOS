@@ -1412,11 +1412,9 @@
                         <outlet property="naviBar" destination="edf-6j-AGP" id="YmH-0q-HoS"/>
                         <outlet property="okButton" destination="72p-Tz-wYt" id="Lut-Gq-VY5"/>
                         <outlet property="typeLabel" destination="Uy9-6l-W90" id="Evc-qE-ibb"/>
-                        <segue destination="qD2-HM-4Ne" kind="unwind" identifier="unwindToTab1" unwindAction="unwindToTabWithSender:" id="fZ3-70-3c0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1U-R5-2N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="qD2-HM-4Ne" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4175" y="279"/>
         </scene>
@@ -1477,11 +1475,9 @@
                     <connections>
                         <outlet property="naviBar" destination="Ucm-3j-Ssk" id="5vk-mF-zPI"/>
                         <outlet property="okButton" destination="Yjr-Mg-Pyg" id="MIS-UT-UZk"/>
-                        <segue destination="e2s-yj-K9p" kind="unwind" identifier="unwindToTab" unwindAction="unwindToTabWithSender:" id="dT1-tK-fh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2I-86-BEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="e2s-yj-K9p" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4318" y="-1415"/>
         </scene>

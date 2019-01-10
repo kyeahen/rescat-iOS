@@ -41,9 +41,10 @@ class ApplySuccessViewController: UIViewController {
         }
     }
     
-    
+    //FIXME: Unwind
     @IBAction func homeAction(_ sender: UIBarButtonItem) {
-            self.performSegue(withIdentifier: "unwindToTab1", sender: self)
+        let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+        self.present(tabVC, animated: true, completion: nil)
     }
     
 

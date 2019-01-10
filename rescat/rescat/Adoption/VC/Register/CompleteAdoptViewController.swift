@@ -26,29 +26,11 @@ class CompleteAdoptViewController: UIViewController {
             NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
 
     }
-    
-//    //MARK: rightBarButtonItem Setting
-//    func setRightBarButtonItem() {
-//        let rightButtonItem = UIBarButtonItem.init(
-//            title: "완료",
-//            style: .done,
-//            target: self,
-//            action: #selector(rightButtonAction(sender:))
-//        )
-//        self.navigationItem.rightBarButtonItem = rightButtonItem
-//        self.navigationItem.rightBarButtonItem?.tintColor =  #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
-//        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([
-//            NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
-//    }
-    
+
+    //FIXME: Unwind
     @IBAction func homeAction(_ sender: UIBarButtonItem) {
-                self.performSegue(withIdentifier: "unwindToTab", sender: self)
+        let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+        self.present(tabVC, animated: true, completion: nil)
     }
-    
-    
-//    //MARK: 홈으로 이동
-//    @objc func rightButtonAction(sender: UIBarButtonItem) {
-//        self.performSegue(withIdentifier: "unwindToTab", sender: self)
-//    }
     
 }

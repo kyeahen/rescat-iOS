@@ -23,6 +23,7 @@ class Care1ViewController: UIViewController {
     
     var parentVC : MainCareViewController?
     var messageCode: Int?
+    var check: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +106,7 @@ class Care1ViewController: UIViewController {
     
     //MARK: 문자발송 액션
     @IBAction func messageAction(_ sender: UIButton) {
-        
+        check = 1
         UserDefaults.standard.removeObject(forKey: "phone")
         UserDefaults.standard.set(gsno(phoneTextField.text), forKey: "phone")
         postAuthenticatePhone(_phone: gsno(phoneTextField.text))
@@ -115,7 +116,8 @@ class Care1ViewController: UIViewController {
     @IBAction func nextAction(_ sender: UIButton) {
         
         let phone = UserDefaults.standard.string(forKey: "phone")
-        if phoneTextField.text == "" || numTextField.text == "" || nameTextField.text == "" {
+        
+        if phoneTextField.text == "" || numTextField.text == "" || nameTextField.text == "" || check == 0 {
             simpleAlert(title: "", message: "실명 인증을 완료해주세요.")
         } else if numTextField.text != messageCode?.description {
             self.simpleAlert(title: "인증 실패", message: "인증 번호가 일치하지 않습니다.")

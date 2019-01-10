@@ -30,6 +30,9 @@ struct ModifyUserDataService: PuttableService, APIServie {
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
                     
+                case HttpResponseCode.conflict.rawValue : //409
+                    completion(.duplicated)
+                    
                 case HttpResponseCode.serverErr.rawValue : //500
                     completion(.serverErr)
                     
@@ -44,6 +47,9 @@ struct ModifyUserDataService: PuttableService, APIServie {
                     
                 case HttpResponseCode.accessDenied.rawValue.description : //401
                     completion(.accessDenied)
+                    
+                case HttpResponseCode.conflict.rawValue.description : //409
+                    completion(.duplicated)
                     
                 default :
                     print("Error: \(resCode)")
