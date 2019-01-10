@@ -69,21 +69,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="jN7-lR-DJo">
-                                <rect key="frame" x="38" y="199" width="299" height="92"/>
+                                <rect key="frame" x="38" y="199" width="299" height="91.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="50y-wE-XRe">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caretakerMobileStep1" translatesAutoresizingMaskIntoConstraints="NO" id="50y-wE-XRe">
                                         <rect key="frame" x="0.0" y="0.0" width="91.5" height="91.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="50y-wE-XRe" secondAttribute="height" multiplier="1:1" id="tkF-go-Umx"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAJ-QQ-THy">
-                                        <rect key="frame" x="103.5" y="0.0" width="92" height="92"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caretakerLocationStep2" translatesAutoresizingMaskIntoConstraints="NO" id="hAJ-QQ-THy">
+                                        <rect key="frame" x="103.5" y="0.0" width="92" height="91.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hAJ-QQ-THy" secondAttribute="height" multiplier="1:1" id="3Sl-uZ-TaZ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KtW-DP-Gmf">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caretakerPhotoStep3" translatesAutoresizingMaskIntoConstraints="NO" id="KtW-DP-Gmf">
                                         <rect key="frame" x="207.5" y="0.0" width="91.5" height="91.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="KtW-DP-Gmf" secondAttribute="height" multiplier="1:1" id="kGS-fs-pV1"/>
@@ -221,7 +221,7 @@
                                     <action selector="getAddressAction:" destination="aPC-fB-RVY" eventType="touchUpInside" id="4la-dr-YRU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hM9-YE-Kqu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caretakerLocationLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hM9-YE-Kqu">
                                 <rect key="frame" x="118.5" y="279" width="138" height="138"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="138" id="9XA-g6-eTj"/>
@@ -778,7 +778,7 @@
                                     <action selector="finishAction:" destination="58E-g7-mKe" eventType="touchUpInside" id="E9S-Qu-XPh"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KjL-H0-Yqd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doneWaitRound" translatesAutoresizingMaskIntoConstraints="NO" id="KjL-H0-Yqd">
                                 <rect key="frame" x="85.5" y="241.5" width="204" height="204"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KjL-H0-Yqd" secondAttribute="height" multiplier="1:1" id="Q5P-Mg-ABv"/>
@@ -813,6 +813,11 @@
     <resources>
         <image name="btnLocationAdd" width="225" height="36"/>
         <image name="buttonAddPhotoBig" width="150" height="150"/>
+        <image name="caretakerLocationLarge" width="138" height="138"/>
+        <image name="caretakerLocationStep2" width="92" height="92"/>
+        <image name="caretakerMobileStep1" width="92" height="92"/>
+        <image name="caretakerPhotoStep3" width="92" height="92"/>
+        <image name="doneWaitRound" width="204" height="204"/>
         <image name="icRenew" width="18" height="18"/>
     </resources>
 </document>
