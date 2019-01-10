@@ -46,15 +46,24 @@ class FundingListViewController : UIViewController , APIServiceCallback{
         
     }
     @objc func registerFunding(){
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-        print(role)
-        if role != "CARETAKER" {
-            self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
-            return
-        } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
-            self.navigationController?.pushViewController(vc, animated: true)
 
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+
+        if ( token == "-1" )
+        {
+            self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
+        } else {
+            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+            if role != "CARETAKER" {
+                self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
+                return
+            } else {
+                let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+
+            
         }
     }
     @objc func loadViewAction(_ sender: UIButton!){

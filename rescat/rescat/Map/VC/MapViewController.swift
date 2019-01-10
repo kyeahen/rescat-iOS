@@ -51,7 +51,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             print("비회원")
             alertView.isHidden = false
             startLabel.text = UserInfo.memberMessage
-            startButton.setTitle("케어테이커 인증하기", for: .normal)
+            startButton.setTitle("회원가입하기", for: .normal)
             startButton.tag = 1 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
             startButton.roundCorner(10.0)
 
@@ -147,7 +147,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 
                 alertView.isHidden = false
                 startLabel.text = UserInfo.notMessage
-                startButton.setTitle("회원가입하기", for: .normal)
+                startButton.setTitle("케어테이커 인증하기", for: .normal)
                 startButton.tag = 0 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
                 startButton.roundCorner(10.0)
             }
@@ -171,7 +171,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
       
     }
     @objc func gotoAction( _ sender : UIButton! ) {
-        if sender.tag == 0 {
+        if sender.tag == 1 {
             //회원가입
             let join = UIStoryboard(name: "Sign", bundle: nil)
             let vc = join.instantiateViewController(withIdentifier: "JoinViewController") as! JoinViewController

@@ -120,12 +120,13 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
     }
     @objc func fundingAction ( _ sender : UIButton!){
         
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-        
-        if role == "NOT" {
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+
+        if token == "-1" {
             self.simpleAlert(title: "", message: "회원만 이용할 수 있는 메뉴입니다.")
             return
         }
+        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportViewController") as! FundingSupportViewController
         self.navigationController?.pushViewController(vc, animated: true)
 

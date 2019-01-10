@@ -60,11 +60,15 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     }
    
     @objc func viewActionSheet( _ sender : UIButton!){
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-        if role == "NOT" {
+        //        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+
+        if ( token == "-1") {
             self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있어요.")
             return
+
         }
+        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
