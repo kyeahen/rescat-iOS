@@ -106,7 +106,7 @@ extension LoginViewController {
         
         let params : [String : Any] = ["id" : id,
                                        "password" : pwd,
-                                       "deviceToken": fcmToken]
+                                       "instanceToken": fcmToken]
         
         LoginService.shareInstance.postLogin(params: params) {(result) in
             

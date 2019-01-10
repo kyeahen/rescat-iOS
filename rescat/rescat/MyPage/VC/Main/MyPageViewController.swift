@@ -33,7 +33,6 @@ class MyPageViewController: UIViewController{
         getMyPage()
         setTableView()
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +55,6 @@ class MyPageViewController: UIViewController{
         )
         self.navigationItem.rightBarButtonItem = rightButtonItem
         self.navigationItem.rightBarButtonItem?.tintColor =  #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
     }
     
     //MARK: rightBarButtonItem Action
@@ -103,6 +100,14 @@ class MyPageViewController: UIViewController{
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(areaVC, animated: true)
         self.hidesBottomBarWhenPushed = false
+    }
+    
+    //MARK: UnwindSegue (지역수정VC -> 마이페이지)
+    @IBAction func unwindToMyPage(sender: UIStoryboardSegue) {
+        if let updateVC = sender.source as? AreaSettingViewController {
+
+            tableView.reloadData()
+        }
     }
     
 
