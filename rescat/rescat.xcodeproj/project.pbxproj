@@ -122,6 +122,13 @@
 		22DA019421E663F800C26CEA /* ApplySuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019321E663F800C26CEA /* ApplySuccessViewController.swift */; };
 		22DA019621E66B5F00C26CEA /* AddAreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019521E66B5F00C26CEA /* AddAreaService.swift */; };
 		22DA019921E768C500C26CEA /* ModifyMyPageAreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019821E768C400C26CEA /* ModifyMyPageAreaService.swift */; };
+		22DA019B21E77CC800C26CEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22DA019A21E77CC800C26CEA /* GoogleService-Info.plist */; };
+		22DA01A021E789E500C26CEA /* splashIos@1x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22DA019D21E789E400C26CEA /* splashIos@1x.gif */; };
+		22DA01A121E789E500C26CEA /* splashIos@3x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22DA019E21E789E400C26CEA /* splashIos@3x.gif */; };
+		22DA01A221E789E500C26CEA /* splashIos@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22DA019F21E789E400C26CEA /* splashIos@2x.gif */; };
+		22DA01A621E78C7000C26CEA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA01A521E78C7000C26CEA /* SplashViewController.swift */; };
+		22DA01A921E78FA600C26CEA /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22DA01A821E78FA600C26CEA /* Splash.storyboard */; };
+		22DA01AB21E7994700C26CEA /* GifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA01AA21E7994700C26CEA /* GifExtension.swift */; };
 		22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4E21CF581E007A731C /* MyPage.storyboard */; };
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
 		22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5521CF58C3007A731C /* MainViewController.swift */; };
@@ -190,7 +197,6 @@
 		596662C021D211B800055918 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596662C221D211B800055918 /* Map.storyboard */; };
 		598879BC21E71347008FE49E /* CarePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BB21E71347008FE49E /* CarePostRequest.swift */; };
 		598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BD21E71414008FE49E /* CarePostMainModel.swift */; };
-		598879C021E75B7E008FE49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 598879BF21E75B7E008FE49E /* GoogleService-Info.plist */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -325,6 +331,13 @@
 		22DA019321E663F800C26CEA /* ApplySuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplySuccessViewController.swift; sourceTree = "<group>"; };
 		22DA019521E66B5F00C26CEA /* AddAreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAreaService.swift; sourceTree = "<group>"; };
 		22DA019821E768C400C26CEA /* ModifyMyPageAreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMyPageAreaService.swift; sourceTree = "<group>"; };
+		22DA019A21E77CC800C26CEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/For-yeeun/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22DA019D21E789E400C26CEA /* splashIos@1x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "splashIos@1x.gif"; sourceTree = "<group>"; };
+		22DA019E21E789E400C26CEA /* splashIos@3x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "splashIos@3x.gif"; sourceTree = "<group>"; };
+		22DA019F21E789E400C26CEA /* splashIos@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "splashIos@2x.gif"; sourceTree = "<group>"; };
+		22DA01A521E78C7000C26CEA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		22DA01A821E78FA600C26CEA /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		22DA01AA21E7994700C26CEA /* GifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifExtension.swift; sourceTree = "<group>"; };
 		22FCCD4E21CF581E007A731C /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		22FCCD5521CF58C3007A731C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -394,7 +407,6 @@
 		596662C121D211B800055918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		598879BB21E71347008FE49E /* CarePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostRequest.swift; sourceTree = "<group>"; };
 		598879BD21E71414008FE49E /* CarePostMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostMainModel.swift; sourceTree = "<group>"; };
-		598879BF21E75B7E008FE49E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC3.swift; sourceTree = "<group>"; };
 		59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController2.swift; sourceTree = "<group>"; };
 		59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterVC.swift; sourceTree = "<group>"; };
@@ -637,7 +649,7 @@
 		2271880421CF541200E1BCAB /* rescat */ = {
 			isa = PBXGroup;
 			children = (
-				598879BF21E75B7E008FE49E /* GoogleService-Info.plist */,
+				22DA019A21E77CC800C26CEA /* GoogleService-Info.plist */,
 				22D1270321DD5B1A00DDE8D5 /* rescat.entitlements */,
 				596662B121D1F56100055918 /* Util */,
 				2271880521CF541200E1BCAB /* AppDelegate.swift */,
@@ -656,6 +668,7 @@
 		2271881721CF544400E1BCAB /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				22DA019C21E789D700C26CEA /* Splash */,
 				22FCCD6D21D333A1007A731C /* Util */,
 				22FCCD4B21CF57F7007A731C /* Storyboard */,
 				2271881D21CF54D900E1BCAB /* VC */,
@@ -812,6 +825,19 @@
 				22174FA721E3E58A00144F81 /* VacMapping.swift */,
 			);
 			path = Mapping;
+			sourceTree = "<group>";
+		};
+		22DA019C21E789D700C26CEA /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				22DA01A821E78FA600C26CEA /* Splash.storyboard */,
+				22DA01A521E78C7000C26CEA /* SplashViewController.swift */,
+				22DA019D21E789E400C26CEA /* splashIos@1x.gif */,
+				22DA019F21E789E400C26CEA /* splashIos@2x.gif */,
+				22DA019E21E789E400C26CEA /* splashIos@3x.gif */,
+				22DA01AA21E7994700C26CEA /* GifExtension.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		22FCCD4621CF5793007A731C /* MyPage */ = {
@@ -1141,17 +1167,21 @@
 			files = (
 				22A4DEC221D7362B00565FB6 /* Care.storyboard in Resources */,
 				5962B6F421DE36AA00BB032D /* FundingDetailTableCell.xib in Resources */,
+				22DA01A921E78FA600C26CEA /* Splash.storyboard in Resources */,
+				22DA019B21E77CC800C26CEA /* GoogleService-Info.plist in Resources */,
+				22DA01A021E789E500C26CEA /* splashIos@1x.gif in Resources */,
 				596662C021D211B800055918 /* Map.storyboard in Resources */,
 				22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */,
 				22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */,
 				2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */,
 				5916808E21D3914700491F5C /* DetailView.xib in Resources */,
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
-				598879C021E75B7E008FE49E /* GoogleService-Info.plist in Resources */,
 				5962B6F621DE36AA00BB032D /* FundingDetailBottomTableCell.xib in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
+				22DA01A221E789E500C26CEA /* splashIos@2x.gif in Resources */,
 				221291BB21DB68ED006DA108 /* Adoption.storyboard in Resources */,
 				5962B6F521DE36AA00BB032D /* FundingDetailContentTableCell.xib in Resources */,
+				22DA01A121E789E500C26CEA /* splashIos@3x.gif in Resources */,
 				5916809E21D3DD4100491F5C /* FundingTableCell.xib in Resources */,
 				2271880B21CF541200E1BCAB /* Main.storyboard in Resources */,
 			);
@@ -1220,6 +1250,7 @@
 				"${BUILT_PRODUCTS_DIR}/MXSegmentedPager/MXSegmentedPager.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1237,6 +1268,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXSegmentedPager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1315,6 +1347,7 @@
 				22174FAC21E3F7DD00144F81 /* PostBoxDetailData.swift in Sources */,
 				221A843621D806E6002BECED /* DuplicatedIDService.swift in Sources */,
 				596662BF21D20DC100055918 /* ViewController.swift in Sources */,
+				22DA01A621E78C7000C26CEA /* SplashViewController.swift in Sources */,
 				22BE223721E0B9E4009AF7F7 /* MyPageHeaderTableViewCell.swift in Sources */,
 				5916809421D3A1EA00491F5C /* HomeViewController.swift in Sources */,
 				22174FA421E3E2AF00144F81 /* RegisterAdoptService.swift in Sources */,
@@ -1406,6 +1439,7 @@
 				221A843A21D80BB6002BECED /* DuplicatedNickService.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				59A8BCE421E0ABA40035DBB8 /* FundingRegisterVC2.swift in Sources */,
+				22DA01AB21E7994700C26CEA /* GifExtension.swift in Sources */,
 				59A8BCE221E096760035DBB8 /* Encodable.swift in Sources */,
 				5931378621E6F05A006BA8A8 /* FundingRequestExceptionModel.swift in Sources */,
 				59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */,

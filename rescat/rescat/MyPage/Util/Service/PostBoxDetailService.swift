@@ -16,9 +16,9 @@ struct PostBoxDetailService: GettableService, APIServie {
     //MARK: GET - /api/users/mypage/notification-box/{idx} (우체통 상세 조회)
     func getPostBoxDetail(idx: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let editURL = self.url("/api/users/mypage/notification-box/\(idx)")
+        let detailURL = self.url("users/mypage/notification-box/\(idx)")
         
-        get(editURL) { (result) in
+        get(detailURL) { (result) in
             switch result {
                 
             case .success(let networkResult):

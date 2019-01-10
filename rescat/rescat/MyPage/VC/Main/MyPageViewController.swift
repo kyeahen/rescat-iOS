@@ -250,7 +250,6 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
                     UserDefaults.standard.removeObject(forKey: "token")
-                    UserDefaults.standard.set("-1", forKey: "token")
                     self.performSegue(withIdentifier: "unwindToHome", sender: nil)
                     })
             }
