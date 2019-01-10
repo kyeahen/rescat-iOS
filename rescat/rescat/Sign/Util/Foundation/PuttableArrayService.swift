@@ -1,8 +1,8 @@
 //
-//  PuttableService.swift
+//  PuttableArrayService.swift
 //  rescat
 //
-//  Created by 김예은 on 06/01/2019.
+//  Created by 김예은 on 11/01/2019.
 //  Copyright © 2019 kyeahen. All rights reserved.
 //
 
@@ -10,20 +10,20 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-protocol PuttableService {
+protocol PuttableArrayService {
     
     associatedtype NetworkData : Codable
     typealias networkResult = (resCode: Int, resResult: NetworkData)
-    func put(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
+    func putArray(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void)
 }
 
-extension PuttableService {
+extension PuttableArrayService {
     
     func gino(_ value : Int?) -> Int {
         return value ?? 0
     }
     
-    func put(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void){
+    func putArray(_ URL: String, params: [String : Any], completion: @escaping (Result<networkResult>) -> Void){
         
         guard let encodedUrl = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Networking - invalid URL")
@@ -41,7 +41,7 @@ extension PuttableService {
             token_header = nil
         }
         
-        Alamofire.request(encodedUrl, method: .put, parameters: params, encoding: JSONEncoding.default, headers: token_header).responseData(){
+        Alamofire.request(encodedUrl, method: .put, parameters: params, encoding: ArrayEncoding(), headers: token_header).responseData(){
             (res) in
             
             switch res.result {
@@ -94,4 +94,5 @@ extension PuttableService {
         
     }
 }
+
 

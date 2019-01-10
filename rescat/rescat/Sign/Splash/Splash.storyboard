@@ -17,9 +17,23 @@
                     <view key="view" contentMode="scaleToFill" id="DXO-nU-JU9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cj9-iw-dhG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f2A-sK-AoA" firstAttribute="trailing" secondItem="cj9-iw-dhG" secondAttribute="trailing" id="fdy-Zy-r9Y"/>
+                            <constraint firstItem="f2A-sK-AoA" firstAttribute="bottom" secondItem="cj9-iw-dhG" secondAttribute="bottom" id="k2C-5t-X6Y"/>
+                            <constraint firstItem="cj9-iw-dhG" firstAttribute="top" secondItem="DXO-nU-JU9" secondAttribute="top" id="oRr-Gv-yku"/>
+                            <constraint firstItem="cj9-iw-dhG" firstAttribute="leading" secondItem="f2A-sK-AoA" secondAttribute="leading" id="sya-UY-K3G"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f2A-sK-AoA"/>
                     </view>
+                    <connections>
+                        <outlet property="splashGifImg" destination="cj9-iw-dhG" id="Z5N-NL-xNx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKH-gw-l5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
