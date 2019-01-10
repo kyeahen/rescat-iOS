@@ -46,7 +46,7 @@ class RegisterAdoptViewController: UIViewController {
     var tnrCheck: Int = 0
     var vacCheck: Int = 0
     
-    var imageArr: [UIImage] = [UIImage(named: "icAddPhoto") ?? UIImage()] {
+    var imageArr: [UIImage] = [UIImage(named: "icAddPhotoOn") ?? UIImage()] {
         willSet {
             collectionView.reloadData()
         }
@@ -103,7 +103,7 @@ class RegisterAdoptViewController: UIViewController {
     //MARK: 필드 초기화
     func setReset() {
         imageArr.removeAll()
-        imageArr.append(UIImage(named: "icAddPhoto") ?? UIImage())
+        imageArr.append(UIImage(named: "icAddPhotoOn") ?? UIImage())
         imageUrl.removeAll()
         imageNum = 0
         oneTextView.text = ""

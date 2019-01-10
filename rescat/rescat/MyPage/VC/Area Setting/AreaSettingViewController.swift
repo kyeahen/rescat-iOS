@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class AreaSettingViewController: UIViewController {
     
@@ -31,6 +32,7 @@ class AreaSettingViewController: UIViewController {
         setCollectionView()
         getMyAreaList()
         setupPressGestureRecognizer()
+        setRightBarButtonItem()
         
     }
     
@@ -83,8 +85,9 @@ class AreaSettingViewController: UIViewController {
     }
     
     //MARK: 완료 액션
+    //MARK: 지역 수정 액션
     @objc func rightButtonAction(sender: UIBarButtonItem) {
-        //unwind
+//        updateArea()
     }
     
     //MARK: UnwindSegue (MyPageAreaVC -> AreaSettingVC)
@@ -233,6 +236,40 @@ extension AreaSettingViewController {
             }
         })
     }
+    
+    //지역 수정
+//    func updateArea() {
+//
+////        let goodsDict = try myAreas.map { (myAreas) -> [String: Any] in
+////
+////                return try myAreas.asDictionary()
+////
+////
+////        }
+////
+//        let param : [String : Any] = ["editRegions": goodsDict]
+//
+//        ModifyMyPageAreaService.shareInstance.putMyPageArea(params: param, completion: { (result) in
+//
+//            switch result {
+//            case .networkSuccess(_):
+//                self.simpleAlert(title: "", message: "지역을 성공적으로 삭제하였습니다.")
+//                self.getMyAreaList()
+//                break
+//
+//            case .accessDenied :
+//                self.simpleAlert(title: "", message: "지역을 수정할 수 없습니다.")
+//
+//            case .networkFail :
+//                self.networkErrorAlert()
+//
+//            default :
+//                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
+//                break
+//            }
+//        })
+//    }
+//
     
     //FIXME : 수정!!
     //지역 삭제

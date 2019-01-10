@@ -122,6 +122,7 @@
 		22DA019221E65C9C00C26CEA /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019121E65C9C00C26CEA /* LoginData.swift */; };
 		22DA019421E663F800C26CEA /* ApplySuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019321E663F800C26CEA /* ApplySuccessViewController.swift */; };
 		22DA019621E66B5F00C26CEA /* AddAreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019521E66B5F00C26CEA /* AddAreaService.swift */; };
+		22DA019921E768C500C26CEA /* ModifyMyPageAreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019821E768C400C26CEA /* ModifyMyPageAreaService.swift */; };
 		22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4E21CF581E007A731C /* MyPage.storyboard */; };
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
 		22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5521CF58C3007A731C /* MainViewController.swift */; };
@@ -324,6 +325,7 @@
 		22DA019121E65C9C00C26CEA /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		22DA019321E663F800C26CEA /* ApplySuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplySuccessViewController.swift; sourceTree = "<group>"; };
 		22DA019521E66B5F00C26CEA /* AddAreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAreaService.swift; sourceTree = "<group>"; };
+		22DA019821E768C400C26CEA /* ModifyMyPageAreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMyPageAreaService.swift; sourceTree = "<group>"; };
 		22FCCD4E21CF581E007A731C /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		22FCCD5521CF58C3007A731C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -609,6 +611,7 @@
 				22174FC421E4DF5E00144F81 /* UpdateAreaService.swift */,
 				222D801821E355DB000B7379 /* DeleteMyPageAreaService.swift */,
 				22DA019521E66B5F00C26CEA /* AddAreaService.swift */,
+				22DA019821E768C400C26CEA /* ModifyMyPageAreaService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1359,6 +1362,7 @@
 				5962B6B921DB188400BB032D /* FundingCommentModel.swift in Sources */,
 				22174FAA21E3F6F600144F81 /* PostBoxListData.swift in Sources */,
 				222D7FC521E13553000B7379 /* MyWriteAdoptViewController.swift in Sources */,
+				22DA019921E768C500C26CEA /* ModifyMyPageAreaService.swift in Sources */,
 				5962B6A621D8A13D00BB032D /* APIServiceCallBack.swift in Sources */,
 				591A2A1021E375F700B3BFBF /* FundingSupportViewController.swift in Sources */,
 				222D801721E34BED000B7379 /* GetMyPageAreaService.swift in Sources */,

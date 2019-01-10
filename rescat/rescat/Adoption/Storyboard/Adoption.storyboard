@@ -331,7 +331,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="79" height="89"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aRC-aD-jN6">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icAddPhotoOn" translatesAutoresizingMaskIntoConstraints="NO" id="aRC-aD-jN6">
                                                                 <rect key="frame" x="0.0" y="10" width="69" height="69"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="69" id="bXA-TP-nXn"/>
@@ -1861,6 +1861,7 @@
     <resources>
         <image name="buttonRadioOff" width="22" height="22"/>
         <image name="doneWait" width="375" height="358"/>
+        <image name="icAddPhotoOn" width="69" height="69"/>
         <image name="icCaretakerBadge" width="32" height="32"/>
         <image name="icEtc" width="21" height="21"/>
         <image name="icRemove" width="29" height="29"/>
