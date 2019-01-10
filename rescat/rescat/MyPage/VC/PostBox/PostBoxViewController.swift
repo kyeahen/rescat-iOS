@@ -60,7 +60,7 @@ extension PostBoxViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if post[indexPath.row].notification.targetType != "CAREPOST" {
+        if post[indexPath.row].notification.targetType != "CAREAPPLICATION" {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostBoxTableViewCell.reuseIdentifier) as! PostBoxTableViewCell
             
             cell.contentLabel.text = post[indexPath.row].notification.contents
@@ -77,13 +77,31 @@ extension PostBoxViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if post[indexPath.row].notification.targetType == "CAREPOST" {
+        
+        if post[indexPath.row].notification.targetType == "CAREAPPLICATION" { //입양신청서
             let detailVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PostBoxDetailViewController.reuseIdentifier) as! PostBoxDetailViewController
             detailVC.idx = post[indexPath.row].idx
-           
         
-            self.hidesBottomBarWhenPushed = true
+          
             self.navigationController?.pushViewController(detailVC, animated: true)
+            
+        } else if post[indexPath.row].notification.targetType == "CAREPOST" {
+            
+            let detailVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: AdoptionViewController.reuseIdentifier) as! AdoptionViewController
+            
+            detailVC.idx = post[indexPath.row].idx
+//            detailVC.tag = myAdopts[indexPath.row].type
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
+            
+        } else {
+            
+            let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingDetailSegmentController.reuseIdentifier) as! FundingDetailSegmentController
+            
+            detailVC.idx = post[indexPath.row].idx
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
+            
         }
     }
     
@@ -109,7 +127,7 @@ extension PostBoxViewController {
                 break
                 
             case .accessDenied :
-                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
+                self.simpleAlert(title: "", message: "회원가입 후, 이용할 수 있습니다.")
                 break
                 
             case .networkFail :

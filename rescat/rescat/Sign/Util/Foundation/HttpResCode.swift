@@ -14,6 +14,7 @@ enum HttpResponseCode: Int{
     case badRequest = 400
     case accessDenied = 401
     case forbidden = 403
+    case nullValue = 404
     case conflict = 409
     case large = 413
     case serverErr = 500

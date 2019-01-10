@@ -115,9 +115,9 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         tableView.deselectRow(at: indexPath, animated: true)
         FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
         FundingDetailSegmentController.category = gino(fundingList[indexPath.row].category)
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(vc, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
     }
     
     
