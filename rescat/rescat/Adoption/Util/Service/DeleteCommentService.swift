@@ -18,7 +18,7 @@ struct DeleteCommentService: DeletableService, APIServie {
         
         let deleteURL = self.url("care-posts/\(idx)/comments/\(c_id)")
         
-        delete(deleteURL) { (result) in
+        delete(deleteURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):

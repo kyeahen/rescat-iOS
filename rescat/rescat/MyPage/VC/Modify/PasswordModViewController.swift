@@ -121,8 +121,8 @@ class PasswordModViewController: UIViewController {
     //MARK: rightBarButtonItem Action
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         
-        guard let password = pwdTextField.text else {return}
-        let validPassword = isValidPassword(password: password)
+        guard let re = rePwdTextField.text else {return}
+        let validre = isValidPassword(password: re)
         
         guard let new = newTextField.text else {return}
         let validNew = isValidPassword(password: new)
@@ -133,7 +133,7 @@ class PasswordModViewController: UIViewController {
         } else if newTextField.text != rePwdTextField.text {
           self.simpleAlert(title: "변경 실패", message: "새 비밀번호가 일치하지 않습니다")
             
-        } else if !validPassword || !validNew {
+        } else if !validre || !validNew {
             self.simpleAlert(title: "", message: "비밀번호 형식이 올바르지 않습니다.")
         } else {
             putModPwd(pwd: gsno(pwdTextField.text), newPwd: gsno(rePwdTextField.text), reNewPwd: gsno(newTextField.text))

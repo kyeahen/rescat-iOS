@@ -77,6 +77,7 @@ extension MyWriteSupportViewController: UITableViewDataSource, UITableViewDelega
         cell.titleLabel.text = mySupports[indexPath.row].title
         cell.contentLabel.text = mySupports[indexPath.row].introduction
         cell.moneyLabel.text = mySupports[indexPath.row].goalAmount.commaRepresentation
+        cell.dayLabel.text = setDday(start: mySupports[indexPath.row].limitAt ?? "")
       
         cell.supportImageView.kf.setImage(with: URL(string: mySupports[indexPath.row].mainPhoto.url), placeholder: UIImage())
         

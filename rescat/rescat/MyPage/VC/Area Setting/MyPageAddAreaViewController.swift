@@ -17,6 +17,7 @@ class MyPageAddAreaViewController: UIViewController {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     
     var locationManager: CLLocationManager!
+    var check: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,12 @@ class MyPageAddAreaViewController: UIViewController {
     }
     
     //MARK: 완료 액션(unwind segue)
-    //TODO: 위치 찾았으면 넘어가기
     @IBAction func saveAction(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindToArea", sender: self)
+        if check == 0 {
+            self.simpleAlert(title: "", message: "현재 위치 설정을 완료해주세요.")
+        } else {
+            postAddArea(_address: gsno(areaLabel.text))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,6 +64,43 @@ class MyPageAddAreaViewController: UIViewController {
     }
     
     
+}
+
+//MARK: Networking Extension
+extension MyPageAddAreaViewController {
+    
+    //지역 추가
+    func postAddArea(_address: String) {
+
+        
+        AddAreaService.shareInstance.postAddArea(address: _address) {
+            (result) in
+            
+            switch result {
+            case .networkSuccess(_ ):
+
+                self.performSegue(withIdentifier: "unwindToArea", sender: self)
+                break
+                
+            case .accessDenied:
+                self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
+                break
+                
+            case .duplicated:
+                self.simpleAlert(title: "", message: "이미 등록한 지역입니다.")
+                break
+                
+            case .networkFail:
+                self.networkErrorAlert()
+                break
+                
+            default:
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요.")
+                break
+            }
+            
+        }
+    }
 }
 
 //MARK: Reverse Geocoding Network Extension
@@ -83,6 +124,7 @@ extension MyPageAddAreaViewController {
                     
                     let address = "\(si) \(gu) \(dong)"
                     self.areaLabel.text = address
+                    self.check = 1
                     
                 } else if data.resCode == 3 {
                     self.simpleAlert(title: "실패", message: "현재 위치를 찾을 수 없습니다.")

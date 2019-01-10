@@ -71,7 +71,7 @@ extension SupportingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = supports[indexPath.row].title
         cell.contentLabel.text = supports[indexPath.row].introduction
         cell.moneyLabel.text = supports[indexPath.row].goalAmount.commaRepresentation
-        cell.dayLabel.text = setDday(start: supports[indexPath.row].limitAt ?? "").description
+        cell.dayLabel.text = setDday(start: supports[indexPath.row].limitAt ?? "")
         
         cell.supportImageView.kf.setImage(with: URL(string: supports[indexPath.row].mainPhoto.url), placeholder: UIImage())
         

@@ -35,6 +35,10 @@ class MyPageViewController: UIViewController{
 
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getMyPage()
+    }
 
     //MARK: 테이블 뷰 요소 세팅
     func setTableView() {
@@ -68,14 +72,21 @@ class MyPageViewController: UIViewController{
     //MARK: 케어테이커 || 회원가입 액션
     @IBAction func buttonAction(_ sender: UIButton) {
         
-        let role = gsno(UserDefaults.standard.string(forKey: "role"))
+        guard let role = UserDefaults.standard.string(forKey: "role") else {return}
+        let finished = UserDefaults.standard.bool(forKey: "isFinished") 
         
         if role == careMapping.member.rawValue { //케어테이커 인증하기로 이동 - 멤버
-            let careVC = UIStoryboard(name: "Care", bundle: nil).instantiateViewController(withIdentifier: MainCareViewController.reuseIdentifier)
-           
-            self.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(careVC, animated: true)
-            self.hidesBottomBarWhenPushed = false
+            
+            if finished == true {
+                let careVC = UIStoryboard(name: "Care", bundle: nil).instantiateViewController(withIdentifier: MainCareViewController.reuseIdentifier)
+                
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(careVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            } else {
+                self.simpleAlert(title: "", message: "케어테이커 신청 대기 상태입니다")
+            }
+
         } else { //회원가입로 이동 - 게스트
             let joinVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: JoinViewController.reuseIdentifier)
            
@@ -265,6 +276,7 @@ extension MyPageViewController {
                     
                     UserDefaults.standard.set(resResult.role, forKey: "role")
                     print("나의 역할은 \(self.gsno(UserDefaults.standard.string(forKey: "role")))")
+                    UserDefaults.standard.set(resResult.isFinished, forKey: "isFinished")
                     
                     if resResult.role == careMapping.care.rawValue {
                         self.viewBottomC.constant = 0
@@ -282,6 +294,8 @@ extension MyPageViewController {
                     
                     self.nickNameLabel.text = resResult.nickname
                     self.idLabel.text = resResult.id
+                    
+                    
                     
                 }
                 self.joinButton.setImage(UIImage(named: "buttonMypageCaretaker"), for: .normal)

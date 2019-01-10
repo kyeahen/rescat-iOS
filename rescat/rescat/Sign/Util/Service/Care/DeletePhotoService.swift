@@ -18,7 +18,7 @@ struct DeletePhotoService: DeletableService, APIServie {
         
         let deleteURL = self.url("photo?photoUrl=\(photoUrl)")
         
-        delete(deleteURL) { (result) in
+        delete(deleteURL, params: [:]) { (result) in
             switch result {
                 
             case .success(let networkResult):

@@ -10,7 +10,7 @@ import Foundation
 
 struct LoginService: PostableService, APIServie {
     
-    typealias NetworkData = TokenData
+    typealias NetworkData = LoginData
     static let shareInstance = LoginService()
     
     //MARK: POST - /api/users/login (유저 로그인)
@@ -25,8 +25,12 @@ struct LoginService: PostableService, APIServie {
                 switch networkResult.resCode {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
-                    UserDefaults.standard.set(networkResult.resResult.token, forKey: "token")
-                    let token = UserDefaults.standard.string(forKey: "token")
+                    UserDefaults.standard.set(networkResult.resResult.jwtTokenDto.token, forKey: "token") //토큰
+                    UserDefaults.standard.set(networkResult.resResult.role, forKey: "role") //등급
+                    UserDefaults.standard.set(networkResult.resResult.mileage, forKey: "mileage") //마일리지
+                    UserDefaults.standard.set(networkResult.resResult.emdCodes, forKey: "emdCodes")//코드
+                    UserDefaults.standard.set(networkResult.resResult.regions, forKey: "regions")//코드
+                    guard let token = UserDefaults.standard.string(forKey: "token") else { return }
                     print("토큰: \(token)")
                     completion(.networkSuccess(networkResult.resResult))
                     

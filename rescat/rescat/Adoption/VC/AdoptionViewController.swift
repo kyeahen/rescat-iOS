@@ -23,8 +23,8 @@ class AdoptionViewController: MXSegmentedPagerController {
         setTopTabBar()
         setCustomView()
         setRightButton()
+        hideKeyboardWhenTappedAround()
     }
-    
 
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
@@ -125,6 +125,10 @@ extension AdoptionViewController {
                 
             case .accessDenied:
                 self.simpleAlert(title: "", message: "자신이 작성한 글은 신고할 수 없습니다.")
+                break
+                
+            case .duplicated:
+                self.simpleAlert(title: "", message: "이미 신고한 글입니다.")
                 break
                 
             case .networkFail :

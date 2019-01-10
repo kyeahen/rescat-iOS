@@ -16,6 +16,7 @@ struct MyPageData: Codable {
     let regions: [MyPageRegions]?
     let role: String? //MEMBER, CARETAKER, GUEST
     let name: String?
+    let isFinished: Bool?
 }
 
 struct MyPageRegions: Codable {

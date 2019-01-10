@@ -101,21 +101,22 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate {
     //MARK: 신청할래요 액션
     @IBAction func applyButton(_ sender: UIButton) {
         if nameTextField.text == "" || phoneTextField.text == "" || roleTextField.text == "" || mainAddressTextField.text == "" || subAddressTextField.text == "" || contentTextView.text == "" || houseCheck == 0 || statusCheck == 0 {
-            
+
             self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
-            
+
         } else {
-            
+
             self.simpleAlertwithCustom(title: "", message: """
                 한 생명이 머물 수 있는
                 공간을 제공해주셔서 감사합니다.
-                
+
                 신중하게 결정을 내려주세요.
                 """, ok: "신청할래요", cancel: "취소") { (action) in
                     self.postApplyAdopt(idx: self.idx)
             }
-            
+
         }
+        
     }
     
     
@@ -175,7 +176,9 @@ extension ApplyAdoptViewController {
             switch result {
             case .networkSuccess( _): //200
                 let comVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier:
-                    "ComNaviVC")
+                    ApplySuccessViewController.reuseIdentifier) as! ApplySuccessViewController
+                
+                comVC.type = self.tag
                 
                 self.present(comVC, animated: true, completion: nil)
                 break

@@ -14,11 +14,25 @@ class MainSignViewController: UIViewController {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+    var segueSign: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setCustomView()
-
+        autoLogin()
+    }
+    
+    //MARK: 자동 로그인
+    func autoLogin() {
+        
+        guard let token = UserDefaults.standard.string(forKey: "token") else {return}
+        if token != "-1" {
+            print("여기도 옴")
+            let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
+            present(tabVC, animated: true, completion: nil)
+            showToast(message: "자동 로그인 되었습니다.")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,3 +64,4 @@ class MainSignViewController: UIViewController {
     }
     
 }
+

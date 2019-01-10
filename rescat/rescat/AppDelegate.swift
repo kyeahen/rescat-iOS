@@ -84,25 +84,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Messaging.messaging().apnsToken = deviceToken
     }
     
+
+    
 //    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
 //        let rootViewController = self.window?.rootViewController as! UINavigationController
-//        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
-//        let mvc = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as!
-//        PostBoxViewController
-//        rootViewController.pushViewController(mvc, animated: true)
+//        let destination = rootViewController.topViewController as! MainSignViewController
+//        destination.segueSign = PostBoxViewController.reuseIdentifier
+//        print("여기왔어")
+////        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
+////        let mvc = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as!
+////        PostBoxViewController
 //    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // print(userInfo)
-
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let postVC = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as! PostBoxViewController
-        let tabBar = self.window?.rootViewController as? UITabBarController
-        let nav = tabBar?.selectedViewController as? UINavigationController
-        nav?.pushViewController(postVC, animated: true)
-
-
-    }
+//
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        // print(userInfo)
+//
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let postVC = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as! PostBoxViewController
+//        let tabBar = self.window?.rootViewController as? UITabBarController
+//        let nav = tabBar?.selectedViewController as? UINavigationController
+//        nav?.pushViewController(postVC, animated: true)
+//
+//
+//    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -163,6 +167,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             print("Message ID: \(messageID)")
         }
         
+//        let storyboard : UIStoryboard = UIStoryboard(name: "MyPage", bundle: nil)
+//        let homeC = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as! PostBoxViewController
+//        let rootViewController = self.window?.rootViewController as! UINavigationController
+//        guard let token = UserDefaults.standard.string(forKey: "token") else {return}
+//
+//        if token != "-1" {
+//            self.window?.rootViewController = homeC
+//            homeC.present(homeC, animated: true, completion: nil)
+//        }
+//        print("여기왔어")
+
+
         // Print full message.
         print(userInfo)
         
@@ -178,6 +194,7 @@ extension AppDelegate : MessagingDelegate {
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }

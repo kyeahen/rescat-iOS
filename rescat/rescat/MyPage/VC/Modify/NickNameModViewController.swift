@@ -145,6 +145,9 @@ extension NickNameModViewController {
                 self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있습니다.")
                 break
                 
+            case .duplicated:
+                self.simpleAlert(title: "", message: "이미 사용중인 닉네임 입니다.")
+                
             case .networkFail:
                 self.networkErrorAlert()
                 break

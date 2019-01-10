@@ -12,17 +12,15 @@ class AreaSettingViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var areaArr: [String] = [String]() //커스텀 배열
-    
-    var myAreas : [MyPageRegions] = [MyPageRegions]() { //서버에서 받는 배열
+    var areaArr: [String] = [String]() { //지역 스트링 배열
         didSet {
             collectionView.reloadData()
         }
     }
     
-    var dataRecieved: String? { //추가된 지역
-        willSet {
-//            areaLabel.text = newValue
+    var myAreas : [MyPageRegions] = [MyPageRegions]() { //서버에서 받는 배열
+        didSet {
+            collectionView.reloadData()
         }
     }
     
@@ -32,6 +30,7 @@ class AreaSettingViewController: UIViewController {
         setBackBtn()
         setCollectionView()
         getMyAreaList()
+        setupPressGestureRecognizer()
         
     }
     
@@ -41,59 +40,57 @@ class AreaSettingViewController: UIViewController {
         collectionView.dataSource = self
     }
     
-//    //MARK: drag&drop
-//    func setupPressGestureRecognizer() {
-//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
-//        longPressGesture.minimumPressDuration = 0.3
-//
-//        collectionView.addGestureRecognizer(longPressGesture)
-//    }
-//
-//    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-//        switch(gesture.state) {
-//
-//        case .began:
-//            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
-//                break
-//            }
-//            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-//
-//        case .changed:
-//            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-//
-//        case .ended:
-//            collectionView.endInteractiveMovement()
-//
-//        default:
-//            collectionView.cancelInteractiveMovement()
-//        }
-//    }
+    //MARK: drag&drop
+    func setupPressGestureRecognizer() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+        longPressGesture.minimumPressDuration = 0.3
+
+        collectionView.addGestureRecognizer(longPressGesture)
+    }
+
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+
+        case .began:
+            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+
+        case .ended:
+            collectionView.endInteractiveMovement()
+
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
     
-//    //MARK: 완료 버튼 설정
-//    func setRightBarButtonItem() {
-//        let rightButtonItem = UIBarButtonItem.init(
-//            title: "완료",
-//            style: .done,
-//            target: self,
-//            action: #selector(rightButtonAction(sender:))
-//        )
-//        self.navigationItem.rightBarButtonItem = rightButtonItem
-//        self.navigationItem.rightBarButtonItem?.tintColor =  #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
-//        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([
-//            NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
-//    }
+    //MARK: 완료 버튼 설정
+    func setRightBarButtonItem() {
+        let rightButtonItem = UIBarButtonItem.init(
+            title: "완료",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonAction(sender:))
+        )
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor =  #colorLiteral(red: 0.9108466506, green: 0.5437278748, blue: 0.5438123941, alpha: 1)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont(name: AppleSDGothicNeo.Bold.rawValue, size: 16)], for: .normal)
+    }
     
-//    //MARK: 완료 액션
-//    @objc func rightButtonAction(sender: UIBarButtonItem) {
-//        //unwind
-//    }
+    //MARK: 완료 액션
+    @objc func rightButtonAction(sender: UIBarButtonItem) {
+        //unwind
+    }
     
     //MARK: UnwindSegue (MyPageAreaVC -> AreaSettingVC)
     @IBAction func unwindToArea(sender: UIStoryboardSegue) {
         if let areaVC = sender.source as? MyPageAddAreaViewController {
-//            areaView.isHidden = false
-//            dataRecieved = areaVC.address
-            
+            getMyAreaList()
             collectionView.reloadData()
         }
     }
@@ -108,22 +105,34 @@ extension AreaSettingViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
+        
+        let areaCnt = areaArr.count //3
+        let index = areaCnt - (areaCnt - myAreas.count) //빈 배열 인덱스 시작값
+        
+        if indexPath.row < index - 1 {
+            return true
+        } else if myAreas.count == 1 {
+            return false
+        } else {
+            return false
+        }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//
-//        let item = myAreas.remove(at: sourceIndexPath.item)
-//        myAreas.insert(item, at: destinationIndexPath.item)
-//        print(myAreas)
-//
-//        //여기부분이 셀 색 안바뀌는 경우 예외처리한 것
-//        //마지막 셀을 첫번째 위치로 가져올 경우만 두번째 셀이 색이 안바껴서 직접 reloadItems를 호출했음
-//        if sourceIndexPath.item == 2 && destinationIndexPath.item == 0 {
-//            collectionView.reloadItems(at: [IndexPath(item: 1, section: 0)])
-//        }
-//        collectionView.reloadItems(at: [sourceIndexPath])
-//    }
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+            let item = areaArr.remove(at: sourceIndexPath.item)
+            areaArr.insert(item, at: destinationIndexPath.item)
+            print(myAreas)
+            print(areaArr)
+
+            //여기부분이 셀 색 안바뀌는 경우 예외처리한 것
+            //마지막 셀을 첫번째 위치로 가져올 경우만 두번째 셀이 색이 안바껴서 직접 reloadItems를 호출했음
+            if sourceIndexPath.item == 2 && destinationIndexPath.item == 0 {
+                collectionView.reloadItems(at: [IndexPath(item: 1, section: 0)])
+            }
+            collectionView.reloadItems(at: [sourceIndexPath])
+
+    }
 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -144,7 +153,7 @@ extension AreaSettingViewController: UICollectionViewDelegate, UICollectionViewD
         }
 
         cell.backView.makeRounded(cornerRadius: 17.5)
-        cell.configure(tag: indexPath.row)
+        cell.configure(add: areaArr[indexPath.row], cnt: myAreas.count)
         cell.addHandler = addAction
         cell.delHanler = delAction
         
@@ -159,9 +168,20 @@ extension AreaSettingViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     //MARK: 지역 삭제 액션
-    func delAction() {
+    func delAction(address: String, count: Int) {
         //지역 삭제 api
         
+        if count == 1 {
+            self.simpleAlert(title: "", message:
+                """
+                케어테이커로 활동하는 지역은
+                최소 1개 이상이어야 합니다.
+                """
+            )
+        } else {
+            deleteArea(_address: address)
+            print(address)
+        }
     }
     
     
@@ -179,7 +199,7 @@ extension AreaSettingViewController {
             switch result {
             case .networkSuccess(let data) :
                 let areaData = data as? [MyPageRegions]
-                
+                self.areaArr.removeAll()
                 if let resResult = areaData {
                     self.myAreas = resResult
                     
@@ -216,9 +236,9 @@ extension AreaSettingViewController {
     
     //FIXME : 수정!!
     //지역 삭제
-    func reportContent(idx: Int, c_id: Int) {
+    func deleteArea(_address: String) {
         
-        DeleteMyPageAreaService.shareInstance.deleteArea(completion: { (result) in
+        DeleteMyPageAreaService.shareInstance.deleteArea(address: _address, completion: { (result) in
 
             switch result {
             case .networkSuccess(_):
@@ -227,13 +247,13 @@ extension AreaSettingViewController {
                 break
 
             case .accessDenied :
-                self.simpleAlert(title: "권한 없음", message: "해당 지역을 삭제할 수 없습니다.")
+                self.simpleAlert(title: "", message: "해당 지역을 삭제할 수 없습니다.")
 
             case .networkFail :
                 self.networkErrorAlert()
 
             default :
-                self.simpleAlert(title: "네트워크 오류", message: "다시 시도해주세요")
+                self.simpleAlert(title: "오류", message: "다시 시도해주세요")
                 break
             }
         })

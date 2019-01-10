@@ -130,13 +130,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="환영합니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcs-qm-WfL">
-                                <rect key="frame" x="59" y="143" width="115.5" height="30"/>
+                                <rect key="frame" x="59" y="105" width="115.5" height="30"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
                                 <color key="textColor" red="0.87592071294784546" green="0.57290303707122803" blue="0.56469553709030151" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="길냥이와의 공존을 위한 서비스, rescat입니다. 케어테이커 인증을 하시면 더 다양한 기능을 경험하실 수 있습니다." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoh-tt-oiH">
-                                <rect key="frame" x="59" y="209" width="306" height="131"/>
+                                <rect key="frame" x="59" y="171" width="306" height="131"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="131" id="Xv3-it-pTK"/>
                                 </constraints>
@@ -188,7 +188,7 @@
                             <constraint firstItem="4wS-h2-61E" firstAttribute="leading" secondItem="eoh-qN-AKp" secondAttribute="leading" id="m6o-a1-la8"/>
                             <constraint firstItem="Dcs-qm-WfL" firstAttribute="leading" secondItem="eoh-qN-AKp" secondAttribute="leading" constant="59" id="s9G-4I-aac"/>
                             <constraint firstItem="Yoh-tt-oiH" firstAttribute="top" secondItem="Dcs-qm-WfL" secondAttribute="bottom" constant="36" id="ucP-Te-eq8"/>
-                            <constraint firstItem="Dcs-qm-WfL" firstAttribute="top" secondItem="l8I-vq-GVt" secondAttribute="top" constant="143" id="yU9-82-38d"/>
+                            <constraint firstItem="Dcs-qm-WfL" firstAttribute="top" secondItem="l8I-vq-GVt" secondAttribute="top" constant="105" id="yU9-82-38d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eoh-qN-AKp"/>
                     </view>

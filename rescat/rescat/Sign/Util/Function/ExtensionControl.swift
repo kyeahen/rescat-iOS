@@ -222,7 +222,7 @@ extension UIViewController {
     }
     
     //100일 남음
-    func setDday(start: String) -> Int {
+    func setDday(start: String) -> String {
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.'sss'+'ssss"
@@ -230,7 +230,12 @@ extension UIViewController {
         let interval = NSDate().timeIntervalSince(day)
         let days = Int(interval / 86400)
         
-        return days
+        if days > 0 {
+            return "\(days.magnitude)일 남음"
+        } else {
+            return "마감"
+        }
+
     }
     
     //키보드 대응

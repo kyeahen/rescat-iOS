@@ -181,12 +181,14 @@ class JoinViewController: UIViewController {
     //MARK: 아이디 중복 체크 액션
     //TODO: 통신 후, 라벨로 여부 알림
     @IBAction func idCheckAction(_ sender: UIButton) {
+        idCheck = 1
         postCheckID(_id: gsno(idTextField.text))
     }
     
     //MARK: 닉네임 중복 체크 액션
     //TODO: 통신 후, 라벨로 여부 알림
     @IBAction func nickNameCheckAction(_ sender: UIButton) {
+        nickCheck = 1
         postCheckNickName(_nickName: gsno(nickNameTextField.text))
     }
     

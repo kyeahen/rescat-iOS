@@ -16,11 +16,5 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         selectedIndex = defaultIndex
     }
-    
-    //MARK: UnwindSegue
-    @IBAction func unwindToTab (sender: UIStoryboardSegue) {
-
-    }
-
 
 }

@@ -102,8 +102,11 @@ extension LoginViewController {
     
     func postLogin(id: String, pwd: String) {
         
+        guard let fcmToken = UserDefaults.standard.string(forKey: "fcmToken") else {return}
+        
         let params : [String : Any] = ["id" : id,
-                                       "password" : pwd]
+                                       "password" : pwd,
+                                       "deviceToken": fcmToken]
         
         LoginService.shareInstance.postLogin(params: params) {(result) in
             
