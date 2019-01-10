@@ -128,7 +128,6 @@
 		22DA01A221E789E500C26CEA /* splashIos@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22DA019F21E789E400C26CEA /* splashIos@2x.gif */; };
 		22DA01A621E78C7000C26CEA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA01A521E78C7000C26CEA /* SplashViewController.swift */; };
 		22DA01A921E78FA600C26CEA /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22DA01A821E78FA600C26CEA /* Splash.storyboard */; };
-		22DA01AB21E7994700C26CEA /* GifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA01AA21E7994700C26CEA /* GifExtension.swift */; };
 		22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD4E21CF581E007A731C /* MyPage.storyboard */; };
 		22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCD5021CF582D007A731C /* Sign.storyboard */; };
 		22FCCD5621CF58C3007A731C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCD5521CF58C3007A731C /* MainViewController.swift */; };
@@ -337,7 +336,6 @@
 		22DA019F21E789E400C26CEA /* splashIos@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "splashIos@2x.gif"; sourceTree = "<group>"; };
 		22DA01A521E78C7000C26CEA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		22DA01A821E78FA600C26CEA /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
-		22DA01AA21E7994700C26CEA /* GifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifExtension.swift; sourceTree = "<group>"; };
 		22FCCD4E21CF581E007A731C /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		22FCCD5021CF582D007A731C /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		22FCCD5521CF58C3007A731C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -835,7 +833,6 @@
 				22DA019D21E789E400C26CEA /* splashIos@1x.gif */,
 				22DA019F21E789E400C26CEA /* splashIos@2x.gif */,
 				22DA019E21E789E400C26CEA /* splashIos@3x.gif */,
-				22DA01AA21E7994700C26CEA /* GifExtension.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -1439,7 +1436,6 @@
 				221A843A21D80BB6002BECED /* DuplicatedNickService.swift in Sources */,
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				59A8BCE421E0ABA40035DBB8 /* FundingRegisterVC2.swift in Sources */,
-				22DA01AB21E7994700C26CEA /* GifExtension.swift in Sources */,
 				59A8BCE221E096760035DBB8 /* Encodable.swift in Sources */,
 				5931378621E6F05A006BA8A8 /* FundingRequestExceptionModel.swift in Sources */,
 				59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */,
