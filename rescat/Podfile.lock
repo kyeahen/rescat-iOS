@@ -84,6 +84,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
   - SnapKit (4.2.0)
+  - SwiftGifOrigin (1.6.1)
   - SwiftyJSON (4.2.0)
   - "UITextView+Placeholder (1.2.1)"
 
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - Kingfisher
   - MXSegmentedPager
   - SnapKit
+  - SwiftGifOrigin (~> 1.6.1)
   - SwiftyJSON
   - "UITextView+Placeholder"
 
@@ -125,6 +127,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SnapKit
+    - SwiftGifOrigin
     - SwiftyJSON
     - "UITextView+Placeholder"
 
@@ -150,9 +153,10 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 191627c094500d66e7612596025e3a88e80dc419
+PODFILE CHECKSUM: c4ab964bf66c7faa1dd29d88579a0c243267d977
 
 COCOAPODS: 1.6.0.beta.2
