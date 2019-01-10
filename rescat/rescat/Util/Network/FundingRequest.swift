@@ -70,11 +70,11 @@ class FundingRequest : APIServie {
         // 0 : 상위 펀딩 후기 배너 4개, 1 : 가운데 랜덤 배너 광고 배너, 2 : 하단 광고 배너 4개
         var url = ""
         if type == 0 {
-            url = self.url("funding-banners")
+            url = self.url("banners/funding")
         } else if type == 1 {
-            url = self.url("banners/advertisement-banners/random")
+            url = self.url("banners/advertisement/random")
         } else {
-            url = self.url("banners/advertisement-banners")
+            url = self.url("banners/advertisement")
         }
         Alamofire.request(url).responseData { (res) in
             switch res.result {

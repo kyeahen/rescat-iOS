@@ -178,6 +178,14 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let adoption = UIStoryboard(name: "Adoption", bundle: nil)
+        let vc = adoption.instantiateViewController(withIdentifier: "AdoptionViewController") as! AdoptionViewController
+        vc.tag = gino(carepostList[indexPath.row].type)
+        vc.idx = gino(carepostList[indexPath.row].idx)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
