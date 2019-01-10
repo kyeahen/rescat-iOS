@@ -43,109 +43,116 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
         self.setNaviTitle(name: "우리동네 길냥이")
 
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-
-        if ( role == "CARETAKER") {
-            // 케어테이커
-
-            alertView.isHidden = true
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+//        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        
+        if ( token == "-1" ) {
             
-            let backBTN = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-                style: .plain,
-                target: self,
-                action: #selector(registerButtonAction(_:)))
-            
-            let backBTN2 = UIBarButtonItem(image: UIImage(named: "icSearch"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-                style: .plain,
-                target: self,
-                action: #selector(searchButtonAction(_:)))
-            backBTN.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
-            backBTN2.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
-            
-            navigationItem.rightBarButtonItems = [backBTN,backBTN2]
-            navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
-            
-            
-            for (index, element) in UserInfo.getLocation().enumerated(){
-                myLocation.append(gsno(element.keys.first))
-            }
-            buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
-            for (index, element) in buttons.enumerated() {
-                element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
-                element.tag = index
-                element.layer.shadowColor = UIColor.black.cgColor; element.layer.shadowOpacity = 0.5
-                element.layer.shadowOffset = CGSize.zero; element.layer.shadowRadius = 3
-                if ( element.tag == 0 ) {
-                    element.backgroundColor = UIColor.rescatPink()
-                    element.setTitleColor(UIColor.white, for: .normal)
-                } else {
-                    element.backgroundColor = UIColor.white
-                    element.setTitleColor(UIColor.rescatBlack(), for: .normal)
-                    
-                }
-            }
-            
-            locationButtonView.roundCorner(15)
-            locationButtonView.drawShadow(15)
-            locationButtonView.backgroundColor = UIColor.white
-            locationButton = UITextField()
-            locationButton.delegate = self
-            
-            locationButton.text = "서울시 서초구"
-            locationButton.textColor = UIColor.rescatBlack();
-            locationButton.font = .systemFont(ofSize: 14)
-            locationButtonView.addSubview(locationButton)
-            locationButton.snp.makeConstraints { (make) in
-                make.centerX.equalTo(locationButtonView)
-                make.centerY.equalTo(locationButtonView)
-            }
-            pickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 162))
-            pickerView.delegate = self
-            pickerView.dataSource = self
-            
-            locationButton.inputView = pickerView
-            
-            let toolBar = UIToolbar()
-            toolBar.barStyle = .default
-            toolBar.isTranslucent = true
-            toolBar.tintColor = UIColor.rescatPink()
-            toolBar.sizeToFit()
-            
-            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(selectLocation))
-            let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
-            
-            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-            toolBar.isUserInteractionEnabled = true
-            locationButton.inputAccessoryView = toolBar
-            
-            //  내 도시로 focus
-            let naverRequest = NaverMapRequest(self)
-            //        print("naver request \(?)")
-            self.mapView.delegate = self
-            currentRegion = myLocation[0]
-            naverRequest.requestGeocoder(myLocation[0])
-            //        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
-        } else if ( role == "MEMBER" ) {
-            
-            
-            
-            alertView.isHidden = false
-            startLabel.text = UserInfo.notMessage
-            startButton.setTitle("회원가입하기", for: .normal)
-            startButton.tag = 0 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
-            startButton.roundCorner(10.0)
-        } else {
-
+            print("비회원")
             alertView.isHidden = false
             startLabel.text = UserInfo.memberMessage
             startButton.setTitle("케어테이커 인증하기", for: .normal)
             startButton.tag = 1 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
             startButton.roundCorner(10.0)
 
+        } else {
+                    guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+
+        
+            print("로그인")
+            if ( role == "CARETAKER") {
+                // 케어테이커
+                
+                alertView.isHidden = true
+                
+                let backBTN = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+                    style: .plain,
+                    target: self,
+                    action: #selector(registerButtonAction(_:)))
+                
+                let backBTN2 = UIBarButtonItem(image: UIImage(named: "icSearch"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+                    style: .plain,
+                    target: self,
+                    action: #selector(searchButtonAction(_:)))
+                backBTN.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+                backBTN2.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+                
+                navigationItem.rightBarButtonItems = [backBTN,backBTN2]
+                navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+                
+                
+                for (index, element) in UserInfo.getLocation().enumerated(){
+                    myLocation.append(gsno(element.keys.first))
+                }
+                buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
+                for (index, element) in buttons.enumerated() {
+                    element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
+                    element.tag = index
+                    element.layer.shadowColor = UIColor.black.cgColor; element.layer.shadowOpacity = 0.5
+                    element.layer.shadowOffset = CGSize.zero; element.layer.shadowRadius = 3
+                    if ( element.tag == 0 ) {
+                        element.backgroundColor = UIColor.rescatPink()
+                        element.setTitleColor(UIColor.white, for: .normal)
+                    } else {
+                        element.backgroundColor = UIColor.white
+                        element.setTitleColor(UIColor.rescatBlack(), for: .normal)
+                        
+                    }
+                }
+                
+                locationButtonView.roundCorner(15)
+                locationButtonView.drawShadow(15)
+                locationButtonView.backgroundColor = UIColor.white
+                locationButton = UITextField()
+                locationButton.delegate = self
+                
+                locationButton.text = "서울시 서초구"
+                locationButton.textColor = UIColor.rescatBlack();
+                locationButton.font = .systemFont(ofSize: 14)
+                locationButtonView.addSubview(locationButton)
+                locationButton.snp.makeConstraints { (make) in
+                    make.centerX.equalTo(locationButtonView)
+                    make.centerY.equalTo(locationButtonView)
+                }
+                pickerView = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 162))
+                pickerView.delegate = self
+                pickerView.dataSource = self
+                
+                locationButton.inputView = pickerView
+                
+                let toolBar = UIToolbar()
+                toolBar.barStyle = .default
+                toolBar.isTranslucent = true
+                toolBar.tintColor = UIColor.rescatPink()
+                toolBar.sizeToFit()
+                
+                let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(selectLocation))
+                let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+                let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
+                
+                toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+                toolBar.isUserInteractionEnabled = true
+                locationButton.inputAccessoryView = toolBar
+                
+                //  내 도시로 focus
+                let naverRequest = NaverMapRequest(self)
+                //        print("naver request \(?)")
+                self.mapView.delegate = self
+                currentRegion = myLocation[0]
+                naverRequest.requestGeocoder(myLocation[0])
+                //        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
+            } else if ( role == "MEMBER" ) {
+                
+                
+                
+                alertView.isHidden = false
+                startLabel.text = UserInfo.notMessage
+                startButton.setTitle("회원가입하기", for: .normal)
+                startButton.tag = 0 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
+                startButton.roundCorner(10.0)
+            }
         }
         
-
     }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -166,9 +173,24 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @objc func gotoAction( _ sender : UIButton! ) {
         if sender.tag == 0 {
             //회원가입
+            let join = UIStoryboard(name: "Sign", bundle: nil)
+            let vc = join.instantiateViewController(withIdentifier: "JoinViewController") as! JoinViewController
+            
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.hidesBottomBarWhenPushed = false
+
         } else {
             // 케어테이커
-            
+//            let storyboard = storyboard.
+            let care = UIStoryboard(name: "Care", bundle: nil)
+
+            let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
+//            self.present(vc, animated:  true)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.hidesBottomBarWhenPushed = false
+
         }
     }
     

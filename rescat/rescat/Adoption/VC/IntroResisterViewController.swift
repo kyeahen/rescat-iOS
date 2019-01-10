@@ -10,9 +10,10 @@ import UIKit
 
 class IntroResisterViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setBackBtn()
         // Do any additional setup after loading the view.
     }
 

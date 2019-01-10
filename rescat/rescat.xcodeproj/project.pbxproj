@@ -118,7 +118,6 @@
 		22D1270921DFC1E200DDE8D5 /* RegisterAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270821DFC1E200DDE8D5 /* RegisterAdoptViewController.swift */; };
 		22D1270B21DFC80100DDE8D5 /* IntroResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */; };
 		22D1270D21DFC83200DDE8D5 /* CompleteAdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1270C21DFC83200DDE8D5 /* CompleteAdoptViewController.swift */; };
-		22DA019021E64AB100C26CEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22DA018F21E64AB100C26CEA /* GoogleService-Info.plist */; };
 		22DA019221E65C9C00C26CEA /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019121E65C9C00C26CEA /* LoginData.swift */; };
 		22DA019421E663F800C26CEA /* ApplySuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019321E663F800C26CEA /* ApplySuccessViewController.swift */; };
 		22DA019621E66B5F00C26CEA /* AddAreaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA019521E66B5F00C26CEA /* AddAreaService.swift */; };
@@ -190,6 +189,7 @@
 		596662C021D211B800055918 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 596662C221D211B800055918 /* Map.storyboard */; };
 		598879BC21E71347008FE49E /* CarePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BB21E71347008FE49E /* CarePostRequest.swift */; };
 		598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BD21E71414008FE49E /* CarePostMainModel.swift */; };
+		598879C021E75B7E008FE49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 598879BF21E75B7E008FE49E /* GoogleService-Info.plist */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -320,7 +320,6 @@
 		22D1270821DFC1E200DDE8D5 /* RegisterAdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAdoptViewController.swift; sourceTree = "<group>"; };
 		22D1270A21DFC80100DDE8D5 /* IntroResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroResisterViewController.swift; sourceTree = "<group>"; };
 		22D1270C21DFC83200DDE8D5 /* CompleteAdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteAdoptViewController.swift; sourceTree = "<group>"; };
-		22DA018F21E64AB100C26CEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/For-yeeun/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22DA019121E65C9C00C26CEA /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		22DA019321E663F800C26CEA /* ApplySuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplySuccessViewController.swift; sourceTree = "<group>"; };
 		22DA019521E66B5F00C26CEA /* AddAreaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAreaService.swift; sourceTree = "<group>"; };
@@ -393,6 +392,7 @@
 		596662C121D211B800055918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		598879BB21E71347008FE49E /* CarePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostRequest.swift; sourceTree = "<group>"; };
 		598879BD21E71414008FE49E /* CarePostMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostMainModel.swift; sourceTree = "<group>"; };
+		598879BF21E75B7E008FE49E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC3.swift; sourceTree = "<group>"; };
 		59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController2.swift; sourceTree = "<group>"; };
 		59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterVC.swift; sourceTree = "<group>"; };
@@ -634,6 +634,7 @@
 		2271880421CF541200E1BCAB /* rescat */ = {
 			isa = PBXGroup;
 			children = (
+				598879BF21E75B7E008FE49E /* GoogleService-Info.plist */,
 				22D1270321DD5B1A00DDE8D5 /* rescat.entitlements */,
 				596662B121D1F56100055918 /* Util */,
 				2271880521CF541200E1BCAB /* AppDelegate.swift */,
@@ -645,7 +646,6 @@
 				2271880E21CF541300E1BCAB /* LaunchScreen.storyboard */,
 				2271880C21CF541300E1BCAB /* Assets.xcassets */,
 				2271881121CF541300E1BCAB /* Info.plist */,
-				22DA018F21E64AB100C26CEA /* GoogleService-Info.plist */,
 			);
 			path = rescat;
 			sourceTree = "<group>";
@@ -1138,13 +1138,13 @@
 			files = (
 				22A4DEC221D7362B00565FB6 /* Care.storyboard in Resources */,
 				5962B6F421DE36AA00BB032D /* FundingDetailTableCell.xib in Resources */,
-				22DA019021E64AB100C26CEA /* GoogleService-Info.plist in Resources */,
 				596662C021D211B800055918 /* Map.storyboard in Resources */,
 				22FCCD5121CF582D007A731C /* Sign.storyboard in Resources */,
 				22FCCD4F21CF581E007A731C /* MyPage.storyboard in Resources */,
 				2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */,
 				5916808E21D3914700491F5C /* DetailView.xib in Resources */,
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
+				598879C021E75B7E008FE49E /* GoogleService-Info.plist in Resources */,
 				5962B6F621DE36AA00BB032D /* FundingDetailBottomTableCell.xib in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
 				221291BB21DB68ED006DA108 /* Adoption.storyboard in Resources */,

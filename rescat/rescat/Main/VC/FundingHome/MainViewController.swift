@@ -44,7 +44,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         super.viewDidLoad()
         
         
-        UserDefaults.standard.set("NOT", forKey: "role")
+//        UserDefaults.standard.set("NOT", forKey: "role")
         
         self.setNaviTitle(name: "Rescat")
 
@@ -79,7 +79,9 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     
     @IBAction func registerFundingAction(_ sender: Any) {
      
-        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+        
+        let adoption = UIStoryboard(name: "Adoption", bundle: nil)
+        let vc = adoption.instantiateViewController(withIdentifier: IntroResisterViewController.reuseIdentifier) as! IntroResisterViewController
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         self.hidesBottomBarWhenPushed = false

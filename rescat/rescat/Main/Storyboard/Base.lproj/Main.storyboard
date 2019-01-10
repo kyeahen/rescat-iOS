@@ -15,7 +15,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="mVF-x8-DHt" customClass="TabBarController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3cA-dB-His">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionIndicatorImage="icTab1On" id="3cA-dB-His">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -39,7 +39,7 @@
         <scene sceneID="isa-UZ-90R">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hFs-Fx-JkP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="길냥이맵" id="bui-nU-MyD"/>
+                    <tabBarItem key="tabBarItem" title="길냥이맵" selectedImage="icTap1On" id="bui-nU-MyD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TVZ-dL-cbV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -103,7 +103,7 @@
                                                     <action selector="viewFundingList:" destination="U64-Hh-ROG" eventType="touchUpInside" id="vDX-vd-NZs"/>
                                                 </connections>
                                             </button>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bFJ-QE-S5u">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bFJ-QE-S5u">
                                                 <rect key="frame" x="0.0" y="193" width="375" height="192"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1888,7 +1888,9 @@
         <scene sceneID="gfi-Tv-BwQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bvF-1l-8SL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="마이페이지" id="nBb-Fs-1Ds"/>
+                    <tabBarItem key="tabBarItem" title="마이페이지" selectedImage="icTabMypageOn" id="nBb-Fs-1Ds">
+                        <color key="badgeColor" red="0.94901960780000005" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qqI-ao-iWU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1907,7 +1909,7 @@
         <scene sceneID="mb7-wc-rAe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUh-PN-WQj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="도와주세요" id="xKv-Pe-xOw"/>
+                    <tabBarItem key="tabBarItem" title="도와주세요" selectedImage="icTabRescatOn" id="xKv-Pe-xOw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XEN-xh-Y82">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1967,6 +1969,10 @@
         <image name="doneWait" width="375" height="358"/>
         <image name="icEtc" width="21" height="21"/>
         <image name="icRemove" width="29" height="29"/>
+        <image name="icTab1On" width="16" height="16"/>
+        <image name="icTabMypageOn" width="36" height="36"/>
+        <image name="icTabRescatOn" width="36" height="36"/>
+        <image name="icTap1On" width="36" height="36"/>
         <image name="iconNewPost" width="24" height="24"/>
         <image name="lableCardTemporarily" width="59" height="21"/>
     </resources>
