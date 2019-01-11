@@ -57,6 +57,8 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
         setKeyboardSetting()
         
 
+        setBackBtn()
+
         let brown = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
         
         type2Button.setTitleColor(brown, for: .normal) ; type1Button.setTitleColor(UIColor.white, for: .normal)

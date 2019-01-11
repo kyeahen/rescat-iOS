@@ -10,11 +10,19 @@ import UIKit
 
 class IntroResisterViewController: UIViewController {
 
+    @IBOutlet weak var adoptButton: UIButton!
+    @IBOutlet weak var supportButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackBtn()
-        // Do any additional setup after loading the view.
+        setCustomView()
+    }
+    
+    //MARK: 뷰 요소 커스텀 세팅
+    func setCustomView() {
+        adoptButton.makeRounded(cornerRadius: 9)
+        supportButton.makeRounded(cornerRadius: 9)
     }
 
     //MARK: 후원 글작성 액션

@@ -15,10 +15,12 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="mVF-x8-DHt" customClass="TabBarController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionIndicatorImage="icTab1On" id="3cA-dB-His">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3cA-dB-His">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="defaultIndex">
@@ -35,11 +37,13 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--길냥이맵-->
+        <!--Navigation Controller-->
         <scene sceneID="isa-UZ-90R">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hFs-Fx-JkP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="길냥이맵" selectedImage="icTap1On" id="bui-nU-MyD"/>
+                    <tabBarItem key="tabBarItem" title="" image="icTap1Off" id="bui-nU-MyD">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TVZ-dL-cbV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -158,8 +162,9 @@
                                                                                     </constraints>
                                                                                 </imageView>
                                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uy-CQ-S4P">
-                                                                                    <rect key="frame" x="44" y="50.5" width="54" height="84"/>
+                                                                                    <rect key="frame" x="29" y="50.5" width="84" height="84"/>
                                                                                     <constraints>
+                                                                                        <constraint firstAttribute="width" secondItem="0uy-CQ-S4P" secondAttribute="height" id="PRN-Lq-56e"/>
                                                                                         <constraint firstAttribute="height" constant="84" id="c5t-ec-69f"/>
                                                                                     </constraints>
                                                                                     <state key="normal" title="Button"/>
@@ -317,14 +322,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZLJ-mT-9OA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Rescat" id="ffS-D2-LOu">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="iconNewPost" id="Soh-19-OO2">
-                            <color key="tintColor" red="0.74509803921568629" green="0.59999999999999998" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="registerFundingAction:" destination="U64-Hh-ROG" id="dZF-7Z-IuG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Rescat" id="ffS-D2-LOu"/>
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="adoptionListButton" destination="G9K-wb-pe4" id="WRm-cS-Aql"/>
@@ -437,51 +435,52 @@
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPr-Is-lFp">
-                                                            <rect key="frame" x="20" y="110.5" width="335" height="4"/>
-                                                            <color key="backgroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="4.2000000000000002" id="DvF-8P-ykk"/>
-                                                            </constraints>
-                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvY-aY-Kpu">
-                                                            <rect key="frame" x="318" y="121" width="31" height="14.5"/>
+                                                            <rect key="frame" x="318" y="117.5" width="31" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXe-FL-SJ0">
-                                                            <rect key="frame" x="26" y="121" width="31" height="14.5"/>
+                                                            <rect key="frame" x="26" y="117.5" width="31" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-wm-1oV">
-                                                            <rect key="frame" x="60" y="121" width="31" height="14.5"/>
+                                                            <rect key="frame" x="60" y="117.5" width="31" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Su-mJ-DyC">
+                                                            <rect key="frame" x="20" y="107" width="335" height="4"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="4.2000000000000002" id="76P-RN-ZBc"/>
+                                                            </constraints>
+                                                            <color key="progressTintColor" red="0.94901960784313721" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="trackTintColor" red="1" green="0.90588235294117647" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </progressView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="S3x-wm-1oV" firstAttribute="centerY" secondItem="hXe-FL-SJ0" secondAttribute="centerY" id="1uJ-n3-fVo"/>
                                                         <constraint firstAttribute="trailing" secondItem="PeG-rI-DKJ" secondAttribute="trailing" constant="20" id="2Zc-6y-vmR"/>
-                                                        <constraint firstItem="hXe-FL-SJ0" firstAttribute="top" secondItem="RPr-Is-lFp" secondAttribute="bottom" constant="6.5" id="4cM-dN-f7u"/>
                                                         <constraint firstItem="gvY-aY-Kpu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S3x-wm-1oV" secondAttribute="trailing" constant="8" symbolic="YES" id="4jf-eD-HHQ"/>
                                                         <constraint firstItem="hXe-FL-SJ0" firstAttribute="leading" secondItem="Koo-xW-L8m" secondAttribute="leading" constant="26" id="CEK-Z5-tTu"/>
                                                         <constraint firstItem="PeG-rI-DKJ" firstAttribute="top" secondItem="pFP-O2-4y9" secondAttribute="bottom" constant="5" id="CeL-MV-PpN"/>
                                                         <constraint firstItem="S3x-wm-1oV" firstAttribute="leading" secondItem="hXe-FL-SJ0" secondAttribute="trailing" constant="3" id="D96-0o-zd3"/>
                                                         <constraint firstItem="pFP-O2-4y9" firstAttribute="top" secondItem="Koo-xW-L8m" secondAttribute="top" constant="16" id="I3G-aN-LF1"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pFP-O2-4y9" secondAttribute="trailing" constant="20" symbolic="YES" id="Jrf-90-dd1"/>
+                                                        <constraint firstItem="1Su-mJ-DyC" firstAttribute="leading" secondItem="Koo-xW-L8m" secondAttribute="leading" constant="20" id="Kzv-Qm-fey"/>
                                                         <constraint firstItem="gvY-aY-Kpu" firstAttribute="centerY" secondItem="hXe-FL-SJ0" secondAttribute="centerY" id="Pjy-08-yqZ"/>
                                                         <constraint firstItem="pFP-O2-4y9" firstAttribute="leading" secondItem="WBq-eX-bpy" secondAttribute="trailing" constant="12" id="T5C-sy-5hh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="RPr-Is-lFp" secondAttribute="trailing" constant="20" id="X0c-4t-Gpn"/>
+                                                        <constraint firstItem="1Su-mJ-DyC" firstAttribute="top" secondItem="WBq-eX-bpy" secondAttribute="bottom" constant="8" id="TCb-PS-Czv"/>
+                                                        <constraint firstItem="hXe-FL-SJ0" firstAttribute="top" secondItem="1Su-mJ-DyC" secondAttribute="bottom" constant="6.5" id="UdF-Km-Xef"/>
                                                         <constraint firstItem="PeG-rI-DKJ" firstAttribute="leading" secondItem="WBq-eX-bpy" secondAttribute="trailing" constant="12" id="d7m-OD-Ndv"/>
                                                         <constraint firstItem="WBq-eX-bpy" firstAttribute="leading" secondItem="Koo-xW-L8m" secondAttribute="leading" constant="20" id="hJ1-TC-wgO"/>
-                                                        <constraint firstItem="RPr-Is-lFp" firstAttribute="leading" secondItem="Koo-xW-L8m" secondAttribute="leading" constant="20" id="jjv-f2-tcR"/>
                                                         <constraint firstAttribute="trailing" secondItem="gvY-aY-Kpu" secondAttribute="trailing" constant="26" id="mx1-hg-ZQB"/>
-                                                        <constraint firstItem="RPr-Is-lFp" firstAttribute="top" secondItem="WBq-eX-bpy" secondAttribute="bottom" constant="11.300000000000001" id="sG1-CQ-tud"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1Su-mJ-DyC" secondAttribute="trailing" constant="20" id="o98-rc-CPD"/>
                                                         <constraint firstItem="WBq-eX-bpy" firstAttribute="top" secondItem="Koo-xW-L8m" secondAttribute="top" constant="14" id="wbz-WJ-pQ1"/>
                                                     </constraints>
                                                 </view>
@@ -510,7 +509,7 @@
                                             <outlet property="imgView" destination="WBq-eX-bpy" id="dOY-5E-cm0"/>
                                             <outlet property="introductionLabel" destination="PeG-rI-DKJ" id="56L-k3-gH4"/>
                                             <outlet property="percentageLabel" destination="S3x-wm-1oV" id="wqq-be-q2L"/>
-                                            <outlet property="percentageView" destination="RPr-Is-lFp" id="zwp-vS-JoX"/>
+                                            <outlet property="percentageView" destination="1Su-mJ-DyC" id="aDo-xe-aM9"/>
                                             <outlet property="remaindaysLabel" destination="gvY-aY-Kpu" id="qxd-70-Pv7"/>
                                             <outlet property="titleLabel" destination="pFP-O2-4y9" id="DjX-iD-XDG"/>
                                         </connections>
@@ -604,10 +603,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11V-VC-x0F">
-                                                            <rect key="frame" x="0.0" y="298.5" width="375" height="1"/>
+                                                            <rect key="frame" x="0.0" y="299" width="375" height="0.5"/>
                                                             <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="1" id="OAr-DL-H5O"/>
+                                                                <constraint firstAttribute="height" constant="0.5" id="OAr-DL-H5O"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBm-IM-P6R">
@@ -1886,12 +1885,12 @@
             </objects>
             <point key="canvasLocation" x="5568.8000000000002" y="2579.4602698650679"/>
         </scene>
-        <!--마이페이지-->
+        <!--Navigation Controller-->
         <scene sceneID="gfi-Tv-BwQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bvF-1l-8SL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="마이페이지" selectedImage="icTabMypageOn" id="nBb-Fs-1Ds">
-                        <color key="badgeColor" red="0.94901960780000005" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <tabBarItem key="tabBarItem" title="" image="icTabMypageOn" id="nBb-Fs-1Ds">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qqI-ao-iWU">
@@ -1907,11 +1906,14 @@
             </objects>
             <point key="canvasLocation" x="1054" y="2527"/>
         </scene>
-        <!--도와주세요-->
+        <!--Navigation Controller-->
         <scene sceneID="mb7-wc-rAe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUh-PN-WQj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="도와주세요" selectedImage="icTabRescatOn" id="xKv-Pe-xOw"/>
+                    <tabBarItem key="tabBarItem" title="" image="icTabRescatOn" id="xKv-Pe-xOw">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XEN-xh-Y82">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1947,7 +1949,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ri4-KU-Llb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aHZ-XS-gO3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="supportComplete" automaticallyAdjustsScrollViewInsets="NO" id="aHZ-XS-gO3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ifR-cy-70C">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1971,11 +1973,9 @@
         <image name="doneWait" width="375" height="358"/>
         <image name="icEtc" width="21" height="21"/>
         <image name="icRemove" width="29" height="29"/>
-        <image name="icTab1On" width="16" height="16"/>
         <image name="icTabMypageOn" width="36" height="36"/>
         <image name="icTabRescatOn" width="36" height="36"/>
-        <image name="icTap1On" width="36" height="36"/>
-        <image name="iconNewPost" width="24" height="24"/>
+        <image name="icTap1Off" width="36" height="36"/>
         <image name="lableCardTemporarily" width="59" height="21"/>
     </resources>
 </document>

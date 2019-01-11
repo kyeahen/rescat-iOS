@@ -23,6 +23,8 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setBackBtn()
+
         requestMap = MapRequest(self)
         requestAddress = NaverMapRequest(self)
         

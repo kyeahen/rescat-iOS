@@ -215,7 +215,7 @@ extension UIViewController {
         let minute = Int(interval / 60) % 60
         
         if hour <= 24 {
-            if hour < 0 {
+            if hour < 1 {
                 return "\(minute)분 전"
             } else {
                 return "\(hour)시간 전"

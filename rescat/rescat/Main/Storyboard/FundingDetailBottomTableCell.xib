@@ -19,9 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="166.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GIc-XW-jlV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttomIllust2" translatesAutoresizingMaskIntoConstraints="NO" id="GIc-XW-jlV">
                         <rect key="frame" x="0.0" y="27" width="375" height="90"/>
-                        <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="90" id="akY-2v-BVE"/>
                         </constraints>
@@ -39,4 +38,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="buttomIllust2" width="375" height="90"/>
+    </resources>
 </document>

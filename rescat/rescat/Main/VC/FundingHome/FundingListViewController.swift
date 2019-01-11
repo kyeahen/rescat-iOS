@@ -97,6 +97,9 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         cell.introductionLabel.text = gsno(funding.introduction)
         cell.goalmoneyLabel.text = "\(gino(funding.goalAmount).getMoney())원"
         let percentage = Float(gino(funding.currentAmount))/Float(gino(funding.goalAmount))
+        UIView.animate(withDuration: 1.0) {
+            cell.percentageView.setProgress(percentage, animated: true)
+        }
 //        print("percentage - \(funding.title) - \(percentage)")
         cell.percentageLabel.text = "\(Int(percentage*100))%"
         cell.remaindaysLabel.text = gsno(funding.limitAt)
@@ -115,9 +118,9 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         tableView.deselectRow(at: indexPath, animated: true)
         FundingDetailSegmentController.fundingIdx = gino(fundingList[indexPath.row].idx)
         FundingDetailSegmentController.category = gino(fundingList[indexPath.row].category)
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(vc, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
     }
     
     

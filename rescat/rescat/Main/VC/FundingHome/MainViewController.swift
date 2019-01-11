@@ -27,12 +27,15 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     var mainBannerList = [FundingBannerModel]()
     var carepostList = [CarePostMainModel]()
     var randomBanner : FundingBannerModel!
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+ 
         let request = FundingRequest(self)
         let request2 = CarePostRequest(self)
-       
+       self.tabBarController?.tabBar.isHidden = false
 //        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
 //        if ( token == "-1" ){
 //            print("테스트---비로그인")
@@ -54,10 +57,22 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+        if token != "-1" {
+            let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"),
+                                              style: .plain,
+                                              target: self,
+                                              action: #selector(registerFundingAction(_:)))
+            
+            navigationItem.rightBarButtonItem = registerBtn
+            navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
+            navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+
+        }
+        
+
         
      
-//        UserDefaults.standard.set("NOT", forKey: "role")
-        
         self.setNaviTitle(name: "안녕, 길냥이")
 
         tempList.delegate = self
@@ -66,7 +81,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         tempTableList.dataSource = self
         tempTableList.separatorStyle = .none
         
-        adoptionListButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
+//        adoptionListButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
         fundingListButton.addTarget(self, action: #selector(viewFundingList), for: .touchUpInside)
 //        registerFundingButton
 //        registerFundingButton.addT
@@ -78,9 +93,14 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         titleArray = ["picture 1","picture 2","picture 3","picture 4"]
         reviewImage.delegate = self
     }
+    
 
     @objc func viewAdoptList(_ sender: UIButton!){
-        print("Adopt")
+        
+        let Adopt = UIStoryboard(name: "Adoption", bundle: nil)
+        let vc = Adopt.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
 
     @objc func viewFundingList(_ sender: UIButton! ) {
@@ -89,14 +109,14 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
 
     }
     
-    @IBAction func registerFundingAction(_ sender: Any) {
+    @objc func registerFundingAction(_ sender: UIButton!) {
      
         
         let adoption = UIStoryboard(name: "Adoption", bundle: nil)
         let vc = adoption.instantiateViewController(withIdentifier: IntroResisterViewController.reuseIdentifier) as! IntroResisterViewController
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(vc, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
 
         
     }
@@ -181,21 +201,23 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
         cell.imageView.kf.setImage(with: URL(string:gsno(care.photo?.url)))
         cell.outerView.drawShadow(3)
         
-        if ( indexPath.row == 4 ) {
-            cell.imageView.isHidden = true; cell.characterLabel.isHidden = true; cell.markImageView.isHidden = true; cell.nameLabel.isHidden = true;
-            cell.listButton.isHidden = false
-            cell.listButton.setImage(UIImage(named:"iconRescatcardMoreRound"), for: .normal)
-            cell.listButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
-        }
+//        if ( indexPath.row == 4 ) {
+//            cell.imageView.isHidden = true; cell.characterLabel.isHidden = true; cell.markImageView.isHidden = true; cell.nameLabel.isHidden = true;
+//            cell.listButton.isHidden = false
+//            cell.listButton.setImage(UIImage(named:"iconRescatcardMoreRound"), for: .normal)
+//            cell.listButton.addTarget(self, action: #selector(viewAdoptList), for: .touchUpInside)
+//        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let adoption = UIStoryboard(name: "Adoption", bundle: nil)
-        let vc = adoption.instantiateViewController(withIdentifier: "AdoptionViewController") as! AdoptionViewController
-        vc.tag = gino(carepostList[indexPath.row].type)
-        vc.idx = gino(carepostList[indexPath.row].idx)
-        self.navigationController?.pushViewController(vc, animated: true)
+       
+            let adoption = UIStoryboard(name: "Adoption", bundle: nil)
+            let vc = adoption.instantiateViewController(withIdentifier: "AdoptionViewController") as! AdoptionViewController
+            vc.tag = gino(carepostList[indexPath.row].type)
+            vc.idx = gino(carepostList[indexPath.row].idx)
+            self.navigationController?.pushViewController(vc, animated: true)
+        
         
     }
 }
@@ -223,7 +245,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             cell.backgroundImageView.kf.setImage(with: URL(string: gsno(photo.url)))
 //            cell.backgroundImageView.roundCorner(10.0)
             cell.backgroundImageView.drawShadow(5)
-
+            
 //            cell.
             cell.backView.backgroundColor = UIColor.black ; cell.backView.alpha = 0.3
             cell.remainLabel.text = gsno(fundingList[indexPath.row].limitAt)
@@ -254,9 +276,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             FundingDetailSegmentController.category = gino(fundingList[indexPath.row].category)
 
             tableView.deselectRow(at: indexPath, animated: true)
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(vc, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
         }
     }
     
@@ -276,7 +298,7 @@ extension MainViewController {
             reviewImage.setCarouselData(paths: photoArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: nil)
             //optional methods
             reviewImage.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
-            reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
+            reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 1.0), describedTitleColor: nil, layerColor: nil)
 
         } else if ( code == APIServiceCode.FUNDING_BOTTOM_BANNER_LIST ) {
             mainBannerList = datas as! [FundingBannerModel]
@@ -293,3 +315,4 @@ extension MainViewController {
         tempTableList.reloadData()
     }
 }
+

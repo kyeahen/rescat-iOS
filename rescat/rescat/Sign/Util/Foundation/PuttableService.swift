@@ -48,6 +48,7 @@ extension PuttableService {
             case .success:
                 
                 print("Networking Put Here")
+                print(params)
                 
                 if let value = res.result.value {
                     let resCode = self.gino(res.response?.statusCode)

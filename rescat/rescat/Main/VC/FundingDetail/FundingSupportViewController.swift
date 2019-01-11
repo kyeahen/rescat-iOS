@@ -30,19 +30,22 @@ class FundingSupportViewController : UIViewController, APIServiceCallback {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+
     }
     @objc func finalButtonAction( _ sender : UIButton!){
         if gsno(inputTextField.text) == "" || Int(gsno(inputTextField.text)) == 0 {
-            self.simpleAlert(title: "error", message: "금액을 입력해주세요")
-        } else {
+            self.simpleAlert(title: "", message: "금액을 입력해주세요")
+        } else if  Int(gsno(inputTextField.text))! < 2000  {
+            
+            self.simpleAlert(title: "", message: "2000젤리 이상 후원할 수 있습니다.")
+        }else {
             //
             let amount = Int(gsno(inputTextField.text))
             let request = FundingRequest(self)
             request.postFundingMileage(FundingDetailSegmentController.fundingIdx, mileage: gino(amount))
-            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportCompleteViewController") as! FundingSupportCompleteViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-//            self.navigationController?.popViewController(animated: true)
+//            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportCompleteViewController") as! FundingSupportCompleteViewController
+            let vc = storyboard?.instantiateViewController(withIdentifier: "supportComplete") as! UINavigationController
+            self.present(vc, animated: true)
         }
     }
     

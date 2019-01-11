@@ -10,11 +10,10 @@ import UIKit
 
 class FundingDetailContentTableCell: UITableViewCell {
     @IBOutlet weak var percentageLabel: UILabel!
-    
+    @IBOutlet var perentageView : UIProgressView!
     @IBOutlet weak var contentsLabel: UITextView!
     @IBOutlet weak var remainDateLabel: UILabel!
     @IBOutlet weak var dueDateLabel: UILabel!
-    @IBOutlet weak var percentageView: UIView!
     @IBOutlet weak var currentAmountLabel: UILabel!
     
     

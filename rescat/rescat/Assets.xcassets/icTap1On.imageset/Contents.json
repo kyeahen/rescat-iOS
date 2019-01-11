@@ -1,18 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "icTap1On.png",
       "idiom" : "universal",
+      "filename" : "icTap1On.png",
       "scale" : "1x"
     },
     {
-      "filename" : "icTap1On@2x.png",
       "idiom" : "universal",
+      "filename" : "icTap1On@2x.png",
       "scale" : "2x"
     },
     {
-      "filename" : "icTap1On@3x.png",
       "idiom" : "universal",
+      "filename" : "icTap1On@3x.png",
       "scale" : "3x"
     }
   ],

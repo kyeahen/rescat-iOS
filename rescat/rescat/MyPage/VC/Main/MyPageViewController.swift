@@ -61,9 +61,9 @@ class MyPageViewController: UIViewController{
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         let postVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier)
         
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(postVC, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
     }
     
     //MARK: 케어테이커 || 회원가입 액션
@@ -77,9 +77,9 @@ class MyPageViewController: UIViewController{
             if finished == true {
                 let careVC = UIStoryboard(name: "Care", bundle: nil).instantiateViewController(withIdentifier: MainCareViewController.reuseIdentifier)
                 
-                self.hidesBottomBarWhenPushed = true
+
                 self.navigationController?.pushViewController(careVC, animated: true)
-                self.hidesBottomBarWhenPushed = false
+
             } else {
                 self.simpleAlert(title: "", message: "케어테이커 신청 대기 상태입니다")
             }
@@ -87,9 +87,9 @@ class MyPageViewController: UIViewController{
         } else { //회원가입로 이동 - 게스트
             let joinVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: JoinViewController.reuseIdentifier)
            
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(joinVC, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
         }
     }
     
@@ -97,9 +97,9 @@ class MyPageViewController: UIViewController{
     @IBAction func areaAction(_ sender: UIButton) {
         let areaVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: AreaSettingViewController.reuseIdentifier)
         
-        self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(areaVC, animated: true)
-        self.hidesBottomBarWhenPushed = false
+
     }
     
     //MARK: UnwindSegue (지역수정VC -> 마이페이지)
@@ -194,7 +194,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
 
         if indexPath.section == 0 { //지역 설정 - 케어테이커만
             if role == careMapping.care.rawValue {
-                return 115
+               return 115
             } else {
                 return 0
             }
@@ -221,36 +221,39 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             
             if indexPath.row == 0 { //내가 참여한 후원글
                 let applyFundVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: SupportingViewController.reuseIdentifier)
-                self.hidesBottomBarWhenPushed = true
+ 
                 self.navigationController?.pushViewController(applyFundVC, animated: true)
-                self.hidesBottomBarWhenPushed = false
+
             } else { //내가 작성한 글
                 let myWriteVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: MyWriteViewController.reuseIdentifier)
-                self.hidesBottomBarWhenPushed = true
+
                 self.navigationController?.pushViewController(myWriteVC, animated: true)
-                self.hidesBottomBarWhenPushed = false
+
             }
         } else if indexPath.section == 2 {
             
             if indexPath.row == 0 { //정보수정
                 let modDataVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: ModMyDataViewController.reuseIdentifier)
-                self.hidesBottomBarWhenPushed = true
+
                 self.navigationController?.pushViewController(modDataVC, animated: true)
-                self.hidesBottomBarWhenPushed = false
+
             } else if indexPath.row == 1 { //비밀번호 변경
                 let pwdVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PasswordModViewController.reuseIdentifier)
-                self.hidesBottomBarWhenPushed = true
+
                 self.navigationController?.pushViewController(pwdVC, animated: true)
-                self.hidesBottomBarWhenPushed = false
+
             } else if indexPath.row == 2 { //문의하기
                 let qesVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: QuestionViewController.reuseIdentifier)
-                self.hidesBottomBarWhenPushed = true
+
                 self.navigationController?.pushViewController(qesVC, animated: true)
-                self.hidesBottomBarWhenPushed = false
+
             } else {
                 self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
+//                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+//                    UserDefaults.standard.removeObject(forKey: "fcmToken")
                     UserDefaults.standard.removeObject(forKey: "token")
-                    self.performSegue(withIdentifier: "unwindToHome", sender: nil)
+                    let signVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "MainSignNaviVC")
+                    self.present(signVC, animated: true, completion: nil)
                     })
             }
         }
@@ -291,7 +294,7 @@ extension MyPageViewController {
                         self.viewBottomC.constant = 79
                         self.joinButton.isHidden = false
                         self.careImageView.isHidden = true
-                        self.backImageView.image = UIImage(named: "mypageNormal")
+                        self.backImageView.image = UIImage(named: "mypageNomal")
                     }
                     
                     if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue {
@@ -299,9 +302,8 @@ extension MyPageViewController {
                     } 
                     
                     self.nickNameLabel.text = resResult.nickname
+                    self.idLabel.isHidden = false
                     self.idLabel.text = resResult.id
-                    
-                    
                     
                 }
                 self.joinButton.setImage(UIImage(named: "buttonMypageCaretaker"), for: .normal)
@@ -310,7 +312,7 @@ extension MyPageViewController {
                 
             case .accessDenied :
                 self.nickNameLabel.text = "회원가입이 필요해요!"
-                self.idLabel.text = "현재 비회원입니다."
+                self.idLabel.isHidden = true
                 self.joinButton.setImage(UIImage(named: "buttonMypageJoin"), for: .normal) 
                 
                 break

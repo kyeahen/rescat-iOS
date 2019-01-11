@@ -22,7 +22,6 @@ class AdoptionViewController: MXSegmentedPagerController {
         setBackBtn()
         setTopTabBar()
         setCustomView()
-        setRightButton()
         hideKeyboardWhenTappedAround()
     }
 
@@ -32,6 +31,12 @@ class AdoptionViewController: MXSegmentedPagerController {
             setNaviTitle(name: "입양")
         } else {
             setNaviTitle(name: "임시보호")
+        }
+        
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        
+        if token != "-1" {
+            setRightButton()
         }
     }
     

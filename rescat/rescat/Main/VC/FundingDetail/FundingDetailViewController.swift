@@ -79,15 +79,23 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 cell.currentAmountLabel.text = "\(gino(fundingContent.currentAmount).getMoney())원"
                 let percentage = Float(gino(fundingContent.currentAmount)) / Float(gino(fundingContent.goalAmount))
                 cell.percentageLabel.text = "\(Int(percentage*100))%"
-                cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatPink())
+//                UIView.animate(withDuration: 1.0) {
+//                    cell.perentageView.setProgress(percentage, animated: true)
+//                }
+//                cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatPink())
 //                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
                 cell.selectionStyle = .none
+                print("---------------")
                 let imageArray : [UIImageView] = [cell.image1,cell.image2,cell.image3]
+                print("certification --- \(fundingContent.certifications!.count)")
+                print("funding 게시글 - \(fundingContent.idx)")
                 guard let imageCnt = fundingContent.certifications else { return cell }
                 for i in 0..<imageCnt.count{
                     guard let url = imageCnt[i].url else { return cell }
                     imageArray[i].kf.setImage(with: URL(string:url))
                 }
+                print("------????--------")
+
                 return cell
                 
             } else {
@@ -97,9 +105,11 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 cell.currentAmountLabel.text = "\(gino(fundingContent.currentAmount).getMoney())원"
                 let percentage =  Float(gino(fundingContent.currentAmount)) / Float(gino(fundingContent.goalAmount))
                 cell.percentageLabel.text = "\(Int(ceil(percentage*100)))%"
-                cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatPink())
-//                DateFormatter
-//                cell.dueDateLabel.text = fundingContent.limitAt
+                UIView.animate(withDuration: 1.0) {
+                    cell.perentageView.setProgress(percentage, animated: true)
+                }
+
+                //                cell.dueDateLabel.text = fundingContent.limitAt
               
                 cell.label1.isHidden = true; cell.label2.isHidden = true
                 cell.image1.isHidden = true; cell.image2.isHidden = true; cell.image3.isHidden = true
@@ -135,6 +145,9 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
         if code == APIServiceCode.FUNDING_DETAIL {
             fundingContent = datas as! FundingDetailModel
             resultTableCellCnt = 3
+            print("Funding detail - \(fundingContent.account)")
+            print("Funding detail - \(fundingContent.photos?.count)")
+
             testTable.reloadData()
         } else { }
     }

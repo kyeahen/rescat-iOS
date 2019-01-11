@@ -69,6 +69,8 @@ class RegisterAdoptViewController: UIViewController, UITextFieldDelegate, UIText
         setTextField()
         setTextView()
         
+        hideKeyboardWhenTappedAround()
+        
         //테이블 뷰 키보드 대응
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
@@ -311,13 +313,13 @@ extension RegisterAdoptViewController: UICollectionViewDelegate, UICollectionVie
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResisterImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ResisterImageCollectionViewCell
         
-            if imageArr.count - indexPath.row - 1 == 0 { //첫번째에 더하기 버튼
+            if imageArr.count - indexPath.row - 1 == 0 {
                 if imageNum < 3 { //3장을 넘지 않을 때
                     openGallery()
     
                 } else  {
                     self.simpleAlert(title: "", message: "사진은 최대 3장까지 첨부가능합니다.")
-
+                    
                 }
             }
                 
@@ -653,7 +655,7 @@ extension RegisterAdoptViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - 49, right: 0)
         }
     }
     

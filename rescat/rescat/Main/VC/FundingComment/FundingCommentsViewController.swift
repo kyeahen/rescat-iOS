@@ -31,7 +31,10 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        
         if ( keyboardStatus ) {
-            keyboardStatus = false ; self.view.frame.origin.y += 270
+            keyboardStatus = false ;
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y += 260
+            }
         }
         textField.resignFirstResponder()
         return true
@@ -40,7 +43,10 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
 
         print("keyboard height \(KeyboardService.keyboardHeight())")
         if ( !keyboardStatus ) {
-            keyboardStatus = true ; self.view.frame.origin.y -= 270
+            keyboardStatus = true ;
+            UIView.animate(withDuration: 0.1) {
+                self.view.frame.origin.y -= 260
+            }
         }
         textField.becomeFirstResponder()
     }
@@ -64,7 +70,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
 
         if ( token == "-1") {
-            self.simpleAlert(title: "", message: "로그인 후, 이용할 수 있어요.")
+            self.simpleAlert(title: "", message: "회원가입 후, 이용할 수 있어요.")
             return
 
         }
@@ -83,6 +89,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         }
         actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
             //doSomething
+            self.simpleAlert(title: "", message: "해당 댓글을 신고하였습니다.")
         }))
         actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)

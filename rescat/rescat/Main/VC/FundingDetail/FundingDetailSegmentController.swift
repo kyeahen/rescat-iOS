@@ -25,6 +25,7 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
             action: #selector(warningAction(_:)))
         warningBtn.tintColor = UIColor.gray
         
+        
         navigationItem.rightBarButtonItem = warningBtn
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
@@ -37,8 +38,11 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
         segmentedPager.backgroundColor = .white
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
         segmentedPager.segmentedControl.backgroundColor = .white
+        segmentedPager.segmentedControl.titleTextAttributes = [kCTForegroundColorAttributeName : #colorLiteral(red: 0.447017312, green: 0.4470854402, blue: 0.4470024109, alpha: 1), NSAttributedString.Key.font: UIFont(name: AppleSDGothicNeo.SemiBold.rawValue, size: 15) as Any]
+        segmentedPager.segmentedControl.selectedTitleTextAttributes = [kCTForegroundColorAttributeName : #colorLiteral(red: 0.7345849872, green: 0.5921546817, blue: 0.4968380928, alpha: 1), NSAttributedString.Key.font: UIFont(name: AppleSDGothicNeo.SemiBold.rawValue, size: 15) as Any]
+
 //        segmentedPager.segmentedControl.title
-        segmentedPager.segmentedControl.titleTextAttributes = [kCTForegroundColorAttributeName : UIColor.gray]
+//        segmentedPager.segmentedControl.titleTextAttributes = [kCTForegroundColorAttributeName : UIColor.gray]
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [kCTForegroundColorAttributeName : UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1)]
 //        segmentedPager.segmentedControl.titleTextAttributes = [kCTParagraphStyleAttributeName : 10]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
@@ -47,7 +51,7 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func warningAction ( _ sender : UIButton! ){

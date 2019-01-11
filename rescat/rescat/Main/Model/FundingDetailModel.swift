@@ -20,7 +20,6 @@ class FundingDetailModel : Codable{
 
 }
 class FundingDetailPhoto : Codable {
-    var certification : Bool?
     var createdAt : String?
     var url : String?
 }

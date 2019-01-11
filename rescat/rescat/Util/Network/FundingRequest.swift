@@ -70,7 +70,7 @@ class FundingRequest : APIServie {
         // 0 : 상위 펀딩 후기 배너 4개, 1 : 가운데 랜덤 배너 광고 배너, 2 : 하단 광고 배너 4개
         var url = ""
         if type == 0 {
-            url = self.url("banners/funding")
+            url = self.url("banners/funding-reviews")
         } else if type == 1 {
             url = self.url("banners/advertisement/random")
         } else {
@@ -112,8 +112,9 @@ class FundingRequest : APIServie {
         }
     }
     func requestFundingDetail( _ idx : Int) {
+        let header = UserInfo.getHeader()
         let url = self.url("fundings/\(idx)")
-        Alamofire.request(url).responseData { (res) in
+        Alamofire.request(url, headers : header).responseData { (res) in
             switch res.result {
             case .success:
                 
@@ -128,6 +129,7 @@ class FundingRequest : APIServie {
                 let decoder = JSONDecoder()
                 do {
                     let data = try decoder.decode(FundingDetailModel.self, from: fundingdetail)
+//                    print(data)
                     self.vc.requestCallback(data, APIServiceCode.FUNDING_DETAIL)
                 } catch {
                     print("funding detail decode failure")

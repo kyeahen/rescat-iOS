@@ -38,7 +38,6 @@ class MainSignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-        loginButton.setTitleColor(UIColor.white, for: .normal)
         
     }
     
@@ -59,9 +58,7 @@ class MainSignViewController: UIViewController {
         
         self.present(mainVC, animated: true, completion: nil)
     }
-    
-    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
-    }
+
     
 }
 

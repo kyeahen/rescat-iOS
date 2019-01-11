@@ -27,6 +27,9 @@ struct PostBoxDetailService: GettableService, APIServie {
                 case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
                     
+                case HttpResponseCode.badRequest.rawValue : //400
+                    completion(.badRequest)
+                    
                 case HttpResponseCode.accessDenied.rawValue : //401
                     completion(.accessDenied)
                     
@@ -41,6 +44,9 @@ struct PostBoxDetailService: GettableService, APIServie {
                 
             case .error(let resCode):
                 switch resCode {
+                    
+                case HttpResponseCode.badRequest.rawValue.description : //400
+                    completion(.badRequest)
                     
                 case HttpResponseCode.accessDenied.rawValue.description : //401
                     completion(.accessDenied)

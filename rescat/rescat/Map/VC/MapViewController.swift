@@ -109,9 +109,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                         
                     }
                 }
-                
-                locationButtonView.roundCorner(15)
                 locationButtonView.drawShadow(15)
+                locationButtonView.roundCorner(15)
                 locationButtonView.backgroundColor = UIColor.white
                 locationButton = UITextField()
                 locationButton.delegate = self
@@ -184,9 +183,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let join = UIStoryboard(name: "Sign", bundle: nil)
             let vc = join.instantiateViewController(withIdentifier: "JoinViewController") as! JoinViewController
             
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(vc, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
 
         } else {
             // 케어테이커
@@ -195,9 +194,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
             let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
 //            self.present(vc, animated:  true)
-            self.hidesBottomBarWhenPushed = true
+
             self.navigationController?.pushViewController(vc, animated: true)
-            self.hidesBottomBarWhenPushed = false
+
 
         }
     }
@@ -229,7 +228,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             self.simpleAlert(title: "", message: "권한이 없습니다.")
 //            self.present(vc, animated: true)
         }))
-        actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
+        actionSheet.addAction(UIAlertAction(title: "신고",
+                                            style: .default, handler: { result in
             //doSomething
             self.simpleAlert(title: "", message: "해당글을 신고하였습니다.")
         }))
@@ -526,7 +526,7 @@ extension MapViewController{
 //            loadMapView(latitude: Double(coordinate[0]), longitude: Double(coordinate[1]), zoom: 15.0)
 //            coordinate
 //            print("GEOCODE RESULT \(Float(coordinate[0]))")
-            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
+            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 16.0)
         } else if ( code == APIServiceCode.MARKER_LIST ) {
             markerList = datas as! [MarkerModel]
             makeMarkerView(markerList)
