@@ -43,7 +43,7 @@ class SplashViewController: UIViewController {
     }
     
     @objc func SomeNotificationAct(notification: NSNotification){
-        
+        print("푸쉬")
         DispatchQueue.main.async {
             let postVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier)
             self.navigationController?.pushViewController(postVC, animated: true)

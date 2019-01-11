@@ -57,6 +57,5 @@ extension MyAreaTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
     }
     
-
 }
 

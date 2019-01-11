@@ -108,8 +108,8 @@ class MyPageViewController: UIViewController{
 
             tableView.reloadData()
         }
-    }
     
+    }
 
 }
 

@@ -151,7 +151,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             print("Message ID: \(messageID)")
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SomeNotification"), object:nil)
         
         // Print full message.
         print(userInfo)
@@ -168,6 +167,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SomeNotification"), object:nil)
         
 //        let storyboard : UIStoryboard = UIStoryboard(name: "MyPage", bundle: nil)
 //        let homeC = storyboard.instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier) as! PostBoxViewController
