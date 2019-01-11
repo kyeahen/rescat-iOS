@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FlN-7e-i55">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerdefault" translatesAutoresizingMaskIntoConstraints="NO" id="FlN-7e-i55">
                     <rect key="frame" x="14" y="14" width="85" height="82"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="85" id="k54-aG-FHr"/>
@@ -84,5 +84,6 @@
     </objects>
     <resources>
         <image name="icEtc" width="21" height="21"/>
+        <image name="markerdefault" width="85" height="82"/>
     </resources>
 </document>

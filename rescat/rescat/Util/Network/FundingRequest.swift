@@ -236,7 +236,6 @@ class FundingRequest : APIServie {
         let encoder = DictionaryEncoder()
         let param = try! encoder.encode(model) as! [String:Any]
 
-        print(param)
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseData { (res) in
             switch res.result {
             case .success:

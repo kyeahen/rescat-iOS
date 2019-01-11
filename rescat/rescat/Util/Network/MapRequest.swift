@@ -35,12 +35,17 @@ class MapRequest : APIServie {
                 guard let value = res.result.value else { return }
 
                 print("Networking Post Here")
-                print("post success \(value)")
 
                 if statusCode == 200 || statusCode == 201 {
                     self.vc.requestCallback(0, APIServiceCode.MARKER_POST)
+                } else if statusCode == 400 {
+                    self.vc.requestCallback(0, APIServiceCode.EXCEPTION_ERROR1)
+                } else if statusCode == 401{
+                    self.vc.requestCallback(0, APIServiceCode.EXCEPTION_ERROR2)
+                } else {
+                    
                 }
-                break
+                
                 
             case .failure(let err):
                 print("post failure \(MapRequest.a)")

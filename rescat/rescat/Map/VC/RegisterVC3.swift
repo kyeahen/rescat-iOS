@@ -119,7 +119,7 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
             print("지도 \(string)")
 //            requestMap
             registerMap.regionFullName = string
-            registerMap.radius = 3
+//            registerMap.radius = 3
             requestMap.addMapData(registerMap)
         } else if ( code == APIServiceCode.MARKER_POST ) {
             self.simpleAlertwithHandler(title: "등록요청 완료", message: "24시간 내에 관리자 승인 후, 등록 결과가 마이페이지 > 우체통으로 전달됩니다.") { (UIAlertAction) in
@@ -137,6 +137,12 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
             loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
 
             
+        } else if ( code == APIServiceCode.EXCEPTION_ERROR1) {
+            self.simpleAlert(title: "", message: "입력한 데이터를 다시한번 확인해주세요")
+        } else if ( code == APIServiceCode.EXCEPTION_ERROR2) {
+            self.simpleAlert(title: "", message: "해당 지역에는 등록할 수 없습니다.")
+        } else {
+            self.simpleAlert(title: "", message: "네트워크 상태를 확인해주세요")
         }
     }
     

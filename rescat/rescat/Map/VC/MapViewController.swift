@@ -149,7 +149,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let naverRequest = NaverMapRequest(self)
                 self.mapView.delegate = self
                 self.mapView.settings.rotateGestures = false
-                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
+//                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
                 naverRequest.requestGeocoder(myRegions[0])
                 
             } else {
@@ -222,7 +222,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         actionSheet.addAction(UIAlertAction(title: "수정", style: .default, handler: { result in
             //doSomething
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "modifyVC") as! UINavigationController
-            self.simpleAlert(title: "", message: "신고가 성공적으로 접수되었습니다.")
+            self.simpleAlert(title: "", message: "권한이 없습니다.")
 //            self.present(vc, animated: true)
         }))
         actionSheet.addAction(UIAlertAction(title: "신고",
@@ -377,7 +377,6 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let data = marker.userData as! MarkerModel
         let category = gino(data.category)
         print("category --\(category)")
-        print("photo -- \(data.photoUrl)")
         
         if ( !detailViewCreated ) {
             print("creaeted")
@@ -399,7 +398,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView2(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.etc)
                 
@@ -416,7 +419,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView3(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.saleLabel.text = gsno(data.etc)
                 detailContents.propertyLabel.text = gsno(data.address)
@@ -437,8 +444,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 //
                 
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
-                
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.etc)
                 detailContents.ageLabel.text = gsno(data.age)
@@ -482,7 +492,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView2(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.etc)
                 
@@ -501,7 +515,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView3(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.address)
                 detailContents.saleLabel.text = gsno(data.etc)
@@ -522,8 +540,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 //
                 
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
-                
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.etc)
                 detailContents.ageLabel.text = gsno(data.age)

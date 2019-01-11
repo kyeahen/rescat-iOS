@@ -43,9 +43,8 @@
                         </label>
                     </subviews>
                 </stackView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-Ss-YwP">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerdefault" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-Ss-YwP">
                     <rect key="frame" x="14" y="14" width="82" height="82"/>
-                    <color key="backgroundColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="82" id="puS-T8-9ak"/>
                         <constraint firstAttribute="height" constant="82" id="sm4-fK-dea"/>
@@ -136,5 +135,6 @@
     </objects>
     <resources>
         <image name="icEtc" width="21" height="21"/>
+        <image name="markerdefault" width="85" height="82"/>
     </resources>
 </document>
