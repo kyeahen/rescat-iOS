@@ -269,7 +269,7 @@ class RegisterAdoptViewController: UIViewController, UITextFieldDelegate, UIText
         print(typeTag)
         
         if typeTag == 0 { //입양일 때
-            if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" || imageNum == 0 {
+            if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || imageNum == 0 {
 
                 self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
             } else {
@@ -282,7 +282,7 @@ class RegisterAdoptViewController: UIViewController, UITextFieldDelegate, UIText
             }
         } else { //임보일 때
 
-            if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || startTextField.text == "" || endTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || etcTextView.text == "" || imageNum == 0 {
+            if typeCheck == 0 || oneTextView.text == "" || nameTextField.text == "" || ageTextField.text == "" || sexCheck == 0 || breedTextField.text == "" || startTextField.text == "" || endTextField.text == "" || tnrCheck == 0 || vacCheck == 0 || imageNum == 0 {
 
                 self.simpleAlert(title: "", message: "모든 항목을 입력해주세요.")
             }else {
