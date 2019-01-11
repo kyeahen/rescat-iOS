@@ -90,6 +90,10 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FundingListTableViewCell", for: indexPath) as! FundingListTableViewCell
+        
+        if indexPath.row == 0 {
+            cell.layer.addBorder(edge: .top, color:  #colorLiteral(red: 0.9136453271, green: 0.9137768745, blue: 0.9136167169, alpha: 1), thickness: 0.5)
+        }
         let funding = fundingList[indexPath.row]
         cell.titleLabel.text = gsno(funding.title)
         cell.introductionLabel.text = gsno(funding.introduction)
