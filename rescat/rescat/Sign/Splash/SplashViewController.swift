@@ -19,6 +19,12 @@ class SplashViewController: UIViewController {
         
         let image = UIImage.gif(name: "splashIos@3x")
         splashGifImg.image = image
+
+        
+        NotificationCenter.default.addObserver(self,
+                                                     selector: #selector(SomeNotificationAct) ,
+                                                     name: NSNotification.Name(rawValue: "SomeNotification"),
+                                                         object: nil)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds){
             print("들어옴")
@@ -32,6 +38,15 @@ class SplashViewController: UIViewController {
                     let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier)
                     self.present(tabVC, animated: true)
             }
+        }
+
+    }
+    
+    @objc func SomeNotificationAct(notification: NSNotification){
+        
+        DispatchQueue.main.async {
+            let postVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PostBoxViewController.reuseIdentifier)
+            self.navigationController?.pushViewController(postVC, animated: true)
         }
 
     }

@@ -80,28 +80,40 @@ extension PostBoxViewController: UITableViewDelegate, UITableViewDataSource {
         
         if post[indexPath.row].notification.targetType == "CAREAPPLICATION" { //입양신청서
             let detailVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: PostBoxDetailViewController.reuseIdentifier) as! PostBoxDetailViewController
-            detailVC.idx = post[indexPath.row].idx
+            
+            detailVC.idx = post[indexPath.row].notification.idx
+            detailVC.applyIdx = gino(post[indexPath.row].notification.targetIdx)
         
           
             self.navigationController?.pushViewController(detailVC, animated: true)
             
-        } else if post[indexPath.row].notification.targetType == "CAREPOST" {
+        } else if post[indexPath.row].notification.targetType == "CAREPOST" { //입양 글
             
             let detailVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: AdoptionViewController.reuseIdentifier) as! AdoptionViewController
             
-            detailVC.idx = post[indexPath.row].idx
-//            detailVC.tag = myAdopts[indexPath.row].type
+            detailVC.idx = gino(post[indexPath.row].notification.targetIdx)//해당 알림에 대한 인덱스
+            detailVC.tag = 0
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
+            
+        } else if post[indexPath.row].notification.targetType == "TEMPORALCAREPOST" { //임시보호 글
+            let detailVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: AdoptionViewController.reuseIdentifier) as! AdoptionViewController
+            
+            detailVC.idx = gino(post[indexPath.row].notification.targetIdx)
+            detailVC.tag = 1
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
+            
+        } else if post[indexPath.row].notification.targetType == "FUNDING"{
+            
+            let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingDetailSegmentController.reuseIdentifier) as! FundingDetailSegmentController
+            
+            detailVC.idx = gino(post[indexPath.row].notification.targetIdx)
             
             self.navigationController?.pushViewController(detailVC, animated: true)
             
         } else {
-            
-            let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingDetailSegmentController.reuseIdentifier) as! FundingDetailSegmentController
-            
-            detailVC.idx = post[indexPath.row].idx
-            
-            self.navigationController?.pushViewController(detailVC, animated: true)
-            
+            print("targetType: null")
         }
     }
     
