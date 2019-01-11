@@ -104,6 +104,8 @@ class FundingRequest : APIServie {
                         print("funding banner list decode failure")
                     }
                     
+                }else if statusCode == 500 {
+                    self.vc.requestCallback("", APIServiceCode.SERVER_ERROR)
                 }
                
             case .failure(let error):
@@ -152,7 +154,6 @@ class FundingRequest : APIServie {
                 if statusCode == 500 {
                     self.vc.requestCallback(1, APIServiceCode.SERVER_ERROR)
                 } else if ( statusCode == 200){
-                    
                     
                 }
                 print("삭제성공")

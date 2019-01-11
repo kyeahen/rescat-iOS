@@ -84,8 +84,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     style: .plain,
                     target: self,
                     action: #selector(searchButtonAction(_:)))
-                backBTN.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
-                backBTN2.tintColor = #colorLiteral(red: 0.4294961989, green: 0.3018877506, blue: 0.2140608728, alpha: 1)
+                backBTN.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
+                backBTN2.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
+            
                 
                 navigationItem.rightBarButtonItems = [backBTN,backBTN2]
                 navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate

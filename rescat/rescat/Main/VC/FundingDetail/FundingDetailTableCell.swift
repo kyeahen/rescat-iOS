@@ -48,7 +48,7 @@ class FundingDetailTableCell: UITableViewCell , AACarouselDelegate{
         slideImageView.setCarouselData(paths: photoArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: nil)
         //optional methods
         slideImageView.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
-        slideImageView.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: nil, describedTitleColor: nil, layerColor: nil)
+        slideImageView.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 1.0), describedTitleColor: nil, layerColor: nil)
 
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

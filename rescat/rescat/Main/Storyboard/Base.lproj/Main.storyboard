@@ -370,7 +370,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <state key="normal" title="치료비 모금">
-                                                <color key="titleColor" red="0.94901960784313721" green="0.56862745098039214" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="0.94901960784313721" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnZ-Pr-etj">
@@ -1097,19 +1097,19 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dis-ud-Yt1">
-                                                <rect key="frame" x="172" y="21" width="100" height="33"/>
+                                                <rect key="frame" x="144" y="21" width="128" height="33"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="Lne-9n-oeM"/>
+                                                    <constraint firstAttribute="width" constant="128" id="Lne-9n-oeM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                <state key="normal" title="프로젝트 후원">
+                                                <state key="normal" title="    프로젝트 후원">
                                                     <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-dl-3kh">
-                                                <rect key="frame" x="52" y="21" width="78" height="33"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-dl-3kh">
+                                                <rect key="frame" x="27" y="21" width="103" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                <state key="normal" title="치료비 후원">
+                                                <state key="normal" title="     치료비 후원">
                                                     <color key="titleColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
@@ -1273,7 +1273,7 @@
                                             <constraint firstItem="WJw-WC-fz9" firstAttribute="leading" secondItem="hzG-4e-sX3" secondAttribute="leading" constant="24" id="Kt1-4p-47J"/>
                                             <constraint firstItem="hP2-Gi-EwL" firstAttribute="top" secondItem="gei-FQ-1em" secondAttribute="bottom" constant="25" id="L8X-JU-yUc"/>
                                             <constraint firstItem="7Vv-B4-FgH" firstAttribute="top" secondItem="p8X-B0-74k" secondAttribute="bottom" constant="24" id="MKy-Oe-AGb"/>
-                                            <constraint firstItem="Dis-ud-Yt1" firstAttribute="leading" secondItem="UJg-4T-3Jb" secondAttribute="trailing" constant="5" id="MWu-3H-dQh"/>
+                                            <constraint firstItem="Dis-ud-Yt1" firstAttribute="leading" secondItem="UJg-4T-3Jb" secondAttribute="trailing" constant="-23" id="MWu-3H-dQh"/>
                                             <constraint firstAttribute="trailing" secondItem="WJw-WC-fz9" secondAttribute="trailing" constant="24" id="P1H-ef-dpR"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1250" id="RQ5-od-Kmg"/>
                                             <constraint firstAttribute="trailing" secondItem="p8X-B0-74k" secondAttribute="trailing" constant="24" id="Sme-NF-n7M"/>
@@ -1289,7 +1289,7 @@
                                             <constraint firstItem="3lr-Pv-MQA" firstAttribute="top" secondItem="9Ai-m5-OQz" secondAttribute="top" id="cXc-8B-7Qn"/>
                                             <constraint firstItem="Ko7-kU-9GK" firstAttribute="leading" secondItem="hzG-4e-sX3" secondAttribute="leading" constant="24" id="cZL-nu-S33"/>
                                             <constraint firstItem="C01-qh-NaD" firstAttribute="leading" secondItem="hzG-4e-sX3" secondAttribute="leading" constant="33" id="fgK-us-XnK"/>
-                                            <constraint firstItem="chZ-dl-3kh" firstAttribute="leading" secondItem="0sO-zS-nbz" secondAttribute="trailing" constant="5" id="fvF-Ob-gSd"/>
+                                            <constraint firstItem="chZ-dl-3kh" firstAttribute="leading" secondItem="0sO-zS-nbz" secondAttribute="trailing" constant="-20" id="fvF-Ob-gSd"/>
                                             <constraint firstItem="hVt-xm-sw5" firstAttribute="top" secondItem="4fU-oK-DA7" secondAttribute="bottom" constant="25" id="gsI-lQ-ojn"/>
                                             <constraint firstItem="0ob-81-7mI" firstAttribute="leading" secondItem="hzG-4e-sX3" secondAttribute="leading" constant="24" id="hgb-sV-sMO"/>
                                             <constraint firstItem="3lr-Pv-MQA" firstAttribute="leading" secondItem="hzG-4e-sX3" secondAttribute="leading" id="hm5-cq-YMk"/>

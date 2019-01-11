@@ -90,7 +90,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         let nib2 = UINib(nibName: "BannerTableCell", bundle: nil)
         tempTableList.register(nib2, forCellReuseIdentifier: "BannerTableCell")
         
-        titleArray = ["picture 1","picture 2","picture 3","picture 4"]
+//        titleArray = ["picture 1","picture 2","picture 3","picture 4"]
         reviewImage.delegate = self
     }
     
@@ -307,15 +307,22 @@ extension MainViewController {
             reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 1.0), describedTitleColor: nil, layerColor: nil)
 
         } else if ( code == APIServiceCode.FUNDING_BOTTOM_BANNER_LIST ) {
-            mainBannerList = datas as! [FundingBannerModel]
-            let url = URL(string:gsno(mainBannerList[0].photoUrl))
-            mainBannerImageView.kf.setImage(with: url)
+            guard let banner = datas as? [FundingBannerModel] else { return }
+            mainBannerList = banner
+            if ( mainBannerList.count > 0){
+                let url = URL(string:gsno(mainBannerList[0].photoUrl))
+                mainBannerImageView.kf.setImage(with: url)
+            }
         } else if ( code == APIServiceCode.FUNDING_RANDOM_BANNER ) {
-            randomBanner = datas as! FundingBannerModel
+            guard let random = datas as? FundingBannerModel else { return }
+
+            randomBanner = random
             isFirst = true
         } else if code == APIServiceCode.CARE_POST_MAIN {
             carepostList = datas as! [CarePostMainModel]
             print("care post main")
+        } else if code == APIServiceCode.SERVER_ERROR {
+            self.simpleAlert(title: "", message: "네트워크오류")
         }
         tempList.reloadData()
         tempTableList.reloadData()
