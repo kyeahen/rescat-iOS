@@ -25,6 +25,10 @@ class MyWriteSupportViewController: UIViewController {
         getMySupportList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getMySupportList()
+    }
+    
     //MARK: 테이블 뷰 세팅
     func setTableView() {
         tableView.delegate = self
