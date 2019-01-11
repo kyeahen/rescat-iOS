@@ -19,6 +19,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         
 //        UIKeyboardType.
 
+        commentTableView.layer.addBorder(edge: .top, color: UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1.0), thickness: 1.0)
         
     }
     

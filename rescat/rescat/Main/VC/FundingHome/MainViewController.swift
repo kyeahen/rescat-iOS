@@ -240,6 +240,11 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "FundingTableCell", for: indexPath) as! FundingTableCell
+            if gino(fundingList[indexPath.row].category) == 0 {
+                cell.labelImageView.image = UIImage(named:"cardLableSupport")
+            } else {
+                cell.labelImageView.image = UIImage(named:"cardLableProject")
+            }
             cell.titleLabel.text = gsno(fundingList[indexPath.row].title)
             guard let photo = fundingList[indexPath.row].mainPhoto else { return cell }
             cell.backgroundImageView.kf.setImage(with: URL(string: gsno(photo.url)))
@@ -248,13 +253,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             
 //            cell.
             cell.backView.backgroundColor = UIColor.black ; cell.backView.alpha = 0.3
-            cell.remainLabel.text = gsno(fundingList[indexPath.row].limitAt)
+            cell.remainLabel.text = setDday(start:gsno(fundingList[indexPath.row].limitAt) ?? "")
 //            cell.
+            cell.contentsLabel.text = gsno(fundingList[indexPath.row].introduction)
             
             let percentage = Float(gino(fundingList[indexPath.row].currentAmount)) / Float(gino(fundingList[indexPath.row].goalAmount))
             cell.goalLabel.text = "\(Int(percentage*100))% 달성"
 //            cell.stageView.drawPercentage(Double(percentage), UIColor.white, UIColor.recatBrown())
-            cell.stageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatBrown())
+            cell.stageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor(red: 110/255, green: 77/255, blue: 55/255, alpha: 1.0))
             return cell
         }
 

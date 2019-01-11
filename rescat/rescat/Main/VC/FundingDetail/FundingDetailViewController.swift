@@ -82,15 +82,14 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 UIView.animate(withDuration: 1.0) {
                     cell.perentageView.setProgress(percentage, animated: true)
                 }
-                cell.dueDateLabel.text = setHours(start: gsno(fundingContent.limitAt))
-                
-                cell.remainDateLabel.text = setDday(start: gsno(fundingContent.limitAt) ?? "" )
-//                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
+            
+                cell.dueDateLabel.text = setDate(createdAt: gsno(fundingContent.limitAt), format: "yy년 MM월 dd일")
+
+                cell.remainDateLabel.text = setDday(start: gsno(fundingContent.limitAt))
                 cell.selectionStyle = .none
-                print("---------------")
                 let imageArray : [UIImageView] = [cell.image1,cell.image2,cell.image3]
-                print("certification --- \(fundingContent.certifications!.count)")
-                print("funding 게시글 - \(fundingContent.idx)")
+//                print("certification --- \(fundingContent.certifications!.count)")
+//                print("funding 게시글 - \(fundingContent.idx)")
                 guard let imageCnt = fundingContent.certifications else { return cell }
                 for i in 0..<imageCnt.count{
                     guard let url = imageCnt[i].url else { return cell }
@@ -111,8 +110,12 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                     cell.perentageView.setProgress(percentage, animated: true)
                 }
 
-                //                cell.dueDateLabel.text = fundingContent.limitAt
-              
+                cell.dueDateLabel.text = setDate(createdAt: gsno(fundingContent.limitAt), format: "yy년 MM월 dd일")
+                
+                cell.remainDateLabel.text = setDday(start: gsno(fundingContent.limitAt))
+                cell.selectionStyle = .none
+
+                
                 cell.label1.isHidden = true; cell.label2.isHidden = true
                 cell.image1.isHidden = true; cell.image2.isHidden = true; cell.image3.isHidden = true
                 cell.selectionStyle = .none

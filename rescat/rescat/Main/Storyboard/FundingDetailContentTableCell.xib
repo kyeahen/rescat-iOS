@@ -141,7 +141,7 @@
             <connections>
                 <outlet property="contentsLabel" destination="Jud-7p-AJR" id="33v-ER-18o"/>
                 <outlet property="currentAmountLabel" destination="tBa-Zs-MDj" id="3Zf-9f-fZ8"/>
-                <outlet property="dueDateLabel" destination="OkS-i9-rcv" id="ZJG-7Z-YXP"/>
+                <outlet property="dueDateLabel" destination="OkS-i9-rcv" id="QFk-xQ-5ql"/>
                 <outlet property="image1" destination="gzz-Jp-u8f" id="RYn-Pn-5h9"/>
                 <outlet property="image2" destination="Fx1-rR-rva" id="icA-xD-ZIZ"/>
                 <outlet property="image3" destination="fJf-VP-9DJ" id="mVc-u2-Frk"/>
@@ -149,7 +149,7 @@
                 <outlet property="label2" destination="UXM-cR-Adg" id="vPk-d9-yac"/>
                 <outlet property="percentageLabel" destination="sBH-yy-6Nc" id="r5Q-oh-F4O"/>
                 <outlet property="perentageView" destination="C43-11-uqv" id="Wr9-dE-TQM"/>
-                <outlet property="remainDateLabel" destination="iA3-b5-L25" id="OmH-Pm-Ix0"/>
+                <outlet property="remainDateLabel" destination="iA3-b5-L25" id="BiX-dH-M47"/>
             </connections>
             <point key="canvasLocation" x="53.600000000000001" y="83.208395802098963"/>
         </tableViewCell>

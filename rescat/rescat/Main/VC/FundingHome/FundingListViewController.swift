@@ -133,5 +133,5 @@ extension FundingListViewController {
         fundingList = datas as! [FundingModel]
         print(fundingList.count)
         listTableView.reloadData()
-    }
+    } 
 }
