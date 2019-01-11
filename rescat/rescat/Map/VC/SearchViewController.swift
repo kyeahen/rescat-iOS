@@ -5,6 +5,7 @@ class SearchViewController : UIViewController , UISearchBarDelegate {
     @IBOutlet var searchBar : UISearchBar!
     @IBOutlet var searchListTableView : UITableView!
     var marker = [String]()
+    var mapDatas = [MarkerModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -32,7 +33,7 @@ class SearchViewController : UIViewController , UISearchBarDelegate {
 }
 extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -45,7 +45,7 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 return CGFloat(355)
             }
         } else {
-            return CGFloat(227)
+            return CGFloat(227+49)
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +82,7 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 UIView.animate(withDuration: 1.0) {
                     cell.perentageView.setProgress(percentage, animated: true)
                 }
-                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
+                cell.dueDateLabel.text = setHours(start: gsno(fundingContent.limitAt))
                 
                 cell.remainDateLabel.text = setDday(start: gsno(fundingContent.limitAt) ?? "" )
 //                cell.dueDateLabel.text = gsno(fundingContent.limitAt)

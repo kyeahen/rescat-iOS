@@ -102,8 +102,10 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         }
 //        print("percentage - \(funding.title) - \(percentage)")
         cell.percentageLabel.text = "\(Int(percentage*100))%"
-        cell.remaindaysLabel.text = gsno(funding.limitAt)
+        cell.remaindaysLabel.text = setDday(start: gsno(funding.limitAt))
+        
 //        print(setDday(start: gsno(funding.limitAt)))
+        
         cell.percentageView.drawPercentage(Double(percentage),
                                            UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))

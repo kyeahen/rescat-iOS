@@ -33,7 +33,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         if ( keyboardStatus ) {
             keyboardStatus = false ;
             UIView.animate(withDuration: 0.1) {
-                self.view.frame.origin.y += 260
+                self.view.frame.origin.y += 210
             }
         }
         textField.resignFirstResponder()
@@ -41,11 +41,10 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
 
-        print("keyboard height \(KeyboardService.keyboardHeight())")
         if ( !keyboardStatus ) {
             keyboardStatus = true ;
             UIView.animate(withDuration: 0.1) {
-                self.view.frame.origin.y -= 260
+                self.view.frame.origin.y -= 210
             }
         }
         textField.becomeFirstResponder()
@@ -56,7 +55,7 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
             self.simpleAlert(title: "error", message: "메시지를 입력하세요")
         }
         if ( keyboardStatus ) {
-            keyboardStatus = false ; self.view.frame.origin.y += 270
+            keyboardStatus = false ; self.view.frame.origin.y += 260
             commentTextField.resignFirstResponder()
         }
         let comment = gsno(commentTextField.text)

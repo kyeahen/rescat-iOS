@@ -146,6 +146,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //  내 도시로 focus
                 let naverRequest = NaverMapRequest(self)
                 self.mapView.delegate = self
+                self.mapView.settings.rotateGestures = false
+                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
                 naverRequest.requestGeocoder(myRegions[0])
                 
             } else if ( role == "MEMBER" ) {
@@ -383,6 +385,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             print("creaeted")
             detailViewCreated = true
             detailView = UIView()
+            detailView.layer.borderColor = UIColor.gray.cgColor
+            detailView.layer.borderWidth = 0.2
             detailView.backgroundColor = UIColor.black
             self.view.addSubview(detailView)
             detailView.snp.makeConstraints { (make) in
@@ -395,6 +399,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 // 배식소
             
                 let detailContents = DetailView2(frame: detailView.frame)
+                detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
                 detailContents.nameLabel.text = gsno(data.name)
@@ -411,6 +416,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             } else if category == 1 {
                 // 병원
                 let detailContents = DetailView3(frame: detailView.frame)
+                detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
                 detailContents.nameLabel.text = gsno(data.name)
@@ -429,6 +435,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             } else {
                 // 고양이
                 let detailContents = DetailView(frame: detailView.frame)
+                detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 //
                 
@@ -460,6 +467,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 // 배식소
                     print("배식소")
                 let detailContents = DetailView2(frame: detailView.frame)
+                detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
                 detailContents.nameLabel.text = gsno(data.name)
@@ -478,6 +486,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
               print("a병원")
                 
                 let detailContents = DetailView3(frame: detailView.frame)
+                detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
                 detailContents.nameLabel.text = gsno(data.name)
@@ -494,6 +503,22 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             } else {
                 // 고양이
              
+                let detailContents = DetailView(frame: detailView.frame)
+                detailContents.drawShadow(10.0)
+                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                //
+                
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
+                    
+                }
+
             }
             
            
@@ -526,7 +551,7 @@ extension MapViewController{
 //            loadMapView(latitude: Double(coordinate[0]), longitude: Double(coordinate[1]), zoom: 15.0)
 //            coordinate
 //            print("GEOCODE RESULT \(Float(coordinate[0]))")
-            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 16.0)
+            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 17.0)
         } else if ( code == APIServiceCode.MARKER_LIST ) {
             markerList = datas as! [MarkerModel]
             makeMarkerView(markerList)

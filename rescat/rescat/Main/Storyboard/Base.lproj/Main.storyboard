@@ -564,7 +564,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Klw-cr-Mmo">
-                                <rect key="frame" x="0.0" y="20" width="375" height="533"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FundingCommentTableViewCell" rowHeight="300" id="QZX-v8-GlX" customClass="FundingCommentTableViewCell" customModule="rescat" customModuleProvider="target">
@@ -657,7 +657,7 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   댓글을 남겨보세요 :)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TVb-kL-K2A">
-                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="504" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jvc-QD-XUb"/>
@@ -667,7 +667,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMN-Sr-Wi8">
-                                <rect key="frame" x="329" y="553" width="46" height="50"/>
+                                <rect key="frame" x="329" y="504" width="46" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="Ei1-Zs-9gt"/>
                                 </constraints>
@@ -682,7 +682,7 @@
                             <constraint firstItem="UlD-dN-UWk" firstAttribute="trailing" secondItem="TMN-Sr-Wi8" secondAttribute="trailing" id="8f7-2E-HVe"/>
                             <constraint firstItem="Klw-cr-Mmo" firstAttribute="top" secondItem="UlD-dN-UWk" secondAttribute="top" id="CuR-gc-BMS"/>
                             <constraint firstItem="Klw-cr-Mmo" firstAttribute="leading" secondItem="UlD-dN-UWk" secondAttribute="leading" id="DRL-3T-rFc"/>
-                            <constraint firstItem="UlD-dN-UWk" firstAttribute="bottom" secondItem="TVb-kL-K2A" secondAttribute="bottom" constant="64" id="JSh-va-UOM"/>
+                            <constraint firstItem="UlD-dN-UWk" firstAttribute="bottom" secondItem="TVb-kL-K2A" secondAttribute="bottom" constant="113" id="JSh-va-UOM"/>
                             <constraint firstItem="UlD-dN-UWk" firstAttribute="trailing" secondItem="Klw-cr-Mmo" secondAttribute="trailing" id="KeT-3W-u6n"/>
                             <constraint firstItem="TMN-Sr-Wi8" firstAttribute="top" secondItem="TVb-kL-K2A" secondAttribute="top" id="LFw-HX-YXz"/>
                             <constraint firstItem="TVb-kL-K2A" firstAttribute="leading" secondItem="UlD-dN-UWk" secondAttribute="leading" id="Mg4-ZH-Sfg"/>
@@ -742,7 +742,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzC-lC-XFa">
-                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="504" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8GD-rs-u8T"/>
@@ -760,7 +760,7 @@
                             <constraint firstItem="RQZ-x8-e6B" firstAttribute="trailing" secondItem="KvR-lH-mmv" secondAttribute="trailing" id="E18-rJ-q8b"/>
                             <constraint firstItem="KvR-lH-mmv" firstAttribute="bottom" secondItem="RQZ-x8-e6B" secondAttribute="bottom" id="Okh-n8-7rz"/>
                             <constraint firstItem="KvR-lH-mmv" firstAttribute="leading" secondItem="RQZ-x8-e6B" secondAttribute="leading" id="Tcv-1X-CCx"/>
-                            <constraint firstItem="rzC-lC-XFa" firstAttribute="bottom" secondItem="RQZ-x8-e6B" secondAttribute="bottom" constant="-64" id="X63-bV-ZBg"/>
+                            <constraint firstItem="rzC-lC-XFa" firstAttribute="bottom" secondItem="RQZ-x8-e6B" secondAttribute="bottom" constant="-113" id="X63-bV-ZBg"/>
                             <constraint firstItem="RQZ-x8-e6B" firstAttribute="trailing" secondItem="rzC-lC-XFa" secondAttribute="trailing" id="aaj-hI-G5D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RQZ-x8-e6B"/>
@@ -1359,17 +1359,17 @@
             <objects>
                 <viewController storyboardIdentifier="FundingRegisterVC2" id="JnV-vA-oQ0" customClass="FundingRegisterVC2" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OAn-ca-IIz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="752"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="762"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJY-mE-xkl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="732"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="742"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVS-Db-eN8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="752"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="762"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="752" id="qTi-r5-RQc"/>
+                                            <constraint firstAttribute="height" constant="762" id="qTi-r5-RQc"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyk-Gd-kQR">
@@ -1413,7 +1413,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9G-Nm-GiL">
-                                        <rect key="frame" x="0.0" y="703" width="375" height="49"/>
+                                        <rect key="frame" x="0.0" y="713" width="375" height="49"/>
                                         <color key="backgroundColor" red="0.76078431369999999" green="0.59999999999999998" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="8YE-Id-Atn"/>
@@ -1437,7 +1437,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xu8-ur-OFj">
-                                        <rect key="frame" x="0.0" y="285" width="375" height="418"/>
+                                        <rect key="frame" x="0.0" y="285" width="375" height="428"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8da-xA-tvS">
                                                 <rect key="frame" x="24" y="57" width="327" height="135"/>
@@ -1560,7 +1560,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pg0-Vg-HxW"/>
                     </view>
-                    <size key="freeformSize" width="375" height="752"/>
+                    <size key="freeformSize" width="375" height="762"/>
                     <connections>
                         <outlet property="accountTextField" destination="b24-BE-JqB" id="eul-uK-nXY"/>
                         <outlet property="bankNameTextField" destination="Pnb-pU-y6t" id="84j-ph-2mo"/>
@@ -1931,7 +1931,7 @@
         <!--Navigation Controller-->
         <scene sceneID="sLd-Cc-1t2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KRL-zP-Itv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="registerComplete" automaticallyAdjustsScrollViewInsets="NO" id="KRL-zP-Itv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rbs-xP-7gq">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

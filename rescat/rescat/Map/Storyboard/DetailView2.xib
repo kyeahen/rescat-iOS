@@ -46,7 +46,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-gL-A6l">
-                    <rect key="frame" x="184" y="42" width="174" height="84"/>
+                    <rect key="frame" x="184" y="34" width="174" height="92"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -68,7 +68,7 @@
                 <constraint firstItem="FlN-7e-i55" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="LtH-kI-jW4"/>
                 <constraint firstItem="ZhZ-cw-tEg" firstAttribute="leading" secondItem="FlN-7e-i55" secondAttribute="trailing" constant="21" id="fMB-Wf-FGg"/>
                 <constraint firstItem="UOe-gL-A6l" firstAttribute="leading" secondItem="ZhZ-cw-tEg" secondAttribute="trailing" constant="22" id="knB-Pq-xCt"/>
-                <constraint firstItem="UOe-gL-A6l" firstAttribute="top" secondItem="q3t-Bu-KMY" secondAttribute="bottom" constant="8" id="lED-1B-WSu"/>
+                <constraint firstItem="UOe-gL-A6l" firstAttribute="top" secondItem="q3t-Bu-KMY" secondAttribute="bottom" id="lED-1B-WSu"/>
                 <constraint firstItem="q3t-Bu-KMY" firstAttribute="leading" secondItem="FlN-7e-i55" secondAttribute="trailing" constant="21" id="nnD-gM-gZ5"/>
                 <constraint firstItem="Ttg-8P-a6Z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="noy-nB-znE"/>
                 <constraint firstItem="q3t-Bu-KMY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="oRA-kK-Bzg"/>

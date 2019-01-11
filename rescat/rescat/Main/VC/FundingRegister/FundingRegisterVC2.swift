@@ -221,8 +221,9 @@ class FundingRegisterVC2 : UIViewController , UITextFieldDelegate , UITextViewDe
             bankNameList = datas as! [FundingBankModel]
             
         } else if code == APIServiceCode.FUNDING_DETAIL_POST {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterCompleteVC") as! FundingRegisterCompleteVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = storyboard?.instantiateViewController(withIdentifier: "registerComplete") as! UINavigationController
+            self.present(vc , animated: true)
+//            self.navigationController?.pushViewController(vc, animated: true)
 
         } else if code == APIServiceCode.SERVER_ERROR {
             self.simpleAlert(title: "error", message: "server error")

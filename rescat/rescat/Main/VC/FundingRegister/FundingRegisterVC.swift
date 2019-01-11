@@ -168,8 +168,14 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == representCollectionView {
+            if ( imageArr.count == 3 ) {
+                return 3
+            }
             return imageArr.count
         } else {
+            if ( imageArr0.count == 4) {
+                return 3
+            }
             return imageArr0.count
         }
         
