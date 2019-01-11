@@ -1,28 +1,162 @@
 PODS:
+  - AACarousel (1.1.1)
   - Alamofire (4.7.3)
+  - Firebase/Core (5.13.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.3.0)
+  - Firebase/CoreOnly (5.13.0):
+    - FirebaseCore (= 5.1.8)
+  - Firebase/Messaging (5.13.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.2.1)
+  - FirebaseAnalytics (5.3.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (~> 5.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.1.0)
+  - FirebaseCore (5.1.8):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.3.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseMessaging (3.2.1):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
+  - GoogleAppMeasurement (5.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.6):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.6)
+  - GoogleUtilities/Logger (5.3.6):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.6):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.6):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.6)"
+  - GoogleUtilities/Reachability (5.3.6):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.6):
+    - GoogleUtilities/Logger
+  - HMSegmentedControl (1.5.3)
+  - ImageSlideshow (1.7.0):
+    - ImageSlideshow/Core (= 1.7.0)
+  - ImageSlideshow/Core (1.7.0)
+  - ImageSlideshow/Kingfisher (1.7.0):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - Kingfisher (4.10.1)
+  - MXPagerView (0.2.1)
+  - MXParallaxHeader (0.6.1)
+  - MXSegmentedPager (3.3.0):
+    - HMSegmentedControl (= 1.5.3)
+    - MXPagerView (= 0.2.1)
+    - MXParallaxHeader (= 0.6.1)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - Protobuf (3.6.1)
   - SnapKit (4.2.0)
+  - SwiftGifOrigin (1.6.1)
   - SwiftyJSON (4.2.0)
+  - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
+  - AACarousel
   - Alamofire
+  - Firebase/Core
+  - Firebase/Messaging
+  - GoogleMaps
+  - GooglePlaces
+  - ImageSlideshow (~> 1.6)
+  - ImageSlideshow/Kingfisher
   - Kingfisher
+  - MXSegmentedPager
   - SnapKit
+  - SwiftGifOrigin (~> 1.6.1)
   - SwiftyJSON
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AACarousel
     - Alamofire
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleAppMeasurement
+    - GoogleMaps
+    - GooglePlaces
+    - GoogleUtilities
+    - HMSegmentedControl
+    - ImageSlideshow
     - Kingfisher
+    - MXPagerView
+    - MXParallaxHeader
+    - MXSegmentedPager
+    - nanopb
+    - Protobuf
     - SnapKit
+    - SwiftGifOrigin
     - SwiftyJSON
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
+  AACarousel: e0dbd2d3153c56c36df8aa282553f20fc88e132b
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Firebase: 6df9a6114bc9f106a98fe83d5438d4d9833c2019
+  FirebaseAnalytics: 63202d2665de4e6adcbdce189135255d8b5962ba
+  FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
+  FirebaseCore: fba2bfaa691c49028309b92e4dd37cc4b5512fbe
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  FirebaseMessaging: 0f14a264b0d7f867e8eff5d3556bc5d0d4e57888
+  GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
+  ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  MXPagerView: ede184b5191b2ed689ccf05a750a9978cce42414
+  MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
+  MXSegmentedPager: a35ebaf939e1629f24db3bb26653c1c557362f59
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 346518cdc3730a236212afb5867e85852def7072
+PODFILE CHECKSUM: c4ab964bf66c7faa1dd29d88579a0c243267d977
 
 COCOAPODS: 1.6.0.beta.2

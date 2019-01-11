@@ -10,5 +10,15 @@ target 'rescat' do
     pod 'SwiftyJSON'
     pod 'Kingfisher'
     pod 'SnapKit'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'AACarousel'
+    pod 'MXSegmentedPager'
+    pod 'ImageSlideshow', '~> 1.6'
+    pod 'ImageSlideshow/Kingfisher'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'UITextView+Placeholder'
+    pod 'SwiftGifOrigin', '~> 1.6.1'
 
 end

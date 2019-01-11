@@ -11,6 +11,7 @@
 Pods/
 *.xcworkspace
 !Podfile.lock
+MapAPIKey
 
 ### Objective-C ###
 # Xcode
