@@ -1745,6 +1745,7 @@
                     <size key="freeformSize" width="375" height="804"/>
                     <connections>
                         <outlet property="addressLabel" destination="M32-Wm-Z3y" id="KQN-5K-otJ"/>
+                        <outlet property="adoptButton" destination="OSx-O4-VCB" id="2H9-OC-que"/>
                         <outlet property="etcLabel" destination="qsE-Wu-3i3" id="wR4-bU-Vmy"/>
                         <outlet property="houseLabel" destination="aqH-l8-BcC" id="tAr-G7-TVA"/>
                         <outlet property="jobLabel" destination="kx0-O2-N7a" id="opN-G7-GSB"/>
@@ -1752,6 +1753,7 @@
                         <outlet property="phoneLabel" destination="aOv-lM-VfM" id="jKm-DT-zRj"/>
                         <outlet property="statusLabel" destination="quP-LK-Fcm" id="QeS-1P-n2H"/>
                         <outlet property="tableView" destination="L51-Lp-j24" id="ZRG-79-jc3"/>
+                        <outlet property="titleLabel" destination="NPy-eQ-xsF" id="LIH-jG-u7V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHC-3E-BHD" userLabel="First Responder" sceneMemberID="firstResponder"/>

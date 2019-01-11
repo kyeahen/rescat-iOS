@@ -151,6 +151,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             print("Message ID: \(messageID)")
         }
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SomeNotification"), object:nil)
+        
         // Print full message.
         print(userInfo)
         

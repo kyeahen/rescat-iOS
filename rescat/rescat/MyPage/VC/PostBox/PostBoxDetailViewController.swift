@@ -19,20 +19,32 @@ class PostBoxDetailViewController: UIViewController {
     @IBOutlet weak var houseLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var etcLabel: UILabel!
+    @IBOutlet weak var adoptButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    var idx: Int = 0
+    var idx: Int = 0 //해당 알림 인덱스
+    var applyIdx: Int = 0 //신청서 인덱스
+    var type: Int = 0 //입양, 임보
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setBackBtn()
         getPostDetail(_idx: idx)
+        
+        if type == 0 {
+            adoptButton.setTitle("입양 완료", for: .normal)
+            titleLabel.text = "입양 신청서가 도착했습니다."
+        } else {
+            adoptButton.setTitle("임시보호 완료", for:  .normal)
+            titleLabel.text = "임시보호 신청사가 도착했습니다."
+        }
 
     }
 
     //MARK: 입양 완료 액션
     @IBAction func adoptAction(_ sender: UIButton) {
-        postAccept(_idx: idx)
+        postAccept(_idx: applyIdx)
     }
     
 
@@ -56,6 +68,7 @@ extension PostBoxDetailViewController {
                     self.phoneLabel.text = resResult.careApplication.phone
                     self.jobLabel.text = resResult.careApplication.job
                     self.addressLabel.text = resResult.careApplication.address
+                    self.type = resResult.careApplication.type
                     
                     
                     let house = resResult.careApplication.houseType
@@ -107,6 +120,9 @@ extension PostBoxDetailViewController {
                 self.simpleAlert(title: "", message: "신청을 승낙하셨습니다")
                 break
                 
+            case .badRequest:
+                self.simpleAlert(title: "", message: "ddd")
+                break
                 
             case .accessDenied:
                 self.simpleAlert(title: "", message: "신청 승낙에 대한 권한이 없습니다.")

@@ -9,7 +9,7 @@
 import Foundation
 
 struct PostBoxDetailData: Codable {
-    let targetIdx: Int
+    let targetIdx: Int //글번호
     let targetType: String
     let careApplication: CareApplication
 }
