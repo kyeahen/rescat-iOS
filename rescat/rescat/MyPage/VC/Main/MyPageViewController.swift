@@ -26,6 +26,8 @@ class MyPageViewController: UIViewController{
             tableView.reloadData()
         }
     }
+    
+    static var careCheck: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +83,7 @@ class MyPageViewController: UIViewController{
 
             } else {
                 self.simpleAlert(title: "", message: "케어테이커 신청 대기 상태입니다")
+                MyPageViewController.careCheck = 1
             }
 
         } else { //회원가입로 이동 - 게스트
