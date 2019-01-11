@@ -32,5 +32,5 @@ class UserInfo {
     static let notMessage = "회원가입을 하고 케어테이커 인증을 하면, \n우리 동네 길냥이, 배식소, 병원 정보를\n한 눈에 확인할 수 있어요."
     static let memberMessage = "케어테이커 인증을 하면,\n우리 동네 길냥이, 배식소, 병원 정보를\n한 눈에 확인할 수 있어요."
 
-    
+     
 }

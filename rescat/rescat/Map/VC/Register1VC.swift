@@ -106,7 +106,7 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isHidden = true
     }
     @objc func choiceGender ( _ sender : UIButton! ){
         sex = sender.tag
@@ -150,9 +150,12 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
             type1Button.setTitleColor(brown, for: .normal) ; type2Button.setTitleColor(UIColor.white, for: .normal)
             type1Button.backgroundColor = UIColor.white; type2Button.backgroundColor = brown
             hiddenView.isHidden = true ;
-            scrollView.isScrollEnabled = false
+//            scrollView.isScrollEnabled = false
             propertyTextField.text = ""; nameTextField.text = "" ; nameTextField.placeholder = "배식소 이름을 14자 이내로 적어주세요."
-            scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 607)
+            
+            scrollView.contentSize = CGSize(width: self.view.frame.width, height: 607)
+
+            self.view.layoutIfNeeded()
 //            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.scrollView.frame.height)
 //
 //            scrollView.
@@ -166,7 +169,8 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
         
             //            representImageView.image = UIImage(named: String)
             propertyTextField.text = ""; nameTextField.text = "" ; nameTextField.placeholder = "고양이 이름을 14자 이내로 적어주세요."
-            scrollView.frame = CGRect(x: 0, y: 0, width: 375, height: 1000)
+            scrollView.contentSize = CGSize(width: self.view.frame.width, height: 847)
+
 //            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.scrollView.frame.height - 250)
 
         }

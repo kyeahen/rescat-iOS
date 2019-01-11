@@ -162,7 +162,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+//        self.tabBarController?.tabBar.isHidden = false
         
         guard let role = UserDefaults.standard.string(forKey: "role") else { return }
 

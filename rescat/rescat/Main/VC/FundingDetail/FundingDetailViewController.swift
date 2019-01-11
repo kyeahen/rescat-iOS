@@ -79,10 +79,12 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
                 cell.currentAmountLabel.text = "\(gino(fundingContent.currentAmount).getMoney())원"
                 let percentage = Float(gino(fundingContent.currentAmount)) / Float(gino(fundingContent.goalAmount))
                 cell.percentageLabel.text = "\(Int(percentage*100))%"
-//                UIView.animate(withDuration: 1.0) {
-//                    cell.perentageView.setProgress(percentage, animated: true)
-//                }
-//                cell.percentageView.drawPercentage(Double(percentage), UIColor.rescatWhite(), UIColor.rescatPink())
+                UIView.animate(withDuration: 1.0) {
+                    cell.perentageView.setProgress(percentage, animated: true)
+                }
+                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
+                
+                cell.remainDateLabel.text = setDday(start: gsno(fundingContent.limitAt) ?? "" )
 //                cell.dueDateLabel.text = gsno(fundingContent.limitAt)
                 cell.selectionStyle = .none
                 print("---------------")
@@ -150,5 +152,8 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
 
             testTable.reloadData()
         } else { }
+        
     }
+    
+    
 }

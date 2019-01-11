@@ -35,7 +35,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
  
         let request = FundingRequest(self)
         let request2 = CarePostRequest(self)
-       self.tabBarController?.tabBar.isHidden = false
+//       self.tabBarController?.tabBar.isHidden = false
 //        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
 //        if ( token == "-1" ){
 //            print("테스트---비로그인")

@@ -100,7 +100,7 @@ class FundingRegisterVC2 : UIViewController , UITextFieldDelegate , UITextViewDe
         super.viewWillAppear(animated)
         fundingRequest = FundingRequest(self)
         fundingRequest.getBankList()
-        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isHidden = true
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
