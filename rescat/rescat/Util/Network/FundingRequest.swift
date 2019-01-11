@@ -311,20 +311,14 @@ class FundingRequest : APIServie {
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseJSON { (res) in
             switch res.result {
             case .success:
-                guard let statusCode = res.response?.statusCode else { return }
-                if statusCode == 500 {
-                    self.vc.requestCallback(1, APIServiceCode.SERVER_ERROR)
-                } else if ( statusCode == 200){
-                    
-                    
-                }
-                
+          
                 guard let code = res.response?.statusCode else { return }
                 
                 if code == 200 {
                     self.vc.requestCallback(10, APIServiceCode.FUNDING_MIELGE_POST)
                 } else if code == 400 {
                     print("마일리지 부족")
+                    self.vc.requestCallback(10, APIServiceCode.EXCEPTION_ERROR1)
                 } else if code == 500 {
                     print("마일리지 서버에러")
                     self.vc.requestCallback(-1, APIServiceCode.SERVER_ERROR)

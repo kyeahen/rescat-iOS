@@ -27,14 +27,31 @@ class FundingListViewController : UIViewController , APIServiceCallback{
         super.viewDidLoad()
         self.setBackBtn()
         self.setNaviTitle(name: "후원할래요")
-        let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-            style: .plain,
-            target: self,
-            action: #selector(registerFunding))
         
-        navigationItem.rightBarButtonItem = registerBtn
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
-        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+        
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+        
+        if ( token == "-1" )
+        { }
+        else {
+            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+            if role == "MEMBER" {}
+            else {
+                let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+                    style: .plain,
+                    target: self,
+                    action: #selector(registerFunding))
+                navigationItem.rightBarButtonItem = registerBtn
+                navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
+                navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+
+                
+            }
+        }
+            
+            
+        
+        
 
         listTableView.delegate = self
         listTableView.dataSource = self
@@ -48,29 +65,10 @@ class FundingListViewController : UIViewController , APIServiceCallback{
     @objc func registerFunding(){
 
         
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        
-        print("register \(token)")
-        if ( token == "-1" )
-        {
-            self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
-        } else {
-            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-            print("role \(role)")
-            if role == "MEMBER" {
-                print("~~~member")
-                self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
-                return
-            } else {
-                print("~~~caretaker")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+        self.navigationController?.pushViewController(vc, animated: true)
 
-                let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            }
-
-            
-        }
+       
     }
     @objc func loadViewAction(_ sender: UIButton!){
         if ( sender.tag == 0 ) {
@@ -130,8 +128,9 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
 }
 extension FundingListViewController {
     func requestCallback(_ datas: Any, _ code: Int) {
-        fundingList = datas as! [FundingModel]
+        guard let flist = datas as? [FundingModel] else { return }
+        fundingList = flist
         print(fundingList.count)
         listTableView.reloadData()
-    } 
+    }
 }

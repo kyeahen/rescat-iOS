@@ -28,7 +28,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     var buttons = [UIButton]()
 
-    var detailViewHeight = 140   // temp value
+//    var detailViewHeight = 140   // temp value
     var detailViewCreated = false
     var detailView : UIView!; var detailImageView : UIImageView!; var detailNameView : UILabel!
     var detailBirthView : UILabel!; var detailPropertyView : UILabel!; var detailTextView : UILabel!
@@ -45,6 +45,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 //    var detailView0 : DetailView!
 //    var detailView1 : DetailView2!
 //    var detailView2 : DetailView3!
+    var focusMap : MarkerModel!
     
     override func viewDidLoad() {
         
@@ -167,16 +168,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         super.viewWillAppear(animated)
 //        self.tabBarController?.tabBar.isHidden = false
         
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        if ( token != "-1"){
-//            let
+        if focusMap != nil {
+            loadMapView(latitude: gdno(focusMap.lat), longitude: gdno(focusMap.lng), zoom: 16.0)
         }
-        if ( role == "CARETAKER" ) {
-            let res = UserInfo.getLocation()
-
-        } else { }
 
       
     }
@@ -228,7 +222,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         actionSheet.addAction(UIAlertAction(title: "수정", style: .default, handler: { result in
             //doSomething
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "modifyVC") as! UINavigationController
-            self.simpleAlert(title: "", message: "권한이 없습니다.")
+            self.simpleAlert(title: "", message: "신고가 성공적으로 접수되었습니다.")
 //            self.present(vc, animated: true)
         }))
         actionSheet.addAction(UIAlertAction(title: "신고",
@@ -271,6 +265,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @objc func searchButtonAction(_ sender : UIBarButtonItem!){
         print("search")
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        vc.mapDatas = markerList
         self.navigationController?.pushViewController(vc, animated: true)
 //        self.searchButton.isHidden = false
 //        self.searchbar.resignFirstResponder()
@@ -322,7 +317,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 marker.icon = UIImage(named: "icMapFood"); break
 
             case 1:
-                marker.icon = UIImage(named: "icMapHospital"); break
+                marker.icon = UIImage(named: "icMapHospital");
+
             case 2:
                 marker.icon = UIImage(named: "icMapCat");
                 let circleCenter = position
@@ -330,6 +326,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 circ.fillColor = UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 0.2)
                 circ.strokeColor = .none
                 circ.map = mapView
+
                 break
             default:
                 marker.icon = UIImage(named: "icMapHospital"); break
@@ -337,7 +334,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
 
             marker.position = position
-            marker.title = "\(gino(data[i].category))"; marker.snippet = "name"
+            marker.snippet = gsno(data[i].name)
             marker.map = mapView
             
 
@@ -441,7 +438,22 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //
                 
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
-
+                
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.propertyLabel.text = gsno(data.etc)
+                detailContents.ageLabel.text = gsno(data.age)
+                if gino(data.sex) == 0 {
+                    detailContents.sexLabel.text = "남"
+                } else {
+                    detailContents.sexLabel.text = "여"
+                }
+                if gino(data.tnr) == 0 {
+                    detailContents.TRNLabel.text = "해당없음"
+                } else if gino(data.tnr) == 1 {
+                    detailContents.TRNLabel.text = "완료"
+                } else {
+                    detailContents.TRNLabel.text = "모름"
+                }
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
                     make.left.equalTo(self.detailView.snp.left)
@@ -491,7 +503,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
                 detailContents.nameLabel.text = gsno(data.name)
-                detailContents.propertyLabel.text = gsno(data.etc)
+                detailContents.propertyLabel.text = gsno(data.address)
+                detailContents.saleLabel.text = gsno(data.etc)
                 
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
@@ -510,6 +523,22 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //
                 
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.propertyLabel.text = gsno(data.etc)
+                detailContents.ageLabel.text = gsno(data.age)
+                if gino(data.sex) == 0 {
+                    detailContents.sexLabel.text = "남"
+                } else {
+                    detailContents.sexLabel.text = "여"
+                }
+                if gino(data.tnr) == 0 {
+                    detailContents.TRNLabel.text = "해당없음"
+                } else if gino(data.tnr) == 1 {
+                    detailContents.TRNLabel.text = "완료"
+                } else {
+                    detailContents.TRNLabel.text = "모름"
+                }
                 
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
@@ -552,7 +581,7 @@ extension MapViewController{
 //            loadMapView(latitude: Double(coordinate[0]), longitude: Double(coordinate[1]), zoom: 15.0)
 //            coordinate
 //            print("GEOCODE RESULT \(Float(coordinate[0]))")
-            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 17.0)
+            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
         } else if ( code == APIServiceCode.MARKER_LIST ) {
             markerList = datas as! [MarkerModel]
             makeMarkerView(markerList)

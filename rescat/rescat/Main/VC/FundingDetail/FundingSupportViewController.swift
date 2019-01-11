@@ -44,8 +44,7 @@ class FundingSupportViewController : UIViewController, APIServiceCallback {
             let request = FundingRequest(self)
             request.postFundingMileage(FundingDetailSegmentController.fundingIdx, mileage: gino(amount))
 //            let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportCompleteViewController") as! FundingSupportCompleteViewController
-            let vc = storyboard?.instantiateViewController(withIdentifier: "supportComplete") as! UINavigationController
-            self.present(vc, animated: true)
+        
         }
     }
     
@@ -72,9 +71,11 @@ class FundingSupportViewController : UIViewController, APIServiceCallback {
     }
     func requestCallback(_ datas: Any, _ code: Int) {
         if code == APIServiceCode.FUNDING_MIELGE_POST {
-            self.simpleAlert(title: "success", message: "후원 성공 - 어디로 돌아가지 ?")
+//            self.simpleAlert(title: "success", message: "후원 성공 - 어디로 돌아가지 ?")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "supportComplete") as! UINavigationController
+            self.present(vc, animated: true)
         } else if code == APIServiceCode.EXCEPTION_ERROR1 {
-            self.simpleAlert(title: "error", message: "마일리지 부족함")
+            self.simpleAlert(title: "", message: "마일리지가 부족합니다.")
         }
     }
     

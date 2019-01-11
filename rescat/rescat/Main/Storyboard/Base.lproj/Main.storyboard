@@ -748,7 +748,7 @@
                                     <constraint firstAttribute="height" constant="50" id="8GD-rs-u8T"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="펀딩 참여하기">
+                                <state key="normal" title="후원할래요">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
