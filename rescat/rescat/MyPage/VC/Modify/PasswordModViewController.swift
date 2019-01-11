@@ -167,6 +167,10 @@ extension PasswordModViewController {
                 self.simpleAlert(title: "", message: "회원가입 후, 이용 가능합니다.")
                 break
                 
+            case .duplicated: //409
+                self.simpleAlert(title: "", message: "현재 사용 중인 비밀번호입니다.")
+                break
+                
             case .networkFail :
                 self.networkErrorAlert()
                 break

@@ -26,6 +26,10 @@ class SupportingViewController: UIViewController {
         getSupportList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getSupportList()
+    }
+    
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self

@@ -24,6 +24,13 @@ class IntroResisterViewController: UIViewController {
         adoptButton.makeRounded(cornerRadius: 9)
         supportButton.makeRounded(cornerRadius: 9)
     }
+    
+    //MARK: 입양/임보 글작성
+    @IBAction func adoptAction(_ sender: UIButton) {
+        let adoptVC = UIStoryboard(name: "Adoption", bundle: nil).instantiateViewController(withIdentifier: RegisterAdoptViewController.reuseIdentifier)
+        self.navigationController?.pushViewController(adoptVC, animated: true)
+        
+    }
 
     //MARK: 후원 글작성 액션
     @IBAction func supportAction(_ sender: UIButton) {
