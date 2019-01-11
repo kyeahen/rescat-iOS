@@ -41,10 +41,10 @@ class RegisterAdoptViewController: UIViewController, UITextFieldDelegate, UIText
     var tnrTag: Int = 0
     var vacTag: Int = 0
     
-    var typeCheck: Int = 0
-    var sexCheck: Int = 0
-    var tnrCheck: Int = 0
-    var vacCheck: Int = 0
+    var typeCheck: Int = 1
+    var sexCheck: Int = 1
+    var tnrCheck: Int = 1
+    var vacCheck: Int = 1
     
     var imageArr: [UIImage] = [UIImage(named: "icAddPhotoOn") ?? UIImage()] {
         willSet {
@@ -68,6 +68,7 @@ class RegisterAdoptViewController: UIViewController, UITextFieldDelegate, UIText
         setCustomView()
         setTextField()
         setTextView()
+        setFirstButton()
         
         hideKeyboardWhenTappedAround()
         
@@ -75,6 +76,26 @@ class RegisterAdoptViewController: UIViewController, UITextFieldDelegate, UIText
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         
+    }
+    
+    func setFirstButton() {
+        typeButton[0].setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+        typeButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        sexButton[0].setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+        sexButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        tnrButton[0].setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+        tnrButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[0].setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+        vacButton[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[2].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[3].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        vacButton[4].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        
+        dateLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        startTextField.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        endTextField.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        startTextField.isUserInteractionEnabled = false
+        endTextField.isUserInteractionEnabled = false
     }
     
     func setTextField() {

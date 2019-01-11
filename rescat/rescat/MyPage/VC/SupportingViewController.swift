@@ -93,7 +93,8 @@ extension SupportingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingDetailSegmentController.reuseIdentifier) as! FundingDetailSegmentController
         
-        detailVC.idx = supports[indexPath.row].idx
+        FundingDetailSegmentController.fundingIdx = supports[indexPath.row].idx
+        FundingDetailSegmentController.category = supports[indexPath.row].category
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

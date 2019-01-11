@@ -99,7 +99,8 @@ extension MyWriteSupportViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingDetailSegmentController.reuseIdentifier) as! FundingDetailSegmentController
         
-        detailVC.idx = mySupports[indexPath.row].idx
+        FundingDetailSegmentController.fundingIdx = mySupports[indexPath.row].idx
+        FundingDetailSegmentController.category = mySupports[indexPath.row].category
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

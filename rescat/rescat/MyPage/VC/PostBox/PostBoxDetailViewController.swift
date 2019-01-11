@@ -31,14 +31,7 @@ class PostBoxDetailViewController: UIViewController {
 
         setBackBtn()
         getPostDetail(_idx: idx)
-        
-        if type == 0 {
-            adoptButton.setTitle("입양 완료", for: .normal)
-            titleLabel.text = "입양 신청서가 도착했습니다."
-        } else {
-            adoptButton.setTitle("임시보호 완료", for:  .normal)
-            titleLabel.text = "임시보호 신청사가 도착했습니다."
-        }
+
 
     }
 
@@ -68,7 +61,7 @@ extension PostBoxDetailViewController {
                     self.phoneLabel.text = resResult.careApplication.phone
                     self.jobLabel.text = resResult.careApplication.job
                     self.addressLabel.text = resResult.careApplication.address
-                    self.type = resResult.careApplication.type
+                    self.type = self.gino(resResult.applicationType)
                     
                     
                     let house = resResult.careApplication.houseType
@@ -87,6 +80,14 @@ extension PostBoxDetailViewController {
                         self.statusLabel.text = "있음"
                     } else {
                         self.statusLabel.text = "없음"
+                    }
+                    
+                    if resResult.applicationType == 0 {
+                        self.adoptButton.setTitle("입양 완료", for: .normal)
+                        self.titleLabel.text = "입양 신청서가 도착했습니다."
+                    } else {
+                        self.adoptButton.setTitle("임시보호 완료", for:  .normal)
+                        self.titleLabel.text = "임시보호 신청서가 도착했습니다."
                     }
 
                     self.etcLabel.text = resResult.careApplication.finalWord
@@ -117,11 +118,19 @@ extension PostBoxDetailViewController {
             
             switch result {
             case .networkSuccess(_ ):
-                self.simpleAlert(title: "", message: "신청을 승낙하셨습니다")
+                if self.type == 0 {
+                    self.simpleAlert(title: "", message: "입양이 완료되었습니다.")
+                } else {
+                    self.simpleAlert(title: "", message: "임시보호가 완료되었습니다.")
+                }
                 break
                 
             case .badRequest:
-                self.simpleAlert(title: "", message: "ddd")
+                if self.type == 0 {
+                    self.simpleAlert(title: "", message: "이미 입양이 완료된 고양이입니다.")
+                } else {
+                    self.simpleAlert(title: "", message: "이미 임시보호가 완료된 고양이입니다.")
+                }
                 break
                 
             case .accessDenied:
