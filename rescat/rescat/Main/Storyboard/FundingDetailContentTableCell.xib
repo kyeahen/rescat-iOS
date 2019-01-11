@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="증빙서류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBr-4N-d7Y">
-                        <rect key="frame" x="24" y="340.5" width="59" height="20.5"/>
+                        <rect key="frame" x="24" y="223.5" width="59" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="G5Z-Xx-70u"/>
                             <constraint firstAttribute="width" constant="59" id="YV9-e4-OYQ"/>
@@ -66,13 +66,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="병원 영수증 / 진단서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXM-cR-Adg">
-                        <rect key="frame" x="92" y="342" width="113" height="17"/>
+                        <rect key="frame" x="92" y="225" width="113" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ltH-7T-beV">
-                        <rect key="frame" x="27" y="389.5" width="321" height="99.5"/>
+                        <rect key="frame" x="27" y="258" width="321" height="99.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gzz-Jp-u8f">
                                 <rect key="frame" x="0.0" y="0.0" width="99.5" height="99.5"/>
@@ -89,11 +89,8 @@
                         </subviews>
                     </stackView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="고양이는 너무 귀여워" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jud-7p-AJR">
-                        <rect key="frame" x="24" y="139.5" width="327" height="150"/>
+                        <rect key="frame" x="24" y="139.5" width="327" height="33"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="150" id="Wg0-JS-P7E"/>
-                        </constraints>
                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -109,11 +106,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="OkS-i9-rcv" firstAttribute="top" secondItem="C43-11-uqv" secondAttribute="bottom" constant="15" id="03e-WU-YFS"/>
+                    <constraint firstItem="ltH-7T-beV" firstAttribute="top" secondItem="NBr-4N-d7Y" secondAttribute="bottom" constant="14" id="0UJ-cs-hYu"/>
                     <constraint firstItem="UXM-cR-Adg" firstAttribute="centerY" secondItem="NBr-4N-d7Y" secondAttribute="centerY" id="2W0-fF-lGC"/>
                     <constraint firstAttribute="trailing" secondItem="C43-11-uqv" secondAttribute="trailing" constant="20" id="4NZ-Ey-D4q"/>
                     <constraint firstAttribute="trailing" secondItem="sBH-yy-6Nc" secondAttribute="trailing" constant="24" id="CUh-RD-yZH"/>
                     <constraint firstAttribute="trailing" secondItem="Jud-7p-AJR" secondAttribute="trailing" constant="24" id="DAv-L2-Rdi"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ltH-7T-beV" secondAttribute="trailing" constant="11" id="Dmh-1t-CJ0"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ltH-7T-beV" secondAttribute="bottom" constant="10" id="Hcw-ss-sDa"/>
                     <constraint firstItem="ltH-7T-beV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="11" id="Hp8-fp-MPZ"/>
                     <constraint firstItem="hQS-Ei-4y0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="I0Y-T8-bFD"/>
                     <constraint firstItem="hQS-Ei-4y0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Mvk-yQ-BEQ"/>
@@ -125,7 +124,6 @@
                     <constraint firstItem="zRi-PP-N6J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="YpB-Rc-1Rp"/>
                     <constraint firstItem="tBa-Zs-MDj" firstAttribute="leading" secondItem="hQS-Ei-4y0" secondAttribute="trailing" constant="11" id="aDl-4l-eoi"/>
                     <constraint firstAttribute="trailing" secondItem="iA3-b5-L25" secondAttribute="trailing" constant="24" id="biT-uT-ozW"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ltH-7T-beV" secondAttribute="bottom" constant="33" id="ehw-RN-gkC"/>
                     <constraint firstItem="NBr-4N-d7Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="gjs-Rm-wQv"/>
                     <constraint firstItem="C43-11-uqv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jBN-4V-jnR"/>
                     <constraint firstItem="sBH-yy-6Nc" firstAttribute="centerY" secondItem="tBa-Zs-MDj" secondAttribute="centerY" id="jL2-Nq-gpg"/>

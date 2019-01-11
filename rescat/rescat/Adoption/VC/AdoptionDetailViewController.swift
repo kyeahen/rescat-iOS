@@ -48,6 +48,10 @@ class AdoptionDetailViewController: UIViewController {
  
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getAdoptDetail(_idx: idx)
+    }
+    
 
     
     //MARK: 하단 버튼 세팅
