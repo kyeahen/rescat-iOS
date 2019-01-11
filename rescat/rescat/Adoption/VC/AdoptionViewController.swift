@@ -22,7 +22,6 @@ class AdoptionViewController: MXSegmentedPagerController {
         setBackBtn()
         setTopTabBar()
         setCustomView()
-        hideKeyboardWhenTappedAround()
     }
 
     //MARK: 뷰 요소 커스텀 세팅
