@@ -26,6 +26,10 @@ class MyWriteAdoptViewController: UIViewController {
         getMyAdoptList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getMyAdoptList()
+    }
+    
     //MARK: 테이블 뷰 세팅
     func setTableView() {
         tableView.delegate = self

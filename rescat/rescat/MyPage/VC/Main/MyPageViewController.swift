@@ -69,7 +69,7 @@ class MyPageViewController: UIViewController{
     //MARK: 케어테이커 || 회원가입 액션
     @IBAction func buttonAction(_ sender: UIButton) {
         
-        guard let role = UserDefaults.standard.string(forKey: "role") else {return}
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
         let finished = UserDefaults.standard.bool(forKey: "isFinished") 
         
         if role == careMapping.member.rawValue { //케어테이커 인증하기로 이동 - 멤버
@@ -77,7 +77,6 @@ class MyPageViewController: UIViewController{
             if finished == true {
                 let careVC = UIStoryboard(name: "Care", bundle: nil).instantiateViewController(withIdentifier: MainCareViewController.reuseIdentifier)
                 
-
                 self.navigationController?.pushViewController(careVC, animated: true)
 
             } else {
@@ -85,9 +84,9 @@ class MyPageViewController: UIViewController{
             }
 
         } else { //회원가입로 이동 - 게스트
+            print("회원가입 액션")
             let joinVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: JoinViewController.reuseIdentifier)
            
-
             self.navigationController?.pushViewController(joinVC, animated: true)
 
         }
@@ -138,18 +137,18 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 { //활동지역
             return 1
-        } else if section == 1 {
+        } else if section == 1 { //두번째 목록
             return 2
-        } else {
+        } else { //세번째 목록
             return 4
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { //활동 지역 셀
             
             let cell = tableView.dequeueReusableCell(withIdentifier: MyAreaTableViewCell.reuseIdentifier) as! MyAreaTableViewCell
             
@@ -159,13 +158,13 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
-        else if indexPath.section == 1 {
+        else if indexPath.section == 1 { // 두번째 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: MyPageListTableViewCell.reuseIdentifier) as! MyPageListTableViewCell
             
             cell.titleLabel.text = secondArr[indexPath.row]
             
             return cell
-        } else {
+        } else { //세번째 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: MyPageListTableViewCell.reuseIdentifier) as! MyPageListTableViewCell
             
             cell.titleLabel.text = thirdArr[indexPath.row]
@@ -178,9 +177,9 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         let role = gsno(UserDefaults.standard.string(forKey: "role"))
         
-        if section == 0 {
+        if section == 0 { 
             return 0
-        } else if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+        } else if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
             return 47
         } else {
             return 0
@@ -193,20 +192,20 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         let role = gsno(UserDefaults.standard.string(forKey: "role"))
 
         if indexPath.section == 0 { //지역 설정 - 케어테이커만
-            if role == careMapping.care.rawValue {
+            if role == careMapping.care.rawValue  {
                return 115
             } else {
                 return 0
             }
         } else if indexPath.section == 1 {
-            if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+            if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
 
                 return 44
             } else {
                 return 0
             }
         } else {
-            if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+            if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
                 
                 return 44
             } else {
@@ -297,7 +296,7 @@ extension MyPageViewController {
                         self.backImageView.image = UIImage(named: "mypageNomal")
                     }
                     
-                    if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue {
+                    if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue || resResult.role == careMapping.admin.rawValue{
                         self.setRightBarButtonItem()
                     } 
                     
