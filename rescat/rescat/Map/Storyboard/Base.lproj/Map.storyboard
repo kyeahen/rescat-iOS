@@ -293,10 +293,10 @@
             </objects>
             <point key="canvasLocation" x="4445.6000000000004" y="740.7796101949026"/>
         </scene>
-        <!--Search View Controller-->
+        <!--검색-->
         <scene sceneID="sEf-Vt-fnk">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="2P6-iC-13l" customClass="SearchViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" title="검색" id="2P6-iC-13l" customClass="SearchViewController" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8t-eU-lAo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -689,10 +689,10 @@
             </objects>
             <point key="canvasLocation" x="1628" y="63.418290854572717"/>
         </scene>
-        <!--Register1VC-->
+        <!--등록요청-->
         <scene sceneID="ghP-Mc-W6M">
             <objects>
-                <viewController storyboardIdentifier="Register1VC" id="3CJ-Wb-mxb" customClass="Register1VC" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register1VC" title="등록요청" id="3CJ-Wb-mxb" customClass="Register1VC" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KCw-PS-Nnh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="867"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1063,10 +1063,10 @@
             </objects>
             <point key="canvasLocation" x="2381.5999999999999" y="-3.1484257871064472"/>
         </scene>
-        <!--RegisterVC3-->
+        <!--등록요청-->
         <scene sceneID="6fD-QA-ITB">
             <objects>
-                <viewController storyboardIdentifier="RegisterVC3" id="YWb-AJ-dAt" customClass="RegisterVC3" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC3" title="등록요청" id="YWb-AJ-dAt" customClass="RegisterVC3" customModule="rescat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3de-Zu-2Hb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
