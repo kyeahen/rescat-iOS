@@ -250,10 +250,8 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 self.simpleAlertwithHandler(title: "로그아웃", message: "로그아웃을 하시겠습니까?", okHandler: { (action) in
 //                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
-                    
+//                    UserDefaults.standard.removeObject(forKey: "fcmToken")
                     UserDefaults.standard.removeObject(forKey: "token")
-                    UserDefaults.standard.removeObject(forKey: "fcmToken")
-                    UserDefaults.standard.set("-1", forKey: "token")
                     let signVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "MainSignNaviVC")
                     self.present(signVC, animated: true, completion: nil)
                     })
@@ -296,7 +294,7 @@ extension MyPageViewController {
                         self.viewBottomC.constant = 79
                         self.joinButton.isHidden = false
                         self.careImageView.isHidden = true
-                        self.backImageView.image = UIImage(named: "mypageNormal")
+                        self.backImageView.image = UIImage(named: "mypageNomal")
                     }
                     
                     if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue {

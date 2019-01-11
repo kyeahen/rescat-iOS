@@ -243,7 +243,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="jiw-re-JcM" firstAttribute="trailing" secondItem="IGJ-MY-MzM" secondAttribute="trailing" constant="124" id="1WD-mo-0HX"/>
                             <constraint firstItem="lVN-gF-eIp" firstAttribute="leading" secondItem="k4F-Q5-qrV" secondAttribute="leading" id="36P-4N-84t"/>
@@ -812,7 +812,7 @@
                                 </view>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="uth-uo-wsQ" firstAttribute="top" secondItem="iD2-WH-X1m" secondAttribute="top" id="U7l-Ia-Y3H"/>
                             <constraint firstItem="uth-uo-wsQ" firstAttribute="leading" secondItem="Mwe-gE-Fqg" secondAttribute="leading" id="aEI-Dq-Gt0"/>
@@ -1218,7 +1218,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstItem="2gR-pO-1dh" firstAttribute="centerY" secondItem="Ids-pq-oeI" secondAttribute="centerY" id="1IY-Tl-AJV"/>
                                         <constraint firstItem="Y3m-xe-U6e" firstAttribute="leading" secondItem="xdC-qJ-vei" secondAttribute="trailing" constant="-36" id="1Zq-3V-EsL"/>
@@ -1291,7 +1291,7 @@
                                 </view>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="tnl-Vi-ZcL" firstAttribute="top" secondItem="cwz-Xh-cEy" secondAttribute="top" id="1oo-wP-wij"/>
                             <constraint firstItem="yJp-mt-iul" firstAttribute="trailing" secondItem="tnl-Vi-ZcL" secondAttribute="trailing" id="7uo-Qb-lTn"/>
@@ -1328,7 +1328,7 @@
                     <view key="view" contentMode="scaleToFill" id="Khr-ih-Sfp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="v6Z-Jx-Sq9"/>
                     </view>
                     <connections>
@@ -1395,7 +1395,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="edf-6j-AGP" firstAttribute="trailing" secondItem="c5u-ri-txs" secondAttribute="trailing" id="0d3-7o-fpr"/>
                             <constraint firstItem="BaX-on-8Po" firstAttribute="top" secondItem="PHG-D4-Wea" secondAttribute="bottom" id="1PF-Nr-vWC"/>
@@ -1515,7 +1515,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IvP-ld-xaL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="751"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="bFF-Bt-htz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

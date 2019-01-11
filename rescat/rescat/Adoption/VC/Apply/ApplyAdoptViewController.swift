@@ -38,6 +38,8 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate, UITextField
         setTextView()
         setTextField()
         
+        hideKeyboardWhenTappedAround()
+        
         //테이블 뷰 키보드 대응
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
@@ -240,7 +242,7 @@ extension ApplyAdoptViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - 49, right: 0)
         }
     }
     

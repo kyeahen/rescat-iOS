@@ -86,8 +86,8 @@ class LoginViewController: UIViewController {
     
     //MARK: 로그인 액션
     @IBAction func loginAction(_ sender: UIButton) {
+        print("눌림")
         
-        //TODO: 팝업으로 띄울건지 비활성화 시킬건지 물어보기
         if idTextField.text == "" || pwdTextField.text == "" {
             self.simpleAlert(title: "실패", message: "모든 항목을 입력해주세요.")
         } else {
@@ -103,7 +103,7 @@ extension LoginViewController {
     
     func postLogin(id: String, pwd: String) {
         
-        guard let fcmToken = UserDefaults.standard.string(forKey: "fcmToken") else {return}
+        let fcmToken = gsno(UserDefaults.standard.string(forKey: "fcmToken"))
         
         let params : [String : Any] = ["id" : id,
                                        "password" : pwd,

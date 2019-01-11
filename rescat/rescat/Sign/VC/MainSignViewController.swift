@@ -58,10 +58,7 @@ class MainSignViewController: UIViewController {
         
         self.present(mainVC, animated: true, completion: nil)
     }
-    
-    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
-        
-    }
+
     
 }
 
