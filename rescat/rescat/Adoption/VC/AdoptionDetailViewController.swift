@@ -220,17 +220,17 @@ extension AdoptionDetailViewController {
         catImageView.pageIndicator = pageControl
         catImageView.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
         
-        //Pop Up Setting
-        catImageView.activityIndicator = DefaultActivityIndicator()
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(AdoptionDetailViewController.didTap))
-        catImageView.addGestureRecognizer(recognizer)
+//        //Pop Up Setting
+//        catImageView.activityIndicator = DefaultActivityIndicator()
+//        let recognizer = UITapGestureRecognizer(target: self, action: #selector(AdoptionDetailViewController.didTap))
+//        catImageView.addGestureRecognizer(recognizer)
         
     }
     
-    //MARK: ImageSlideShow 팝업
-    @objc func didTap() {
-        let fullScreenController = catImageView.presentFullScreenController(from: self)
-        // set the activity indicator for full screen controller (skipping the line will show no activity indicator)
-        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
-    }
+//    //MARK: ImageSlideShow 팝업
+//    @objc func didTap() {
+//        let fullScreenController = catImageView.presentFullScreenController(from: self)
+//        // set the activity indicator for full screen controller (skipping the line will show no activity indicator)
+//        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
+//    }
 }
