@@ -212,6 +212,9 @@
                                 <state key="normal" title="입양/임보 글작성">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="pIn-VV-CdF" kind="show" id="Ar7-VY-ub0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVN-gF-eIp">
                                 <rect key="frame" x="99" y="484.5" width="177" height="40"/>
@@ -259,7 +262,7 @@
                         <viewLayoutGuide key="safeArea" id="jiw-re-JcM"/>
                     </view>
                     <connections>
-                        <outlet property="adoptButton" destination="k4F-Q5-qrV" id="3vL-vI-LXK"/>
+                        <outlet property="adoptButton" destination="k4F-Q5-qrV" id="mvY-t4-0bo"/>
                         <outlet property="supportButton" destination="lVN-gF-eIp" id="rC2-LR-8gr"/>
                     </connections>
                 </viewController>
