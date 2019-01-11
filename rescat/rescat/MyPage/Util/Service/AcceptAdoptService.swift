@@ -25,7 +25,7 @@ struct AceceptAdoptService: PostableService, APIServie {
             case .success(let networkResult):
                 switch networkResult.resCode {
                     
-                case HttpResponseCode.postSuccess.rawValue : //201
+                case HttpResponseCode.getSuccess.rawValue : //200
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400
