@@ -170,6 +170,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         if focusMap != nil {
             loadMapView(latitude: gdno(focusMap.lat), longitude: gdno(focusMap.lng), zoom: 16.0)
+            makeMarkerView(markerList)
         }
 
       
