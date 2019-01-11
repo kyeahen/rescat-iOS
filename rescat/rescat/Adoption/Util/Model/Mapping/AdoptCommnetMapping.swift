@@ -13,4 +13,5 @@ enum careMapping: String {
     case care = "CARETAKER"
     case member = "MEMBER"
     case guest = "GUEST"
+    case admin = "ADMIN"
 }
