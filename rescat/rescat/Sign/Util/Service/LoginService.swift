@@ -26,18 +26,14 @@ struct LoginService: PostableService, APIServie {
                     
                 case HttpResponseCode.getSuccess.rawValue : //200
                     UserDefaults.standard.set(networkResult.resResult.jwtTokenDto.token, forKey: "token") //토큰
-                    print("토큰 \(networkResult.resResult.jwtTokenDto.token)")
-                    print("토큰 \(networkResult.resResult.role)")
-
                     UserDefaults.standard.set(networkResult.resResult.role, forKey: "role") //등급
-                    print("로그인 서비스에서 \(UserDefaults.standard.string(forKey: "role"))")
                     UserDefaults.standard.set(networkResult.resResult.mileage, forKey: "mileage") //마일리지
                     UserDefaults.standard.set(networkResult.resResult.emdCodes, forKey: "emdCodes")//코드
                     UserDefaults.standard.set(networkResult.resResult.regions, forKey: "regions")//코드
-                    guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-                    guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-                    print("토큰~ \(token)")
-                    print("토큰~ \(role)")
+//                    guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+//                    guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+//                    print("토큰~ \(token)")
+//                    print("토큰~ \(role)")
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400
