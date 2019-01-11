@@ -260,7 +260,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
-            UIApplication.shared.open(URL(string:"www.naver.com")!, options: [:], completionHandler: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
+//            UIApplication.shared.open(URL(string:"www.naver.com")!, options: [:], completionHandler: nil)
             return
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
