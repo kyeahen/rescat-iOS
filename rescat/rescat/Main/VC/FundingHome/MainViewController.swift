@@ -52,6 +52,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         request.requestFundingBannerList(0); request.requestFundingBannerList(1);
         request.requestFundingBannerList(2)
 
+        titleArray.removeAll()
         fundingBannerList.removeAll(); photoArray.removeAll()
     }
     override func viewDidLoad() {
@@ -133,18 +134,6 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
 //        })
     }
 
-    
-
-    //optional method (interaction for touch image)
-//    func didSelectCarouselView(_ view: AACarousel ,_ index: Int) {
-//
-//        let alert = UIAlertView.init(title:"Alert" , message: titleArray[index], delegate: self, cancelButtonTitle: "OK")
-//        alert.show()
-//
-//        //startAutoScroll()
-//        //stopAutoScroll()
-//    }
-//
     //optional method (show first image faster during downloading of all images)
     func callBackFirstDisplayView(_ imageView: UIImageView, _ url: [String], _ index: Int) {
         imageView.kf.setImage(with: URL(string: url[index]))
@@ -164,19 +153,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
         //optional method
         reviewImage.stopScrollImageView()
     }
-    func didSelectCarouselView(_ view: AACarousel, _ index: Int) {
-        
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
     @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
         print("Unwind segue to home screen triggered!")
     }
@@ -265,6 +242,15 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         }
 
     }
+    func didSelectCarouselView(_ view: AACarousel ,_ index: Int) {
+        
+        guard let url = URL(string: titleArray[index]) else { return }
+        UIApplication.shared.open(url)
+
+        //startAutoScroll()
+        //stopAutoScroll()
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2 {
             return CGFloat(170)
@@ -274,7 +260,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
-            UIApplication.shared.open(URL(string:"www.naver.com")!, options: [:], completionHandler: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
+//            UIApplication.shared.open(URL(string:"www.naver.com")!, options: [:], completionHandler: nil)
             return
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "FundingDetailSegmentController") as! FundingDetailSegmentController
@@ -300,8 +287,10 @@ extension MainViewController {
 //            print("fundingBannerList model len \(fundingBannerList.count)")
             for i in 0..<fundingBannerList.count {
                 photoArray.append(gsno(fundingBannerList[i].photoUrl))
+                titleArray.append(gsno(fundingBannerList[i].link))
             }
-            reviewImage.setCarouselData(paths: photoArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: nil)
+
+            reviewImage.setCarouselData(paths: photoArray,  describedTitle: [], isAutoScroll: true, timer: 5.0, defaultImage: "https://rescat.s3.ap-northeast-2.amazonaws.com/static/1547213699228_banner.png")
             //optional methods
             reviewImage.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
             reviewImage.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 1.0), describedTitleColor: nil, layerColor: nil)
