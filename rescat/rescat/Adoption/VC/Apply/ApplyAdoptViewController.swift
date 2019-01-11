@@ -21,8 +21,8 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate, UITextField
     
     @IBOutlet var houseButtons: [UIButton]!
     @IBOutlet var statusButtons: [UIButton]!
-    var houseCheck: Int = 0
-    var statusCheck: Int = 0
+    var houseCheck: Int = 1
+    var statusCheck: Int = 1
     var houseTag: Int = 0
     var statusTag: Int = 0
     
@@ -37,6 +37,7 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate, UITextField
         setBackBtn()
         setTextView()
         setTextField()
+        setFirstButton()
         
         hideKeyboardWhenTappedAround()
         
@@ -44,6 +45,16 @@ class ApplyAdoptViewController: UIViewController,UITextViewDelegate, UITextField
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(Care1ViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
         
+    }
+    
+    func setFirstButton() {
+        houseButtons[0].setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+        houseButtons[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        houseButtons[2].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+        houseButtons[3].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
+
+        statusButtons[0].setImage(UIImage(named: "buttonRadioOn"), for: .normal)
+        statusButtons[1].setImage(UIImage(named: "buttonRadioOff"), for: .normal)
     }
 
 
