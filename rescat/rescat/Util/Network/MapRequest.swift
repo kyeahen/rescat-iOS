@@ -61,6 +61,7 @@ class MapRequest : APIServie {
                 guard let code = res.response?.statusCode else { return }
                 guard let datas = res.result.value else { return }
                 
+                print("펀딩 rescode\(res)")
                 if code == 200 {
                     let decoder = JSONDecoder()
                     do {

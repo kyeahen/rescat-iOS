@@ -305,9 +305,10 @@ class FundingRequest : APIServie {
     }
     func postFundingMileage ( _ idx : Int, mileage : Int ){
         
+        print("마일리지 게시글 \(idx)")
         let header = UserInfo.getHeader()
         let url = self.url("fundings/\(idx)/pay")
-        let param = ["Mileage":mileage]
+        let param = ["mileage":mileage]
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseJSON { (res) in
             switch res.result {
             case .success:
@@ -317,7 +318,7 @@ class FundingRequest : APIServie {
                 if code == 200 {
                     self.vc.requestCallback(10, APIServiceCode.FUNDING_MIELGE_POST)
                 } else if code == 400 {
-                    print("마일리지 부족")
+                    print("마일리지가부족")
                     self.vc.requestCallback(10, APIServiceCode.EXCEPTION_ERROR1)
                 } else if code == 500 {
                     print("마일리지 서버에러")

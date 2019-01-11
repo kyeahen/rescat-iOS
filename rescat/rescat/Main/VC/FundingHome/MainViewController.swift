@@ -58,6 +58,9 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let mileage = UserDefaults.standard.string(forKey: "mileage") else { return}
+        print("마일리지 - \(mileage)")
+        
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         if token != "-1" {
             let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"),
