@@ -226,7 +226,7 @@
                                                 </constraints>
                                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="3" maxX="0.0" maxY="3"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="180" id="ku2-Nl-0Im">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="180" id="ku2-Nl-0Im">
                                                         <rect key="frame" x="0.0" y="20" width="375" height="180"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ku2-Nl-0Im" id="mJp-fz-9n4">
@@ -234,7 +234,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BannerTableCell" rowHeight="140" id="Xvn-0Y-zfG" customClass="BannerTableCell" customModule="rescat" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BannerTableCell" rowHeight="140" id="Xvn-0Y-zfG" customClass="BannerTableCell" customModule="rescat" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="200" width="375" height="140"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xvn-0Y-zfG" id="7jr-hF-Dd9">
@@ -402,7 +402,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FundingListTableViewCell" rowHeight="152" id="rWy-7V-m57" customClass="FundingListTableViewCell" customModule="rescat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FundingListTableViewCell" rowHeight="152" id="rWy-7V-m57" customClass="FundingListTableViewCell" customModule="rescat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="81" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rWy-7V-m57" id="w9X-7O-T1A">
@@ -567,7 +567,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FundingCommentTableViewCell" rowHeight="300" id="QZX-v8-GlX" customClass="FundingCommentTableViewCell" customModule="rescat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FundingCommentTableViewCell" rowHeight="300" id="QZX-v8-GlX" customClass="FundingCommentTableViewCell" customModule="rescat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QZX-v8-GlX" id="Abj-fZ-Iga">
@@ -693,6 +693,7 @@
                         <viewLayoutGuide key="safeArea" id="UlD-dN-UWk"/>
                     </view>
                     <connections>
+                        <outlet property="commentBottomC" destination="JSh-va-UOM" id="4dJ-Ko-dOD"/>
                         <outlet property="commentSendButton" destination="TMN-Sr-Wi8" id="r5a-fd-Xv8"/>
                         <outlet property="commentTableView" destination="Klw-cr-Mmo" id="pJE-uP-N9O"/>
                         <outlet property="commentTextField" destination="TVb-kL-K2A" id="fJe-p7-3fy"/>
@@ -714,7 +715,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestVCCell" id="Dyk-Nv-c7a" customClass="TestVCCell" customModule="rescat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TestVCCell" id="Dyk-Nv-c7a" customClass="TestVCCell" customModule="rescat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dyk-Nv-c7a" id="laj-ri-7i1">

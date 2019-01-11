@@ -18,16 +18,6 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackBtn()
-       
-        let warningBtn = UIBarButtonItem(image: UIImage(named: "icEtc"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-            style: .plain,
-            target: self,
-            action: #selector(warningAction(_:)))
-        warningBtn.tintColor = UIColor.gray
-        
-        
-        navigationItem.rightBarButtonItem = warningBtn
-        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         
         if FundingDetailSegmentController.category == 0 {
             self.setNaviTitle(name: "치료비 후원")
@@ -44,11 +34,37 @@ class FundingDetailSegmentController : MXSegmentedPagerController, APIServiceCal
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [kCTForegroundColorAttributeName : UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1)]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
         segmentedPager.segmentedControl.selectionIndicatorColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1)
+        
+        hideKeyboardWhenTappedAround()
+        
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        if token != "-1" {
+            setRightBtn()
+        }
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        if token != "-1" {
+            setRightBtn()
+        }
 //        self.tabBarController?.tabBar.isHidden = true
     }
+    
+    func setRightBtn() {
+        let warningBtn = UIBarButtonItem(image: UIImage(named: "icEtc"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+            style: .plain,
+            target: self,
+            action: #selector(warningAction(_:)))
+        warningBtn.tintColor = UIColor.gray
+        
+        
+        navigationItem.rightBarButtonItem = warningBtn
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
+    
     
     @objc func warningAction ( _ sender : UIButton! ){
         

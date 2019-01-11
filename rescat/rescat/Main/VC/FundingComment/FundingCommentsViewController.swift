@@ -8,6 +8,12 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     var fundingIdx = 0
     var keyboardStatus : Bool = false
     var request : FundingRequest!
+    
+    var constraintInitVal : CGFloat = 0
+    var check = true
+    var keyboardDismissGesture: UITapGestureRecognizer?
+    @IBOutlet weak var commentBottomC: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(" --- funding comments ---- \(FundingDetailSegmentController.fundingIdx)")
@@ -20,6 +26,8 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
 //        UIKeyboardType.
 
         commentTableView.layer.addBorder(edge: .top, color: UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1.0), thickness: 1.0)
+        setKeyboardSetting()
+        hideCommentView()
         
     }
     
@@ -28,28 +36,43 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         super.viewWillAppear(animated)
         request = FundingRequest(self)
         request.requestFundingComments(FundingDetailSegmentController.fundingIdx)
+        hideCommentView()
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-       
-        if ( keyboardStatus ) {
-            keyboardStatus = false ;
-            UIView.animate(withDuration: 0.1) {
-                self.view.frame.origin.y += 210
-            }
+    
+    func hideCommentView() {
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        if token == "-1" {
+            commentTextField.isHidden = true
+            commentSendButton.isHidden = true
+            commentBottomC.constant = -49
+        } else {
+            commentTextField.isHidden = false
+            commentSendButton.isHidden = false
+            commentBottomC.constant = 113
         }
-        textField.resignFirstResponder()
-        return true
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-
-        if ( !keyboardStatus ) {
-            keyboardStatus = true ;
-            UIView.animate(withDuration: 0.1) {
-                self.view.frame.origin.y -= 210
-            }
-        }
-        textField.becomeFirstResponder()
-    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//        if ( keyboardStatus ) {
+//            keyboardStatus = false ;
+//            UIView.animate(withDuration: 0.1) {
+//                self.view.frame.origin.y += 166
+//            }
+//        }
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//
+//        if ( !keyboardStatus ) {
+//            keyboardStatus = true ;
+//            UIView.animate(withDuration: 0.1) {
+//                self.view.frame.origin.y -= 166
+//            }
+//        }
+//        textField.becomeFirstResponder()
+//    }
     @objc func postCommentAction ( _ sender : UIButton!){
         
         if commentTextField.text == "" {
@@ -143,3 +166,59 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
     
 
 }
+
+//MARK: Keyboard Setting
+extension FundingCommentsViewController {
+    
+    func setKeyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if check {
+                constraintInitVal = commentBottomC.constant
+                commentBottomC.constant += keyboardSize.height - 49
+                self.view.layoutIfNeeded()
+                check = false
+            }
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            commentBottomC.constant = constraintInitVal
+            self.view.layoutIfNeeded()
+            check = true
+        }
+    }
+    
+    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+        if isKeyboardVisible {
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+                view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        } else {
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
+    }
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
+    }
+}
+
+
+
+
