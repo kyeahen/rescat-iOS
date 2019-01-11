@@ -705,7 +705,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-jz-M5O">
                                                 <rect key="frame" x="133" y="58" width="98" height="34"/>
-                                                <color key="backgroundColor" red="0.94901960780000005" green="0.56862745100000001" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="6sf-Q8-jUW"/>
                                                     <constraint firstAttribute="width" constant="98" id="iUH-IT-sYr"/>
@@ -734,13 +734,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="wOW-Nf-zqn"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.47450980390000003" green="0.3294117647" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.41425788400000002" green="0.30715775490000002" blue="0.22743332390000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6Z-oR-Lkl">
                                                 <rect key="frame" x="28" y="58" width="98" height="34"/>
-                                                <color key="backgroundColor" red="0.94901960780000005" green="0.56862745100000001" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.86810618640000003" green="0.56897825000000002" blue="0.56077408790000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Zjq-Md-ld1"/>
                                                     <constraint firstAttribute="width" constant="98" id="jfZ-qY-Ke7"/>
