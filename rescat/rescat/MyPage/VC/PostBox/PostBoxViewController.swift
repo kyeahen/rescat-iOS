@@ -83,7 +83,6 @@ extension PostBoxViewController: UITableViewDelegate, UITableViewDataSource {
             
             detailVC.idx = post[indexPath.row].notification.idx
             detailVC.applyIdx = gino(post[indexPath.row].notification.targetIdx)
-        
           
             self.navigationController?.pushViewController(detailVC, animated: true)
             

@@ -12,6 +12,7 @@ struct PostBoxDetailData: Codable {
     let targetIdx: Int //글번호
     let targetType: String
     let careApplication: CareApplication
+    let applicationType: Int?
 }
 
 struct CareApplication: Codable {
