@@ -1034,6 +1034,7 @@
                         <outlet property="imageDeleteButton" destination="mhz-3j-bBW" id="yvR-r2-1Kl"/>
                         <outlet property="nameTextField" destination="8qQ-Bc-j1O" id="4XP-WO-ZrF"/>
                         <outlet property="nextStepButton" destination="akf-E4-zHp" id="nSk-nK-loc"/>
+                        <outlet property="nextStepButton2" destination="Bzo-ds-O2z" id="bbV-LQ-B3b"/>
                         <outlet property="propertyTextField" destination="wLR-u8-NqT" id="irz-2A-7pR"/>
                         <outlet property="representImageView" destination="jey-4u-7q6" id="Xym-p8-Buq"/>
                         <outlet property="scrollView" destination="fXF-PQ-uxy" id="UV0-8b-Tkp"/>

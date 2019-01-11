@@ -16,6 +16,7 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
     @IBOutlet var nameTextField : UITextField!
     @IBOutlet var propertyTextField : UITextView!
     @IBOutlet weak var nextStepButton: UIButton!
+    @IBOutlet var nextStepButton2 : UIButton!
     
     @IBOutlet weak var imageDeleteButton: UIButton!
     @IBOutlet var scrollView : UIScrollView!
@@ -98,6 +99,7 @@ class Register1VC : UIViewController, UITextFieldDelegate, UITextViewDelegate{
         tnrButton3.addTarget(self, action: #selector(choiceTnr(_:)), for: .touchUpInside)
         
         nextStepButton.addTarget(self, action: #selector(gotoNextStep(_:)), for: .touchUpInside)
+        nextStepButton2.addTarget(self, action: #selector(gotoNextStep(_:)), for: .touchUpInside)
 
     }
     override func viewWillAppear(_ animated: Bool) {

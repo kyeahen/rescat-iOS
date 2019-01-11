@@ -10,9 +10,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailView3" customModule="rescat" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailView3" customModule="rescat" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="fbL-uy-Wse" id="fDd-4U-Fex"/>
+                <outlet property="modifyButton" destination="hCU-d6-m9n" id="xT9-mm-huD"/>
+                <outlet property="nameLabel" destination="FgP-tx-HYv" id="Xr2-mq-pRc"/>
+                <outlet property="propertyLabel" destination="0pX-bj-KPM" id="tY9-Z5-k4P"/>
+                <outlet property="saleLabel" destination="iEJ-jW-Kkk" id="G9h-ac-ZSA"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="DetailView3" id="iN0-l3-epB" customClass="DetailView3" customModule="rescat" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="DetailView3" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -91,13 +99,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <connections>
-                <outlet property="imageView" destination="fbL-uy-Wse" id="uKH-s6-wkD"/>
-                <outlet property="modifyButton" destination="hCU-d6-m9n" id="YLO-QO-Ktq"/>
-                <outlet property="nameLabel" destination="FgP-tx-HYv" id="Ws1-5c-K8N"/>
-                <outlet property="propertyLabel" destination="0pX-bj-KPM" id="ISs-Wy-tkf"/>
-                <outlet property="saleLabel" destination="iEJ-jW-Kkk" id="FpD-gT-vv8"/>
-            </connections>
             <point key="canvasLocation" x="296.80000000000001" y="146.62668665667167"/>
         </view>
     </objects>

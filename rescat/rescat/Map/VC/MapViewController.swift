@@ -42,6 +42,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var myEmdCodes : [Int] = [1123051]
     var myRegions : [String] = ["서울특별시 강남구 신사동"]
     
+//    var detailView0 : DetailView!
+//    var detailView1 : DetailView2!
+//    var detailView2 : DetailView3!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -222,10 +226,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         actionSheet.addAction(UIAlertAction(title: "수정", style: .default, handler: { result in
             //doSomething
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "modifyVC") as! UINavigationController
-            self.present(vc, animated: true)
+            self.simpleAlert(title: "", message: "권한이 없습니다.")
+//            self.present(vc, animated: true)
         }))
         actionSheet.addAction(UIAlertAction(title: "신고", style: .default, handler: { result in
             //doSomething
+            self.simpleAlert(title: "", message: "해당글을 신고하였습니다.")
         }))
         actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
@@ -374,6 +380,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print("photo -- \(data.photoUrl)")
         
         if ( !detailViewCreated ) {
+            print("creaeted")
             detailViewCreated = true
             detailView = UIView()
             detailView.backgroundColor = UIColor.black
@@ -422,7 +429,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             } else {
                 // 고양이
                 let detailContents = DetailView(frame: detailView.frame)
-//                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 //
                 
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
@@ -437,20 +444,6 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 }
             }
             
-
-           
-//            let detailContents = DetailView(frame: detailView.frame)
-//                            detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-//                            //
-//                            self.detailView.addSubview(detailContents)
-//                            detailContents.snp.makeConstraints { (make) in
-//                                make.left.equalTo(self.detailView.snp.left)
-//                                make.right.equalTo(self.detailView.snp.right)
-//                                make.bottom.equalTo(self.detailView.snp.bottom)
-//                                make.top.equalTo(self.detailView.snp.top)
-//
-//            }
-            
             detailView.tag = 0
 //            detailView.
             
@@ -458,10 +451,14 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         } else {
             detailView.tag += 1
 
-            
+            for v in detailView.subviews {
+                v.removeFromSuperview()
+            }
+            detailView.backgroundColor = UIColor.green
+
             if ( category == 0 ) {
                 // 배식소
-                
+                    print("배식소")
                 let detailContents = DetailView2(frame: detailView.frame)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
@@ -478,13 +475,13 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 }
             } else if category == 1 {
                 // 병원
+              print("a병원")
+                
                 let detailContents = DetailView3(frame: detailView.frame)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
                 detailContents.nameLabel.text = gsno(data.name)
-                detailContents.saleLabel.text = gsno(data.etc)
-                detailContents.propertyLabel.text = gsno(data.address)
-                
+                detailContents.propertyLabel.text = gsno(data.etc)
                 
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
@@ -496,29 +493,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 }
             } else {
                 // 고양이
-                let detailContents = DetailView(frame: detailView.frame)
-                //                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                //
-                
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
-                
-                self.detailView.addSubview(detailContents)
-                detailContents.snp.makeConstraints { (make) in
-                    make.left.equalTo(self.detailView.snp.left)
-                    make.right.equalTo(self.detailView.snp.right)
-                    make.bottom.equalTo(self.detailView.snp.bottom)
-                    make.top.equalTo(self.detailView.snp.top)
-                    
-                }
-//            detailViewHeight += (Int.random(in: 0..<2) * 20) - 10
-//            UIView.animate(withDuration: 0.3) {
-//
-//                self.detailView.snp.updateConstraints { (make) in
-//                    make.height.equalTo(self.detailViewHeight)
-//                }
-//                self.view.layoutIfNeeded()
-//            }
+             
             }
+            
+           
         }
         detailViewHidden(false)
 
