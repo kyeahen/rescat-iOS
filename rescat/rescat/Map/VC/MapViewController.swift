@@ -18,43 +18,36 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var locationButton : UITextField!
     var currentRegion = ""
 //    var pick
-    var myLocation = [String]()
     @IBOutlet var mapView : GMSMapView!
     
     @IBOutlet var button1 : UIButton!
     @IBOutlet var button2 : UIButton!
     @IBOutlet var button3 : UIButton!
     @IBOutlet var button4 : UIButton!
-    var buttons = [UIButton]()
     @IBOutlet var locationButtonView : UIView!
     
-    
+    var buttons = [UIButton]()
+
     var detailViewHeight = 140   // temp value
     var detailViewCreated = false
     var detailView : UIView!; var detailImageView : UIImageView!; var detailNameView : UILabel!
     var detailBirthView : UILabel!; var detailPropertyView : UILabel!; var detailTextView : UILabel!
     @IBOutlet var coverView : UIView!
     
-    var initData : [TestModel] = []
-    var filterdData : [TestModel] = []
+//    var initData : [TestModel] = []
+//    var filterdData : [TestModel] = []
+    var markerList : [MarkerModel] = []
+    var filteredMarkerList : [MarkerModel] = []
+    var mapRequest : MapRequest!
+    var myEmdCodes : [Int] = [1123051]
+    var myRegions : [String] = ["서울특별시 강남구 신사동"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.setNaviTitle(name: "우리동네 길냥이")
-
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        if ( token == "-1" ){
-            print("지도테스트---비로그인")
-        } else {
-            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-            if ( role == "CARETAKER") {
-                print("지도테스트---케어테이커")
-            } else {
-                print("지도테스트---멤버")
-            }
-        }
-        
+
         if ( token == "-1" ) {
             
             print("비회원")
@@ -65,15 +58,19 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             startButton.roundCorner(10.0)
 
         } else {
-                    guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+            
+            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
 
-        
-            print("로그인")
             if ( role == "CARETAKER") {
                 // 케어테이커
+                mapRequest = MapRequest(self)
+                guard let regions = UserDefaults.standard.array(forKey: "regions") as? [String] else { return }
+                guard let emdCodes = UserDefaults.standard.array(forKey: "emdCodes") as? [Int] else { return }
+                myEmdCodes = emdCodes ; myRegions = regions
+                
+                mapRequest.getMapList(emdCodes[0])
                 
                 alertView.isHidden = true
-                
                 let backBTN = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
                     style: .plain,
                     target: self,
@@ -90,9 +87,9 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
                 
                 
-                for (index, element) in UserInfo.getLocation().enumerated(){
-                    myLocation.append(gsno(element.keys.first))
-                }
+//                for (index, element) in UserInfo.getLocation().enumerated(){
+//                    myLocation.append(gsno(element.keys.first))
+//                }
                 buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
                 for (index, element) in buttons.enumerated() {
                     element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
@@ -115,7 +112,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 locationButton = UITextField()
                 locationButton.delegate = self
                 
-                locationButton.text = "서울시 서초구"
+                locationButton.text = myRegions[0]
                 locationButton.textColor = UIColor.rescatBlack();
                 locationButton.font = .systemFont(ofSize: 14)
                 locationButtonView.addSubview(locationButton)
@@ -145,14 +142,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 
                 //  내 도시로 focus
                 let naverRequest = NaverMapRequest(self)
-                //        print("naver request \(?)")
                 self.mapView.delegate = self
-                currentRegion = myLocation[0]
-                naverRequest.requestGeocoder(myLocation[0])
-                //        loadMapView(latitude: 37.498197, longitude: 127.027610, zoom: 15.0)
+                naverRequest.requestGeocoder(myRegions[0])
+                
             } else if ( role == "MEMBER" ) {
-                
-                
                 
                 alertView.isHidden = false
                 startLabel.text = UserInfo.notMessage
@@ -166,15 +159,17 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-
+        self.tabBarController?.tabBar.isHidden = false
+        
         guard let role = UserDefaults.standard.string(forKey: "role") else { return }
 
+        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+        if ( token != "-1"){
+//            let
+        }
         if ( role == "CARETAKER" ) {
             let res = UserInfo.getLocation()
-            print("location \(res[0].keys.first)")
-            let request = Test(self)
-            request.testRequest()
+
         } else { }
 
       
@@ -240,6 +235,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         let map = NaverMapRequest(self)
         map.requestGeocoder(gsno(locationButton.text))
+        
 //        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(36.899999), longitude: CLLocationDegrees(127.03111111))
 //        self.mapView.animate(toLocation: move)
         locationButton.resignFirstResponder()
@@ -283,12 +279,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         detailViewHidden(true)
         
-        if ( sender.tag == 0 ){ makeMarkerView(initData) }
+        if ( sender.tag == 0 ){ makeMarkerView(markerList) }
         else {
-            filterdData = initData.filter { (element) -> Bool in
-                return gino(element.location_type) == sender.tag
+            filteredMarkerList = markerList.filter { (element) -> Bool in
+                return gino(element.category)+1 == sender.tag
             }
-            makeMarkerView(filterdData)
+            makeMarkerView(filteredMarkerList)
         }
     }
     func loadMapView(latitude : Double, longitude : Double, zoom : Float){
@@ -302,16 +298,23 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     
-    func makeMarkerView(_ data : [TestModel]) {
+    func makeMarkerView(_ data : [MarkerModel]) {
         
         mapView.clear()
         // make marker objects
         for i in 0..<data.count{
             let marker = GMSMarker()
-            let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gfno(data[i].latitude)), longitude: CLLocationDegrees(gfno(data[i].longitude)))
+            let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gdno(data[i].lat)), longitude: CLLocationDegrees(gdno(data[i].lng)))
 
-            switch gino(data[i].location_type) {
+//            let key : [String:Int] = ["key":gino(data[i].category)]
+            marker.userData = data[i]
+            switch gino(data[i].category) {
+            case 0:
+                marker.icon = UIImage(named: "icMapFood"); break
+
             case 1:
+                marker.icon = UIImage(named: "icMapHospital"); break
+            case 2:
                 marker.icon = UIImage(named: "icMapCat");
                 let circleCenter = position
                 let circ = GMSCircle(position: circleCenter, radius: 100)
@@ -319,16 +322,13 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 circ.strokeColor = .none
                 circ.map = mapView
                 break
-            case 2:
-                marker.icon = UIImage(named: "icMapFood"); break
-            case 3:
-                marker.icon = UIImage(named: "icMapHospital"); break
             default:
                 marker.icon = UIImage(named: "icMapHospital"); break
 
             }
+
             marker.position = position
-            marker.title = "\(gino(data[i].location_type))"; marker.snippet = "name"
+            marker.title = "\(gino(data[i].category))"; marker.snippet = "name"
             marker.map = mapView
             
 
@@ -351,14 +351,14 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return myLocation.count
+        return myRegions.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return myLocation[row]
+        return myRegions[row]
         
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        locationButton.text = myLocation[row]
+        locationButton.text = myRegions[row]
     }
     //  -----------------------------  GMSMapViewDelegate function ----------------------------
     func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
@@ -367,6 +367,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        let data = marker.userData as! MarkerModel
+        let category = gino(data.category)
+        print("category --\(category)")
+        print("photo -- \(data.photoUrl)")
+        
         if ( !detailViewCreated ) {
             detailViewCreated = true
             detailView = UIView()
@@ -378,24 +384,72 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 make.height.equalTo(140)
                 make.bottom.equalTo(self.view.snp.bottom).offset(-57)
             }
+            if ( category == 0 ) {
+                // 배식소
             
-            let detailContents = DetailView(frame: detailView.frame)
-            //
-            detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-            //
-            self.detailView.addSubview(detailContents)
-            detailContents.snp.makeConstraints { (make) in
-                make.left.equalTo(self.detailView.snp.left)
-                make.right.equalTo(self.detailView.snp.right)
-                make.bottom.equalTo(self.detailView.snp.bottom)
-                make.top.equalTo(self.detailView.snp.top)
+                let detailContents = DetailView2(frame: detailView.frame)
+                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.propertyLabel.text = gsno(data.etc)
+                
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
 
+                }
+            } else if category == 1 {
+                // 병원
+                let detailContents = DetailView3(frame: detailView.frame)
+                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.saleLabel.text = gsno(data.etc)
+                detailContents.propertyLabel.text = gsno(data.address)
+
+                
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
+
+                }
+            } else {
+                // 고양이
+                let detailContents = DetailView(frame: detailView.frame)
+//                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                //
+                
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
+
+                }
             }
-//            detailContents.modifyButton.addTarget(self, action: #selector(modifyRequestAction(_:)), for: .touchUpInside)
-//            detailView.addSubview(detailContents)
-//            detailImageView = UIImageView()
-//            detailImageView.backgroundColor = UIColor.green
-//            detailTextView =
+            
+
+           
+//            let detailContents = DetailView(frame: detailView.frame)
+//                            detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+//                            //
+//                            self.detailView.addSubview(detailContents)
+//                            detailContents.snp.makeConstraints { (make) in
+//                                make.left.equalTo(self.detailView.snp.left)
+//                                make.right.equalTo(self.detailView.snp.right)
+//                                make.bottom.equalTo(self.detailView.snp.bottom)
+//                                make.top.equalTo(self.detailView.snp.top)
+//
+//            }
             
             detailView.tag = 0
 //            detailView.
@@ -403,13 +457,67 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             
         } else {
             detailView.tag += 1
-            detailViewHeight += (Int.random(in: 0..<2) * 20) - 10
-            UIView.animate(withDuration: 0.3) {
+
+            
+            if ( category == 0 ) {
+                // 배식소
                 
-                self.detailView.snp.updateConstraints { (make) in
-                    make.height.equalTo(self.detailViewHeight)
+                let detailContents = DetailView2(frame: detailView.frame)
+                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.propertyLabel.text = gsno(data.etc)
+                
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
+                    
                 }
-                self.view.layoutIfNeeded()
+            } else if category == 1 {
+                // 병원
+                let detailContents = DetailView3(frame: detailView.frame)
+                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.saleLabel.text = gsno(data.etc)
+                detailContents.propertyLabel.text = gsno(data.address)
+                
+                
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
+                    
+                }
+            } else {
+                // 고양이
+                let detailContents = DetailView(frame: detailView.frame)
+                //                detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
+                //
+                
+                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                
+                self.detailView.addSubview(detailContents)
+                detailContents.snp.makeConstraints { (make) in
+                    make.left.equalTo(self.detailView.snp.left)
+                    make.right.equalTo(self.detailView.snp.right)
+                    make.bottom.equalTo(self.detailView.snp.bottom)
+                    make.top.equalTo(self.detailView.snp.top)
+                    
+                }
+//            detailViewHeight += (Int.random(in: 0..<2) * 20) - 10
+//            UIView.animate(withDuration: 0.3) {
+//
+//                self.detailView.snp.updateConstraints { (make) in
+//                    make.height.equalTo(self.detailViewHeight)
+//                }
+//                self.view.layoutIfNeeded()
+//            }
             }
         }
         detailViewHidden(false)
@@ -441,9 +549,9 @@ extension MapViewController{
 //            coordinate
 //            print("GEOCODE RESULT \(Float(coordinate[0]))")
             loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
-        } else {
-            initData = datas as! [TestModel]
-            makeMarkerView(initData)
+        } else if ( code == APIServiceCode.MARKER_LIST ) {
+            markerList = datas as! [MarkerModel]
+            makeMarkerView(markerList)
 
         }
     }

@@ -26,7 +26,7 @@ class MapRequest : APIServie {
 
         print(param)
      
-        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseJSON(){
+        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseData(){
             (res) in
             guard let statusCode = res.response?.statusCode else { return }
             switch res.result {
@@ -50,20 +50,44 @@ class MapRequest : APIServie {
             }
         }
     }
-    func getMapList() {
+    func getMapList( _ emdCode : Int) {
 //        let header
-        let url = self.url("maps")
-        let header : HTTPHeaders = ["Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSeWFuZ1QiLCJ1c2VyX2lkeCI6MTYsImV4cCI6MTU0OTM4MzcxNX0.r1SUbfDoTnqXPU7NNxZ3mS1uRdp4Xfuwdp_mvmaP4BM",
-                                    "Content-Type": "application/json"]
-
-        
+        let url = self.url("maps?emdCode=\(emdCode)")
+        let header = UserInfo.getHeader()
+        Alamofire.request(url, headers: header).responseData { (res) in
+            switch res.result{
+            case .success:
+                
+                guard let code = res.response?.statusCode else { return }
+                guard let datas = res.result.value else { return }
+                
+                if code == 200 {
+                    let decoder = JSONDecoder()
+                    do {
+                        let markers = try decoder.decode([MarkerModel].self, from: datas)
+                        self.vc.requestCallback(markers, APIServiceCode.MARKER_LIST)
+                    } catch {
+                        print("marker list decode failure")
+                    }
+                } else if code == 401 {
+                    print("마커불러오기 권하없음")
+                } else if code == 500 {
+                    print("마일리지 서버에러")
+                    self.vc.requestCallback(-1, APIServiceCode.SERVER_ERROR)
+                }
+                
+            case .failure(let error):
+                print("post funding Milege failure")
+            }
+        }
+       
     }
 
 
     func addPhoto ( _ data : Data ){
         
-        let header = ["Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSeWFuZ1QiLCJ1c2VyX2lkeCI6MTYsImV4cCI6MTU0OTM4MzM3NX0.iMXLvLTC86EdPs9Q5c_m0j4Q57Pn32XJwIjIumPa7I4"]
-        
+        let header = UserInfo.getHeader()
+
         let url = "http://13.209.145.139:8080/api/photo"
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in

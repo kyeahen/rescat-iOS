@@ -64,9 +64,8 @@ class NaverMapRequest : APIServie {
                 let json = JSON(data)
                 let long = json["addresses"][0]["x"]
                 let lat = json["addresses"][0]["y"]
-                let add = "\(lat) \(long)"
-                print("add - \(add)")
-                self.vc.requestCallback(add, APIServiceCode.GEOCODE)
+                let str = "\(lat) \(long)"
+                self.vc.requestCallback(str, APIServiceCode.GEOCODE)
             case .failure(let error):
                 print("naver geocoder request failure error - \(error)")
             }

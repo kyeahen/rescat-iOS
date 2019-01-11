@@ -12,10 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailView" customModule="rescat" customModuleProvider="target">
             <connections>
+                <outlet property="TRNLabel" destination="f34-hJ-bb9" id="xrG-dH-Z0I"/>
                 <outlet property="ageLabel" destination="Svx-u4-7AZ" id="czF-0N-Hz7"/>
                 <outlet property="imageView" destination="fdY-Ss-YwP" id="IZB-fu-CCa"/>
                 <outlet property="modifyButton" destination="Ix6-rg-Bcw" id="47I-qw-PxP"/>
                 <outlet property="nameLabel" destination="7Fh-Vx-Ahu" id="dUq-gN-6Hd"/>
+                <outlet property="propertyLabel" destination="q24-oy-1TJ" id="fEb-pS-aeH"/>
                 <outlet property="sexLabel" destination="RRp-Di-ioe" id="Qbl-f7-hml"/>
             </connections>
         </placeholder>
@@ -49,13 +51,13 @@
                         <constraint firstAttribute="height" constant="82" id="sm4-fK-dea"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix6-rg-Bcw">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix6-rg-Bcw">
                     <rect key="frame" x="342" y="12" width="21" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="3yC-pK-Yze"/>
                         <constraint firstAttribute="height" constant="21" id="lPb-m3-m6o"/>
                     </constraints>
-                    <state key="normal" title="수정 요청"/>
+                    <state key="normal" title="수정 요청" image="icEtc"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추정나이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsv-X8-0Il">
                     <rect key="frame" x="117" y="41.5" width="42" height="14.5"/>
@@ -103,7 +105,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.96878885770000001" blue="0.20482943849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ix6-rg-Bcw" secondAttribute="trailing" constant="12" id="2zS-b8-EzD"/>
                 <constraint firstItem="q24-oy-1TJ" firstAttribute="top" secondItem="f34-hJ-bb9" secondAttribute="bottom" id="9Dp-UX-9Ge"/>
@@ -131,4 +133,7 @@
             <point key="canvasLocation" x="301.60000000000002" y="295.95202398800603"/>
         </view>
     </objects>
+    <resources>
+        <image name="icEtc" width="21" height="21"/>
+    </resources>
 </document>

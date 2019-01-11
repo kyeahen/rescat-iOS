@@ -32,13 +32,9 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mapView.delegate = self
-        let location = UserInfo.getLocations().first
-        guard let mainLocation = location else {
-            loadMapView(latitude: 37.300, longitude: 127.027610, zoom: 15.0)
-            return
-        }
-        
-        loadMapView(latitude: gdno(mainLocation.first?.key), longitude: gdno(mainLocation.first?.value), zoom: 15.0)
+        guard let regions = UserDefaults.standard.array(forKey: "regions") as? [String] else { return }
+
+        requestAddress.requestGeocoder(regions[0])
 
     }
     func loadMapView(latitude : Double, longitude : Double, zoom : Float){
@@ -103,25 +99,9 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
 //            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
 //            m.regionFullName = "서울특별시 강남구 논현1동"
 //            m.name = "피어캣"
-//            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
+//            m.photoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
 //
-//
-//
-//            // ----------
-////            m.requestType = 0
-////            m.registerType = 1
-////            let lat = Double.random(lower: 37.04149, 127.020924)
-////            let long = Double.random(lower: 127.020924, 127.040959)
-////            m.lat = lat; m.lng = long
-////            m.radius = 3 ; m.sex = 0 ; m.age = "10개월"
-////            m.regionFullName = "서울특별시 강남구 신사동"
-////            m.name = "피어캣"
-////            m.address = "everywhere"
-////            m.phone = "010-3676-2713"
-////            m.phtoUrl = "https://s3.ap-northeast-2.amazonaws.com/rescat/ggu.jpg"
-//
-//
-//            request.addMapData(m)
+//            requestMap.addMapData(m)
 //        }
 
 
@@ -136,7 +116,8 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
             let string = datas as! String
             print("지도 \(string)")
 //            requestMap
-            registerMap.address = string
+            registerMap.regionFullName = string
+            registerMap.radius = 3
             requestMap.addMapData(registerMap)
         } else if ( code == APIServiceCode.MARKER_POST ) {
             self.simpleAlertwithHandler(title: "등록요청 완료", message: "24시간 내에 관리자 승인 후, 등록 결과가 마이페이지 > 우체통으로 전달됩니다.") { (UIAlertAction) in
@@ -144,6 +125,16 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
 
             }
 
+        } else if ( code == APIServiceCode.GEOCODE ){
+            
+            let data = datas as! String
+            
+            print("지도 geocode 결과 \(data)")
+            
+            let coordinate = data.split(separator: " ")
+            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
+
+            
         }
     }
     

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailView2" customModule="rescat" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="FlN-7e-i55" id="cjK-7f-zve"/>
+                <outlet property="modifyButton" destination="Ttg-8P-a6Z" id="B7f-R3-ZuQ"/>
+                <outlet property="nameLabel" destination="q3t-Bu-KMY" id="YYv-Ge-VVh"/>
+                <outlet property="propertyLabel" destination="UOe-gL-A6l" id="fdP-Rd-ho1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="DetailView2" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FlN-7e-i55">
+                    <rect key="frame" x="14" y="14" width="85" height="82"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="k54-aG-FHr"/>
+                        <constraint firstAttribute="height" constant="82" id="rAq-NA-LKQ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3t-Bu-KMY">
+                    <rect key="frame" x="120" y="12" width="222" height="22"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="특이사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhZ-cw-tEg">
+                    <rect key="frame" x="120" y="42" width="42" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="203-7j-F3g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                    <color key="textColor" red="0.43137254899999999" green="0.30196078430000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-gL-A6l">
+                    <rect key="frame" x="184" y="42" width="174" height="84"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-8P-a6Z">
+                    <rect key="frame" x="344" y="10" width="21" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="ERg-HU-k5S"/>
+                        <constraint firstAttribute="width" constant="21" id="wzr-mS-y20"/>
+                    </constraints>
+                    <state key="normal" title="수정 요청" image="icEtc"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ttg-8P-a6Z" secondAttribute="trailing" constant="10" id="FFE-dY-nOu"/>
+                <constraint firstItem="FlN-7e-i55" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="GbH-Hk-YF7"/>
+                <constraint firstItem="FlN-7e-i55" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="LtH-kI-jW4"/>
+                <constraint firstItem="ZhZ-cw-tEg" firstAttribute="leading" secondItem="FlN-7e-i55" secondAttribute="trailing" constant="21" id="fMB-Wf-FGg"/>
+                <constraint firstItem="UOe-gL-A6l" firstAttribute="leading" secondItem="ZhZ-cw-tEg" secondAttribute="trailing" constant="22" id="knB-Pq-xCt"/>
+                <constraint firstItem="UOe-gL-A6l" firstAttribute="top" secondItem="q3t-Bu-KMY" secondAttribute="bottom" constant="8" id="lED-1B-WSu"/>
+                <constraint firstItem="q3t-Bu-KMY" firstAttribute="leading" secondItem="FlN-7e-i55" secondAttribute="trailing" constant="21" id="nnD-gM-gZ5"/>
+                <constraint firstItem="Ttg-8P-a6Z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="noy-nB-znE"/>
+                <constraint firstItem="q3t-Bu-KMY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="oRA-kK-Bzg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="q3t-Bu-KMY" secondAttribute="trailing" constant="33" id="t4i-7Q-wHn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UOe-gL-A6l" secondAttribute="bottom" constant="14" id="vd5-hM-HKc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UOe-gL-A6l" secondAttribute="trailing" constant="17" id="yDo-nq-MWH"/>
+                <constraint firstItem="ZhZ-cw-tEg" firstAttribute="top" secondItem="q3t-Bu-KMY" secondAttribute="bottom" constant="8" id="z89-BG-IGD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="84.557721139430285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icEtc" width="21" height="21"/>
+    </resources>
+</document>

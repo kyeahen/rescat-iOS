@@ -197,6 +197,12 @@
 		598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879BD21E71414008FE49E /* CarePostMainModel.swift */; };
 		598879C221E79D57008FE49E /* Register1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879C121E79D57008FE49E /* Register1VC.swift */; };
 		598879C421E7A81D008FE49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 598879C321E7A81C008FE49E /* GoogleService-Info.plist */; };
+		598879CA21E85395008FE49E /* DetailView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879C921E85395008FE49E /* DetailView2.swift */; };
+		598879CC21E8539B008FE49E /* DetailView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879CB21E8539B008FE49E /* DetailView3.swift */; };
+		598879CE21E85737008FE49E /* DetailView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598879CD21E85737008FE49E /* DetailView4.xib */; };
+		598879D021E8577E008FE49E /* DetailView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598879CF21E8577E008FE49E /* DetailView4.swift */; };
+		598879D221E85801008FE49E /* DetailView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598879D121E85801008FE49E /* DetailView2.xib */; };
+		598879D421E8581F008FE49E /* DetailView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598879D321E8581F008FE49E /* DetailView3.xib */; };
 		59A8BCD021DE6F310035DBB8 /* RegisterVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */; };
 		59A8BCD221DE71FD0035DBB8 /* ModifyViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */; };
 		59A8BCD621DF7E710035DBB8 /* FundingRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */; };
@@ -407,6 +413,12 @@
 		598879BD21E71414008FE49E /* CarePostMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePostMainModel.swift; sourceTree = "<group>"; };
 		598879C121E79D57008FE49E /* Register1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register1VC.swift; sourceTree = "<group>"; };
 		598879C321E7A81C008FE49E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		598879C921E85395008FE49E /* DetailView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView2.swift; sourceTree = "<group>"; };
+		598879CB21E8539B008FE49E /* DetailView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView3.swift; sourceTree = "<group>"; };
+		598879CD21E85737008FE49E /* DetailView4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView4.xib; sourceTree = "<group>"; };
+		598879CF21E8577E008FE49E /* DetailView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView4.swift; sourceTree = "<group>"; };
+		598879D121E85801008FE49E /* DetailView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView2.xib; sourceTree = "<group>"; };
+		598879D321E8581F008FE49E /* DetailView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView3.xib; sourceTree = "<group>"; };
 		59A8BCCF21DE6F310035DBB8 /* RegisterVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC3.swift; sourceTree = "<group>"; };
 		59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController2.swift; sourceTree = "<group>"; };
 		59A8BCD521DF7E710035DBB8 /* FundingRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundingRegisterVC.swift; sourceTree = "<group>"; };
@@ -735,6 +747,9 @@
 				59A8BCD121DE71FD0035DBB8 /* ModifyViewController2.swift */,
 				591A2A0B21E23FB500B3BFBF /* TestVC.swift */,
 				598879C121E79D57008FE49E /* Register1VC.swift */,
+				598879C921E85395008FE49E /* DetailView2.swift */,
+				598879CB21E8539B008FE49E /* DetailView3.swift */,
+				598879CF21E8577E008FE49E /* DetailView4.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -863,6 +878,9 @@
 			children = (
 				5916808D21D3914700491F5C /* DetailView.xib */,
 				596662C221D211B800055918 /* Map.storyboard */,
+				598879CD21E85737008FE49E /* DetailView4.xib */,
+				598879D121E85801008FE49E /* DetailView2.xib */,
+				598879D321E8581F008FE49E /* DetailView3.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1166,6 +1184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A4DEC221D7362B00565FB6 /* Care.storyboard in Resources */,
+				598879D221E85801008FE49E /* DetailView2.xib in Resources */,
 				5962B6F421DE36AA00BB032D /* FundingDetailTableCell.xib in Resources */,
 				22DA01A921E78FA600C26CEA /* Splash.storyboard in Resources */,
 				22DA01A021E789E500C26CEA /* splashIos@1x.gif in Resources */,
@@ -1175,6 +1194,7 @@
 				2271881021CF541300E1BCAB /* LaunchScreen.storyboard in Resources */,
 				5916808E21D3914700491F5C /* DetailView.xib in Resources */,
 				2271880D21CF541300E1BCAB /* Assets.xcassets in Resources */,
+				598879CE21E85737008FE49E /* DetailView4.xib in Resources */,
 				5962B6F621DE36AA00BB032D /* FundingDetailBottomTableCell.xib in Resources */,
 				598879C421E7A81D008FE49E /* GoogleService-Info.plist in Resources */,
 				5916809821D3DD1500491F5C /* BannerTableCell.xib in Resources */,
@@ -1184,6 +1204,7 @@
 				22DA01A121E789E500C26CEA /* splashIos@3x.gif in Resources */,
 				5916809E21D3DD4100491F5C /* FundingTableCell.xib in Resources */,
 				2271880B21CF541200E1BCAB /* Main.storyboard in Resources */,
+				598879D421E8581F008FE49E /* DetailView3.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1306,6 +1327,7 @@
 				22174FA221E3C73700144F81 /* HouseMapping.swift in Sources */,
 				5962B6A421D89C6400BB032D /* FundingRequest.swift in Sources */,
 				222D801D21E38C92000B7379 /* SupportingTableViewCell.swift in Sources */,
+				598879D021E8577E008FE49E /* DetailView4.swift in Sources */,
 				221291CA21DC9E15006DA108 /* HelpViewController.swift in Sources */,
 				5916809C21D3DD3900491F5C /* FundingTableCell.swift in Sources */,
 				22DA019421E663F800C26CEA /* ApplySuccessViewController.swift in Sources */,
@@ -1338,6 +1360,7 @@
 				5931378421E65A32006BA8A8 /* Keyboard.swift in Sources */,
 				22B4F65321D7E84A0034346F /* Font.swift in Sources */,
 				598879BE21E71414008FE49E /* CarePostMainModel.swift in Sources */,
+				598879CC21E8539B008FE49E /* DetailView3.swift in Sources */,
 				2271881A21CF546900E1BCAB /* MapViewController.swift in Sources */,
 				2219DB3121DCFF2700FF72D7 /* AdoptCommnetService.swift in Sources */,
 				22D1270D21DFC83200DDE8D5 /* CompleteAdoptViewController.swift in Sources */,
@@ -1383,6 +1406,7 @@
 				596662BA21D1FCF000055918 /* TestModel.swift in Sources */,
 				5916808C21D38F2C00491F5C /* RegisterVC.swift in Sources */,
 				221A844021D88C12002BECED /* ErrorData.swift in Sources */,
+				598879CA21E85395008FE49E /* DetailView2.swift in Sources */,
 				222D7FC021E13501000B7379 /* SupportingViewController.swift in Sources */,
 				59A8BCDC21DFBA120035DBB8 /* MapRequestModel.swift in Sources */,
 				5916809021D393FF00491F5C /* DetailView.swift in Sources */,

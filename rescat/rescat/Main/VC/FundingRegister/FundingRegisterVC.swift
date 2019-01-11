@@ -411,7 +411,9 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
         print("keyboardWillShow")
 
         if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-            self.overScrollView.frame = CGRect(x: 0, y: -keyboardHeight, width: self.view.frame.width, height: self.view.frame.height)
+            UIView.animate(withDuration: 0.1) {
+                self.overScrollView.frame = CGRect(x: 0, y: -keyboardHeight, width: self.view.frame.width, height: self.view.frame.height)
+            }
 
         }
     }
@@ -419,7 +421,10 @@ class FundingRegisterVC : UIViewController , UICollectionViewDelegate, UICollect
     @objc func keyboardWillHide(notification: NSNotification) {
         
         if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-            self.overScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            UIView.animate(withDuration: 0.1) {
+                self.overScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+
+            }
 
         }
 
