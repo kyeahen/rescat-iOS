@@ -28,7 +28,7 @@
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUq-s8-Eqx">
                             <rect key="frame" x="22" y="7.5" width="331" height="165"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfi-e2-FhS">
                             <rect key="frame" x="34" y="56" width="42.5" height="19.5"/>
@@ -69,7 +69,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.98824185132980347" green="0.98822349309921265" blue="0.98823589086532593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstItem="kfi-e2-FhS" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="34" id="0g8-7y-Mf2"/>
                         <constraint firstItem="EDI-Yr-tqc" firstAttribute="leading" secondItem="OeD-6x-6WY" secondAttribute="leading" constant="22" id="21D-os-1OR"/>

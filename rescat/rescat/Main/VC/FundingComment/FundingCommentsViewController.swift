@@ -28,7 +28,23 @@ class FundingCommentsViewController: UIViewController, APIServiceCallback, UITab
         commentTableView.layer.addBorder(edge: .top, color: UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1.0), thickness: 1.0)
         setKeyboardSetting()
         hideCommentView()
+        commentTextField.layer.addBorder(edge: .top, color: #colorLiteral(red: 0.752874434, green: 0.7529841065, blue: 0.7528504729, alpha: 1), thickness: 1)
         
+        commentTextField.addTarget(self, action: #selector(emptyCommentCheck), for: .editingChanged)
+
+    }
+    
+    //MARK: 댓글 공백 체크 함수
+    @objc func emptyCommentCheck() {
+        
+        if commentTextField.text == ""{
+            commentTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            commentSendButton.setTitleColor(#colorLiteral(red: 0.5999459028, green: 0.6000347733, blue: 0.5999264717, alpha: 1), for: .normal)
+            
+        } else {
+            commentTextField.backgroundColor = #colorLiteral(red: 0.9489366412, green: 0.9490728974, blue: 0.9489069581, alpha: 1)
+            commentSendButton.setTitleColor(#colorLiteral(red: 0.9232344031, green: 0.5513463616, blue: 0.5515488386, alpha: 1), for: .normal)
+        }
     }
     
     

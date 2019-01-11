@@ -60,6 +60,7 @@ class AdoptionCommentViewController: UIViewController, UITextFieldDelegate {
         commentTextField.delegate = self
         commentView.layer.addBorder(edge: .top, color: #colorLiteral(red: 0.752874434, green: 0.7529841065, blue: 0.7528504729, alpha: 1), thickness: 1)
         commentTextField.addTarget(self, action: #selector(emptyCommentCheck), for: .editingChanged)
+
     }
     
     //MARK: 댓글 공백 체크 함수
@@ -67,7 +68,7 @@ class AdoptionCommentViewController: UIViewController, UITextFieldDelegate {
         
         if commentTextField.text == ""{
             commentView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            commentButton.setTitleColor(#colorLiteral(red: 0.5999459028, green: 0.6000347733, blue: 0.5999264717, alpha: 1), for: .disabled)
+            commentButton.setTitleColor(#colorLiteral(red: 0.5999459028, green: 0.6000347733, blue: 0.5999264717, alpha: 1), for: .normal)
             
         } else {
             commentView.backgroundColor = #colorLiteral(red: 0.9489366412, green: 0.9490728974, blue: 0.9489069581, alpha: 1)

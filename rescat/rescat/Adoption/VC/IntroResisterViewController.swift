@@ -28,8 +28,14 @@ class IntroResisterViewController: UIViewController {
     //MARK: 후원 글작성 액션
     @IBAction func supportAction(_ sender: UIButton) {
         //후원 글작성 뷰로 이동(push)
-        let fundVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingRegisterVC.reuseIdentifier)
-        self.navigationController?.pushViewController(fundVC, animated: true)
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
+        if role == careMapping.care.rawValue {
+            let fundVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: FundingRegisterVC.reuseIdentifier)
+            self.navigationController?.pushViewController(fundVC, animated: true)
+        } else {
+            self.simpleAlert(title: "", message: "케어테이커가 되어야 이용할 수 있습니다.")
+        }
+
     }
     
 }
