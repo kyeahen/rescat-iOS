@@ -188,12 +188,17 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         } else {
             // 케어테이커
 //            let storyboard = storyboard.
-            let care = UIStoryboard(name: "Care", bundle: nil)
+            
+            if MyPageViewController.careCheck == 0 {
+                let care = UIStoryboard(name: "Care", bundle: nil)
 
-            let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
-//            self.present(vc, animated:  true)
+                let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
+    //            self.present(vc, animated:  true)
 
-            self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.simpleAlert(title: "", message: "케어테이커 신청 대기 상태입니다.")
+            }
 
 
         }
