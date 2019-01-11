@@ -180,7 +180,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section == 0 {
             return 0
-        } else if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+        } else if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
             return 47
         } else {
             return 0
@@ -193,20 +193,20 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         let role = gsno(UserDefaults.standard.string(forKey: "role"))
 
         if indexPath.section == 0 { //지역 설정 - 케어테이커만
-            if role == careMapping.care.rawValue {
+            if role == careMapping.care.rawValue  {
                return 115
             } else {
                 return 0
             }
         } else if indexPath.section == 1 {
-            if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+            if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
 
                 return 44
             } else {
                 return 0
             }
         } else {
-            if role == careMapping.care.rawValue || role == careMapping.member.rawValue {
+            if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
                 
                 return 44
             } else {
@@ -297,7 +297,7 @@ extension MyPageViewController {
                         self.backImageView.image = UIImage(named: "mypageNomal")
                     }
                     
-                    if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue {
+                    if resResult.role == careMapping.care.rawValue || resResult.role == careMapping.member.rawValue || resResult.role == careMapping.admin.rawValue{
                         self.setRightBarButtonItem()
                     } 
                     
