@@ -235,7 +235,7 @@ extension UIViewController {
         let interval = NSDate().timeIntervalSince(day)
         let days = Int(interval / 86400)
         
-        if days > 0 {
+        if days < 0 {
             return "\(days.magnitude)일 남음"
         } else {
             return "마감"
