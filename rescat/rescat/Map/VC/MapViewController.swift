@@ -151,7 +151,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 self.mapView.setMinZoom(15.0, maxZoom: 20.0)
                 naverRequest.requestGeocoder(myRegions[0])
                 
-            } else if ( role == "MEMBER" ) {
+            } else  {
                 
                 alertView.isHidden = false
                 startLabel.text = UserInfo.notMessage

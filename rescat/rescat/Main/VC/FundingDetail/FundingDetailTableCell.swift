@@ -45,7 +45,7 @@ class FundingDetailTableCell: UITableViewCell , AACarouselDelegate{
     func reloadSlideImageView(_ photoAry : [String]){
         print("reload slide imageView")
         self.photoArray = photoAry
-        slideImageView.setCarouselData(paths: photoArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: nil)
+        slideImageView.setCarouselData(paths: photoArray,  describedTitle: titleArray, isAutoScroll: true, timer: 5.0, defaultImage: "https://rescat.s3.ap-northeast-2.amazonaws.com/static/1547213699228_banner.png")
         //optional methods
         slideImageView.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
         slideImageView.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 1.0), describedTitleColor: nil, layerColor: nil)
