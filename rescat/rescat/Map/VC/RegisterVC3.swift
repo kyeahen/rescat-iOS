@@ -19,7 +19,7 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
     var requestMap : MapRequest!
     var requestAddress : NaverMapRequest!
     var registerMap : MapRequestModel = MapRequestModel()
-    
+    var lat = 0.0 ; var lng = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +49,7 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("coordinate \(coordinate.latitude) \(coordinate.longitude)")
+        lat = Double(coordinate.latitude) ; lng = Double(coordinate.longitude)
         mapView.clear()
 
         registerButton.isHidden = false
@@ -79,13 +80,9 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
     
     @IBAction func registerImage( _ sender : UIButton!) {
         
-        let request = MapRequest(self)
-        
-        if gino(registerMap.registerType) == 1 {
-            
-        } else {
-            
-        }
+    
+        registerMap.lat = lat ; registerMap.lng = lng
+        requestAddress.requestReverseGeocoder(lat, lng)
 
 //        request.addPhoto(dataImageView)
 //        var datas = [Data]()
@@ -129,15 +126,24 @@ class RegisterVC3 : UIViewController, APIServiceCallback, GMSMapViewDelegate {
 
 
 
-        self.performSegue(withIdentifier: "unWindToMain", sender: nil)
         // go to home
 
         
     }
     func requestCallback(_ datas: Any, _ code: Int) {
      
-        if ( code == APIServiceCode.GEOCODE) {
-            
+        if ( code == APIServiceCode.REVERSE_GEOCODE) {
+            let string = datas as! String
+            print("지도 \(string)")
+//            requestMap
+            registerMap.address = string
+            requestMap.addMapData(registerMap)
+        } else if ( code == APIServiceCode.MARKER_POST ) {
+            self.simpleAlertwithHandler(title: "등록요청 완료", message: "24시간 내에 관리자 승인 후, 등록 결과가 마이페이지 > 우체통으로 전달됩니다.") { (UIAlertAction) in
+                self.performSegue(withIdentifier: "unWindToMain", sender: nil)
+
+            }
+
         }
     }
     

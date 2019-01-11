@@ -10,7 +10,7 @@ import Foundation
 struct MapRequestModel : Codable {
     
     var editCategory : Bool?
-    var phtoUrl : String?
+    var photoUrl : String?
     var regionFullName : String?
     var requestType : Int?
     var registerType : Int?

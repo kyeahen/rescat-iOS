@@ -41,6 +41,8 @@ class APIServiceCode {
     static let CARE_POST_MAIN = 114
     static let CARE_POST_LIST = 121
     static let BANNER_TYPE = 122
-    static let GEOCODE = 123
-    static let REVERSE_GEOCODE = 124
+    static let MARKER_POST = 130
+    static let MARKER_LIST = 131
+    static let GEOCODE = 140
+    static let REVERSE_GEOCODE = 141
 }

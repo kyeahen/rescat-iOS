@@ -38,7 +38,7 @@ class NaverMapRequest : APIServie {
                 let area3 = json["results"][0]["region"]["area3"]["name"]
                 let result = "\(area1) \(area2) \(area3)"
                 
-                self.vc.requestCallback(result, 2)
+                self.vc.requestCallback(result, APIServiceCode.REVERSE_GEOCODE)
             case .failure(let error):
                 print(error)
                 

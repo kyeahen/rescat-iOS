@@ -19,23 +19,27 @@ class MapRequest : APIServie {
     func addMapData ( _ data : MapRequestModel ) {
 //        Alamofire.
     let url = self.url("maps")
-        let header : HTTPHeaders = ["Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSeWFuZ1QiLCJ1c2VyX2lkeCI6MTYsImV4cCI6MTU0OTM4MzcxNX0.r1SUbfDoTnqXPU7NNxZ3mS1uRdp4Xfuwdp_mvmaP4BM",
-                      "Content-Type": "application/json"]
-        
+
+        let header = UserInfo.getHeader()
         let encoder = DictionaryEncoder()
         let param = try! encoder.encode(data) as! [String:Any]
 
-        print("keys \(param.keys.count)")
-        
+        print(param)
      
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header).responseJSON(){
             (res) in
+            guard let statusCode = res.response?.statusCode else { return }
             switch res.result {
             case .success:
-                
-                print("Networking Post Here")
+
                 guard let value = res.result.value else { return }
+
+                print("Networking Post Here")
                 print("post success \(value)")
+
+                if statusCode == 200 || statusCode == 201 {
+                    self.vc.requestCallback(0, APIServiceCode.MARKER_POST)
+                }
                 break
                 
             case .failure(let err):
