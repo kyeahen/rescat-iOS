@@ -61,6 +61,7 @@ extension FinishCareViewController {
                 let tabVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TabBarController.reuseIdentifier) as! TabBarController
                 
                 self.present(tabVC, animated: true, completion: nil)
+                MyPageViewController.careCheck = 1
                 UserDefaults.standard.removeObject(forKey: "caretakerName")
                 UserDefaults.standard.removeObject(forKey: "caretakerPhone")
                 UserDefaults.standard.removeObject(forKey: "caretakerArea")
