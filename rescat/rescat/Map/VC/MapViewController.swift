@@ -73,7 +73,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 guard let regions = UserDefaults.standard.array(forKey: "regions") as? [String] else { return }
                 guard let emdCodes = UserDefaults.standard.array(forKey: "emdCodes") as? [Int] else { return }
                 myEmdCodes = emdCodes ; myRegions = regions
-                
+                print("emd codes \(myEmdCodes)")
                 mapRequest.getMapList(emdCodes[0])
                 
                 alertView.isHidden = true
@@ -321,6 +321,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let marker = GMSMarker()
             let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gdno(data[i].lat)), longitude: CLLocationDegrees(gdno(data[i].lng)))
 
+//            print("name - \(gsno(data[i].name)), photo - \(gsno(data[i].photoUrl))")
             if gdno(data[i].lat) >= 40.0
             {
                 continue
@@ -335,6 +336,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
             case 2:
                 marker.icon = UIImage(named: "icMapCat");
+        
                 let circleCenter = position
                 let circ = GMSCircle(position: circleCenter, radius: 100)
                 circ.fillColor = UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 0.2)
@@ -461,7 +463,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //
                 
                 if let url = data.photoUrl {
-                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                    if url == "" {
+                        detailContents.imageView.image = UIImage(named: "markerdefault")
+                    } else {
+                        detailContents.imageView.kf.setImage(with: URL(string:url))
+                    }
                 } else {
                     detailContents.imageView.image = UIImage(named: "markerdefault")
                 }
@@ -532,7 +538,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 if let url = data.photoUrl {
-                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                    if url == "" {
+                        detailContents.imageView.image = UIImage(named: "markerdefault")
+                    } else {
+                        detailContents.imageView.kf.setImage(with: URL(string:url))
+                    }
                 } else {
                     detailContents.imageView.image = UIImage(named: "markerdefault")
                 }
@@ -557,7 +567,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //
                 
                 if let url = data.photoUrl {
-                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                    print("photo url \(url)")
+                    if url == "" {
+                        detailContents.imageView.image = UIImage(named: "markerdefault")
+                    } else {
+                        detailContents.imageView.kf.setImage(with: URL(string:url))
+                    }
                 } else {
                     detailContents.imageView.image = UIImage(named: "markerdefault")
                 }

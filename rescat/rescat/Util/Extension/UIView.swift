@@ -14,9 +14,17 @@ extension UIView {
         
         backgroundColor = dataColor
         let x = CGFloat(Float(frame.width) * Float(value))
-        let v = UIView(frame: CGRect(x: x, y: 0, width: frame.width - x, height: frame.height))
-        v.backgroundColor = overallColor
-        addSubview(v)
+        if ( value > 1.0 ) {
+            let v = UIView(frame: CGRect(x: x, y: 0, width: frame.width , height: frame.height))
+            v.backgroundColor = overallColor
+            addSubview(v)
+
+        } else {
+            let v = UIView(frame: CGRect(x: x, y: 0, width: frame.width - x, height: frame.height))
+            v.backgroundColor = overallColor
+            addSubview(v)
+
+        }
 
     }
     func roundCorner( _ value : Double ){

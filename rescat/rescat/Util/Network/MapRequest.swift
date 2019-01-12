@@ -78,7 +78,7 @@ class MapRequest : APIServie {
                 } else if code == 401 {
                     print("마커불러오기 권하없음")
                 } else if code == 500 {
-                    print("마일리지 서버에러")
+                    print("마커불러오기 서버에러")
                     self.vc.requestCallback(-1, APIServiceCode.SERVER_ERROR)
                 }
                 
