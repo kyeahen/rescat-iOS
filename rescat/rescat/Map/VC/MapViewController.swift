@@ -316,7 +316,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let marker = GMSMarker()
             let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gdno(data[i].lat)), longitude: CLLocationDegrees(gdno(data[i].lng)))
 
-//            let key : [String:Int] = ["key":gino(data[i].category)]
+            if gdno(data[i].lat) >= 40.0
+            {
+                continue
+            }
             marker.userData = data[i]
             switch gino(data[i].category) {
             case 0:
@@ -332,6 +335,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 circ.fillColor = UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 0.2)
                 circ.strokeColor = .none
                 circ.map = mapView
+                
 
                 break
             default:
