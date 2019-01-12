@@ -51,22 +51,22 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         super.viewDidLoad()
         self.setNaviTitle(name: "우리동네 길냥이")
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-
-        if ( token == "-1" ) {
+       
+        let token = UserDefaults.standard.string(forKey: "token")
+        
+        if ( gsno(token) == "-1" ) {
             
-            print("비회원")
             alertView.isHidden = false
             startLabel.text = UserInfo.memberMessage
             startButton.setTitle("회원가입하기", for: .normal)
             startButton.tag = 1 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
             startButton.roundCorner(10.0)
-
+            
         } else {
             
-            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-
-            if ( role == "CARETAKER") {
+            let role = UserDefaults.standard.string(forKey: "role")
+            
+            if ( gsno(role) == "CARETAKER") {
                 // 케어테이커
                 mapRequest = MapRequest(self)
                 guard let regions = UserDefaults.standard.array(forKey: "regions") as? [String] else { return }
@@ -87,15 +87,15 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     action: #selector(searchButtonAction(_:)))
                 backBTN.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
                 backBTN2.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
-            
+                
                 
                 navigationItem.rightBarButtonItems = [backBTN,backBTN2]
                 navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
                 
                 
-//                for (index, element) in UserInfo.getLocation().enumerated(){
-//                    myLocation.append(gsno(element.keys.first))
-//                }
+                //                for (index, element) in UserInfo.getLocation().enumerated(){
+                //                    myLocation.append(gsno(element.keys.first))
+                //                }
                 buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
                 for (index, element) in buttons.enumerated() {
                     element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
@@ -149,10 +149,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let naverRequest = NaverMapRequest(self)
                 self.mapView.delegate = self
                 self.mapView.settings.rotateGestures = false
-//                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
+                //                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
                 naverRequest.requestGeocoder(myRegions[0])
                 
             } else {
+                
+                print("MAPPPPP -MEMBER")
                 
                 alertView.isHidden = false
                 startLabel.text = UserInfo.notMessage
@@ -161,18 +163,19 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 startButton.roundCorner(10.0)
             }
         }
-        
+
     }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.tabBarController?.tabBar.isHidden = false
-        
+        print("MAPPPP - viewWillApp")
         if focusMap != nil {
             loadMapView(latitude: gdno(focusMap.lat), longitude: gdno(focusMap.lng), zoom: 16.0)
             makeMarkerView(markerList)
+            
         }
-
+       
       
     }
     @objc func gotoAction( _ sender : UIButton! ) {

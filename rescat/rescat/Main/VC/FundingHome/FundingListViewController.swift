@@ -29,13 +29,13 @@ class FundingListViewController : UIViewController , APIServiceCallback{
         self.setNaviTitle(name: "후원할래요")
         
         
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
+        let token = UserDefaults.standard.string(forKey: "token")
         
-        if ( token == "-1" )
+        if ( gsno(token) == "-1" )
         { }
         else {
-            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-            if role == "MEMBER" {}
+            let role = UserDefaults.standard.string(forKey: "role")
+            if gsno(role) == "MEMBER" {}
             else {
                 let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
                     style: .plain,

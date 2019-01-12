@@ -26,8 +26,12 @@ struct JoinService: PostableService, APIServie {
                     
                 case HttpResponseCode.postSuccess.rawValue : //201
                     UserDefaults.standard.set(networkResult.resResult.token, forKey: "token")
+                    UserDefaults.standard.set("MEMBER", forKey: "role")
                     let token = UserDefaults.standard.string(forKey: "token")
+                    let role = UserDefaults.standard.string(forKey: "role")
                     print("토큰: \(token)")
+                    print("토큰: \(role)")
+
                     completion(.networkSuccess(networkResult.resResult))
                     
                 case HttpResponseCode.badRequest.rawValue : //400
