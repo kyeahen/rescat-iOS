@@ -26,6 +26,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet var button4 : UIButton!
     @IBOutlet var locationButtonView : UIView!
     
+    var curEmdCode = 0
     var buttons = [UIButton]()
 
 //    var detailViewHeight = 140   // temp value
@@ -247,7 +248,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         let map = NaverMapRequest(self)
         map.requestGeocoder(gsno(locationButton.text))
-        
+        mapRequest.getMapList(myEmdCodes[curEmdCode])
+
 //        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(36.899999), longitude: CLLocationDegrees(127.03111111))
 //        self.mapView.animate(toLocation: move)
         locationButton.resignFirstResponder()
@@ -373,6 +375,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return myRegions.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        curEmdCode = row
         return myRegions[row]
         
     }
