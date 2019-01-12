@@ -322,9 +322,13 @@ class FundingRequest : APIServie {
                 } else if code == 500 {
                     print("마일리지 서버에러")
                     self.vc.requestCallback(-1, APIServiceCode.SERVER_ERROR)
+                } else {
+                    
                 }
                 
             case .failure(let error):
+                self.vc.requestCallback(10, APIServiceCode.FUNDING_MIELGE_POST)
+
                 print("post funding Milege failure")
             }
         }
