@@ -277,7 +277,7 @@ extension Register1VC {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             UIView.animate(withDuration: 0.1) {
-                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-49)
 
             }
             self.view.layoutIfNeeded()
