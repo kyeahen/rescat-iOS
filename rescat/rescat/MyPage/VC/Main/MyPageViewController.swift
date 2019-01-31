@@ -130,6 +130,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             headerCell.titleLabel.text = "내 활동"
         } else if section == 2 {
             headerCell.titleLabel.text = "계정 정보"
+            
         }
         
         return headerCell

@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="증빙서류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBr-4N-d7Y">
-                        <rect key="frame" x="24" y="223.5" width="59" height="20.5"/>
+                        <rect key="frame" x="24" y="365.5" width="59" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="G5Z-Xx-70u"/>
                             <constraint firstAttribute="width" constant="59" id="YV9-e4-OYQ"/>
@@ -66,13 +66,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="병원 영수증 / 진단서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXM-cR-Adg">
-                        <rect key="frame" x="92" y="225" width="113" height="17"/>
+                        <rect key="frame" x="92" y="367" width="113" height="17"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                         <color key="textColor" red="0.58043688535690308" green="0.58430445194244385" blue="0.58431428670883179" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ltH-7T-beV">
-                        <rect key="frame" x="27" y="258" width="321" height="99.5"/>
+                        <rect key="frame" x="27" y="400" width="321" height="99.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gzz-Jp-u8f">
                                 <rect key="frame" x="0.0" y="0.0" width="99.5" height="99.5"/>
@@ -113,14 +113,14 @@
                     <constraint firstAttribute="trailing" secondItem="sBH-yy-6Nc" secondAttribute="trailing" constant="24" id="CUh-RD-yZH"/>
                     <constraint firstAttribute="trailing" secondItem="Jud-7p-AJR" secondAttribute="trailing" constant="24" id="DAv-L2-Rdi"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ltH-7T-beV" secondAttribute="trailing" constant="11" id="Dmh-1t-CJ0"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ltH-7T-beV" secondAttribute="bottom" constant="10" id="Hcw-ss-sDa"/>
+                    <constraint firstAttribute="bottom" secondItem="ltH-7T-beV" secondAttribute="bottom" constant="33" id="Hcw-ss-sDa"/>
                     <constraint firstItem="ltH-7T-beV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="11" id="Hp8-fp-MPZ"/>
                     <constraint firstItem="hQS-Ei-4y0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="I0Y-T8-bFD"/>
                     <constraint firstItem="hQS-Ei-4y0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Mvk-yQ-BEQ"/>
                     <constraint firstItem="OkS-i9-rcv" firstAttribute="leading" secondItem="tBa-Zs-MDj" secondAttribute="leading" id="ReK-aV-G98"/>
                     <constraint firstItem="iA3-b5-L25" firstAttribute="centerY" secondItem="OkS-i9-rcv" secondAttribute="centerY" id="S0A-3N-8nQ"/>
                     <constraint firstItem="zRi-PP-N6J" firstAttribute="leading" secondItem="hQS-Ei-4y0" secondAttribute="leading" id="U3t-it-8In"/>
-                    <constraint firstItem="NBr-4N-d7Y" firstAttribute="top" secondItem="Jud-7p-AJR" secondAttribute="bottom" constant="51" id="VUC-NN-vtl"/>
+                    <constraint firstItem="NBr-4N-d7Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jud-7p-AJR" secondAttribute="bottom" constant="10" id="VUC-NN-vtl"/>
                     <constraint firstItem="UXM-cR-Adg" firstAttribute="leading" secondItem="NBr-4N-d7Y" secondAttribute="trailing" constant="9" id="XBD-pR-91s"/>
                     <constraint firstItem="zRi-PP-N6J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="YpB-Rc-1Rp"/>
                     <constraint firstItem="tBa-Zs-MDj" firstAttribute="leading" secondItem="hQS-Ei-4y0" secondAttribute="trailing" constant="11" id="aDl-4l-eoi"/>

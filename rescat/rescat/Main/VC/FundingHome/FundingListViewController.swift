@@ -99,17 +99,21 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         cell.introductionLabel.text = gsno(funding.introduction)
         cell.goalmoneyLabel.text = "\(gino(funding.goalAmount).getMoney())원"
         let percentage = Float(gino(funding.currentAmount))/Float(gino(funding.goalAmount))
-        UIView.animate(withDuration: 1.0) {
-            cell.percentageView.setProgress(percentage, animated: true)
+        let p = progressInit(part: gino(funding.currentAmount), all: gino(funding.goalAmount))
+        print("??\(p)")
+        
+                UIView.animate(withDuration: 1.0) {
+        cell.percentageView.setProgress(p, animated: true)
         }
+
 //        print("percentage - \(funding.title) - \(percentage)")
         cell.percentageLabel.text = "\(Int(percentage*100))%"
         cell.remaindaysLabel.text = setDday(start: gsno(funding.limitAt))
         
 //        print(setDday(start: gsno(funding.limitAt)))
         
-        cell.percentageView.drawPercentage(Double(percentage),
-                                           UIColor.rescatPer(), UIColor.rescatPink())
+////        cell.percentageView.drawPercentage(Double(percentage),
+//                                           UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))
         cell.bottomView.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
         cell.bottomView.layer.borderWidth = 0.3
@@ -125,6 +129,11 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
 
         self.navigationController?.pushViewController(vc, animated: true)
 
+    }
+    func progressInit(part: Int, all: Int) -> Float {
+        let percent = Int (Double(part)/Double(all) * 100.0)
+        let progress = Float(percent) * 0.01
+        return progress
     }
     
     

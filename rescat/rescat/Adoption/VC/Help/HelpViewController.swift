@@ -31,7 +31,7 @@ class HelpViewController: UIViewController {
         setCustomView()
         setTableView()
         
-//        getAdoptList(_type: 0)
+        getAdoptList(_type: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
