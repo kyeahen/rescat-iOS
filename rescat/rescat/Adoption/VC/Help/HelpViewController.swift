@@ -34,6 +34,10 @@ class HelpViewController: UIViewController {
         getAdoptList(_type: 0)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getAdoptList(_type: tag)
+    }
+    
     //MARK: 뷰 요소 커스텀 세팅
     func setCustomView() {
         
@@ -89,7 +93,7 @@ class HelpViewController: UIViewController {
     
     // refreshControl이 돌아갈 때 일어나는 액션
     @objc func startReloadTableView(_ sender: UIRefreshControl) {
-        getAdoptList(_type: 0)
+        getAdoptList(_type: tag)
         tableView.reloadData()
         sender.endRefreshing()
     }

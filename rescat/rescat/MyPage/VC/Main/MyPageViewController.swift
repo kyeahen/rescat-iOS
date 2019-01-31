@@ -26,6 +26,8 @@ class MyPageViewController: UIViewController{
             tableView.reloadData()
         }
     }
+    
+    static var careCheck: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +71,7 @@ class MyPageViewController: UIViewController{
     //MARK: 케어테이커 || 회원가입 액션
     @IBAction func buttonAction(_ sender: UIButton) {
         
-        guard let role = UserDefaults.standard.string(forKey: "role") else {return}
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
         let finished = UserDefaults.standard.bool(forKey: "isFinished") 
         
         if role == careMapping.member.rawValue { //케어테이커 인증하기로 이동 - 멤버
@@ -77,17 +79,17 @@ class MyPageViewController: UIViewController{
             if finished == true {
                 let careVC = UIStoryboard(name: "Care", bundle: nil).instantiateViewController(withIdentifier: MainCareViewController.reuseIdentifier)
                 
-
                 self.navigationController?.pushViewController(careVC, animated: true)
 
             } else {
                 self.simpleAlert(title: "", message: "케어테이커 신청 대기 상태입니다")
+                MyPageViewController.careCheck = 1
             }
 
         } else { //회원가입로 이동 - 게스트
+            print("회원가입 액션")
             let joinVC = UIStoryboard(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: JoinViewController.reuseIdentifier)
            
-
             self.navigationController?.pushViewController(joinVC, animated: true)
 
         }
@@ -128,6 +130,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             headerCell.titleLabel.text = "내 활동"
         } else if section == 2 {
             headerCell.titleLabel.text = "계정 정보"
+            
         }
         
         return headerCell
@@ -138,18 +141,18 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 { //활동지역
             return 1
-        } else if section == 1 {
+        } else if section == 1 { //두번째 목록
             return 2
-        } else {
+        } else { //세번째 목록
             return 4
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { //활동 지역 셀
             
             let cell = tableView.dequeueReusableCell(withIdentifier: MyAreaTableViewCell.reuseIdentifier) as! MyAreaTableViewCell
             
@@ -159,13 +162,13 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
-        else if indexPath.section == 1 {
+        else if indexPath.section == 1 { // 두번째 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: MyPageListTableViewCell.reuseIdentifier) as! MyPageListTableViewCell
             
             cell.titleLabel.text = secondArr[indexPath.row]
             
             return cell
-        } else {
+        } else { //세번째 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: MyPageListTableViewCell.reuseIdentifier) as! MyPageListTableViewCell
             
             cell.titleLabel.text = thirdArr[indexPath.row]
@@ -178,7 +181,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         let role = gsno(UserDefaults.standard.string(forKey: "role"))
         
-        if section == 0 {
+        if section == 0 { 
             return 0
         } else if role == careMapping.care.rawValue || role == careMapping.member.rawValue || role == careMapping.admin.rawValue {
             return 47

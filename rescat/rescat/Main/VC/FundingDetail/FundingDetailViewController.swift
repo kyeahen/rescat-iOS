@@ -141,7 +141,7 @@ class FundingDetailViewController : UIViewController , UITableViewDelegate , UIT
             self.simpleAlert(title: "", message: "회원만 이용할 수 있는 메뉴입니다.")
             return
         }
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
+        let role = gsno(UserDefaults.standard.string(forKey: "role"))
         let vc = storyboard?.instantiateViewController(withIdentifier: "FundingSupportViewController") as! FundingSupportViewController
         self.navigationController?.pushViewController(vc, animated: true)
 

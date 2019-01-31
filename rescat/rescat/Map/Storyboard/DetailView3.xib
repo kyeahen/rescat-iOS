@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-uy-Wse">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerdefault" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-uy-Wse">
                     <rect key="frame" x="14" y="14" width="85" height="82"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="85" id="K19-LT-OAb"/>
@@ -62,7 +62,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0pX-bj-KPM">
-                    <rect key="frame" x="177" y="70" width="179" height="48"/>
+                    <rect key="frame" x="177" y="80" width="179" height="43"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -79,7 +79,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="0pX-bj-KPM" firstAttribute="top" secondItem="iEJ-jW-Kkk" secondAttribute="bottom" constant="5" id="3Me-g7-UCB"/>
+                <constraint firstItem="0pX-bj-KPM" firstAttribute="top" secondItem="iEJ-jW-Kkk" secondAttribute="bottom" constant="15" id="3Me-g7-UCB"/>
                 <constraint firstItem="iEJ-jW-Kkk" firstAttribute="leading" secondItem="yFp-NJ-Baj" secondAttribute="trailing" constant="19" id="AQ4-D4-mPe"/>
                 <constraint firstItem="iEJ-jW-Kkk" firstAttribute="centerY" secondItem="yFp-NJ-Baj" secondAttribute="centerY" id="Epl-XE-cDp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hCU-d6-m9n" secondAttribute="trailing" constant="10" id="Fg8-YP-gFI"/>
@@ -89,7 +89,7 @@
                 <constraint firstItem="0pX-bj-KPM" firstAttribute="leading" secondItem="XH6-UX-IpM" secondAttribute="trailing" constant="15" id="Tsq-gK-g0a"/>
                 <constraint firstItem="XH6-UX-IpM" firstAttribute="leading" secondItem="fbL-uy-Wse" secondAttribute="trailing" constant="21" id="aaG-Eu-zRf"/>
                 <constraint firstItem="yFp-NJ-Baj" firstAttribute="leading" secondItem="fbL-uy-Wse" secondAttribute="trailing" constant="21" id="dDo-rG-I3U"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0pX-bj-KPM" secondAttribute="bottom" constant="22" id="gL6-h4-4Uf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0pX-bj-KPM" secondAttribute="bottom" constant="17" id="gL6-h4-4Uf"/>
                 <constraint firstItem="FgP-tx-HYv" firstAttribute="leading" secondItem="fbL-uy-Wse" secondAttribute="trailing" constant="21" id="hLG-z2-4G9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0pX-bj-KPM" secondAttribute="trailing" constant="19" id="hc6-LU-9h4"/>
                 <constraint firstItem="yFp-NJ-Baj" firstAttribute="top" secondItem="FgP-tx-HYv" secondAttribute="bottom" constant="16" id="igl-M7-Wln"/>
@@ -104,5 +104,6 @@
     </objects>
     <resources>
         <image name="icEtc" width="21" height="21"/>
+        <image name="markerdefault" width="85" height="82"/>
     </resources>
 </document>

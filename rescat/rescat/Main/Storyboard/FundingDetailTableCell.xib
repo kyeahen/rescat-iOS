@@ -27,18 +27,18 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고양이 설명최대 200자대글자최대글자최대글자최대글자최대글자최대글자대글40자" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFB-Ip-Qkx">
-                        <rect key="frame" x="24" y="336" width="327" height="33.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="24" y="324" width="327" height="34"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고양이 설명최대 200자대글자최대글자최대글자최대글자최대글자최대글자대글40자" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lch-ew-720">
-                        <rect key="frame" x="24" y="278" width="327" height="43"/>
+                        <rect key="frame" x="24" y="266" width="327" height="43"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="43" id="hUf-yM-Wuf"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                        <color key="textColor" red="0.27059027552604675" green="0.27058452367782593" blue="0.27058839797973633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMa-x0-Xpt">
@@ -49,14 +49,16 @@
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="f0V-Bt-IPg" secondAttribute="trailing" id="3ga-8r-rdz"/>
+                    <constraint firstItem="lch-ew-720" firstAttribute="top" secondItem="cMa-x0-Xpt" secondAttribute="bottom" constant="14" id="9Dg-1T-HP1"/>
                     <constraint firstItem="f0V-Bt-IPg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="A03-z7-r3g"/>
                     <constraint firstItem="f0V-Bt-IPg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Lpb-Xb-UNs"/>
                     <constraint firstItem="cMa-x0-Xpt" firstAttribute="top" secondItem="f0V-Bt-IPg" secondAttribute="bottom" constant="21" id="Weg-RZ-7iV"/>
                     <constraint firstItem="dFB-Ip-Qkx" firstAttribute="top" secondItem="lch-ew-720" secondAttribute="bottom" constant="15" id="ZmO-W4-GZ4"/>
                     <constraint firstItem="lch-ew-720" firstAttribute="trailing" secondItem="dFB-Ip-Qkx" secondAttribute="trailing" id="abx-MJ-inA"/>
-                    <constraint firstAttribute="bottom" secondItem="dFB-Ip-Qkx" secondAttribute="bottom" id="bWT-HT-AiP"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dFB-Ip-Qkx" secondAttribute="bottom" id="bWT-HT-AiP"/>
                     <constraint firstItem="lch-ew-720" firstAttribute="leading" secondItem="dFB-Ip-Qkx" secondAttribute="leading" id="qPT-la-WCi"/>
                     <constraint firstItem="cMa-x0-Xpt" firstAttribute="leading" secondItem="lch-ew-720" secondAttribute="leading" id="zO1-7r-SwY"/>
                 </constraints>

@@ -19,6 +19,7 @@ class AdoptionDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var catImageView: ImageSlideshow!
+    @IBOutlet weak var introLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var sexLabel: UILabel!
@@ -45,6 +46,10 @@ class AdoptionDetailViewController: UIViewController {
         getAdoptDetail(_idx: idx)
         adoptButton.isHidden = true
  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getAdoptDetail(_idx: idx)
     }
     
 
@@ -150,7 +155,8 @@ extension AdoptionDetailViewController {
         self.nameLabel.text = details?.name
         self.ageLabel.text = details?.age
         self.typeLabel.text = details?.breed
-        self.etcLabel.text = details?.contents
+        self.etcLabel.text = details?.etc
+        self.introLabel.text = details?.contents
         
         //값 맵핑
         if details?.sex == 0 {

@@ -35,12 +35,17 @@ class MapRequest : APIServie {
                 guard let value = res.result.value else { return }
 
                 print("Networking Post Here")
-                print("post success \(value)")
 
                 if statusCode == 200 || statusCode == 201 {
                     self.vc.requestCallback(0, APIServiceCode.MARKER_POST)
+                } else if statusCode == 400 {
+                    self.vc.requestCallback(0, APIServiceCode.EXCEPTION_ERROR1)
+                } else if statusCode == 401{
+                    self.vc.requestCallback(0, APIServiceCode.EXCEPTION_ERROR2)
+                } else {
+                    
                 }
-                break
+                
                 
             case .failure(let err):
                 print("post failure \(MapRequest.a)")
@@ -61,6 +66,7 @@ class MapRequest : APIServie {
                 guard let code = res.response?.statusCode else { return }
                 guard let datas = res.result.value else { return }
                 
+                print("펀딩 rescode\(res)")
                 if code == 200 {
                     let decoder = JSONDecoder()
                     do {
@@ -72,7 +78,7 @@ class MapRequest : APIServie {
                 } else if code == 401 {
                     print("마커불러오기 권하없음")
                 } else if code == 500 {
-                    print("마일리지 서버에러")
+                    print("마커불러오기 서버에러")
                     self.vc.requestCallback(-1, APIServiceCode.SERVER_ERROR)
                 }
                 

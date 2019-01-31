@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mdd-EC-gWZ">
-                    <rect key="frame" x="117" y="12" width="69" height="21.5"/>
+                    <rect key="frame" x="117" y="12" width="64" height="21.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fh-Vx-Ahu">
                             <rect key="frame" x="0.0" y="0.0" width="31.5" height="21.5"/>
@@ -36,16 +36,15 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRp-Di-ioe">
-                            <rect key="frame" x="39.5" y="0.0" width="29.5" height="21.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <rect key="frame" x="39.5" y="0.0" width="24.5" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-Ss-YwP">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerdefault" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-Ss-YwP">
                     <rect key="frame" x="14" y="14" width="82" height="82"/>
-                    <color key="backgroundColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="82" id="puS-T8-9ak"/>
                         <constraint firstAttribute="height" constant="82" id="sm4-fK-dea"/>
@@ -99,8 +98,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="참치캔알레르기있음최대글자최대글자최대글자최대글자최대최대글자최대글자최대글자최대글자45자" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q24-oy-1TJ">
-                    <rect key="frame" x="181" y="75.5" width="175" height="52.5"/>
+                    <rect key="frame" x="177" y="75.5" width="179" height="52.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -125,8 +125,8 @@
                 <constraint firstItem="Qsv-X8-0Il" firstAttribute="top" secondItem="Mdd-EC-gWZ" secondAttribute="bottom" constant="8" id="ibL-yx-ydb"/>
                 <constraint firstItem="fdY-Ss-YwP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="inr-XI-4bZ"/>
                 <constraint firstItem="Ix6-rg-Bcw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="mDZ-sk-8Gb"/>
-                <constraint firstItem="q24-oy-1TJ" firstAttribute="leading" secondItem="6D9-jk-4MC" secondAttribute="trailing" constant="22" id="pYe-68-xhN"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="q24-oy-1TJ" secondAttribute="trailing" constant="19" id="rOd-NH-sYI"/>
+                <constraint firstItem="q24-oy-1TJ" firstAttribute="leading" secondItem="6D9-jk-4MC" secondAttribute="trailing" constant="18" id="rld-ak-j2j"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -135,5 +135,6 @@
     </objects>
     <resources>
         <image name="icEtc" width="21" height="21"/>
+        <image name="markerdefault" width="85" height="82"/>
     </resources>
 </document>

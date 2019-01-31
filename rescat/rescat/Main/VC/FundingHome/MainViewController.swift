@@ -35,28 +35,21 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
  
         let request = FundingRequest(self)
         let request2 = CarePostRequest(self)
-//       self.tabBarController?.tabBar.isHidden = false
-//        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-//        if ( token == "-1" ){
-//            print("테스트---비로그인")
-//        } else {
-//            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-//            if ( role == "CARETAKER") {
-//                print("테스트---케어테이커")
-//            } else {
-//                print("테스트---멤버")
-//            }
-//        }
+
+        
         request2.getCarePostMain()
         request.requestMain()
         request.requestFundingBannerList(0); request.requestFundingBannerList(1);
-        request.requestFundingBannerList(2)
+//        request.requestFundingBannerList(2)
 
         titleArray.removeAll()
         fundingBannerList.removeAll(); photoArray.removeAll()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let mileage = UserDefaults.standard.string(forKey: "mileage") else { return}
+        print("마일리지 - \(mileage)")
         
         guard let token = UserDefaults.standard.string(forKey: "token") else { return }
         if token != "-1" {
@@ -94,6 +87,7 @@ class MainViewController: UIViewController , AACarouselDelegate , APIServiceCall
 //        titleArray = ["picture 1","picture 2","picture 3","picture 4"]
         reviewImage.delegate = self
     }
+    
     
 
     @objc func viewAdoptList(_ sender: UIButton!){
@@ -211,6 +205,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
 //                print("random url \(url)")
                 cell.bannerImageView.kf.setImage(with: URL(string: url))
                 cell.bannerImageView.drawShadow(5)
+                cell.selectionStyle = .none
 
             }
             return cell
@@ -260,6 +255,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
+            
             tableView.deselectRow(at: indexPath, animated: true)
 //            UIApplication.shared.open(URL(string:"www.naver.com")!, options: [:], completionHandler: nil)
             return

@@ -49,6 +49,7 @@ class JoinViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(JoinViewController.keyboardWillShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(JoinViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
 
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

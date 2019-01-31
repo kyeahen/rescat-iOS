@@ -26,9 +26,10 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet var button4 : UIButton!
     @IBOutlet var locationButtonView : UIView!
     
+    var curEmdCode = 0
     var buttons = [UIButton]()
 
-    var detailViewHeight = 140   // temp value
+//    var detailViewHeight = 140   // temp value
     var detailViewCreated = false
     var detailView : UIView!; var detailImageView : UIImageView!; var detailNameView : UILabel!
     var detailBirthView : UILabel!; var detailPropertyView : UILabel!; var detailTextView : UILabel!
@@ -45,33 +46,34 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 //    var detailView0 : DetailView!
 //    var detailView1 : DetailView2!
 //    var detailView2 : DetailView3!
+    var focusMap : MarkerModel!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.setNaviTitle(name: "우리동네 길냥이")
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-
-        if ( token == "-1" ) {
+       
+        let token = UserDefaults.standard.string(forKey: "token")
+        
+        if ( gsno(token) == "-1" ) {
             
-            print("비회원")
             alertView.isHidden = false
             startLabel.text = UserInfo.memberMessage
             startButton.setTitle("회원가입하기", for: .normal)
             startButton.tag = 1 ; startButton.addTarget(self, action: #selector(gotoAction(_:)), for: .touchUpInside)
             startButton.roundCorner(10.0)
-
+            
         } else {
             
-            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-
-            if ( role == "CARETAKER") {
+            let role = UserDefaults.standard.string(forKey: "role")
+            
+            if ( gsno(role) == "CARETAKER") {
                 // 케어테이커
                 mapRequest = MapRequest(self)
                 guard let regions = UserDefaults.standard.array(forKey: "regions") as? [String] else { return }
                 guard let emdCodes = UserDefaults.standard.array(forKey: "emdCodes") as? [Int] else { return }
                 myEmdCodes = emdCodes ; myRegions = regions
-                
+                print("emd codes \(myEmdCodes)")
                 mapRequest.getMapList(emdCodes[0])
                 
                 alertView.isHidden = true
@@ -86,15 +88,15 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     action: #selector(searchButtonAction(_:)))
                 backBTN.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
                 backBTN2.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
-            
+                
                 
                 navigationItem.rightBarButtonItems = [backBTN,backBTN2]
                 navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
                 
                 
-//                for (index, element) in UserInfo.getLocation().enumerated(){
-//                    myLocation.append(gsno(element.keys.first))
-//                }
+                //                for (index, element) in UserInfo.getLocation().enumerated(){
+                //                    myLocation.append(gsno(element.keys.first))
+                //                }
                 buttons.append(button1); buttons.append(button2); buttons.append(button3); buttons.append(button4);
                 for (index, element) in buttons.enumerated() {
                     element.addTarget(self, action: #selector(filterButton), for: .touchUpInside)
@@ -148,10 +150,12 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let naverRequest = NaverMapRequest(self)
                 self.mapView.delegate = self
                 self.mapView.settings.rotateGestures = false
-                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
+                //                self.mapView.setMinZoom(15.0, maxZoom: 20.0)
                 naverRequest.requestGeocoder(myRegions[0])
                 
             } else {
+                
+                print("MAPPPPP -MEMBER")
                 
                 alertView.isHidden = false
                 startLabel.text = UserInfo.notMessage
@@ -160,24 +164,19 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 startButton.roundCorner(10.0)
             }
         }
-        
+
     }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.tabBarController?.tabBar.isHidden = false
-        
-        guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        if ( token != "-1"){
-//            let
+        print("MAPPPP - viewWillApp")
+        if focusMap != nil {
+            loadMapView(latitude: gdno(focusMap.lat), longitude: gdno(focusMap.lng), zoom: 16.0)
+            makeMarkerView(markerList)
+            
         }
-        if ( role == "CARETAKER" ) {
-            let res = UserInfo.getLocation()
-
-        } else { }
-
+       
       
     }
     @objc func gotoAction( _ sender : UIButton! ) {
@@ -193,12 +192,17 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         } else {
             // 케어테이커
 //            let storyboard = storyboard.
-            let care = UIStoryboard(name: "Care", bundle: nil)
+            
+            if MyPageViewController.careCheck == 0 {
+                let care = UIStoryboard(name: "Care", bundle: nil)
 
-            let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
-//            self.present(vc, animated:  true)
+                let vc = care.instantiateViewController(withIdentifier: "MainCareViewController") as! MainCareViewController
+    //            self.present(vc, animated:  true)
 
-            self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.simpleAlert(title: "", message: "케어테이커 신청 대기 상태입니다.")
+            }
 
 
         }
@@ -244,7 +248,8 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
         let map = NaverMapRequest(self)
         map.requestGeocoder(gsno(locationButton.text))
-        
+        mapRequest.getMapList(myEmdCodes[curEmdCode])
+
 //        let move = CLLocationCoordinate2D(latitude: CLLocationDegrees(36.899999), longitude: CLLocationDegrees(127.03111111))
 //        self.mapView.animate(toLocation: move)
         locationButton.resignFirstResponder()
@@ -271,6 +276,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @objc func searchButtonAction(_ sender : UIBarButtonItem!){
         print("search")
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        vc.mapDatas = markerList
         self.navigationController?.pushViewController(vc, animated: true)
 //        self.searchButton.isHidden = false
 //        self.searchbar.resignFirstResponder()
@@ -315,21 +321,29 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let marker = GMSMarker()
             let position = CLLocationCoordinate2D(latitude: CLLocationDegrees(gdno(data[i].lat)), longitude: CLLocationDegrees(gdno(data[i].lng)))
 
-//            let key : [String:Int] = ["key":gino(data[i].category)]
+//            print("name - \(gsno(data[i].name)), photo - \(gsno(data[i].photoUrl))")
+            if gdno(data[i].lat) >= 40.0
+            {
+                continue
+            }
             marker.userData = data[i]
             switch gino(data[i].category) {
             case 0:
                 marker.icon = UIImage(named: "icMapFood"); break
 
             case 1:
-                marker.icon = UIImage(named: "icMapHospital"); break
+                marker.icon = UIImage(named: "icMapHospital");
+
             case 2:
                 marker.icon = UIImage(named: "icMapCat");
+        
                 let circleCenter = position
                 let circ = GMSCircle(position: circleCenter, radius: 100)
                 circ.fillColor = UIColor(red: 242/255, green: 145/255, blue: 145/255, alpha: 0.2)
                 circ.strokeColor = .none
                 circ.map = mapView
+                
+
                 break
             default:
                 marker.icon = UIImage(named: "icMapHospital"); break
@@ -337,7 +351,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
 
             marker.position = position
-            marker.title = "\(gino(data[i].category))"; marker.snippet = "name"
+            marker.snippet = gsno(data[i].name)
             marker.map = mapView
             
 
@@ -363,6 +377,7 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return myRegions.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        curEmdCode = row
         return myRegions[row]
         
     }
@@ -380,7 +395,6 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let data = marker.userData as! MarkerModel
         let category = gino(data.category)
         print("category --\(category)")
-        print("photo -- \(data.photoUrl)")
         
         if ( !detailViewCreated ) {
             print("creaeted")
@@ -402,7 +416,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView2(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.etc)
                 
@@ -419,7 +437,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView3(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.saleLabel.text = gsno(data.etc)
                 detailContents.propertyLabel.text = gsno(data.address)
@@ -440,8 +462,30 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 //
                 
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
-
+                if let url = data.photoUrl {
+                    if url == "" {
+                        detailContents.imageView.image = UIImage(named: "markerdefault")
+                    } else {
+                        detailContents.imageView.kf.setImage(with: URL(string:url))
+                    }
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.propertyLabel.text = gsno(data.etc)
+                detailContents.ageLabel.text = gsno(data.age)
+                if gino(data.sex) == 0 {
+                    detailContents.sexLabel.text = "남"
+                } else {
+                    detailContents.sexLabel.text = "여"
+                }
+                if gino(data.tnr) == 0 {
+                    detailContents.TRNLabel.text = "해당없음"
+                } else if gino(data.tnr) == 1 {
+                    detailContents.TRNLabel.text = "완료"
+                } else {
+                    detailContents.TRNLabel.text = "모름"
+                }
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
                     make.left.equalTo(self.detailView.snp.left)
@@ -470,7 +514,11 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView2(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    detailContents.imageView.kf.setImage(with: URL(string:url))
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
                 detailContents.propertyLabel.text = gsno(data.etc)
                 
@@ -489,9 +537,18 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let detailContents = DetailView3(frame: detailView.frame)
                 detailContents.drawShadow(10.0)
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    if url == "" {
+                        detailContents.imageView.image = UIImage(named: "markerdefault")
+                    } else {
+                        detailContents.imageView.kf.setImage(with: URL(string:url))
+                    }
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
                 detailContents.nameLabel.text = gsno(data.name)
-                detailContents.propertyLabel.text = gsno(data.etc)
+                detailContents.propertyLabel.text = gsno(data.address)
+                detailContents.saleLabel.text = gsno(data.etc)
                 
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
@@ -509,7 +566,31 @@ class MapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 detailContents.modifyButton.addTarget(self, action: #selector(viewActionSheet), for: .touchUpInside)
                 //
                 
-                detailContents.imageView.kf.setImage(with: URL(string:gsno(data.photoUrl)))
+                if let url = data.photoUrl {
+                    print("photo url \(url)")
+                    if url == "" {
+                        detailContents.imageView.image = UIImage(named: "markerdefault")
+                    } else {
+                        detailContents.imageView.kf.setImage(with: URL(string:url))
+                    }
+                } else {
+                    detailContents.imageView.image = UIImage(named: "markerdefault")
+                }
+                detailContents.nameLabel.text = gsno(data.name)
+                detailContents.propertyLabel.text = gsno(data.etc)
+                detailContents.ageLabel.text = gsno(data.age)
+                if gino(data.sex) == 0 {
+                    detailContents.sexLabel.text = "남"
+                } else {
+                    detailContents.sexLabel.text = "여"
+                }
+                if gino(data.tnr) == 0 {
+                    detailContents.TRNLabel.text = "해당없음"
+                } else if gino(data.tnr) == 1 {
+                    detailContents.TRNLabel.text = "완료"
+                } else {
+                    detailContents.TRNLabel.text = "모름"
+                }
                 
                 self.detailView.addSubview(detailContents)
                 detailContents.snp.makeConstraints { (make) in
@@ -552,7 +633,7 @@ extension MapViewController{
 //            loadMapView(latitude: Double(coordinate[0]), longitude: Double(coordinate[1]), zoom: 15.0)
 //            coordinate
 //            print("GEOCODE RESULT \(Float(coordinate[0]))")
-            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 17.0)
+            loadMapView(latitude: gdno(Double(coordinate[0])), longitude: gdno(Double(coordinate[1])), zoom: 15.0)
         } else if ( code == APIServiceCode.MARKER_LIST ) {
             markerList = datas as! [MarkerModel]
             makeMarkerView(markerList)

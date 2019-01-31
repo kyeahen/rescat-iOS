@@ -27,14 +27,31 @@ class FundingListViewController : UIViewController , APIServiceCallback{
         super.viewDidLoad()
         self.setBackBtn()
         self.setNaviTitle(name: "후원할래요")
-        let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
-            style: .plain,
-            target: self,
-            action: #selector(registerFunding))
         
-        navigationItem.rightBarButtonItem = registerBtn
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
-        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+        
+        let token = UserDefaults.standard.string(forKey: "token")
+        
+        if ( gsno(token) == "-1" )
+        { }
+        else {
+            let role = UserDefaults.standard.string(forKey: "role")
+            if gsno(role) == "MEMBER" {}
+            else {
+                let registerBtn = UIBarButtonItem(image: UIImage(named: "iconNewPost"), //백버튼 이미지 파일 이름에 맞게 변경해주세요.
+                    style: .plain,
+                    target: self,
+                    action: #selector(registerFunding))
+                navigationItem.rightBarButtonItem = registerBtn
+                navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 190/255, green: 153/255, blue: 129/255, alpha: 1.0)
+                navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+
+                
+            }
+        }
+            
+            
+        
+        
 
         listTableView.delegate = self
         listTableView.dataSource = self
@@ -48,29 +65,10 @@ class FundingListViewController : UIViewController , APIServiceCallback{
     @objc func registerFunding(){
 
         
-        guard let token = UserDefaults.standard.string(forKey: "token") else { return }
-        
-        print("register \(token)")
-        if ( token == "-1" )
-        {
-            self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
-        } else {
-            guard let role = UserDefaults.standard.string(forKey: "role") else { return }
-            print("role \(role)")
-            if role == "MEMBER" {
-                print("~~~member")
-                self.simpleAlert(title: "", message: "케어테이커 유저만 이용할 수 있습니다.")
-                return
-            } else {
-                print("~~~caretaker")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
+        self.navigationController?.pushViewController(vc, animated: true)
 
-                let vc = storyboard?.instantiateViewController(withIdentifier: "FundingRegisterVC") as! FundingRegisterVC
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            }
-
-            
-        }
+       
     }
     @objc func loadViewAction(_ sender: UIButton!){
         if ( sender.tag == 0 ) {
@@ -92,22 +90,30 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FundingListTableViewCell", for: indexPath) as! FundingListTableViewCell
+        
+        if indexPath.row == 0 {
+            cell.layer.addBorder(edge: .top, color:  #colorLiteral(red: 0.9136453271, green: 0.9137768745, blue: 0.9136167169, alpha: 1), thickness: 0.5)
+        }
         let funding = fundingList[indexPath.row]
         cell.titleLabel.text = gsno(funding.title)
         cell.introductionLabel.text = gsno(funding.introduction)
         cell.goalmoneyLabel.text = "\(gino(funding.goalAmount).getMoney())원"
         let percentage = Float(gino(funding.currentAmount))/Float(gino(funding.goalAmount))
-        UIView.animate(withDuration: 1.0) {
-            cell.percentageView.setProgress(percentage, animated: true)
+        let p = progressInit(part: gino(funding.currentAmount), all: gino(funding.goalAmount))
+        print("??\(p)")
+        
+                UIView.animate(withDuration: 1.0) {
+        cell.percentageView.setProgress(p, animated: true)
         }
+
 //        print("percentage - \(funding.title) - \(percentage)")
         cell.percentageLabel.text = "\(Int(percentage*100))%"
         cell.remaindaysLabel.text = setDday(start: gsno(funding.limitAt))
         
 //        print(setDday(start: gsno(funding.limitAt)))
         
-        cell.percentageView.drawPercentage(Double(percentage),
-                                           UIColor.rescatPer(), UIColor.rescatPink())
+////        cell.percentageView.drawPercentage(Double(percentage),
+//                                           UIColor.rescatPer(), UIColor.rescatPink())
         cell.imgView.kf.setImage(with: URL(string: gsno(funding.mainPhoto!.url)))
         cell.bottomView.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
         cell.bottomView.layer.borderWidth = 0.3
@@ -124,14 +130,20 @@ extension FundingListViewController : UITableViewDataSource, UITableViewDelegate
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
+    func progressInit(part: Int, all: Int) -> Float {
+        let percent = Int (Double(part)/Double(all) * 100.0)
+        let progress = Float(percent) * 0.01
+        return progress
+    }
     
     
     
 }
 extension FundingListViewController {
     func requestCallback(_ datas: Any, _ code: Int) {
-        fundingList = datas as! [FundingModel]
+        guard let flist = datas as? [FundingModel] else { return }
+        fundingList = flist
         print(fundingList.count)
         listTableView.reloadData()
-    } 
+    }
 }
