@@ -45,8 +45,10 @@
 
 2. Layout
 - [SnapKit](https://github.com/SnapKit/SnapKit)
-- [UITextView+Placeholder](https://github.com/devxoul/UITextView-Placeholder)
+- [MXSegmentedPager](https://github.com/maxep/MXSegmentedPager)
 - [ImageSlideshow](https://github.com/zvonicek/ImageSlideshow)
+- [AACarousel](https://github.com/Alan881/AACarousel)
+- [UITextView+Placeholder](https://github.com/devxoul/UITextView-Placeholder)
 - [SwiftyGifOrigin](https://github.com/swiftgif/SwiftGif)
 
 3. Map
